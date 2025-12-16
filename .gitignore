@@ -1,0 +1,34 @@
+# Secrets
+.env
+.env.*
+*.env
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+.pytest_cache/
+
+# Node
+node_modules/
+npm-debug.log
+dist/
+build/
+
+# Data & DBs
+data/
+neo4j_data/
+neo4j_import/
+neo4j_plugins/
+*.db
+*.sqlite3
+
+# Langfuse / Docker Volumes
+langfuse_postgres_data/
+langfuse_clickhouse_data/
+langfuse_clickhouse_logs/
+langfuse_minio_data/
+
+# OS
+.DS_Store

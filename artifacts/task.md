@@ -1,0 +1,29 @@
+# Tasks
+
+- [x] Create Project Backlog with Epics and Stories <!-- id: 0 -->
+- [x] Review Backlog with User <!-- id: 1 -->
+- [ ] **Epic 1**: Core Infrastructure & TDD Foundation <!-- id: 2 -->
+    - [x] Story 1.1: Containerized Environment Setup & Health Checks <!-- id: 3 -->
+    - [x] Story 1.2: Local LLM Integration & Connectivity <!-- id: 4 -->
+    - [x] Story 1.3: Pydantic Structured Output Enforcement <!-- id: 5 -->
+    - [x] Story 1.4: Stateful Workflow Integration (LangGraph) <!-- id: 6 -->
+- [ ] **Epic 2**: Foundational Data Modeling & Governance <!-- id: 7 -->
+    - [x] Story 2.1: RCKG Ontology Definition & Constraints <!-- id: 8 -->
+    - [x] Story 2.2: Transactional Audit Logging Mechanism <!-- id: 9 -->
+    - [x] Story 2.3: Read-Only Data Access Layer <!-- id: 10 -->
+- [ ] **Epic 3**: Authoritative Data Ingestion (Structured) <!-- id: 11 -->
+    - [x] Story 3.1: OSCAL JSON Ingestion <!-- id: 12 -->
+    - [x] Story 3.2: Structured Excel/CSV Importer <!-- id: 13 -->
+    - [x] Story 3.3: Source Attribution Finalization <!-- id: 14 -->
+- [ ] **Epic 4**: Knowledge Graph Construction (Unstructured) <!-- id: 15 -->
+    - [x] Story 4.1: Unstructured Data Ingestion Pipeline (PDF/Text) <!-- id: 16 -->
+    - [x] Story 4.2: LLM-Driven Entity & Relationship Extraction <!-- id: 17 -->
+    - [x] Story 4.3: Graph Enrichment & Linkage <!-- id: 18 -->
+- [ ] **Epic 5**: Visual Exploration & RAG Chat <!-- id: 19 -->
+    - [x] Story 5.1: Graph Visualization API <!-- id: 20 -->
+    - [x] Story 5.2: Context-Aware Chat API <!-- id: 21 -->
+    - [x] Story 5.3: Ingestion API Endpoint (Upload & Process) <!-- id: 22 -->
+- [ ] **Epic 6**: Human-in-the-Loop & Advanced Workflows <!-- id: 23 -->
+    - [x] Story 6.1: Human Confirmation Workflow (Draft -> Approve Nodes/Links) <!-- id: 24 -->
+    - [ ] Story 6.2: Cross-Control Linkage Discovery <!-- id: 25 -->
+    - [x] Story 6.3: Audit Program Generator <!-- id: 26 -->
