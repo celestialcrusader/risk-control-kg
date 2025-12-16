@@ -28,6 +28,18 @@
 - **Discover** hidden gaps and redundant controls automatically.
 - **Trace** every AI decision using integrated **Langfuse** observability.
 
+## Platform Overview 📸
+
+| **Graph Explorer** | **AI Risk Chat** |
+|:---:|:---:|
+| <img src="frontend/public/screenshots/graph.png" width="100%" alt="Graph Explorer"> | <img src="frontend/public/screenshots/chat.png" width="100%" alt="AI Chat"> |
+| *Visualize complex relationship ecosystems* | *Context-aware Q&A with full citations* |
+
+| **Linkage Discovery** | **Data Ingestion** |
+|:---:|:---:|
+| <img src="frontend/public/screenshots/linkage.png" width="100%" alt="Linkage Discovery"> | <img src="frontend/public/screenshots/ingest.png" width="100%" alt="Ingestion"> |
+| *AI-driven mapping between frameworks* | *Drag & Drop processing for PDF/OSCAL* |
+
 ## Key Features :sparkles:
 
 | Feature | Description |
