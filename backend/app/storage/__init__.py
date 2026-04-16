@@ -1,8 +1,10 @@
 """
 Storage module for RCKG.
 
-Provides MinIO/S3-compatible object storage client for regulatory documents,
-markdown conversions, and evidence artifacts.
+Provides:
+- MinIO/S3-compatible object storage client for regulatory documents,
+  markdown conversions, and evidence artifacts
+- Qdrant vector database client for embedding storage and retrieval
 """
 
 import os
@@ -12,6 +14,13 @@ from pathlib import Path
 import boto3
 from botocore.config import Config
 from botocore.exceptions import ClientError
+
+# Import Qdrant vector store
+from .qdrant import (
+    QdrantVectorStore,
+    EmbeddingChunk,
+    get_qdrant_vector_store,
+)
 
 
 class MinIOStorage:
@@ -331,4 +340,7 @@ def get_minio_storage() -> MinIOStorage:
 __all__ = [
     "MinIOStorage",
     "get_minio_storage",
+    "QdrantVectorStore",
+    "EmbeddingChunk",
+    "get_qdrant_vector_store",
 ]
