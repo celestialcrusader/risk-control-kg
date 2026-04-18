@@ -3,6 +3,7 @@
 # Core
 SQLAlchemy>=2.0.23
 psycopg2-binary>=2.9.9
+redis>=5.0.0
 
 # Alembic
 alembic>=1.13.0
