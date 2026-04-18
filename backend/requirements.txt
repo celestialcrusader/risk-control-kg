@@ -15,3 +15,6 @@ pytest-asyncio>=0.21.1
 
 # Utilities
 python-dotenv>=1.0.0
+
+# Temporal Workflow Engine
+temporalio>=1.0.0
