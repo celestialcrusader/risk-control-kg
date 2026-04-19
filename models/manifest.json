@@ -1,0 +1,55 @@
+{
+  "models": [
+    {
+      "name": "BAAI/bge-m3",
+      "purpose": "Dense embeddings",
+      "storage_path": "models/embeddings/bge-m3",
+      "minio_bucket": "models",
+      "minio_path": "embeddings/bge-m3",
+      "size_hint": "4.7GB (4-bit)",
+      "sha256": "",
+      "download_timestamp": "",
+      "quantization": "4-bit",
+      "status": "pending"
+    },
+    {
+      "name": "colbertv2.0-adept",
+      "purpose": "Token-level embeddings",
+      "storage_path": "models/embeddings/colbertv2.0",
+      "minio_bucket": "models",
+      "minio_path": "embeddings/colbertv2.0",
+      "size_hint": "2.1GB",
+      "sha256": "",
+      "download_timestamp": "",
+      "quantization": "8-bit",
+      "status": "pending"
+    },
+    {
+      "name": "BAAI/bge-reranker-v2-m3",
+      "purpose": "Reranking",
+      "storage_path": "models/reranker/bge-reranker",
+      "minio_bucket": "models",
+      "minio_path": "reranker/bge-reranker",
+      "size_hint": "1.5GB",
+      "sha256": "",
+      "download_timestamp": "",
+      "quantization": "4-bit",
+      "status": "pending"
+    },
+    {
+      "name": "Qwen/Qwen3.6-35B",
+      "purpose": "Extraction and judge model",
+      "storage_path": "models/llm/qwen3.6-35b",
+      "minio_bucket": "models",
+      "minio_path": "llm/qwen3.6-35b",
+      "size_hint": "18GB (4-bit)",
+      "sha256": "",
+      "download_timestamp": "",
+      "quantization": "4-bit",
+      "status": "installed",
+      "notes": "Already served via local vLLM instance (100GB/120GB RAM). Skip download/setup."
+    }
+  ],
+  "last_updated": "",
+  "download_script": "scripts/download_models.py"
+}
