@@ -12,6 +12,24 @@ TOPICS = [
         "purpose": "Triggers ingestion workflow",
     },
     {
+        "name": "document.converted",
+        "retention_seconds": 604800,  # 7 days
+        "partitions": 3,
+        "purpose": "Triggers chunking workflow",
+    },
+    {
+        "name": "document.chunked",
+        "retention_seconds": 604800,  # 7 days
+        "partitions": 3,
+        "purpose": "Triggers bronze layer storage",
+    },
+    {
+        "name": "document.bronzed",
+        "retention_seconds": 604800,  # 7 days
+        "partitions": 3,
+        "purpose": "Triggers extraction workflow",
+    },
+    {
         "name": "extraction.completed",
         "retention_seconds": 604800,  # 7 days
         "partitions": 3,
