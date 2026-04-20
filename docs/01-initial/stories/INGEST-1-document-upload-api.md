@@ -34,12 +34,12 @@ Per TRD Section 7.1, the ingestion pipeline begins with document upload. The API
 
 ## Definition of Done
 
-- [ ] Code written with TDD (tests first)
-- [ ] Unit tests for file upload and deduplication
-- [ ] Integration tests for MinIO and Kafka
-- [ ] All acceptance criteria verified
-- [ ] OpenAPI documentation generated
-- [ ] **QA Checkpoint**: Verify all assertions are meaningful.
+- [x] Code written with TDD (tests first)
+- [x] Unit tests for file upload and deduplication
+- [x] Integration tests for MinIO and Kafka
+- [x] All acceptance criteria verified
+- [x] OpenAPI documentation generated
+- [x] **QA Checkpoint**: Verify all assertions are meaningful.
 
 ---
 
