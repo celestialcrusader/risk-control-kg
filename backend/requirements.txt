@@ -21,3 +21,6 @@ temporalio>=1.0.0
 
 # Kafka Event Bus
 confluent-kafka>=2.0.0
+
+# Memgraph Graph Database
+py2neo>=2021.2

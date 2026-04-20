@@ -1,0 +1,28 @@
+@prefix sh:  <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rckg: <http://example.org/rckg#> .
+
+# Obligation shape: validates Obligation nodes have required fields
+rckg:ObligationShape
+    a sh:NodeShape ;
+    sh:targetClass rckg:Obligation ;
+    sh:property [
+        sh:path rckg:obligation_id ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:name "Obligation ID" ;
+    ] ;
+    sh:property [
+        sh:path rckg:framework_id ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:name "Framework ID" ;
+    ] ;
+    sh:property [
+        sh:path rckg:text ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:name "Obligation Text" ;
+    ] .

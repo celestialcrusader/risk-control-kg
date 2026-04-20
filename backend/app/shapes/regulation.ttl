@@ -1,0 +1,13 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rckg: <http://example.org/rckg#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+rckg:RegulationShape
+    a sh:NodeShape ;
+    sh:targetClass rckg:Regulation ;
+    sh:property [
+        sh:path rckg:document_id ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] .

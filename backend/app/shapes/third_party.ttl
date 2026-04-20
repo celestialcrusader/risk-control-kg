@@ -1,0 +1,13 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rckg: <http://example.org/rckg#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+rckg:ThirdPartyShape
+    a sh:NodeShape ;
+    sh:targetClass rckg:ThirdParty ;
+    sh:property [
+        sh:path rckg:third_party_id ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] .

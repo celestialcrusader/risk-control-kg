@@ -1,0 +1,13 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rckg: <http://example.org/rckg#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+rckg:EvidenceShape
+    a sh:NodeShape ;
+    sh:targetClass rckg:Evidence ;
+    sh:property [
+        sh:path rckg:evidence_id ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] .

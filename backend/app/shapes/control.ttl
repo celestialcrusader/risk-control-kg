@@ -1,0 +1,18 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rckg: <http://example.org/rckg#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+rckg:ControlShape
+    a sh:NodeShape ;
+    sh:targetClass rckg:Control ;
+    sh:property [
+        sh:path rckg:control_id ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path rckg:framework_id ;
+        sh:datatype xsd:string ;
+        sh:minCount 0 ;
+    ] .
