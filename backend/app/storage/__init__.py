@@ -162,6 +162,35 @@ class MinIOStorage:
         self.client.upload_file(local_path, bucket, key, ExtraArgs={"ContentType": content_type})
         return key
 
+    def upload_data(
+        self,
+        bucket: str,
+        key: str,
+        data: bytes,
+        content_type: str = "application/octet-stream",
+    ) -> str:
+        """
+        Upload raw bytes data to the specified bucket.
+
+        Args:
+            bucket: Bucket name
+            key: Object key (file path within bucket)
+            data: Raw bytes to upload
+            content_type: MIME type of the data
+
+        Returns:
+            The key of the uploaded object
+        """
+        self._ensure_bucket_exists(bucket)
+
+        from io import BytesIO
+
+        file_obj = BytesIO(data)
+        self.client.upload_fileobj(
+            file_obj, bucket, key, ExtraArgs={"ContentType": content_type}
+        )
+        return key
+
     def download_file(
         self,
         bucket: str,
