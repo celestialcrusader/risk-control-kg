@@ -917,11 +917,11 @@ Per TRD Section 7.4, the extraction pipeline must:
 > **IMPORTANT**: The acceptance criteria state the primary implementation uses vLLM. The Ollama client shown in the original technical notes was incorrect for production. Developers should use the vLLM client as primary and only use Ollama as a development fallback when vLLM is not available.
 
 #### Definition of Done
-- [ ] Code written and peer-reviewed
-- [ ] Unit tests for extraction with sample Markdown
-- [ ] Integration tests for Ollama/Mistral API
-- [ ] All acceptance criteria verified
-- [ ] Documentation in `docs/01-initial/extraction-pipeline.md`
+- [x] Code written and peer-reviewed
+- [x] Unit tests for extraction with sample Markdown
+- [x] Integration tests for Ollama/Mistral API
+- [x] All acceptance criteria verified
+- [x] Documentation in `docs/01-initial/extraction-pipeline.md`
 
 #### Dependencies
 - Blocked by: INGEST-4, INFRA-1
