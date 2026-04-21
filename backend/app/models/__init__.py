@@ -88,7 +88,6 @@ class StagingControl(Base):
     __table_args__ = (
         Index("ix_staging_canonical_id", "canonical_id"),
         Index("ix_staging_raw_content", "raw_file_content", postgresql_using="gin"),
-        {"postgresql_ignore_index_opclass": True}
     )
 
     def to_dict(self) -> dict:
@@ -126,7 +125,7 @@ class SemanticControl(Base):
     group_id = Column(String(255))
 
     # Control structure
-    control_id = Column(String(255), nullable=False, unique=True, index=True)
+    control_id = Column(String(255), nullable=False, index=True)
     control_name = Column(String(512))
 
     # Extracted semantic elements
@@ -345,7 +344,7 @@ class WorkflowCheckpoint(Base):
     workflow_id = Column(String(255), nullable=False, index=True)
     stage = Column(String(50), nullable=False, index=True)
     data_hash = Column(String(64), nullable=False)
-    metadata = Column(JSONB)
+    extra_metadata = Column("metadata", JSONB)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
 
@@ -385,12 +384,7 @@ class ReconciliationDLQ(Base):
     record_id = Column(String(255), nullable=False, index=True)
     discrepancy_type = Column(String(100), nullable=False)
     discrepancy_details = Column(JSONB)
-    status = Column(
-        String(50),
-        default="pending",
-        nullable=False,
-        check="status IN ('pending', 'acknowledged', 'resolved', 'archived')"
-    )
+    status = Column(String(50), default="pending", nullable=False)
     reviewed_by = Column(String(255))
     reviewed_at = Column(DateTime(timezone=True))
     created_at = Column(DateTime(timezone=True), server_default=func.now())

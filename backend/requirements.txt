@@ -24,3 +24,16 @@ confluent-kafka>=2.0.0
 
 # Memgraph Graph Database
 py2neo>=2021.2
+
+# Object Storage (MinIO)
+minio>=7.1.0
+
+# Web Framework
+fastapi>=0.104.0
+uvicorn>=0.24.0
+python-multipart>=0.0.6
+httpx>=0.25.0
+
+# LLM API Clients (EXTRACT-1)
+openai>=1.0.0
+ollama>=0.1.0
