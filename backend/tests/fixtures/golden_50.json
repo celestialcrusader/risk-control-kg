@@ -1,0 +1,1040 @@
+[
+  {
+    "id": "golden-001",
+    "paragraph_text": "Financial institutions shall maintain, implement and regularly test an ICT framework to govern and organise ICT risk, including a documentation of the ICT framework containing the full organisational arrangement for ICT risk management with a view to protecting the confidentiality, integrity, availability and authenticity of data.",
+    "expected_obligations": [
+      {
+        "prose": "Financial institutions shall maintain, implement and regularly test an ICT framework to govern and organise ICT risk",
+        "action_verb": "maintain",
+        "subject_noun": "ICT framework",
+        "clause_ref": "DORA Article 5(1)(a)"
+      },
+      {
+        "prose": "Financial institutions shall regularly test an ICT framework",
+        "action_verb": "test",
+        "subject_noun": "ICT framework",
+        "clause_ref": "DORA Article 5(1)(a)"
+      }
+    ],
+    "framework_id": "dora",
+    "annotated_by": "sme-001",
+    "annotated_at": "2026-04-13"
+  },
+  {
+    "id": "golden-002",
+    "paragraph_text": "Credit institutions shall implement ICT-related incident classification and response procedures in accordance with Article 20, ensuring that all ICT-related incidents are classified according to their potential severity and impact on the institution's operations.",
+    "expected_obligations": [
+      {
+        "prose": "Credit institutions shall implement ICT-related incident classification and response procedures",
+        "action_verb": "implement",
+        "subject_noun": "ICT-related incident classification and response procedures",
+        "clause_ref": "DORA Article 20"
+      }
+    ],
+    "framework_id": "dora",
+    "annotated_by": "sme-001",
+    "annotated_at": "2026-04-13"
+  },
+  {
+    "id": "golden-003",
+    "paragraph_text": "Financial entities must conduct regular and systematic testing of their ICT systems, including vulnerability assessments and penetration testing, to identify and remediate security weaknesses before they can be exploited by threat actors.",
+    "expected_obligations": [
+      {
+        "prose": "Financial entities must conduct regular and systematic testing of their ICT systems",
+        "action_verb": "conduct",
+        "subject_noun": "ICT systems",
+        "clause_ref": "DORA Article 11(2)(a)"
+      },
+      {
+        "prose": "Financial entities must identify and remediate security weaknesses",
+        "action_verb": "identify",
+        "subject_noun": "security weaknesses",
+        "clause_ref": "DORA Article 11(2)(b)"
+      }
+    ],
+    "framework_id": "dora",
+    "annotated_by": "sme-002",
+    "annotated_at": "2026-04-13"
+  },
+  {
+    "id": "golden-004",
+    "paragraph_text": "Investment firms shall develop, maintain and regularly update comprehensive ICT disaster recovery and business continuity plans that ensure critical functions can be restored within defined recovery time objectives.",
+    "expected_obligations": [
+      {
+        "prose": "Investment firms shall develop, maintain and regularly update ICT disaster recovery and business continuity plans",
+        "action_verb": "develop",
+        "subject_noun": "ICT disaster recovery and business continuity plans",
+        "clause_ref": "DORA Article 13"
+      }
+    ],
+    "framework_id": "dora",
+    "annotated_by": "sme-001",
+    "annotated_at": "2026-04-14"
+  },
+  {
+    "id": "golden-005",
+    "paragraph_text": "Financial entities shall ensure that all third-party ICT service providers performing critical or important functions are subject to appropriate oversight arrangements and that the entity has the right to audit such providers for compliance with DORA requirements.",
+    "expected_obligations": [
+      {
+        "prose": "Financial entities shall ensure third-party ICT service providers are subject to appropriate oversight arrangements",
+        "action_verb": "ensure",
+        "subject_noun": "third-party ICT service providers",
+        "clause_ref": "DORA Article 28(2)"
+      },
+      {
+        "prose": "Financial entities shall have the right to audit third-party providers",
+        "action_verb": "audit",
+        "subject_noun": "third-party providers",
+        "clause_ref": "DORA Article 28(3)"
+      }
+    ],
+    "framework_id": "dora",
+    "annotated_by": "sme-002",
+    "annotated_at": "2026-04-14"
+  },
+  {
+    "id": "golden-006",
+    "paragraph_text": "Credit institutions must maintain a comprehensive inventory of all ICT assets, including hardware, software, data, and network components, that are critical to the delivery of financial services and the provision of essential functions.",
+    "expected_obligations": [
+      {
+        "prose": "Credit institutions must maintain a comprehensive inventory of all ICT assets",
+        "action_verb": "maintain",
+        "subject_noun": "ICT assets",
+        "clause_ref": "DORA Article 8"
+      }
+    ],
+    "framework_id": "dora",
+    "annotated_by": "sme-001",
+    "annotated_at": "2026-04-14"
+  },
+  {
+    "id": "golden-007",
+    "paragraph_text": "Covered entities shall implement policies and procedures to protect the privacy of individually identifiable health information and ensure that protected health information is not used or disclosed in any manner that is not permitted by the Privacy Rule.",
+    "expected_obligations": [
+      {
+        "prose": "Covered entities shall implement policies and procedures to protect the privacy of individually identifiable health information",
+        "action_verb": "implement",
+        "subject_noun": "policies and procedures",
+        "clause_ref": "HIPAA 45 CFR 164.530(a)"
+      },
+      {
+        "prose": "Covered entities shall ensure protected health information is not used or disclosed improperly",
+        "action_verb": "ensure",
+        "subject_noun": "protected health information",
+        "clause_ref": "HIPAA 45 CFR 164.530(a)"
+      }
+    ],
+    "framework_id": "hipaa",
+    "annotated_by": "sme-003",
+    "annotated_at": "2026-04-14"
+  },
+  {
+    "id": "golden-008",
+    "paragraph_text": "Healthcare organisations must implement appropriate technical and physical safeguards to prevent unauthorised access to electronic protected health information and ensure that all workforce members are trained on security and privacy requirements.",
+    "expected_obligations": [
+      {
+        "prose": "Healthcare organisations must implement appropriate technical and physical safeguards",
+        "action_verb": "implement",
+        "subject_noun": "technical and physical safeguards",
+        "clause_ref": "HIPAA 45 CFR 164.308(a)(1)"
+      },
+      {
+        "prose": "Healthcare organisations must ensure workforce members are trained on security and privacy requirements",
+        "action_verb": "ensure",
+        "subject_noun": "workforce members",
+        "clause_ref": "HIPAA 45 CFR 164.530(b)"
+      }
+    ],
+    "framework_id": "hipaa",
+    "annotated_by": "sme-003",
+    "annotated_at": "2026-04-14"
+  },
+  {
+    "id": "golden-009",
+    "paragraph_text": "Business associates shall report any use or disclosure of protected health information not provided for by the contract or agreement, including any security incidents or known breaches, to the covered entity without unreasonable delay in no case later than 60 days following discovery.",
+    "expected_obligations": [
+      {
+        "prose": "Business associates shall report unauthorised use or disclosure of protected health information",
+        "action_verb": "report",
+        "subject_noun": "unauthorised use or disclosure",
+        "clause_ref": "HIPAA 45 CFR 164.502(e)(2)"
+      },
+      {
+        "prose": "Business associates shall report security incidents or known breaches to the covered entity",
+        "action_verb": "report",
+        "subject_noun": "security incidents or known breaches",
+        "clause_ref": "HIPAA 45 CFR 164.502(e)(2)"
+      }
+    ],
+    "framework_id": "hipaa",
+    "annotated_by": "sme-003",
+    "annotated_at": "2026-04-15"
+  },
+  {
+    "id": "golden-010",
+    "paragraph_text": "Administrative simplification provisions require covered entities to establish mechanisms for individuals to access, amend, and obtain an accounting of disclosures of their protected health information within established timeframes.",
+    "expected_obligations": [
+      {
+        "prose": "Covered entities shall establish mechanisms for individuals to access protected health information",
+        "action_verb": "establish",
+        "subject_noun": "mechanisms",
+        "clause_ref": "HIPAA 45 CFR 164.524"
+      },
+      {
+        "prose": "Covered entities shall establish mechanisms for individuals to obtain an accounting of disclosures",
+        "action_verb": "establish",
+        "subject_noun": "mechanisms",
+        "clause_ref": "HIPAA 45 CFR 164.528"
+      }
+    ],
+    "framework_id": "hipaa",
+    "annotated_by": "sme-003",
+    "annotated_at": "2026-04-15"
+  },
+  {
+    "id": "golden-011",
+    "paragraph_text": "Healthcare providers must ensure that all electronic health records are encrypted both in transit and at rest using industry-standard encryption algorithms and that encryption keys are managed according to documented key management policies.",
+    "expected_obligations": [
+      {
+        "prose": "Healthcare providers must ensure electronic health records are encrypted in transit and at rest",
+        "action_verb": "ensure",
+        "subject_noun": "electronic health records",
+        "clause_ref": "HIPAA 45 CFR 164.312(a)(2)(iv)"
+      }
+    ],
+    "framework_id": "hipaa",
+    "annotated_by": "sme-003",
+    "annotated_at": "2026-04-15"
+  },
+  {
+    "id": "golden-012",
+    "paragraph_text": "Public companies shall establish and maintain internal controls over financial reporting designed to provide reasonable assurance regarding the reliability of financial reporting and the preparation of financial statements in accordance with generally accepted accounting principles.",
+    "expected_obligations": [
+      {
+        "prose": "Public companies shall establish and maintain internal controls over financial reporting",
+        "action_verb": "establish",
+        "subject_noun": "internal controls over financial reporting",
+        "clause_ref": "SOX Section 404"
+      }
+    ],
+    "framework_id": "sox",
+    "annotated_by": "sme-004",
+    "annotated_at": "2026-04-15"
+  },
+  {
+    "id": "golden-013",
+    "paragraph_text": "Chief executive officers and chief financial officers must certify the accuracy of financial reports filed with the Securities and Exchange Commission and shall be criminally liable for willful false certifications that mislead analysts and investors regarding the company's financial condition.",
+    "expected_obligations": [
+      {
+        "prose": "Chief executive officers and chief financial officers must certify the accuracy of financial reports",
+        "action_verb": "certify",
+        "subject_noun": "financial reports",
+        "clause_ref": "SOX Section 302"
+      }
+    ],
+    "framework_id": "sox",
+    "annotated_by": "sme-004",
+    "annotated_at": "2026-04-15"
+  },
+  {
+    "id": "golden-014",
+    "paragraph_text": "Audit committees of listed issuers shall be directly responsible for the appointment, compensation, and oversight of the work of any independent registered public accounting firm engaged for the purpose of preparing or issuing an audit report and must pre-approve all auditing and non-audit services.",
+    "expected_obligations": [
+      {
+        "prose": "Audit committees shall be directly responsible for the appointment, compensation, and oversight of independent auditors",
+        "action_verb": "oversee",
+        "subject_noun": "independent registered public accounting firms",
+        "clause_ref": "SOX Section 301"
+      },
+      {
+        "prose": "Audit committees must pre-approve all auditing and non-audit services",
+        "action_verb": "pre-approve",
+        "subject_noun": "auditing and non-audit services",
+        "clause_ref": "SOX Section 301"
+      }
+    ],
+    "framework_id": "sox",
+    "annotated_by": "sme-004",
+    "annotated_at": "2026-04-16"
+  },
+  {
+    "id": "golden-015",
+    "paragraph_text": "Public accounting firms must maintain a record of all non-audit services provided to audit clients and shall not provide certain prohibited non-audit services including valuation services, internal audit outsourcing, management functions, and expert services unrelated to the audit.",
+    "expected_obligations": [
+      {
+        "prose": "Public accounting firms must maintain a record of all non-audit services provided to audit clients",
+        "action_verb": "maintain",
+        "subject_noun": "non-audit services",
+        "clause_ref": "SOX Section 202"
+      },
+      {
+        "prose": "Public accounting firms shall not provide prohibited non-audit services",
+        "action_verb": "provide",
+        "subject_noun": "prohibited non-audit services",
+        "clause_ref": "SOX Section 201"
+      }
+    ],
+    "framework_id": "sox",
+    "annotated_by": "sme-004",
+    "annotated_at": "2026-04-16"
+  },
+  {
+    "id": "golden-016",
+    "paragraph_text": "Securities and exchange commissioners shall have the authority to bar individuals from serving as an officer or director of a public company if they violate federal securities laws, and must ensure that such individuals are not involved in any further securities violations during the period of prohibition.",
+    "expected_obligations": [
+      {
+        "prose": "Securities and exchange commissioners shall have the authority to bar individuals from serving as an officer or director",
+        "action_verb": "bar",
+        "subject_noun": "individuals",
+        "clause_ref": "SOX Section 219"
+      }
+    ],
+    "framework_id": "sox",
+    "annotated_by": "sme-004",
+    "annotated_at": "2026-04-16"
+  },
+  {
+    "id": "golden-017",
+    "paragraph_text": "Data controllers shall implement appropriate technical and organisational measures to ensure and to be able to demonstrate that processing is performed in accordance with this Regulation, taking into account the state of the art, the cost of implementation and the nature, scope, context and purposes of processing.",
+    "expected_obligations": [
+      {
+        "prose": "Data controllers shall implement appropriate technical and organisational measures",
+        "action_verb": "implement",
+        "subject_noun": "technical and organisational measures",
+        "clause_ref": "GDPR Article 24(1)"
+      },
+      {
+        "prose": "Data controllers shall demonstrate that processing is performed in accordance with the Regulation",
+        "action_verb": "demonstrate",
+        "subject_noun": "processing compliance",
+        "clause_ref": "GDPR Article 24(1)"
+      }
+    ],
+    "framework_id": "gdpr",
+    "annotated_by": "sme-005",
+    "annotated_at": "2026-04-16"
+  },
+  {
+    "id": "golden-018",
+    "paragraph_text": "Data controllers must maintain a record of processing activities under their responsibility including the purposes of processing, categories of data subjects and personal data, categories of recipients, and retention periods, and shall make such records available to supervisory authorities upon request.",
+    "expected_obligations": [
+      {
+        "prose": "Data controllers must maintain a record of processing activities",
+        "action_verb": "maintain",
+        "subject_noun": "record of processing activities",
+        "clause_ref": "GDPR Article 30(1)"
+      },
+      {
+        "prose": "Data controllers shall make records available to supervisory authorities upon request",
+        "action_verb": "make",
+        "subject_noun": "records available",
+        "clause_ref": "GDPR Article 30(5)"
+      }
+    ],
+    "framework_id": "gdpr",
+    "annotated_by": "sme-005",
+    "annotated_at": "2026-04-16"
+  },
+  {
+    "id": "golden-019",
+    "paragraph_text": "Data protection officers shall monitor compliance with this Regulation, recommend measures to ensure compliance, carry out data protection impact assessments, and cooperate with the supervisory authority in carrying out their tasks related to the protection of personal data.",
+    "expected_obligations": [
+      {
+        "prose": "Data protection officers shall monitor compliance with this Regulation",
+        "action_verb": "monitor",
+        "subject_noun": "compliance",
+        "clause_ref": "GDPR Article 39(1)(a)"
+      },
+      {
+        "prose": "Data protection officers shall carry out data protection impact assessments",
+        "action_verb": "carry out",
+        "subject_noun": "data protection impact assessments",
+        "clause_ref": "GDPR Article 39(1)(d)"
+      },
+      {
+        "prose": "Data protection officers shall cooperate with the supervisory authority",
+        "action_verb": "cooperate",
+        "subject_noun": "supervisory authority",
+        "clause_ref": "GDPR Article 39(1)(e)"
+      }
+    ],
+    "framework_id": "gdpr",
+    "annotated_by": "sme-005",
+    "annotated_at": "2026-04-17"
+  },
+  {
+    "id": "golden-020",
+    "paragraph_text": "Controllers shall notify the supervisory authority of a personal data breach without undue delay and, where feasible, not later than 72 hours after having become aware of it, unless the personal data breach is unlikely to result in a risk to the rights and freedoms of natural persons.",
+    "expected_obligations": [
+      {
+        "prose": "Controllers shall notify the supervisory authority of a personal data breach without undue delay",
+        "action_verb": "notify",
+        "subject_noun": "supervisory authority",
+        "clause_ref": "GDPR Article 33(1)"
+      },
+      {
+        "prose": "Controllers shall notify within 72 hours of becoming aware of a data breach",
+        "action_verb": "notify",
+        "subject_noun": "supervisory authority",
+        "clause_ref": "GDPR Article 33(1)"
+      }
+    ],
+    "framework_id": "gdpr",
+    "annotated_by": "sme-005",
+    "annotated_at": "2026-04-17"
+  },
+  {
+    "id": "golden-021",
+    "paragraph_text": "Data subjects shall have the right to obtain from the controller the erasure of personal data concerning them without undue delay and the controller shall have the obligation to erase personal data where the data are no longer necessary in relation to the purposes for which they were collected or otherwise processed.",
+    "expected_obligations": [
+      {
+        "prose": "Data subjects shall have the right to obtain the erasure of personal data",
+        "action_verb": "obtain",
+        "subject_noun": "erasure of personal data",
+        "clause_ref": "GDPR Article 17(1)"
+      },
+      {
+        "prose": "The controller shall have the obligation to erase personal data when no longer necessary",
+        "action_verb": "erase",
+        "subject_noun": "personal data",
+        "clause_ref": "GDPR Article 17(1)(a)"
+      }
+    ],
+    "framework_id": "gdpr",
+    "annotated_by": "sme-005",
+    "annotated_at": "2026-04-17"
+  },
+  {
+    "id": "golden-022",
+    "paragraph_text": "Require the establishment and maintenance of a security policy that addresses all information security requirements and is approved by management, and ensure that the policy is distributed to all personnel and contractors who are responsible for implementing, monitoring, or auditing the security policy.",
+    "expected_obligations": [
+      {
+        "prose": "Organisations must establish and maintain a security policy",
+        "action_verb": "establish",
+        "subject_noun": "security policy",
+        "clause_ref": "PCI-DSS Requirement 1.1.8"
+      },
+      {
+        "prose": "Organisations must ensure the security policy is distributed to all relevant personnel",
+        "action_verb": "ensure",
+        "subject_noun": "security policy distribution",
+        "clause_ref": "PCI-DSS Requirement 1.1.8"
+      }
+    ],
+    "framework_id": "pci-dss",
+    "annotated_by": "sme-006",
+    "annotated_at": "2026-04-17"
+  },
+  {
+    "id": "golden-023",
+    "paragraph_text": "Do not use vendor-supplied defaults for system passwords and other security parameters, and ensure that all vendor-default passwords and security parameters are changed before any system is deployed or used in production environments.",
+    "expected_obligations": [
+      {
+        "prose": "Organisations must not use vendor-supplied defaults for system passwords",
+        "action_verb": "use",
+        "subject_noun": "vendor-supplied defaults",
+        "clause_ref": "PCI-DSS Requirement 2.1"
+      },
+      {
+        "prose": "Organisations must change all vendor-default passwords before deployment",
+        "action_verb": "change",
+        "subject_noun": "vendor-default passwords",
+        "clause_ref": "PCI-DSS Requirement 2.1"
+      }
+    ],
+    "framework_id": "pci-dss",
+    "annotated_by": "sme-006",
+    "annotated_at": "2026-04-17"
+  },
+  {
+    "id": "golden-024",
+    "paragraph_text": "Protect stored account data by rendering PAN unreadable anywhere it is stored using strong cryptography and key management, and implement access controls to ensure that only individuals with a legitimate business need can access stored account data.",
+    "expected_obligations": [
+      {
+        "prose": "Organisations must protect stored account data using strong cryptography and key management",
+        "action_verb": "protect",
+        "subject_noun": "stored account data",
+        "clause_ref": "PCI-DSS Requirement 3.4"
+      },
+      {
+        "prose": "Organisations must implement access controls for stored account data",
+        "action_verb": "implement",
+        "subject_noun": "access controls",
+        "clause_ref": "PCI-DSS Requirement 7"
+      }
+    ],
+    "framework_id": "pci-dss",
+    "annotated_by": "sme-006",
+    "annotated_at": "2026-04-18"
+  },
+  {
+    "id": "golden-025",
+    "paragraph_text": "Build and maintain a secure network by installing and maintaining network security controls such as firewalls between all wireless networks and any stored cardholder data, and developing and maintaining secure network configurations that restrict connections to unneeded ports and services.",
+    "expected_obligations": [
+      {
+        "prose": "Organisations must install and maintain network security controls",
+        "action_verb": "install",
+        "subject_noun": "network security controls",
+        "clause_ref": "PCI-DSS Requirement 1"
+      },
+      {
+        "prose": "Organisations must develop and maintain secure network configurations",
+        "action_verb": "develop",
+        "subject_noun": "secure network configurations",
+        "clause_ref": "PCI-DSS Requirement 1.2"
+      }
+    ],
+    "framework_id": "pci-dss",
+    "annotated_by": "sme-006",
+    "annotated_at": "2026-04-18"
+  },
+  {
+    "id": "golden-026",
+    "paragraph_text": "Organisations must regularly test security systems and processes, including vulnerability scans at least quarterly and penetration testing at least annually and after any significant change, to identify and remediate security weaknesses in cardholder data environments.",
+    "expected_obligations": [
+      {
+        "prose": "Organisations must regularly test security systems and processes",
+        "action_verb": "test",
+        "subject_noun": "security systems and processes",
+        "clause_ref": "PCI-DSS Requirement 11"
+      },
+      {
+        "prose": "Organisations must conduct vulnerability scans at least quarterly",
+        "action_verb": "conduct",
+        "subject_noun": "vulnerability scans",
+        "clause_ref": "PCI-DSS Requirement 11.2"
+      },
+      {
+        "prose": "Organisations must conduct penetration testing at least annually",
+        "action_verb": "conduct",
+        "subject_noun": "penetration testing",
+        "clause_ref": "PCI-DSS Requirement 11.3"
+      }
+    ],
+    "framework_id": "pci-dss",
+    "annotated_by": "sme-006",
+    "annotated_at": "2026-04-18"
+  },
+  {
+    "id": "golden-027",
+    "paragraph_text": "Financial entities shall establish and document procedures for the management of ICT-related risks and ensure that these procedures are subject to periodic review and update to reflect changes in the ICT risk profile, threat landscape, and regulatory requirements.",
+    "expected_obligations": [
+      {
+        "prose": "Financial entities shall establish and document procedures for ICT risk management",
+        "action_verb": "establish",
+        "subject_noun": "ICT risk management procedures",
+        "clause_ref": "DORA Article 8(1)"
+      },
+      {
+        "prose": "Financial entities shall periodically review ICT risk management procedures",
+        "action_verb": "review",
+        "subject_noun": "ICT risk management procedures",
+        "clause_ref": "DORA Article 8(2)"
+      }
+    ],
+    "framework_id": "dora",
+    "annotated_by": "sme-001",
+    "annotated_at": "2026-04-18"
+  },
+  {
+    "id": "golden-028",
+    "paragraph_text": "Credit institutions must report significant ICT-related incidents to the relevant competent authority without undue delay, and no later than four hours after having identified the incident as significant, providing initial details including the nature of the incident, its severity, and the estimated impact.",
+    "expected_obligations": [
+      {
+        "prose": "Credit institutions must report significant ICT-related incidents to the relevant competent authority",
+        "action_verb": "report",
+        "subject_noun": "significant ICT-related incidents",
+        "clause_ref": "DORA Article 22(1)"
+      },
+      {
+        "prose": "Credit institutions must report incidents within four hours of identification",
+        "action_verb": "report",
+        "subject_noun": "ICT-related incidents",
+        "clause_ref": "DORA Article 22(1)"
+      }
+    ],
+    "framework_id": "dora",
+    "annotated_by": "sme-002",
+    "annotated_at": "2026-04-18"
+  },
+  {
+    "id": "golden-029",
+    "paragraph_text": "Investment firms shall implement effective processes and controls to manage ICT risk exposure, including the identification, protection from, detection of, prevention of, and recovery from ICT-related incidents, and shall ensure that these processes are aligned with the entity's overall risk management strategy.",
+    "expected_obligations": [
+      {
+        "prose": "Investment firms shall implement effective processes and controls to manage ICT risk exposure",
+        "action_verb": "implement",
+        "subject_noun": "processes and controls for ICT risk management",
+        "clause_ref": "DORA Article 10(1)"
+      },
+      {
+        "prose": "Investment firms shall ensure processes are aligned with overall risk management strategy",
+        "action_verb": "ensure",
+        "subject_noun": "ICT risk management processes",
+        "clause_ref": "DORA Article 10(1)"
+      }
+    ],
+    "framework_id": "dora",
+    "annotated_by": "sme-001",
+    "annotated_at": "2026-04-19"
+  },
+  {
+    "id": "golden-030",
+    "paragraph_text": "Financial entities must test their ICT resilience by implementing cyber threat penetration testing, which shall include advanced and dynamic threat-led penetration testing for significant financial entities at least every three years, performed by skilled threat actors under contractual obligation.",
+    "expected_obligations": [
+      {
+        "prose": "Financial entities must test their ICT resilience through cyber threat penetration testing",
+        "action_verb": "test",
+        "subject_noun": "ICT resilience",
+        "clause_ref": "DORA Article 25(1)"
+      },
+      {
+        "prose": "Significant financial entities must conduct advanced threat-led penetration testing every three years",
+        "action_verb": "conduct",
+        "subject_noun": "threat-led penetration testing",
+        "clause_ref": "DORA Article 25(5)"
+      }
+    ],
+    "framework_id": "dora",
+    "annotated_by": "sme-002",
+    "annotated_at": "2026-04-19"
+  },
+  {
+    "id": "golden-031",
+    "paragraph_text": "Covered entities must implement policies and procedures to address restrictions on the use and disclosure of protected health information as requested by individuals, and shall comply with such restrictions if they pertain to a covered function and the individual has not consented to the disclosure.",
+    "expected_obligations": [
+      {
+        "prose": "Covered entities must implement policies and procedures to address restrictions on PHI use and disclosure",
+        "action_verb": "implement",
+        "subject_noun": "policies and procedures",
+        "clause_ref": "HIPAA 45 CFR 164.522(a)(1)"
+      },
+      {
+        "prose": "Covered entities shall comply with individual-requested restrictions on PHI disclosure",
+        "action_verb": "comply",
+        "subject_noun": "individual-requested restrictions",
+        "clause_ref": "HIPAA 45 CFR 164.522(a)(1)(ii)"
+      }
+    ],
+    "framework_id": "hipaa",
+    "annotated_by": "sme-003",
+    "annotated_at": "2026-04-19"
+  },
+  {
+    "id": "golden-032",
+    "paragraph_text": "Healthcare organisations must provide individuals with notice of their legal duties and privacy practices concerning protected health information, and shall distribute such notice to all individuals at the first service delivery, obtaining a written acknowledgment of receipt.",
+    "expected_obligations": [
+      {
+        "prose": "Healthcare organisations must provide notice of legal duties and privacy practices",
+        "action_verb": "provide",
+        "subject_noun": "notice",
+        "clause_ref": "HIPAA 45 CFR 164.520"
+      },
+      {
+        "prose": "Healthcare organisations shall obtain written acknowledgment of notice receipt",
+        "action_verb": "obtain",
+        "subject_noun": "written acknowledgment",
+        "clause_ref": "HIPAA 45 CFR 164.520(c)"
+      }
+    ],
+    "framework_id": "hipaa",
+    "annotated_by": "sme-003",
+    "annotated_at": "2026-04-19"
+  },
+  {
+    "id": "golden-033",
+    "paragraph_text": "Healthcare providers must implement access controls to uniquely identify each user and authenticate the identity of a user or role, and shall enforce unique user IDs for all individuals accessing electronic protected health information systems.",
+    "expected_obligations": [
+      {
+        "prose": "Healthcare providers must implement access controls to uniquely identify each user",
+        "action_verb": "implement",
+        "subject_noun": "access controls",
+        "clause_ref": "HIPAA 45 CFR 164.312(a)(2)(i)"
+      },
+      {
+        "prose": "Healthcare providers shall enforce unique user IDs for all users",
+        "action_verb": "enforce",
+        "subject_noun": "unique user IDs",
+        "clause_ref": "HIPAA 45 CFR 164.312(d)"
+      }
+    ],
+    "framework_id": "hipaa",
+    "annotated_by": "sme-003",
+    "annotated_at": "2026-04-20"
+  },
+  {
+    "id": "golden-034",
+    "paragraph_text": "Audit firms must maintain all audit or review reports, work papers, and memos related to any public company audit engagement for a period of no less than seven years from the end of the fiscal period in which the audit report was initially issued, and shall ensure that records are accessible to regulators upon request.",
+    "expected_obligations": [
+      {
+        "prose": "Audit firms must maintain audit work papers and memos for at least seven years",
+        "action_verb": "maintain",
+        "subject_noun": "audit work papers and memos",
+        "clause_ref": "SOX Section 802(a)"
+      },
+      {
+        "prose": "Audit firms shall ensure records are accessible to regulators upon request",
+        "action_verb": "ensure",
+        "subject_noun": "records",
+        "clause_ref": "SOX Section 802(a)"
+      }
+    ],
+    "framework_id": "sox",
+    "annotated_by": "sme-004",
+    "annotated_at": "2026-04-20"
+  },
+  {
+    "id": "golden-035",
+    "paragraph_text": "Public companies must establish audit committees consisting of at least three members who are independent of management, and each member of the audit committee must satisfy the independence requirements of the relevant stock exchange and shall not accept any consulting, advisory, or other compensatory fee from the company.",
+    "expected_obligations": [
+      {
+        "prose": "Public companies must establish audit committees of at least three independent members",
+        "action_verb": "establish",
+        "subject_noun": "audit committees",
+        "clause_ref": "SOX Section 301"
+      },
+      {
+        "prose": "Audit committee members shall not accept consulting or advisory fees from the company",
+        "action_verb": "accept",
+        "subject_noun": "consulting or advisory fees",
+        "clause_ref": "SOX Section 301"
+      }
+    ],
+    "framework_id": "sox",
+    "annotated_by": "sme-004",
+    "annotated_at": "2026-04-20"
+  },
+  {
+    "id": "golden-036",
+    "paragraph_text": "Data controllers shall ensure that data protection is built into and by default into any system, service, or product that processes personal data, implementing data minimisation, purpose limitation, and storage limitation by design, and ensuring that only data necessary for the specific purpose is processed.",
+    "expected_obligations": [
+      {
+        "prose": "Data controllers shall ensure data protection is built into and by default into systems",
+        "action_verb": "ensure",
+        "subject_noun": "data protection by design",
+        "clause_ref": "GDPR Article 25(1)"
+      },
+      {
+        "prose": "Data controllers shall implement data minimisation, purpose limitation, and storage limitation by design",
+        "action_verb": "implement",
+        "subject_noun": "data minimisation and limitation principles",
+        "clause_ref": "GDPR Article 25(1)"
+      }
+    ],
+    "framework_id": "gdpr",
+    "annotated_by": "sme-005",
+    "annotated_at": "2026-04-20"
+  },
+  {
+    "id": "golden-037",
+    "paragraph_text": "Data controllers must appoint a data protection officer where the core activities involve regular and systematic monitoring of data subjects on a large scale, and shall ensure the DPO is involved in good time with regard to all data protection matters and has an appropriate level of expertise.",
+    "expected_obligations": [
+      {
+        "prose": "Data controllers must appoint a data protection officer when required",
+        "action_verb": "appoint",
+        "subject_noun": "data protection officer",
+        "clause_ref": "GDPR Article 37(1)"
+      },
+      {
+        "prose": "Data controllers shall ensure the DPO is involved in all data protection matters",
+        "action_verb": "ensure",
+        "subject_noun": "DPO involvement",
+        "clause_ref": "GDPR Article 38(1)"
+      }
+    ],
+    "framework_id": "gdpr",
+    "annotated_by": "sme-005",
+    "annotated_at": "2026-04-20"
+  },
+  {
+    "id": "golden-038",
+    "paragraph_text": "Data subjects shall have the right to receive personal data concerning them in a structured, commonly used, and machine-readable format and to transmit those data to another controller without hindrance from the controller to which the data were originally provided, ensuring data portability.",
+    "expected_obligations": [
+      {
+        "prose": "Data subjects shall have the right to receive personal data in a machine-readable format",
+        "action_verb": "receive",
+        "subject_noun": "personal data",
+        "clause_ref": "GDPR Article 20(1)"
+      },
+      {
+        "prose": "Data subjects shall have the right to transmit data to another controller without hindrance",
+        "action_verb": "transmit",
+        "subject_noun": "data",
+        "clause_ref": "GDPR Article 20(1)"
+      }
+    ],
+    "framework_id": "gdpr",
+    "annotated_by": "sme-005",
+    "annotated_at": "2026-04-21"
+  },
+  {
+    "id": "golden-039",
+    "paragraph_text": "Organisations must develop and maintain a comprehensive information security policy that covers all information systems, networks, and equipment used to process cardholder data, and shall review the policy at least annually and update it as necessary to address changes in the threat landscape.",
+    "expected_obligations": [
+      {
+        "prose": "Organisations must develop and maintain an information security policy",
+        "action_verb": "develop",
+        "subject_noun": "information security policy",
+        "clause_ref": "PCI-DSS Requirement 1.1"
+      },
+      {
+        "prose": "Organisations must review the security policy at least annually",
+        "action_verb": "review",
+        "subject_noun": "information security policy",
+        "clause_ref": "PCI-DSS Requirement 1.1.9"
+      }
+    ],
+    "framework_id": "pci-dss",
+    "annotated_by": "sme-006",
+    "annotated_at": "2026-04-21"
+  },
+  {
+    "id": "golden-040",
+    "paragraph_text": "Retailers and payment processors must implement strong access control measures that restrict access to cardholder data to only those individuals whose job requires such access, and shall assign a unique ID to each person with computer access and implement physical access controls to restricted areas.",
+    "expected_obligations": [
+      {
+        "prose": "Organisations must implement strong access control measures",
+        "action_verb": "implement",
+        "subject_noun": "strong access control measures",
+        "clause_ref": "PCI-DSS Requirement 7"
+      },
+      {
+        "prose": "Organisations must assign a unique ID to each person with computer access",
+        "action_verb": "assign",
+        "subject_noun": "unique user IDs",
+        "clause_ref": "PCI-DSS Requirement 8.1"
+      }
+    ],
+    "framework_id": "pci-dss",
+    "annotated_by": "sme-006",
+    "annotated_at": "2026-04-21"
+  },
+  {
+    "id": "golden-041",
+    "paragraph_text": "Financial entities shall manage and mitigate ICT third-party risk by conducting due diligence before engaging a third-party ICT service provider, documenting all contractual arrangements, and maintaining an inventory of all such providers that perform critical or important functions.",
+    "expected_obligations": [
+      {
+        "prose": "Financial entities shall manage and mitigate ICT third-party risk",
+        "action_verb": "manage",
+        "subject_noun": "ICT third-party risk",
+        "clause_ref": "DORA Article 26(1)"
+      },
+      {
+        "prose": "Financial entities shall conduct due diligence before engaging third-party providers",
+        "action_verb": "conduct",
+        "subject_noun": "due diligence",
+        "clause_ref": "DORA Article 26(2)"
+      },
+      {
+        "prose": "Financial entities shall maintain an inventory of third-party providers",
+        "action_verb": "maintain",
+        "subject_noun": "third-party provider inventory",
+        "clause_ref": "DORA Article 26(4)"
+      }
+    ],
+    "framework_id": "dora",
+    "annotated_by": "sme-001",
+    "annotated_at": "2026-04-21"
+  },
+  {
+    "id": "golden-042",
+    "paragraph_text": "Credit institutions must implement ICT disaster recovery capabilities that ensure the availability and restoration of ICT systems, data, and applications within defined recovery time objectives, and shall test these capabilities at least annually to validate their effectiveness.",
+    "expected_obligations": [
+      {
+        "prose": "Credit institutions must implement ICT disaster recovery capabilities",
+        "action_verb": "implement",
+        "subject_noun": "ICT disaster recovery capabilities",
+        "clause_ref": "DORA Article 21(1)"
+      },
+      {
+        "prose": "Credit institutions shall test disaster recovery capabilities at least annually",
+        "action_verb": "test",
+        "subject_noun": "disaster recovery capabilities",
+        "clause_ref": "DORA Article 21(2)"
+      }
+    ],
+    "framework_id": "dora",
+    "annotated_by": "sme-002",
+    "annotated_at": "2026-04-21"
+  },
+  {
+    "id": "golden-043",
+    "paragraph_text": "Covered entities must implement administrative, physical, and technical safeguards to ensure the confidentiality, integrity, and availability of all electronic protected health information, and shall conduct periodic security risk assessments to identify potential vulnerabilities and threats.",
+    "expected_obligations": [
+      {
+        "prose": "Covered entities must implement administrative, physical, and technical safeguards",
+        "action_verb": "implement",
+        "subject_noun": "administrative, physical, and technical safeguards",
+        "clause_ref": "HIPAA 45 CFR 164.306(a)"
+      },
+      {
+        "prose": "Covered entities shall conduct periodic security risk assessments",
+        "action_verb": "conduct",
+        "subject_noun": "security risk assessments",
+        "clause_ref": "HIPAA 45 CFR 164.308(a)(1)(ii)(A)"
+      }
+    ],
+    "framework_id": "hipaa",
+    "annotated_by": "sme-003",
+    "annotated_at": "2026-04-22"
+  },
+  {
+    "id": "golden-044",
+    "paragraph_text": "Healthcare organisations must establish and implement procedures for handling complaints and grievance procedures regarding the use or disclosure of protected health information, and shall train all workforce members on the procedures for reporting and resolving privacy complaints.",
+    "expected_obligations": [
+      {
+        "prose": "Healthcare organisations must establish procedures for handling privacy complaints",
+        "action_verb": "establish",
+        "subject_noun": "complaint procedures",
+        "clause_ref": "HIPAA 45 CFR 164.530(c)"
+      },
+      {
+        "prose": "Healthcare organisations shall train workforce members on privacy complaint procedures",
+        "action_verb": "train",
+        "subject_noun": "workforce members",
+        "clause_ref": "HIPAA 45 CFR 164.530(b)(1)"
+      }
+    ],
+    "framework_id": "hipaa",
+    "annotated_by": "sme-003",
+    "annotated_at": "2026-04-22"
+  },
+  {
+    "id": "golden-045",
+    "paragraph_text": "Public companies must disclose whether or not the chief executive officer and chief financial officer reviewed the effectiveness of the company's disclosure controls and procedures as of the end of each fiscal year, and shall document any material changes to internal controls identified during such review.",
+    "expected_obligations": [
+      {
+        "prose": "Public companies must disclose CEO/CFO review of disclosure controls effectiveness",
+        "action_verb": "disclose",
+        "subject_noun": "disclosure controls effectiveness",
+        "clause_ref": "SOX Section 404(b)"
+      },
+      {
+        "prose": "Public companies shall document material changes to internal controls",
+        "action_verb": "document",
+        "subject_noun": "material changes to internal controls",
+        "clause_ref": "SOX Section 404(b)"
+      }
+    ],
+    "framework_id": "sox",
+    "annotated_by": "sme-004",
+    "annotated_at": "2026-04-22"
+  },
+  {
+    "id": "golden-046",
+    "paragraph_text": "Data controllers and processors shall implement appropriate technical and organisational measures to ensure a level of security appropriate to the risk, including the pseudonymisation and encryption of personal data, the ability to ensure the ongoing confidentiality, integrity, availability and resilience of processing systems, and the ability to restore availability and access to data in a timely manner.",
+    "expected_obligations": [
+      {
+        "prose": "Data controllers and processors shall implement appropriate technical and organisational security measures",
+        "action_verb": "implement",
+        "subject_noun": "security measures",
+        "clause_ref": "GDPR Article 32(1)"
+      },
+      {
+        "prose": "Data controllers shall ensure pseudonymisation and encryption of personal data",
+        "action_verb": "ensure",
+        "subject_noun": "pseudonymisation and encryption",
+        "clause_ref": "GDPR Article 32(1)(a)"
+      },
+      {
+        "prose": "Data controllers shall ensure the ability to restore data availability and access in a timely manner",
+        "action_verb": "ensure",
+        "subject_noun": "data restoration capability",
+        "clause_ref": "GDPR Article 32(1)(b)"
+      }
+    ],
+    "framework_id": "gdpr",
+    "annotated_by": "sme-005",
+    "annotated_at": "2026-04-22"
+  },
+  {
+    "id": "golden-047",
+    "paragraph_text": "Data controllers shall notify data subjects of a personal data breach without undue delay when the breach is likely to result in a high risk to the rights and freedoms of natural persons, informing them of the likely consequences, the measures taken, and suggesting measures to mitigate potential adverse effects.",
+    "expected_obligations": [
+      {
+        "prose": "Data controllers shall notify data subjects of a personal data breach when high risk exists",
+        "action_verb": "notify",
+        "subject_noun": "data subjects",
+        "clause_ref": "GDPR Article 34(1)"
+      },
+      {
+        "prose": "Data controllers shall inform data subjects of likely consequences and mitigation measures",
+        "action_verb": "inform",
+        "subject_noun": "data subjects",
+        "clause_ref": "GDPR Article 34(2)"
+      }
+    ],
+    "framework_id": "gdpr",
+    "annotated_by": "sme-005",
+    "annotated_at": "2026-04-22"
+  },
+  {
+    "id": "golden-048",
+    "paragraph_text": "Payment processors must implement and maintain an active vulnerability management program that identifies and remediates known vulnerabilities within defined timeframes based on severity, and shall apply critical security patches within one month of release for systems connected to cardholder data environments.",
+    "expected_obligations": [
+      {
+        "prose": "Payment processors must implement and maintain an active vulnerability management program",
+        "action_verb": "implement",
+        "subject_noun": "vulnerability management program",
+        "clause_ref": "PCI-DSS Requirement 6"
+      },
+      {
+        "prose": "Payment processors shall apply critical security patches within one month of release",
+        "action_verb": "apply",
+        "subject_noun": "critical security patches",
+        "clause_ref": "PCI-DSS Requirement 6.2"
+      }
+    ],
+    "framework_id": "pci-dss",
+    "annotated_by": "sme-006",
+    "annotated_at": "2026-04-22"
+  },
+  {
+    "id": "golden-049",
+    "paragraph_text": "Organisations must implement monitoring and logging mechanisms to detect and alert on all access to network resources and cardholder data, and shall review logs and security alerts at least daily to identify potential security incidents, suspicious activities, or indicators of compromise.",
+    "expected_obligations": [
+      {
+        "prose": "Organisations must implement monitoring and logging mechanisms",
+        "action_verb": "implement",
+        "subject_noun": "monitoring and logging mechanisms",
+        "clause_ref": "PCI-DSS Requirement 10"
+      },
+      {
+        "prose": "Organisations must review logs and security alerts at least daily",
+        "action_verb": "review",
+        "subject_noun": "logs and security alerts",
+        "clause_ref": "PCI-DSS Requirement 10.7"
+      }
+    ],
+    "framework_id": "pci-dss",
+    "annotated_by": "sme-006",
+    "annotated_at": "2026-04-22"
+  },
+  {
+    "id": "golden-050",
+    "paragraph_text": "Financial entities must establish a formal incident response plan that defines the roles and responsibilities for responding to ICT-related incidents, establishes communication procedures for internal and external stakeholders, and ensures that all incident response personnel are trained and conduct tabletop exercises at least annually.",
+    "expected_obligations": [
+      {
+        "prose": "Financial entities must establish a formal incident response plan",
+        "action_verb": "establish",
+        "subject_noun": "incident response plan",
+        "clause_ref": "DORA Article 18(1)"
+      },
+      {
+        "prose": "Financial entities shall train all incident response personnel",
+        "action_verb": "train",
+        "subject_noun": "incident response personnel",
+        "clause_ref": "DORA Article 18(4)"
+      },
+      {
+        "prose": "Financial entities shall conduct tabletop exercises at least annually",
+        "action_verb": "conduct",
+        "subject_noun": "tabletop exercises",
+        "clause_ref": "DORA Article 18(5)"
+      }
+    ],
+    "framework_id": "dora",
+    "annotated_by": "sme-001",
+    "annotated_at": "2026-04-22"
+  }
+]
