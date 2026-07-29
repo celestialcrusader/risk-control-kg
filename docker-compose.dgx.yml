@@ -1,0 +1,35 @@
+# DGX Spark override — reduces memory limits to fit alongside vLLM (79GB)
+# 128GB total - 79GB vLLM = ~49GB for Docker stack
+#
+# Usage: docker compose -f docker-compose.yml -f docker-compose.dgx.yml up -d
+
+services:
+  postgres:
+    mem_limit: 8gb
+
+  memgraph:
+    mem_limit: 4gb
+
+  qdrant:
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+
+  redis:
+    command: redis-server --requirepass ${REDIS_PASSWORD:-rckg_secret_password} --maxmemory 1gb --maxmemory-policy allkeys-lru
+
+  # Temporal has no mem_limit in base compose, set one here
+  temporal:
+    mem_limit: 1gb
+
+  # Langfuse has no mem_limit in base compose, set one here
+  langfuse:
+    mem_limit: 2gb
+
+  # Kafka + Zookeeper combined
+  zookeeper:
+    mem_limit: 1gb
+
+  kafka:
+    mem_limit: 1gb

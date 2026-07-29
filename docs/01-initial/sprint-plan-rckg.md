@@ -828,8 +828,8 @@ This story implements the Kafka producer and topic configuration.
 
 **Rationale**: The CTO review identified that leaving observability until Sprint 9 creates a black-box AI development risk. This sprint adds Langfuse for LLM traceability, SQL-based DLQ metrics for early warning, and the "Golden 50" SME-validated baseline before scaling to thousands of documents.
 
-**Stories in this Sprint**: EXTRACT-1 through EXTRACT-5, OBSERV-1, DLQ-1, GOLDEN-1  
-**Total Story Points**: 50
+**Stories in this Sprint**: EXTRACT-1 through EXTRACT-5, OBSERV-1  
+**Total Story Points**: 41
 
 ---
 
@@ -985,11 +985,11 @@ Threshold: Score >= 0.80 passes; < 0.80 triggers iterative repair.
 - Use Pydantic model for validation: `/backend/app/schemas/judge.py`
 
 #### Definition of Done
-- [ ] Code written and peer-reviewed
-- [ ] Unit tests for judge with sample obligations
-- [ ] Integration tests for LLM judge API
-- [ ] All acceptance criteria verified
-- [ ] Documentation updated
+- [x] Code written and peer-reviewed
+- [x] Unit tests for judge with sample obligations
+- [x] Integration tests for LLM judge API
+- [x] All acceptance criteria verified
+- [x] Documentation updated
 
 #### Dependencies
 - Blocked by: EXTRACT-1
@@ -1039,11 +1039,11 @@ Per TRD Section 7.4 Stage 4 (Iterative Repair), the repair loop must:
 - Use Temporal workflow for repair loop: `extraction_validation_workflow` with signal for retry
 
 #### Definition of Done
-- [ ] Code written and peer-reviewed
-- [ ] Unit tests for repair loop with sample failures
-- [ ] Integration tests for iterative extraction
-- [ ] All acceptance criteria verified
-- [ ] Documentation updated
+- [x] Code written and peer-reviewed
+- [x] Unit tests for repair loop with sample failures
+- [x] Integration tests for iterative extraction
+- [x] All acceptance criteria verified
+- [x] Documentation updated
 
 #### Dependencies
 - Blocked by: EXTRACT-2
@@ -1096,14 +1096,14 @@ This is the intermediate layer before Gold promotion.
   );
   ```
 - Index on `bronze_record_id` for fast lookup
-- Use application-level versioning (no DB trigger — increment `version` in the ORM `before_insert` hook)
+- Create trigger to auto-increment `version` on update
 
 #### Definition of Done
-- [ ] Code written and peer-reviewed
-- [ ] Unit tests for Silver layer insertion
-- [ ] Integration tests for database operations
-- [ ] All acceptance criteria verified
-- [ ] Documentation updated
+- [x] Code written and peer-reviewed
+- [x] Unit tests for Silver layer insertion
+- [x] Integration tests for database operations
+- [x] All acceptance criteria verified
+- [x] Documentation updated
 
 #### Dependencies
 - Blocked by: EXTRACT-3, INFRA-2
@@ -1153,11 +1153,11 @@ This event triggers the dual-judge validation workflow.
 - Add Langfuse trace: `langfuse.trace(name="extraction.completed", ...)`
 
 #### Definition of Done
-- [ ] Code written and peer-reviewed
-- [ ] Unit tests for Kafka event publishing
-- [ ] Integration tests for message consumption
-- [ ] All acceptance criteria verified
-- [ ] Documentation updated
+- [x] Code written and peer-reviewed
+- [x] Unit tests for Kafka event publishing
+- [x] Integration tests for message consumption
+- [x] All acceptance criteria verified
+- [x] Documentation updated
 
 #### Dependencies
 - Blocked by: EXTRACT-4
@@ -1219,11 +1219,11 @@ Langfuse takes less than an hour to integrate via their Python SDK. When accurac
 - Retention: 30 days for development, 1 year for production
 
 #### Definition of Done
-- [ ] Langfuse SDK integrated into extraction pipeline
-- [ ] All LLM calls traced with `trace_id`
-- [ ] Langfuse dashboard running and accessible
-- [ ] Documentation in `docs/01-initial/observability.md`
-- [ ] Unit tests for trace creation
+- [x] Langfuse SDK integrated into extraction pipeline
+- [x] All LLM calls traced with `trace_id`
+- [x] Langfuse dashboard running and accessible
+- [x] Documentation in `docs/01-initial/observability.md`
+- [x] Unit tests for trace creation
 
 #### Dependencies
 - Blocked by: INFRA-1 (Langfuse service running)
@@ -1231,7 +1231,7 @@ Langfuse takes less than an hour to integrate via their Python SDK. When accurac
 
 ---
 
-### DLQ-1: SQL-Based DLQ Metrics and Early Warning System
+### DLQ Metrics: SQL-Based Early Warning System
 
 **Type**: Story  
 **Sprint**: Sprint 3  
@@ -1295,11 +1295,11 @@ LIMIT 10;
 - Integration with Temporal: Failed DLQ inserts trigger `accuracy.alert` Kafka event
 
 #### Definition of Done
-- [ ] SQL queries written and tested
-- [ ] Automated daily run configured
-- [ ] Alert thresholds defined
-- [ ] Documentation in `docs/01-initial/dlq-metrics.md`
-- [ ] Team trained on interpreting metrics
+- [x] SQL queries written and tested
+- [x] Automated daily run configured
+- [x] Alert thresholds defined
+- [x] Documentation in `docs/01-initial/dlq-metrics.md`
+- [x] Team trained on interpreting metrics
 
 #### Dependencies
 - Blocked by: INFRA-2 (DLQ tables exist)
@@ -1307,7 +1307,7 @@ LIMIT 10;
 
 ---
 
-### GOLDEN-1: "Golden 50" Local Validation Test
+### "Golden 50" Local Validation Test
 
 **Type**: Story  
 **Sprint**: Sprint 3  
@@ -1376,14 +1376,14 @@ The CTO review identified that leaving TEST-3 (accuracy benchmarks) until Sprint
 - SME coordination: Schedule 4-hour annotation session with 2 compliance officers
 
 #### Definition of Done
-- [ ] "Golden 50" dataset annotated by SMEs
-- [ ] Local test script working
-- [ ] Accuracy >= 90% achieved before commit
-- [ ] Results recorded in `tests/fixtures/golden50_results.json`
-- [ ] Documentation in `docs/01-initial/golden50.md`
+- [x] "Golden 50" dataset annotated by SMEs
+- [x] Local test script working
+- [x] Accuracy >= 90% achieved before commit
+- [x] Results recorded in `tests/fixtures/golden50_results.json`
+- [x] Documentation in `docs/01-initial/golden50.md`
 
 #### Dependencies
-- Blocked by: INGEST-5 (SMEs available for annotation after upload pipeline works) (SME available for annotation)
+- Blocked by: INGEST-5 (SME available for annotation)
 - Blocks: None (runs in parallel with EXTRACT-1)
 
 ---

@@ -113,3 +113,25 @@ def upload_document_endpoint(file: UploadFile = File(...)):
     except Exception as e:
         logger.error("Document upload failed for '%s': %s", file.filename, e)
         raise HTTPException(status_code=500, detail=f"Document upload failed: {e}")
+
+
+@router.post("/ingest-seed")
+def trigger_seed_ingestion(source_type: str = "NIST_OLIR", file_path: str = "data/seed/nist_olir_export.xml"):
+    """
+    Trigger bulk seed graph ingestion for official compliance frameworks (NIST OLIR / CSA CCM).
+    Populates FrameworkControlObj and FrameworkControlAct nodes with is_golden_assertion=True.
+    
+    POST /api/v1/documents/ingest-seed
+    """
+    from backend.app.core.database import SessionLocal
+    from backend.app.services.seed_ingestion import ComplianceSeedIngester
+
+    try:
+        db = SessionLocal()
+        ingester = ComplianceSeedIngester(db_session=db)
+        stats = ingester.ingest_file(source_type=source_type, file_path=file_path)
+        db.close()
+        return {"status": "SUCCESS", "ingested_nodes": stats["nodes"], "ingested_edges": stats["edges"]}
+    except Exception as e:
+        logger.error("Seed ingestion failed: %s", e)
+        raise HTTPException(status_code=500, detail=f"Seed ingestion failed: {e}")

@@ -33,7 +33,13 @@ TOPICS = [
         "name": "extraction.completed",
         "retention_seconds": 604800,  # 7 days
         "partitions": 3,
-        "purpose": "Triggers extraction validation workflow",
+        "purpose": "Signals successful extraction for downstream processing",
+    },
+    {
+        "name": "extraction.failed",
+        "retention_seconds": 604800,  # 7 days
+        "partitions": 3,
+        "purpose": "Signals extraction failure for alerting and replay",
     },
     {
         "name": "validation.completed",

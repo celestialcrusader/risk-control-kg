@@ -37,3 +37,6 @@ httpx>=0.25.0
 # LLM API Clients (EXTRACT-1)
 openai>=1.0.0
 ollama>=0.1.0
+
+# Observability (OBSERV-1)
+langfuse>=2.0.0

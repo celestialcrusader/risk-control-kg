@@ -94,7 +94,7 @@ class TestEndpointIntegration:
         """POST with valid markdown returns HTTP 200 with obligation data."""
         with patch(
             "app.api.extract._extract_obligations_with_storage",
-            return_value=(valid_obligations, True),
+            return_value=(valid_obligations, True, "trace-123"),
         ) as mock_extract:
             resp = client.post(
                 "/api/v1/extract",
@@ -112,7 +112,7 @@ class TestEndpointIntegration:
         """Response obligations contain all required fields."""
         with patch(
             "app.api.extract._extract_obligations_with_storage",
-            return_value=(valid_obligations, True),
+            return_value=(valid_obligations, True, "trace-123"),
         ):
             resp = client.post(
                 "/api/v1/extract",
@@ -130,7 +130,7 @@ class TestEndpointIntegration:
         """POST with source_document_id passes it through to the service layer."""
         with patch(
             "app.api.extract._extract_obligations_with_storage",
-            return_value=(valid_obligations, True),
+            return_value=(valid_obligations, True, "trace-123"),
         ) as mock_extract:
             resp = client.post(
                 "/api/v1/extract",
@@ -148,7 +148,7 @@ class TestEndpointIntegration:
         """POST without source_document_id passes None to the service layer."""
         with patch(
             "app.api.extract._extract_obligations_with_storage",
-            return_value=(valid_obligations, True),
+            return_value=(valid_obligations, True, "trace-123"),
         ) as mock_extract:
             resp = client.post(
                 "/api/v1/extract",
@@ -257,7 +257,7 @@ class TestReExtraction:
 
         with patch(
             "app.api.extract._extract_obligations_with_storage",
-            return_value=(mock_obligations, True),
+            return_value=(mock_obligations, True, "trace-456"),
         ) as mock_extract:
             resp1 = client.post(
                 "/api/v1/extract",

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OLIRDataExport xmlns="http://csrc.nist.gov/ns/olir/1.0">
+  <InformativeReference id="REF-NIST-ISO-001">
+    <FocalDocument>
+      <DocumentIdentifier>NIST SP 800-53</DocumentIdentifier>
+      <SectionIdentifier>AC-1</SectionIdentifier>
+      <Identifier>NIST-800-53-AC-1</Identifier>
+      <Title>Policy and Procedures</Title>
+      <Description>The organization develops, documents, and disseminates access control policy and procedures.</Description>
+    </FocalDocument>
+    <ReferencedDocument>
+      <DocumentIdentifier>ISO/IEC 27001</DocumentIdentifier>
+      <SectionIdentifier>A.5.1</SectionIdentifier>
+      <Identifier>ISO-27001-A.5.1</Identifier>
+      <Title>Policies for Information Security</Title>
+      <Description>Information security policy and topic-specific policies shall be defined, approved by management, and published.</Description>
+    </ReferencedDocument>
+    <MappingRationale>
+      <RelationshipType>EQUIVALENT_TO</RelationshipType>
+      <Strength>1.0</Strength>
+    </MappingRationale>
+  </InformativeReference>
+
+  <InformativeReference id="REF-NIST-ISO-002">
+    <FocalDocument>
+      <DocumentIdentifier>NIST SP 800-53</DocumentIdentifier>
+      <SectionIdentifier>AC-2</SectionIdentifier>
+      <Identifier>NIST-800-53-AC-2</Identifier>
+      <Title>Account Management</Title>
+      <Description>The organization manages information system accounts, including establishing, activating, modifying, reviewing, disabling, and removing accounts.</Description>
+    </FocalDocument>
+    <ReferencedDocument>
+      <DocumentIdentifier>ISO/IEC 27001</DocumentIdentifier>
+      <SectionIdentifier>A.5.15</SectionIdentifier>
+      <Identifier>ISO-27001-A.5.15</Identifier>
+      <Title>Access Control</Title>
+      <Description>Rules to control physical and logical access to information and other associated assets shall be established and implemented.</Description>
+    </ReferencedDocument>
+    <MappingRationale>
+      <RelationshipType>EQUIVALENT_TO</RelationshipType>
+      <Strength>1.0</Strength>
+    </MappingRationale>
+  </InformativeReference>
+
+  <InformativeReference id="REF-NIST-ISO-003">
+    <FocalDocument>
+      <DocumentIdentifier>NIST SP 800-53</DocumentIdentifier>
+      <SectionIdentifier>AC-3</SectionIdentifier>
+      <Identifier>NIST-800-53-AC-3</Identifier>
+      <Title>Access Enforcement</Title>
+      <Description>The information system enforces approved authorizations for logical access to information and system resources.</Description>
+    </FocalDocument>
+    <ReferencedDocument>
+      <DocumentIdentifier>ISO/IEC 27001</DocumentIdentifier>
+      <SectionIdentifier>A.8.2</SectionIdentifier>
+      <Identifier>ISO-27001-A.8.2</Identifier>
+      <Title>Privileged Access Rights</Title>
+      <Description>The allocation and use of privileged access rights shall be restricted and managed.</Description>
+    </ReferencedDocument>
+    <MappingRationale>
+      <RelationshipType>SUPERSET_OF</RelationshipType>
+      <Strength>0.9</Strength>
+    </MappingRationale>
+  </InformativeReference>
+
+  <InformativeReference id="REF-NIST-ISO-004">
+    <FocalDocument>
+      <DocumentIdentifier>NIST SP 800-53</DocumentIdentifier>
+      <SectionIdentifier>AU-2</SectionIdentifier>
+      <Identifier>NIST-800-53-AU-2</Identifier>
+      <Title>Event Logging</Title>
+      <Description>The information system identifies and records audited events according to organizational audit policy.</Description>
+    </FocalDocument>
+    <ReferencedDocument>
+      <DocumentIdentifier>ISO/IEC 27001</DocumentIdentifier>
+      <SectionIdentifier>A.8.15</SectionIdentifier>
+      <Identifier>ISO-27001-A.8.15</Identifier>
+      <Title>Logging</Title>
+      <Description>Logs that record activities, exceptions, faults and other relevant events shall be produced, stored, protected and analyzed.</Description>
+    </ReferencedDocument>
+    <MappingRationale>
+      <RelationshipType>EQUIVALENT_TO</RelationshipType>
+      <Strength>1.0</Strength>
+    </MappingRationale>
+  </InformativeReference>
+</OLIRDataExport>

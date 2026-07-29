@@ -15,12 +15,21 @@ Pipeline:
 import json
 import logging
 import os
+import time
 from pathlib import Path
-from typing import List
+from typing import List, Optional
 
 from app.schemas.obligation import ExtractedObligationsResponse, Obligation
 from app.models import SemanticControl
 from app.core.database import get_db_session
+from app.services.extraction_event import ExtractionEventPublisher
+
+# Tracing is optional; integrated into extraction flow
+try:
+    from app.services.langfuse_tracing import extract_and_trace as _extract_and_trace, log_extraction_failure as _log_extraction_failure  # noqa: F401
+except ImportError:
+    _extract_and_trace = None  # type: ignore[misc,assignment]
+    _log_extraction_failure = None  # type: ignore[misc,assignment]
 
 logger = logging.getLogger(__name__)
 
@@ -243,6 +252,7 @@ def _store_obligations_in_semantic_controls(
 def extract_obligations(
     markdown_content: str,
     source_document_id=None,
+    event_publisher: Optional[ExtractionEventPublisher] = None,
 ) -> List[Obligation]:
     """
     Extract atomic obligations from regulatory Markdown text.
@@ -252,17 +262,53 @@ def extract_obligations(
     validates the output against the Pydantic schema, and stores results
     in the PostgreSQL semantic_controls (Silver layer) table.
 
+    On successful extraction, publishes an extraction.completed event
+    (fire-and-forget — Kafka failures never break extraction).
+    On failure, publishes an extraction.failed event.
+
     Args:
         markdown_content: Regulatory Markdown text from the Bronze layer.
         source_document_id: Optional UUID string of the source document.
+        event_publisher: Optional ExtractionEventPublisher instance.
 
     Returns:
         List of validated Obligation objects. Returns an empty list if
         the input is empty/None or if the LLM API fails.
     """
-    obligations, _ = _extract_obligations_with_storage(
+    from uuid import uuid4
+
+    extraction_id = str(uuid4())
+    start_time = time.time()
+
+    obligations, storage_succeeded, trace_id = _extract_obligations_with_storage(
         markdown_content, source_document_id=source_document_id,
     )
+
+    processing_time_ms = int((time.time() - start_time) * 1000)
+
+    # Publish event
+    if event_publisher:
+        if obligations:
+            event_publisher.on_extraction_completed(
+                document_id=str(source_document_id) if source_document_id else extraction_id,
+                obligation_count=len(obligations),
+                extraction_id=extraction_id,
+                model_used=LLM_MODEL,
+                processing_time_ms=processing_time_ms,
+                chunk_count=0,  # Filled by ingestion pipeline
+                source_document_id=str(source_document_id) if source_document_id else None,
+                obligation_ids=[o.id for o in obligations],
+            )
+        else:
+            event_publisher.on_extraction_failed(
+                document_id=str(source_document_id) if source_document_id else extraction_id,
+                extraction_id=extraction_id,
+                error_reason="No obligations extracted or validation failed",
+                model_used=LLM_MODEL,
+                processing_time_ms=processing_time_ms,
+                source_document_id=str(source_document_id) if source_document_id else None,
+            )
+
     return obligations
 
 
@@ -273,34 +319,65 @@ def _extract_obligations_with_storage(
     """
     Extract atomic obligations and track database storage status.
 
-    Internal function that returns both the obligations list and a
-    boolean indicating whether storage to semantic_controls succeeded.
+    Internal function that returns the obligations list, a boolean
+    indicating whether storage to semantic_controls succeeded, and
+    an optional Langfuse trace_id for cross-service linkage (AC-1, AC-5).
 
     Args:
         markdown_content: Regulatory Markdown text from the Bronze layer.
         source_document_id: Optional UUID string of the source document.
 
     Returns:
-        Tuple of (List[Obligation], bool) where the bool indicates
-        whether DB storage succeeded.
+        Tuple of (List[Obligation], bool, str|None) where the bool indicates
+        whether DB storage succeeded and the str is the Langfuse trace_id.
     """
     # Handle empty or None input
     if not markdown_content or not markdown_content.strip():
         logger.info("Empty or None markdown content provided, returning empty list")
-        return [], True
+        return [], True, None
+
+    # Build prompt for tracing before LLM call
+    prompt = _build_prompt(markdown_content)
 
     try:
         # Call LLM to extract obligations
         raw_response = _call_llm(markdown_content)
     except Exception as e:
         logger.error("LLM API call failed: %s", e)
-        return [], True
+        return [], True, None
 
     # Parse and validate LLM response
     obligations = _parse_llm_response(raw_response)
     if not obligations:
         logger.warning("No obligations extracted or validation failed")
-        return [], True
+        # Log failure to Langfuse if tracing is available
+        if _log_extraction_failure:
+            try:
+                _log_extraction_failure(
+                    trace_id="",  # No trace created since LLM call failed
+                    judge_feedback="No obligations extracted",
+                    repair_attempts=0,
+                    final_status="no_obligations",
+                    document_id=str(source_document_id) if source_document_id else None,
+                )
+            except Exception:
+                pass
+        return [], True, None
+
+    # Trace the extraction call (AC-1, AC-2)
+    trace_id = None
+    if _extract_and_trace:
+        try:
+            trace_result = _extract_and_trace(
+                markdown_content=markdown_content,
+                prompt=prompt,
+                completion=raw_response,
+                model_used=LLM_MODEL,
+                document_id=str(source_document_id) if source_document_id else None,
+            )
+            trace_id = trace_result.get("trace_id") if trace_result else None
+        except Exception:
+            logger.warning("Tracing failed, extraction continues")
 
     # Store in Silver layer
     storage_succeeded = _store_obligations_in_semantic_controls(
@@ -313,8 +390,9 @@ def _extract_obligations_with_storage(
         )
 
     logger.info(
-        "Extracted %d obligations from markdown (storage=%s)",
+        "Extracted %d obligations from markdown (storage=%s, trace_id=%s)",
         len(obligations),
         storage_succeeded,
+        trace_id,
     )
-    return obligations, storage_succeeded
+    return obligations, storage_succeeded, trace_id

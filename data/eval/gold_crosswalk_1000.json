@@ -1,0 +1,32 @@
+[
+  {
+    "id": "GOLD-PAIR-001",
+    "query_text": "The organization manages information system accounts, including establishing, activating, modifying, reviewing, disabling, and removing accounts.",
+    "target_ids": ["ISO-27001-A.5.15"],
+    "domain": "NIST_SP_800_53_VS_ISO_27001"
+  },
+  {
+    "id": "GOLD-PAIR-002",
+    "query_text": "The information system enforces approved authorizations for logical access to information and system resources.",
+    "target_ids": ["ISO-27001-A.8.2"],
+    "domain": "NIST_SP_800_53_VS_ISO_27001"
+  },
+  {
+    "id": "GOLD-PAIR-003",
+    "query_text": "AI system risks must be identified, documented, and monitored continuously throughout the lifecycle.",
+    "target_ids": ["EU-AI-ACT-ART-9"],
+    "domain": "NIST_AI_RMF_VS_EU_AI_ACT"
+  },
+  {
+    "id": "GOLD-PAIR-004",
+    "query_text": "Automated quarterly access audit procedure for reviewing active directory accounts.",
+    "target_ids": ["ACT-SOP-IAM-01"],
+    "domain": "SOP_VS_CONTROL_ACTIVITY"
+  },
+  {
+    "id": "GOLD-PAIR-005",
+    "query_text": "Logs recording user activities, exceptions, and security events shall be produced and retained.",
+    "target_ids": ["ISO-27001-A.8.15"],
+    "domain": "NIST_SP_800_53_VS_ISO_27001"
+  }
+]

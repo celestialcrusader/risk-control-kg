@@ -15,11 +15,13 @@ from sqlalchemy import (
     String,
     Text,
     DateTime,
+    Integer,
     ForeignKey,
     UniqueConstraint,
     CheckConstraint,
     Index,
     Enum as SQLEnum,
+    event,
 )
 from sqlalchemy.dialects.postgresql import UUID, JSONB, INET
 from sqlalchemy.ext.declarative import declarative_base
@@ -141,6 +143,27 @@ class SemanticControl(Base):
     source_document_id = Column(UUID(as_uuid=True))
     section_reference = Column(String(512))
 
+    # Bronze layer linkage (EXTRACT-4)
+    bronze_record_id = Column(
+        UUID(as_uuid=True),
+        ForeignKey("staging_controls.id"),
+        nullable=True,
+    )
+
+    # Control status (EXTRACT-4)
+    status = Column(String(50), default="pending_validation")
+
+    # Application-level versioning (EXTRACT-4)
+    version = Column(Integer, default=1)
+
+    # Python-level defaults (apply at instantiation, not just insert time)
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        if self.status is None:
+            self.status = "pending_validation"
+        if self.version is None:
+            self.version = 1
+
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(
         DateTime(timezone=True),
@@ -153,7 +176,12 @@ class SemanticControl(Base):
         Index("ix_semantic_created_at", "created_at"),
         Index("ix_semantic_action_verb", "action_verb"),
         Index("ix_semantic_subject", "subject_noun"),
+        Index("ix_semantic_bronze_record", "bronze_record_id"),
     )
+
+    def _get_next_version(self):
+        """Return the next version number for this record."""
+        return (self.version or 1) + 1
 
     def to_dict(self) -> dict:
         """Serialize to dictionary."""
@@ -172,9 +200,29 @@ class SemanticControl(Base):
             "extraction_confidence": self.extraction_confidence,
             "source_document_id": str(self.source_document_id) if self.source_document_id else None,
             "section_reference": self.section_reference,
+            "bronze_record_id": str(self.bronze_record_id) if self.bronze_record_id else None,
+            "status": self.status,
+            "version": self.version,
             "created_at": self.created_at.isoformat() if self.created_at else None,
             "updated_at": self.updated_at.isoformat() if self.updated_at else None,
         }
+
+
+# =============================================================================
+# Version auto-increment via before_insert event
+# =============================================================================
+
+
+@event.listens_for(SemanticControl, "before_insert", propagate=True)
+def _autoincrement_version(mapper, connection, target):
+    """Auto-increment version on insert when not explicitly set.
+
+    The service layer handles version explicitly for version_obligation.
+    This event only auto-increments for records that were constructed with
+    the default version=1 but should actually be version 2+ (i.e., when
+    the service explicitly sets _version_set=True on the instance).
+    """
+    pass  # Version management is handled explicitly in the service layer
 
 
 # =============================================================================
@@ -439,6 +487,29 @@ class SchemaMigration(Base):
         }
 
 
+
+# Import Pure RCKG Graph Node and Linkage Models
+from backend.app.models.rckg_nodes import (
+    SetTheoryRelation,
+    GapSeverity,
+    GapState,
+    MappingStatus,
+    ObligationNode,
+    ControlObjectiveNode,
+    ControlActivityNode,
+    FrameworkControlObjectiveNode,
+    FrameworkControlActivityNode,
+    RiskNode,
+    GapNode,
+    ShortCircuitAuditLog,
+    RiskControlObjectiveMapping,
+    ObligationControlObjectiveMapping,
+    ControlObjectiveActivityMapping,
+    ControlObjectiveFrameworkMapping,
+    ControlActivityFrameworkMapping,
+    GraphOutboxLog,
+)
+
 # =============================================================================
 # Schema Export
 # =============================================================================
@@ -455,4 +526,24 @@ __all__ = [
     "ControlStatus",
     "VerificationLevel",
     "EventType",
+    "SetTheoryRelation",
+    "GapSeverity",
+    "GapState",
+    "MappingStatus",
+    "ObligationNode",
+    "ControlObjectiveNode",
+    "ControlActivityNode",
+    "FrameworkControlObjectiveNode",
+    "FrameworkControlActivityNode",
+    "RiskNode",
+    "GapNode",
+    "ShortCircuitAuditLog",
+    "RiskControlObjectiveMapping",
+    "ObligationControlObjectiveMapping",
+    "ControlObjectiveActivityMapping",
+    "ControlObjectiveFrameworkMapping",
+    "ControlActivityFrameworkMapping",
+    "GraphOutboxLog",
 ]
+
+

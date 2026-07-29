@@ -37,7 +37,7 @@ SELECT
     sc.framework_name,
     COUNT(*) AS failure_count
 FROM extraction_dlq edq
-JOIN semantic_controls sc ON edq.bronze_record_id = sc.id
+JOIN semantic_controls sc ON edq.obligation_id = sc.control_id
 GROUP BY sc.framework_name
 ORDER BY failure_count DESC
 LIMIT 10;
