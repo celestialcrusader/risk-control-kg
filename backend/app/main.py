@@ -41,12 +41,31 @@ app.add_middleware(
 app.include_router(extract.router, prefix="/api/v1/extract", tags=["Extract & Bootstrap"])
 app.include_router(documents.router, prefix="/api/v1", tags=["Document Upload"])
 
+from app.api.v1 import crosswalk_router, governance_router
+
 app.include_router(graph.router, prefix="/api/v1", tags=["Graph Visualizer & Queries"])
 app.include_router(judge.router, prefix="/api/v1", tags=["Dual-Judge Audit"])
 app.include_router(repair.router, prefix="/api/v1", tags=["Graph Repair"])
 app.include_router(semantic.router, prefix="/api/v1", tags=["Semantic Search"])
-app.include_router(gaps.router, prefix="/api/v1", tags=["Gaps & Traceability"])
 app.include_router(controls.router, prefix="/api/v1", tags=["Control Mappings"])
+app.include_router(crosswalk_router.router, prefix="/api/v1", tags=["Canonical Crosswalk API"])
+app.include_router(governance_router.router, prefix="/api/v1", tags=["Governance & Gap Analytics"])
+
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+
+# Mount Static Files for Thin Human Governance UI
+STATIC_DIR = APP_DIR / "static"
+if STATIC_DIR.exists():
+    app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
+
+@app.get("/ui", include_in_schema=False)
+@app.get("/", include_in_schema=False)
+def serve_ui():
+    index_path = STATIC_DIR / "index.html"
+    if index_path.exists():
+        return FileResponse(str(index_path))
+    return {"message": "Pure RCKG Governance Engine API is running. Access /docs for Swagger UI."}
 
 
 import socket

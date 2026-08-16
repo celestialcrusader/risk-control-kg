@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pure RCKG | Risk Control Knowledge Graph & Governance Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="app-header">
+    <div class="brand-container">
+      <div class="logo-badge">RCKG</div>
+      <div>
+        <div class="brand-title">Pure RCKG Governance Portal</div>
+        <div class="brand-subtitle">Autonomous AI Agent & Auditor Crosswalk Interface</div>
+      </div>
+    </div>
+    
+    <nav class="nav-tabs">
+      <button class="nav-tab active" data-tab="dashboard">
+        <span>📊</span> Executive Dashboard
+      </button>
+      <button class="nav-tab" data-tab="matrix">
+        <span>🔍</span> Crosswalk Matrix
+      </button>
+      <button class="nav-tab" data-tab="playground">
+        <span>⚡</span> NLI Playground
+      </button>
+      <button class="nav-tab" data-tab="audit">
+        <span>📜</span> Audit Logs
+      </button>
+    </nav>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-container">
+
+    <!-- 1. Executive Dashboard & Heatmap Panel -->
+    <section id="panel-dashboard" class="view-panel active">
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-label">Total MAS Obligations</div>
+          <div id="stat-obls" class="metric-val">85</div>
+          <div class="metric-sub">MAS TRM Guidelines 2024</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Active NIST Controls</div>
+          <div id="stat-ctrls" class="metric-val">294</div>
+          <div class="metric-sub">NIST SP 800-53 Rev 5 (30 Purged)</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Audit Mappings</div>
+          <div id="stat-mappings" class="metric-val">767</div>
+          <div class="metric-sub">2D Set-Theoretic Crosswalks</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Full Coverage Rate</div>
+          <div id="stat-full-cov" class="metric-val">--%</div>
+          <div class="metric-sub">Defensible Technical Equivalence</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Defensible Gaps</div>
+          <div id="stat-gaps" class="metric-val">4</div>
+          <div class="metric-sub">Category B (Retail Consumer)</div>
+        </div>
+      </div>
+
+      <div class="section-title">
+        <span>🔥</span> MAS TRM Chapter Coverage Heatmap
+      </div>
+      <div id="chapter-heatmap" class="heatmap-grid">
+        <!-- Dynamically rendered chapter cards -->
+      </div>
+
+      <div class="section-title">
+        <span>⚠️</span> Defensible True Gaps (Category B: Retail Mandates)
+      </div>
+      <div class="table-container">
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th>Obligation ID</th>
+              <th>Requirement Statement</th>
+              <th>Category</th>
+              <th>Audit Root Cause</th>
+              <th>Remediation Strategy</th>
+            </tr>
+          </thead>
+          <tbody id="gaps-table-body">
+            <!-- Dynamically loaded gaps -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 2. Crosswalk Matrix Reviewer Panel -->
+    <section id="panel-matrix" class="view-panel">
+      <div class="filter-bar">
+        <input type="text" id="matrix-search" class="search-input" placeholder="Search obligation ID, title or text..." style="min-width: 280px;">
+        <select id="filter-relation" class="select-input">
+          <option value="">All Semantic Relations</option>
+          <option value="EQUIVALENT">EQUIVALENT</option>
+          <option value="SUBSET_OF">SUBSET_OF</option>
+          <option value="SUPERSET_OF">SUPERSET_OF</option>
+          <option value="OVERLAPS">OVERLAPS</option>
+          <option value="SUPPORTS">SUPPORTS</option>
+        </select>
+        <select id="filter-coverage" class="select-input">
+          <option value="">All Assurance Coverages</option>
+          <option value="FULL_COVERAGE">FULL_COVERAGE</option>
+          <option value="PARTIAL_COVERAGE">PARTIAL_COVERAGE</option>
+          <option value="NO_COVERAGE">NO_COVERAGE</option>
+        </select>
+        <button id="btn-reload-matrix" class="btn btn-secondary">Refresh</button>
+      </div>
+
+      <div class="table-container">
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th>MAS Obligation</th>
+              <th>NIST Control</th>
+              <th>Semantic Relation</th>
+              <th>Assurance Coverage</th>
+              <th>Confidence</th>
+              <th>4-Part Rationale</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="matrix-table-body">
+            <!-- Dynamic crosswalk mappings -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 3. Realtime NLI Playground Panel -->
+    <section id="panel-playground" class="view-panel">
+      <div class="section-title">
+        <span>⚡</span> Dual-Judge NLI Crosswalk Playground
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+        <div class="metric-card" style="padding: 1.5rem;">
+          <label style="font-weight: 700; font-size: 0.9rem; margin-bottom: 8px; display: block;">Source Requirement (MAS TRM / Custom Obligation)</label>
+          <textarea id="play-source" class="form-control" rows="6" placeholder="Enter source regulatory obligation text..."></textarea>
+        </div>
+        <div class="metric-card" style="padding: 1.5rem;">
+          <label style="font-weight: 700; font-size: 0.9rem; margin-bottom: 8px; display: block;">Target Control Requirement (NIST / Internal Policy)</label>
+          <textarea id="play-target" class="form-control" rows="6" placeholder="Enter target security control text..."></textarea>
+        </div>
+      </div>
+      <button id="btn-run-eval" class="btn" style="padding: 10px 24px; font-size: 0.95rem;">⚡ Run Dual-Judge Evaluation</button>
+
+      <div id="eval-result-card" class="metric-card" style="margin-top: 1.5rem; display: none;">
+        <div class="section-title">
+          <span>📋</span> Evaluation Result
+        </div>
+        <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+          <div><strong>Semantic Relation:</strong> <span id="res-relation" class="badge badge-relation">--</span></div>
+          <div><strong>Assurance Coverage:</strong> <span id="res-coverage" class="badge">--</span></div>
+          <div><strong>Confidence Score:</strong> <span id="res-confidence" style="font-weight: 700;">--</span></div>
+        </div>
+        <div style="background: rgba(0,0,0,0.25); padding: 1rem; border-radius: var(--radius-sm); font-size: 0.88rem; line-height: 1.6;">
+          <strong>Structured 4-Part Rationale:</strong>
+          <pre id="res-rationale" style="white-space: pre-wrap; font-family: var(--font-sans); margin-top: 6px; color: var(--text-secondary);"></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Immutable Audit Log Viewer Panel -->
+    <section id="panel-audit" class="view-panel">
+      <div class="section-title">
+        <span>📜</span> Immutable System & Auditor Override Logs
+      </div>
+      <div class="table-container">
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th>Timestamp</th>
+              <th>Event Type</th>
+              <th>Actor ID</th>
+              <th>Actor Type</th>
+              <th>Event Summary / Justification</th>
+            </tr>
+          </thead>
+          <tbody id="audit-table-body">
+            <!-- Dynamic audit events -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Auditor Override Modal -->
+  <div id="override-modal" class="modal-overlay">
+    <div class="modal-content">
+      <div class="section-title">
+        <span>✍️</span> Submit Auditor Override
+      </div>
+      <input type="hidden" id="override-mapping-id">
+      <div class="form-group">
+        <label>Mapping Context</label>
+        <div id="override-context-label" style="font-size: 0.85rem; color: var(--accent-indigo); font-weight: 600;"></div>
+      </div>
+      <div class="form-group">
+        <label>New Semantic Relation</label>
+        <select id="override-rel-select" class="form-control">
+          <option value="EQUIVALENT">EQUIVALENT</option>
+          <option value="SUBSET_OF">SUBSET_OF</option>
+          <option value="SUPERSET_OF">SUPERSET_OF</option>
+          <option value="OVERLAPS">OVERLAPS</option>
+          <option value="SUPPORTS">SUPPORTS</option>
+          <option value="NONE">NONE</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>New Assurance Coverage</label>
+        <select id="override-cov-select" class="form-control">
+          <option value="FULL_COVERAGE">FULL_COVERAGE</option>
+          <option value="PARTIAL_COVERAGE">PARTIAL_COVERAGE</option>
+          <option value="NO_COVERAGE">NO_COVERAGE</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Auditor ID / Sign-off Authority</label>
+        <input type="text" id="override-auditor-id" class="form-control" value="auditor-lead-001" placeholder="e.g. auditor-jane-doe">
+      </div>
+      <div class="form-group">
+        <label>Defensible Audit Justification</label>
+        <textarea id="override-justification" class="form-control" rows="3" placeholder="Provide audit reasoning, technical rationale, or compensating control evidence..."></textarea>
+      </div>
+      <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 1.5rem;">
+        <button id="btn-cancel-override" class="btn btn-secondary">Cancel</button>
+        <button id="btn-save-override" class="btn">Confirm Override & Log</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
