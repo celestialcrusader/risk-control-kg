@@ -38,5 +38,10 @@ httpx>=0.25.0
 openai>=1.0.0
 ollama>=0.1.0
 
+# LangGraph & State Machine
+langgraph>=0.2.0
+langchain-core>=0.3.0
+
 # Observability (OBSERV-1)
 langfuse>=2.0.0
+

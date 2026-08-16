@@ -41,9 +41,9 @@ def db_connection():
     3. Closes the connection after all tests complete
     """
     conn = None
-    for _ in range(60):  # Wait up to 60 seconds for PostgreSQL to be ready
+    for _ in range(2):
         try:
-            conn = psycopg2.connect(**DB_CONFIG)
+            conn = psycopg2.connect(**DB_CONFIG, connect_timeout=2)
             conn.close()
             break
         except psycopg2.OperationalError:

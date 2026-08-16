@@ -107,6 +107,18 @@ class RCKGCypherBuilder:
         """
 
     @staticmethod
+    def build_defines_linkage_cypher() -> str:
+        """Linkage 0: StatutoryRequirement -> Obligation (DEFINES)"""
+        return """
+        MATCH (d:StatutoryRequirement {node_id: $doc_id})
+        MATCH (o:Obligation {node_id: $node_id})
+        MERGE (d)-[rel:DEFINES]->(o)
+        SET rel.set_theory_relation = $set_theory_relation,
+            rel.status = 'PROBABILISTIC_AI'
+        RETURN rel
+        """
+
+    @staticmethod
     def build_satisfies_linkage_cypher() -> str:
         """Linkage 2: Control Objective -> Obligation (SATISFIES)"""
         return """
@@ -169,6 +181,63 @@ class RCKGCypherBuilder:
             rel.mapping_date = timestamp()
         RETURN rel
         """
+
+    # ── Direct Public Baseline Cypher Builders (STORY-FOUNDATION-104) ───────
+
+    @staticmethod
+    def build_obligation_framework_crosswalk_cypher() -> str:
+        """Direct Public: Obligation -> Framework Control Objective (CROSSWALKS_TO)"""
+        return """
+        MATCH (o:Obligation {obligation_id: $obligation_id})
+        MATCH (fco:FrameworkControlObj {framework_obj_id: $framework_obj_id})
+        MERGE (o)-[rel:CROSSWALKS_TO]->(fco)
+        SET rel.set_theory_relation = $set_theory_relation,
+            rel.confidence_score = $confidence_score,
+            rel.status = $status,
+            rel.mapping_date = timestamp()
+        RETURN rel
+        """
+
+    @staticmethod
+    def build_risk_framework_mitigates_cypher() -> str:
+        """Direct Public: Risk -> Framework Control Objective (MITIGATED_BY)"""
+        return """
+        MATCH (r:Risk {risk_id: $risk_id})
+        MATCH (fco:FrameworkControlObj {framework_obj_id: $framework_obj_id})
+        MERGE (r)-[rel:MITIGATED_BY]->(fco)
+        SET rel.confidence_score = $confidence_score,
+            rel.status = $status,
+            rel.mapping_date = timestamp()
+        RETURN rel
+        """
+
+    @staticmethod
+    def build_framework_crosswalk_cypher() -> str:
+        """Direct Inter-Framework: Framework Control Obj <---> Framework Control Obj"""
+        return """
+        MATCH (s:FrameworkControlObj {framework_obj_id: $source_framework_obj_id})
+        MATCH (t:FrameworkControlObj {framework_obj_id: $target_framework_obj_id})
+        MERGE (s)-[rel:CROSSWALKS_TO]->(t)
+        SET rel.set_theory_relation = $set_theory_relation,
+            rel.confidence_score = $confidence_score,
+            rel.status = $status,
+            rel.mapping_date = timestamp()
+        RETURN rel
+        """
+
+    @staticmethod
+    def build_client_aligns_with_framework_cypher() -> str:
+        """Client Overlay: Control Objective -> Framework Control Obj (ALIGNS_WITH)"""
+        return """
+        MATCH (co:ControlObjective {objective_id: $objective_id})
+        MATCH (fco:FrameworkControlObj {framework_obj_id: $framework_obj_id})
+        MERGE (co)-[rel:ALIGNS_WITH]->(fco)
+        SET rel.set_theory_relation = $set_theory_relation,
+            rel.confidence_score = $confidence_score,
+            rel.mapping_date = timestamp()
+        RETURN rel
+        """
+
 
     @staticmethod
     def build_create_gap_node_cypher() -> str:

@@ -158,6 +158,11 @@ def upload_document(
     # --- Create audit log (AC-3) ---
     document_id = str(uuid.uuid4())
 
+    # --- Format Classification Inspection (RCKG-201) ---
+    from app.services.format_classifier import UpstreamFormatClassifier
+    classifier = UpstreamFormatClassifier()
+    classification = classifier.classify(content, filename=filename)
+
     with get_db_session() as session:
         audit_entry = AuditLog(
             event_type="document.uploaded",
@@ -168,6 +173,8 @@ def upload_document(
                 "key": key,
                 "file_size": file_size,
                 "content_type": content_type,
+                "detected_format": classification.format.value,
+                "recommended_parser": classification.recommended_parser,
                 "requestor_id": requestor_id,
             },
             actor_id=requestor_id,

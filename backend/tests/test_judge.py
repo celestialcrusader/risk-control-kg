@@ -81,10 +81,10 @@ areas.
 def mock_approved_judgment_json():
     """Mock LLM response representing an approved obligation."""
     return json.dumps({
-        "metadata_accuracy": 0.95,
-        "legal_alignment": 0.92,
-        "semantics": 0.90,
-        "overall_score": 0.92,
+        "metadata_accuracy": 0.96,
+        "legal_alignment": 0.96,
+        "semantics": 0.96,
+        "overall_score": 0.96,
         "status": "approved",
         "feedback": "The obligation is well-structured with correct metadata fields and aligns with compliance terminology.",
     }, separators=(",", ":"))
@@ -731,10 +731,10 @@ class TestThresholdLogicIndependentComputation:
         # LLM incorrectly says "repair" even though all scores are above threshold
         llm_response = json.dumps({
             "judgment": {
-                "metadata_accuracy": 0.95,
-                "legal_alignment": 0.92,
-                "semantics": 0.90,
-                "overall_score": 0.92,
+                "metadata_accuracy": 0.96,
+                "legal_alignment": 0.96,
+                "semantics": 0.96,
+                "overall_score": 0.96,
                 "status": "repair",  # LLM is wrong
                 "feedback": "Actually this is high quality.",
             }
@@ -751,7 +751,7 @@ class TestThresholdLogicIndependentComputation:
         assert "high quality" in result.judgment.feedback.lower()
 
     def test_low_scores_override_llm_approved_to_repair(self, sample_markdown):
-        """When any score < 0.80 but LLM says 'approved', service overrides to 'repair'."""
+        """When any score < 0.95 but LLM says 'approved', service overrides to 'repair'."""
         import app.services.judge as judge_mod
 
         # LLM incorrectly says "approved" even though metadata_accuracy is below threshold
@@ -775,15 +775,15 @@ class TestThresholdLogicIndependentComputation:
         assert result.judgment.status == "repair"
 
     def test_boundary_score_at_080_is_approved(self, sample_markdown):
-        """When all scores are exactly 0.80, status is 'approved' (>= threshold)."""
+        """When all scores are at or above 0.95, status is 'approved' (>= threshold)."""
         import app.services.judge as judge_mod
 
         llm_response = json.dumps({
             "judgment": {
-                "metadata_accuracy": 0.80,
-                "legal_alignment": 0.80,
-                "semantics": 0.80,
-                "overall_score": 0.80,
+                "metadata_accuracy": 0.95,
+                "legal_alignment": 0.95,
+                "semantics": 0.95,
+                "overall_score": 0.95,
                 "status": "repair",  # LLM says repair
                 "feedback": "At the boundary.",
             }

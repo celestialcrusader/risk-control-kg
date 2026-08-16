@@ -512,8 +512,8 @@ class TestLLMApiIntegration:
 
             mock_call.assert_called_once()
             args = mock_call.call_args
-            # First positional arg should be the markdown content
-            assert sample_markdown == args[0][0]
+            # First positional arg (prompt) should contain the markdown content
+            assert sample_markdown in args[0][0]
 
     def test_vllm_client_uses_correct_endpoint(self, sample_markdown, mock_llm_response_obligations):
         """The vLLM client connects to the configured LLM_ENDPOINT."""

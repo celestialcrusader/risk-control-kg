@@ -6,7 +6,7 @@ and gap creation logic.
 """
 
 import pytest
-from backend.app.services.graph_compiler import (
+from app.services.graph_compiler import (
     RuleBasedGraphCompiler,
     ClosedSetPrimitive,
     GraphMutationDiff,
@@ -204,8 +204,7 @@ def test_scenario_19_missing_facets_defaults(compiler):
     s = {"node_id": "N1"}
     t = {"node_id": "N2"}
     diffs = compiler.compile_mutation(s, t, cosine_sim=0.50)
-    assert len(diffs) == 1
-    assert diffs[0].set_theory_relation == "NO_RELATIONSHIP"
+    assert len(diffs) == 0
 
 
 def test_scenario_20_pydantic_schema_serialization(compiler):

@@ -29,7 +29,7 @@ class MockEmbeddingService:
 
 def test_gold_harness_evaluator_metrics():
     """AC-1: Verify GoldHarnessEvaluator calculates Recall@K and MRR metrics accurately."""
-    from backend.app.eval.gold_harness import GoldHarnessEvaluator
+    from app.eval.gold_harness import GoldHarnessEvaluator
 
     benchmark_file = PROJECT_ROOT / "data" / "eval" / "gold_crosswalk_1000.json"
     evaluator = GoldHarnessEvaluator(str(benchmark_file))
@@ -50,7 +50,7 @@ def test_gold_harness_evaluator_metrics():
 
 def test_gold_harness_comparative_report():
     """AC-2: Verify comparative evaluation report generation for embedding model candidates."""
-    from backend.app.eval.gold_harness import GoldHarnessEvaluator
+    from app.eval.gold_harness import GoldHarnessEvaluator
 
     benchmark_file = PROJECT_ROOT / "data" / "eval" / "gold_crosswalk_1000.json"
     evaluator = GoldHarnessEvaluator(str(benchmark_file))

@@ -15,6 +15,8 @@ import boto3
 from botocore.config import Config
 from botocore.exceptions import ClientError
 
+from app.core.exceptions import OperationNotPermitted
+
 # Import Qdrant vector store
 from .qdrant import (
     QdrantVectorStore,
@@ -248,8 +250,13 @@ class MinIOStorage:
             key: Object key to delete
 
         Raises:
+            OperationNotPermitted: If bucket is protected (source-regulations or bronze-layer)
             ClientError: If deletion fails
         """
+        if bucket in ("source-regulations", "bronze-layer"):
+            raise OperationNotPermitted(
+                f"Deletion from protected bucket '{bucket}' is not permitted."
+            )
         self.client.delete_object(Bucket=bucket, Key=key)
 
     def list_files(
@@ -267,7 +274,11 @@ class MinIOStorage:
         Returns:
             List of object keys
         """
-        response = self.client.list_objects_v2(Bucket=bucket, Prefix=prefix)
+        kwargs = {"Bucket": bucket}
+        if prefix:
+            kwargs["Prefix"] = prefix
+        response = self.client.list_objects_v2(**kwargs)
+
 
         if "Contents" not in response:
             return []

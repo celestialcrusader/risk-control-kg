@@ -33,15 +33,22 @@ except ImportError:
     Langfuse = None
     logger.debug("langfuse not installed, observability logging will be skipped")
 
-# LLM Configuration
+import os
+
+# LLM Judge Configuration (AI-REQ-06)
+JUDGE_ENDPOINT = os.getenv("MODEL_JUDGE_ENDPOINT", "http://localhost:8000/v1")
+JUDGE_MODEL = os.getenv("MODEL_JUDGE_NAME", "nvidia/Qwen3.6-35B-A3B-NVFP4")
+
 OLLAMA_MODEL = "llama3.1"
 OLLAMA_TEMPERATURE = 0.3
 
 # Prompt template path
 PROMPT_TEMPLATE_PATH = Path(__file__).resolve().parent.parent / "prompts" / "judge.md"
 
-# Quality threshold: all criteria must meet this score to be "approved"
-THRESHOLD = 0.80
+# Quality thresholds (FR-13): Logic Judge >= 0.95, Technical Judge = 1.00
+THRESHOLD = 0.95
+LOGIC_THRESHOLD = 0.95
+TECHNICAL_THRESHOLD = 1.00
 
 # Fallback prompt used when template file is not found
 FALLBACK_PROMPT = """
@@ -169,6 +176,8 @@ def _parse_judgment(raw_response: str) -> JudgmentResponse:
     """
     try:
         parsed = json.loads(raw_response)
+        if isinstance(parsed, dict) and "judgment" not in parsed:
+            parsed = {"judgment": parsed}
     except (json.JSONDecodeError, TypeError) as e:
         raise ValueError(f"Failed to parse judge JSON response: {e}") from e
 

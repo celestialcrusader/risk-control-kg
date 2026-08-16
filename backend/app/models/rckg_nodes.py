@@ -16,6 +16,7 @@ from sqlalchemy import (
     String,
     Text,
     DateTime,
+    Float,
     ForeignKey,
     Index,
     Enum as SQLEnum,
@@ -24,7 +25,7 @@ from sqlalchemy import (
 from sqlalchemy.dialects.postgresql import UUID, JSONB
 from sqlalchemy.sql import func
 
-from backend.app.models import Base
+from app.models import Base
 
 
 # =============================================================================
@@ -47,6 +48,36 @@ class SetTheoryRelation(str, Enum):
     CONTINGENT_SATISFIES = "CONTINGENT_SATISFIES"
     INTERSECTS_WITH = "INTERSECTS_WITH"
     NO_RELATIONSHIP = "NO_RELATIONSHIP"
+
+
+class SemanticRelation(str, Enum):
+    """
+    Formal 2D Dimension 1: Semantic Relationship (Source-relative perspective).
+    - EQUIVALENT: Scope, intent, and actionable mandates are 1-to-1 identical.
+    - SUBSET_OF: Source is subset of Target (Target completely satisfies Source: A ⊆ B).
+    - SUPERSET_OF: Source is superset of Target (Target partially addresses Source: A ⊇ B).
+    - OVERLAPS: Material conceptual overlap without strict containment.
+    - SUPPORTS: Target provides enabling governance/budgeting/support without satisfying the mandate.
+    - NONE: Unrelated.
+    """
+    EQUIVALENT = "EQUIVALENT"
+    SUBSET_OF = "SUBSET_OF"
+    SUPERSET_OF = "SUPERSET_OF"
+    OVERLAPS = "OVERLAPS"
+    SUPPORTS = "SUPPORTS"
+    NONE = "NONE"
+
+
+class AssuranceCoverage(str, Enum):
+    """
+    Formal 2D Dimension 2: Assurance Coverage (Audit defensibility).
+    - FULL_COVERAGE: Implementing Target control completely satisfies Source obligation.
+    - PARTIAL_COVERAGE: Implementing Target control satisfies part of Source obligation.
+    - NO_COVERAGE: Implementing Target control does NOT satisfy Source obligation (e.g. only supports/enables).
+    """
+    FULL_COVERAGE = "FULL_COVERAGE"
+    PARTIAL_COVERAGE = "PARTIAL_COVERAGE"
+    NO_COVERAGE = "NO_COVERAGE"
 
 
 
@@ -128,6 +159,8 @@ class ControlObjectiveNode(Base):
     objective_text = Column(Text, nullable=False)
     owner = Column(String(255))
 
+    valid_from = Column(DateTime(timezone=True), server_default=func.now())
+    valid_to = Column(DateTime(timezone=True), nullable=True)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
 
@@ -144,6 +177,8 @@ class ControlObjectiveNode(Base):
             "objective_name": self.objective_name,
             "objective_text": self.objective_text,
             "owner": self.owner,
+            "valid_from": self.valid_from.isoformat() if self.valid_from else None,
+            "valid_to": self.valid_to.isoformat() if self.valid_to else None,
             "created_at": self.created_at.isoformat() if self.created_at else None,
             "updated_at": self.updated_at.isoformat() if self.updated_at else None,
         }
@@ -164,6 +199,8 @@ class ControlActivityNode(Base):
     activity_text = Column(Text, nullable=False)
     implementation_method = Column(String(100), default="AUTOMATED")  # AUTOMATED, MANUAL, HYBRID
 
+    valid_from = Column(DateTime(timezone=True), server_default=func.now())
+    valid_to = Column(DateTime(timezone=True), nullable=True)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
 
@@ -180,6 +217,8 @@ class ControlActivityNode(Base):
             "activity_name": self.activity_name,
             "activity_text": self.activity_text,
             "implementation_method": self.implementation_method,
+            "valid_from": self.valid_from.isoformat() if self.valid_from else None,
+            "valid_to": self.valid_to.isoformat() if self.valid_to else None,
             "created_at": self.created_at.isoformat() if self.created_at else None,
             "updated_at": self.updated_at.isoformat() if self.updated_at else None,
         }
@@ -267,6 +306,8 @@ class RiskNode(Base):
     category = Column(String(100), default="OPERATIONAL", index=True)
     severity_level = Column(String(50), default="MEDIUM", index=True)
 
+    valid_from = Column(DateTime(timezone=True), server_default=func.now())
+    valid_to = Column(DateTime(timezone=True), nullable=True)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
 
@@ -278,6 +319,8 @@ class RiskNode(Base):
             "description": self.description,
             "category": self.category,
             "severity_level": self.severity_level,
+            "valid_from": self.valid_from.isoformat() if self.valid_from else None,
+            "valid_to": self.valid_to.isoformat() if self.valid_to else None,
             "created_at": self.created_at.isoformat() if self.created_at else None,
             "updated_at": self.updated_at.isoformat() if self.updated_at else None,
         }
@@ -291,11 +334,16 @@ class GapNode(Base):
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
     gap_id = Column(String(255), nullable=False, unique=True, index=True)
-    target_entity_type = Column(String(100), nullable=False, index=True)  # e.g., 'Obligation', 'ControlObjective'
-    target_entity_id = Column(UUID(as_uuid=True), nullable=False, index=True)
-    set_theory_relation = Column(SQLEnum(SetTheoryRelation), nullable=False)
-    severity = Column(SQLEnum(GapSeverity), default=GapSeverity.MEDIUM, nullable=False)
-    state = Column(SQLEnum(GapState), default=GapState.NEW, nullable=False, index=True)
+    target_entity_type = Column(String(100), nullable=True, index=True)  # e.g., 'Obligation', 'ControlObjective'
+    target_entity_id = Column(UUID(as_uuid=True), nullable=True, index=True)
+    source_obligation_id = Column(String(255), nullable=True)
+    source_obligation_text = Column(Text, nullable=True)
+    target_control_text = Column(Text, nullable=True)
+    clause_citation = Column(String(255), nullable=True)
+    framework = Column(String(255), nullable=True, default="NIST-800-53")
+    set_theory_relation = Column(String(50), nullable=True)
+    severity = Column(String(50), default="MEDIUM", nullable=True)
+    state = Column(String(50), default="NEW", nullable=True, index=True)
     due_date = Column(DateTime(timezone=True))
     reviewer_id = Column(String(255))
 
@@ -509,11 +557,86 @@ class ControlActivityFrameworkMapping(Base):
     revert_reason = Column(Text)
     rationale = Column(Text)
 
+
+class ObligationFrameworkMapping(Base):
+    """Direct Public Crosswalk: Obligation <---> Framework Control Objective (CROSSWALKS_TO)"""
+    __tablename__ = "obligation_framework_mappings"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
+    obligation_id = Column(UUID(as_uuid=True), ForeignKey("obligations.id"), nullable=False, index=True)
+    framework_objective_id = Column(UUID(as_uuid=True), ForeignKey("framework_control_objectives.id"), nullable=False, index=True)
+
+    # Legacy field (optional for backward compatibility)
+    set_theory_relation = Column(SQLEnum(SetTheoryRelation), nullable=True)
+    
+    # 2D Dimension 1: Semantic Relationship (Source-relative perspective)
+    semantic_relation = Column(SQLEnum(SemanticRelation), nullable=False, default=SemanticRelation.NONE)
+    # 2D Dimension 2: Assurance Coverage (Audit Defensibility)
+    assurance_coverage = Column(SQLEnum(AssuranceCoverage), nullable=False, default=AssuranceCoverage.NO_COVERAGE)
+
+    condition_clause = Column(Text)
+    confidence_score = Column(String(10), default="0.00")
+    logic_judge_score = Column(String(10), default="0.00")
+    technical_judge_score = Column(String(10), default="0.00")
+    status = Column(SQLEnum(MappingStatus), default=MappingStatus.PROBABILISTIC_AI, nullable=False)
+    is_golden_assertion = Column(String(10), default="FALSE", index=True)
+    model_version = Column(String(100))
+    prompt_version = Column(String(100))
+    embedding_model = Column(String(100))
+    rationale = Column(Text)
+
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
 
+    __table_args__ = (
+        UniqueConstraint("obligation_id", "framework_objective_id", name="uq_obl_fw_mapping"),
+    )
+
+
+class RiskFrameworkMapping(Base):
+    """Direct Public Linkage: Risk <---> Framework Control Objective (MITIGATED_BY)"""
+    __tablename__ = "risk_framework_mappings"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
+    risk_id = Column(UUID(as_uuid=True), ForeignKey("risks.id"), nullable=False, index=True)
+    framework_objective_id = Column(UUID(as_uuid=True), ForeignKey("framework_control_objectives.id"), nullable=False, index=True)
+
+    confidence_score = Column(String(10), default="0.00")
+    status = Column(SQLEnum(MappingStatus), default=MappingStatus.PROBABILISTIC_AI, nullable=False)
+    rationale = Column(Text)
+
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
+
+    __table_args__ = (
+        UniqueConstraint("risk_id", "framework_objective_id", name="uq_risk_fw_mapping"),
+    )
+
+
+class FrameworkCrosswalkMapping(Base):
+    """Direct Inter-Framework Crosswalk: Framework Objective <---> Framework Objective (e.g. CSA CCM <-> NIST)"""
+    __tablename__ = "framework_crosswalk_mappings"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
+    source_framework_obj_id = Column(UUID(as_uuid=True), ForeignKey("framework_control_objectives.id"), nullable=False, index=True)
+    target_framework_obj_id = Column(UUID(as_uuid=True), ForeignKey("framework_control_objectives.id"), nullable=False, index=True)
+
+    set_theory_relation = Column(SQLEnum(SetTheoryRelation), nullable=False)
+    confidence_score = Column(String(10), default="0.00")
+    status = Column(SQLEnum(MappingStatus), default=MappingStatus.PROBABILISTIC_AI, nullable=False)
+    is_golden_assertion = Column(String(10), default="FALSE", index=True)
+    rationale = Column(Text)
+
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
+
+    __table_args__ = (
+        UniqueConstraint("source_framework_obj_id", "target_framework_obj_id", name="uq_fw_crosswalk_mapping"),
+    )
+
 
 from sqlalchemy import JSON
+
 
 
 class GraphOutboxLog(Base):
@@ -523,7 +646,9 @@ class GraphOutboxLog(Base):
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
     primitive = Column(String(50), nullable=False)
     payload = Column(JSON().with_variant(JSONB, "postgresql"), nullable=False)
-    status = Column(String(20), default="PENDING", nullable=False, index=True)  # PENDING, PROCESSED, FAILED
+    status = Column(String(30), default="PENDING", nullable=False, index=True)  # PENDING, EXECUTED, FAILED, PENDING_HITL_REVIEW, PENDING_JUDGE_REVIEW, GOVERNANCE_BLOCKED
+    judge_logic_score = Column(Float, nullable=True)
+    judge_technical_score = Column(Float, nullable=True)
     retry_count = Column(String(10), default="0")
     error_message = Column(Text)
     created_at = Column(DateTime(timezone=True), server_default=func.now())

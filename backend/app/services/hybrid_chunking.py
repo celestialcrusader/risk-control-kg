@@ -464,3 +464,75 @@ def _store_chunks_in_minio(chunks: List[dict], doc_id: str) -> None:
         data=json.dumps(manifest, indent=2).encode("utf-8"),
         content_type="application/json",
     )
+
+
+# =============================================================================
+# De Jure Clause-Boundary Rule Unit Extractor (RCKG-203)
+# =============================================================================
+
+from pydantic import BaseModel, Field
+
+
+class ClauseChunk(BaseModel):
+    section_reference: str
+    heading_title: str
+    chunk_text: str
+    word_count: int
+
+
+class ClauseBoundaryExtractor:
+    """De Jure Clause-Boundary Rule Unit Extractor for statutory prose."""
+
+    # Statutory Clause Heading Patterns: Article X.Y, Section X.Y, Clause X.Y, Annex X, or 3.1 / 3.1.1
+    CLAUSE_HEADER_PATTERN = re.compile(
+        r"^((?:Article|Section|Clause|Art\.|Annex)\s+[\w\.\-]+|\d+\.\d+(?:\.\d+)*)\b\s*(.*)$",
+        re.IGNORECASE | re.MULTILINE
+    )
+
+
+    def extract_clauses(self, markdown_text: str) -> List[ClauseChunk]:
+        """Split statutory markdown text into complete legal clause chunks."""
+        if not markdown_text or not markdown_text.strip():
+            return []
+
+        lines = markdown_text.splitlines()
+        chunks = []
+        current_sec_ref = "General"
+        current_heading = "Overview"
+        current_lines = []
+
+        for line in lines:
+            match = self.CLAUSE_HEADER_PATTERN.match(line.strip())
+            if match:
+                # Save previous section if lines exist
+                if current_lines:
+                    text_block = "\n".join(current_lines).strip()
+                    if text_block:
+                        chunks.append(
+                            ClauseChunk(
+                                section_reference=current_sec_ref,
+                                heading_title=current_heading,
+                                chunk_text=text_block,
+                                word_count=len(text_block.split()),
+                            )
+                        )
+                current_sec_ref = match.group(1).strip()
+                current_heading = match.group(2).strip() if match.group(2) else current_sec_ref
+                current_lines = [line.strip()]
+            else:
+                current_lines.append(line)
+
+        # Save remaining section
+        if current_lines:
+            text_block = "\n".join(current_lines).strip()
+            if text_block:
+                chunks.append(
+                    ClauseChunk(
+                        section_reference=current_sec_ref,
+                        heading_title=current_heading,
+                        chunk_text=text_block,
+                        word_count=len(text_block.split()),
+                    )
+                )
+
+        return chunks

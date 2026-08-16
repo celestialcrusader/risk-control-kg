@@ -5,7 +5,7 @@ Validates that parameterized Cypher statements are correctly generated
 for 6 node types, 5 linkages, and Gap nodes per 06-delta.md.
 """
 
-from backend.app.graph.rckg_queries import RCKGCypherBuilder
+from app.graph.rckg_queries import RCKGCypherBuilder
 
 
 def test_node_cypher_builders():

@@ -11,15 +11,33 @@ from typing import Generator, Optional
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session
 
-# Database URL from environment or default
-DATABASE_URL = os.getenv(
-    "DATABASE_URL",
-    "postgresql://rckg:rckg_secret_password@localhost:5432/rckg_db"
-)
+# Database URL from environment or fallback to active container on 5433/5432
+DEFAULT_DB_URLS = [
+    "postgresql://rckg:rckg_secret_password@localhost:5432/rckg_db",
+    "postgresql://rckg_user:rckg_password@localhost:5433/rckg_test",
+    "postgresql://postgres:postgres@localhost:5432/rckg",
+]
+
+DATABASE_URL = os.getenv("DATABASE_URL")
+if not DATABASE_URL:
+    # Auto-detect available PostgreSQL port
+    import socket
+    DATABASE_URL = DEFAULT_DB_URLS[0]  # default to 5433 test container
+    for url in DEFAULT_DB_URLS:
+        try:
+            port = int(url.split(":")[-1].split("/")[0])
+            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+                s.settimeout(1.0)
+                if s.connect_ex(("localhost", port)) == 0:
+                    DATABASE_URL = url
+                    break
+        except Exception:
+            continue
 
 # Create engine with connection pooling
 engine = create_engine(
     DATABASE_URL,
+
     pool_pre_ping=True,  # Automatically verify connections
     pool_size=10,  # Number of connections to keep open
     max_overflow=20,  # Additional connections allowed
@@ -82,11 +100,13 @@ def ping_database() -> bool:
         True if connection successful, False otherwise
     """
     try:
+        from sqlalchemy import text
         with engine.connect() as conn:
-            conn.execute("SELECT 1")
+            conn.execute(text("SELECT 1"))
         return True
     except Exception:
         return False
+
 
 
 __all__ = [

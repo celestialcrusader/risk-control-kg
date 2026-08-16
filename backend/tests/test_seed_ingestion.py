@@ -11,7 +11,7 @@ import pytest
 from pathlib import Path
 from sqlalchemy.orm import Session
 
-from backend.app.models.rckg_nodes import (
+from app.models.rckg_nodes import (
     FrameworkControlObjectiveNode,
     FrameworkControlActivityNode,
     ControlObjectiveFrameworkMapping,
@@ -60,7 +60,7 @@ def temp_nist_xml_file():
 
 def test_nist_olir_xml_parser(temp_nist_xml_file):
     """AC-1: Verify NistOlirXmlParser extracts focal and referenced elements."""
-    from backend.app.services.seed_ingestion import NistOlirXmlParser
+    from app.services.seed_ingestion import NistOlirXmlParser
 
     parser = NistOlirXmlParser(temp_nist_xml_file)
     parsed = parser.parse()
@@ -84,7 +84,7 @@ def test_nist_olir_xml_parser(temp_nist_xml_file):
 
 def test_compliance_seed_ingester(temp_nist_xml_file, db_session):
     """AC-3 & AC-4: Verify ComplianceSeedIngester writes framework nodes and edges to DB."""
-    from backend.app.services.seed_ingestion import ComplianceSeedIngester
+    from app.services.seed_ingestion import ComplianceSeedIngester
 
     ingester = ComplianceSeedIngester(db_session=db_session)
     stats = ingester.ingest_file(source_type="NIST_OLIR", file_path=temp_nist_xml_file)

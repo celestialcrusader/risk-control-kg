@@ -72,11 +72,12 @@ services:
     volumes:
       - memgraph_data:/opt/memgraph/storage
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:7688"]
+      test: ["CMD", "/usr/lib/memgraph/memgraph", "--version"]
       interval: 10s
       timeout: 5s
       retries: 5
-      start_period: 30s
+      start_period: 5s
+
     networks:
       - rckg-net
     mem_limit: 32gb
@@ -93,11 +94,12 @@ services:
     volumes:
       - qdrant_storage:/qdrant/storage
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:6333"]
+      test: ["CMD", "./qdrant", "--version"]
       interval: 10s
       timeout: 5s
       retries: 5
-      start_period: 30s
+      start_period: 5s
+
     networks:
       - rckg-net
     deploy:
@@ -122,11 +124,11 @@ services:
       - minio_data:/data
     command: server /data --console-address ":9001"
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      test: ["CMD-SHELL", "exec 3<>/dev/tcp/127.0.0.1/9000 || exit 1"]
       interval: 10s
       timeout: 5s
       retries: 5
-      start_period: 30s
+      start_period: 10s
     networks:
       - rckg-net
 
@@ -181,7 +183,7 @@ services:
     restart: unless-stopped
     environment:
       TEMPORAL_CLI_ADDRESS: :7233
-      DB: postgresql
+      DB: postgres12
       DB_PORT: 5432
       POSTGRES_USER: ${POSTGRES_USER:-rckg}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-rckg_secret_password}
@@ -202,10 +204,11 @@ services:
   # Langfuse - Observability Platform
   # ============================================
   langfuse:
-    image: langfuse/langfuse:latest
+    image: langfuse/langfuse:2
     container_name: rckg-langfuse
     restart: unless-stopped
     environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-rckg}:${POSTGRES_PASSWORD:-rckg_secret_password}@postgres:5432/${POSTGRES_DB:-rckg_db}
       SALT: ${LANGFUSE_SALT:-rckg_secret_salt}
       NEXTAUTH_SECRET: ${LANGFUSE_NEXTAUTH_SECRET:-rckg_nextauth_secret}
       NEXTAUTH_URL: http://localhost:3000
@@ -215,7 +218,7 @@ services:
       PostgreSQL_PASSWORD: ${POSTGRES_PASSWORD:-rckg_secret_password}
       PostgreSQL_DATABASE: ${POSTGRES_DB:-rckg_db}
       OPENAI_API_KEY: ${LANGFUSE_OPENAI_API_KEY:-}
-      DATA_INGESTION_BACKEND: clickhouse
+      TELEMETRY_ENABLED: "false"
     ports:
       - "${LANGFUSE_PORT:-3000}:3000"
     depends_on:
@@ -223,6 +226,7 @@ services:
         condition: service_healthy
     networks:
       - rckg-net
+
 
   # ============================================
   # Zookeeper - Kafka Coordination
@@ -255,7 +259,8 @@ services:
     environment:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092,PLAINTEXT_HOST://0.0.0.0:29092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
@@ -266,17 +271,13 @@ services:
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
     ports:
       - "${KAFKA_PORT:-9092}:9092"
+      - "29092:29092"
     depends_on:
       zookeeper:
         condition: service_healthy
-    healthcheck:
-      test: ["CMD-SHELL", "echo ' kafka-broker-api-versions --bootstrap-server localhost:9092 ' | nc -w 3 localhost 9092 || exit 1"]
-      interval: 10s
-      timeout: 10s
-      retries: 10
-      start_period: 90s
     networks:
       - rckg-net
+
 
 # ============================================
 # Named Volumes for Data Persistence

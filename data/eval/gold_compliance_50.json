@@ -1,0 +1,20 @@
+[
+  {
+    "clause_id": "MAS-TRM-3.1.2(a)",
+    "extracted_parent_id": "MAS-TRM-3.1.2",
+    "extracted_modality": "OBLIGATION",
+    "ground_truth": {
+      "parent_clause_id": "MAS-TRM-3.1.2",
+      "modality": "OBLIGATION"
+    }
+  },
+  {
+    "clause_id": "MAS-TRM-3.1.2(b)",
+    "extracted_parent_id": "MAS-TRM-3.1.2",
+    "extracted_modality": "OBLIGATION",
+    "ground_truth": {
+      "parent_clause_id": "MAS-TRM-3.1.2",
+      "modality": "OBLIGATION"
+    }
+  }
+]

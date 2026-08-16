@@ -91,7 +91,11 @@ class KafkaProducer:
         except Exception as e:
             logger.error("Failed to publish to topic '%s': %s", topic, e)
         finally:
-            producer.flush()
+            try:
+                producer.flush(timeout=1.0)
+            except Exception:
+                pass
+
 
     @staticmethod
     def _delivery_report(err, msg) -> None:

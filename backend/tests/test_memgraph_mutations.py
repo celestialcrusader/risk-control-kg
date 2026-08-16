@@ -3,8 +3,8 @@ TDD Tests for Parameterized Cypher Builders and Dual-Write Atomicity (RCKG-104).
 """
 
 import pytest
-from backend.app.graph.rckg_queries import RCKGCypherBuilder
-from backend.app.services.graph_compiler import ClosedSetPrimitive, GraphMutationDiff
+from app.graph.rckg_queries import RCKGCypherBuilder
+from app.services.graph_compiler import ClosedSetPrimitive, GraphMutationDiff
 
 
 def test_cypher_builder_supersede_node():
@@ -36,7 +36,9 @@ def test_cypher_builder_reclassify_and_deprecate_edge():
 
 def test_memgraph_service_execute_mutation(db_session):
     """AC-1 & AC-3: MemgraphService maps GraphMutationDiff to parameterized execution and outbox logging."""
-    from backend.app.services.memgraph_service import MemgraphService
+    from unittest.mock import patch, MagicMock
+    from app.services.memgraph_service import MemgraphService
+    from app.services.dual_judge_async import DualJudgeAuditResult
 
     service = MemgraphService(db_session=db_session)
     mutation = GraphMutationDiff(
@@ -48,15 +50,27 @@ def test_memgraph_service_execute_mutation(db_session):
         confidence_score=0.95,
     )
 
-    outbox_entry = service.enqueue_and_execute(mutation)
+    mock_judge = MagicMock()
+    mock_judge.evaluate_single.return_value = DualJudgeAuditResult(
+        source_id="OBJ-001",
+        target_id="OBL-001",
+        logic_judge_score=1.0,
+        technical_judge_score=1.0,
+        verdict="APPROVED",
+    )
+
+    with patch("app.services.dual_judge_async.AsynchronousDualJudgeService", return_value=mock_judge):
+        outbox_entry = service.enqueue_and_execute(mutation)
     assert outbox_entry is not None
-    assert outbox_entry.status == "PROCESSED"
+    assert outbox_entry.status == "EXECUTED"
     assert outbox_entry.primitive == "ADD_EDGE"
 
 
 def test_memgraph_service_supersede_node_execution(db_session):
     """AC-2 & AC-4: Test dual-write atomicity for SUPERSEDE_NODE primitive."""
-    from backend.app.services.memgraph_service import MemgraphService
+    from unittest.mock import patch, MagicMock
+    from app.services.memgraph_service import MemgraphService
+    from app.services.dual_judge_async import DualJudgeAuditResult
 
     service = MemgraphService(db_session=db_session)
     mutation = GraphMutationDiff(
@@ -67,6 +81,16 @@ def test_memgraph_service_supersede_node_execution(db_session):
         metadata={"reason": "Policy version upgrade"},
     )
 
-    outbox_entry = service.enqueue_and_execute(mutation)
-    assert outbox_entry.status == "PROCESSED"
+    mock_judge = MagicMock()
+    mock_judge.evaluate_single.return_value = DualJudgeAuditResult(
+        source_id="OBJ-OLD-01",
+        target_id="OBJ-NEW-01",
+        logic_judge_score=1.0,
+        technical_judge_score=1.0,
+        verdict="APPROVED",
+    )
+
+    with patch("app.services.dual_judge_async.AsynchronousDualJudgeService", return_value=mock_judge):
+        outbox_entry = service.enqueue_and_execute(mutation)
+    assert outbox_entry.status == "EXECUTED"
     assert outbox_entry.payload["target_node_id"] == "OBJ-NEW-01"

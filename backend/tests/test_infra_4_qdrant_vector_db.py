@@ -21,6 +21,8 @@ try:
 except ImportError:
     QDRANT_AVAILABLE = False
 
+pytestmark = pytest.mark.skipif(not QDRANT_AVAILABLE, reason="qdrant-client not installed")
+
 # Test configuration
 PROJECT_ROOT = Path(__file__).parent.parent.parent
 

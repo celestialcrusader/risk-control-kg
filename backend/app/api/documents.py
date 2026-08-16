@@ -123,8 +123,8 @@ def trigger_seed_ingestion(source_type: str = "NIST_OLIR", file_path: str = "dat
     
     POST /api/v1/documents/ingest-seed
     """
-    from backend.app.core.database import SessionLocal
-    from backend.app.services.seed_ingestion import ComplianceSeedIngester
+    from app.core.database import SessionLocal
+    from app.services.seed_ingestion import ComplianceSeedIngester
 
     try:
         db = SessionLocal()

@@ -805,10 +805,10 @@ class TestGracefulDegradation:
 
         mock_judgment_json = json.dumps({
             "judgment": {
-                "metadata_accuracy": 0.90,
-                "legal_alignment": 0.85,
-                "semantics": 0.92,
-                "overall_score": 0.89,
+                "metadata_accuracy": 0.96,
+                "legal_alignment": 0.96,
+                "semantics": 0.96,
+                "overall_score": 0.96,
                 "status": "approved",
                 "feedback": "Good quality.",
             }

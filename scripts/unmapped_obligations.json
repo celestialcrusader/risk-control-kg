@@ -1,0 +1,85 @@
+{
+  "total_obligations": 85,
+  "mapped_count": 72,
+  "unmapped_count": 13,
+  "unmapped_obligations": [
+    {
+      "id": "MAS-1.4(b).1",
+      "statement_text": "The Financial Institution must adopt a defence-in-depth approach to strengthen cyber resilience.",
+      "framework": "MAS TRM",
+      "action_verb": "adopt"
+    },
+    {
+      "id": "MAS-6.5.1",
+      "statement_text": "The Financial Institution must manage shadow IT as part of its information assets.",
+      "framework": "MAS TRM",
+      "action_verb": "manage"
+    },
+    {
+      "id": "MAS-6.5.3.c",
+      "statement_text": "The Financial Institution must obtain approval before using end-user developed or acquired applications.",
+      "framework": "MAS TRM",
+      "action_verb": "obtain"
+    },
+    {
+      "id": "MAS-6.5.3.d",
+      "statement_text": "The Financial Institution must conduct proper testing before deploying end-user developed or acquired applications.",
+      "framework": "MAS TRM",
+      "action_verb": "conduct"
+    },
+    {
+      "id": "MAS-7.3.1.b",
+      "statement_text": "The Financial Institution must closely monitor the end-of-support dates of its hardware and software.",
+      "framework": "MAS TRM",
+      "action_verb": "monitor"
+    },
+    {
+      "id": "MAS-7.6.1",
+      "statement_text": "The Financial Institution must enforce segregation of duties in the software release process to prevent any single individual from developing, compiling, and moving software codes between environments.",
+      "framework": "MAS TRM",
+      "action_verb": "enforce"
+    },
+    {
+      "id": "MAS-7.6.2",
+      "statement_text": "The Financial Institution must implement controls to maintain traceability and integrity for all software codes moved between IT environments.",
+      "framework": "MAS TRM",
+      "action_verb": "implement"
+    },
+    {
+      "id": "MAS-13.5.2.b",
+      "statement_text": "The Financial Institution must identify the tactics, techniques, and procedures most likely to be used in such attacks.",
+      "framework": "MAS TRM",
+      "action_verb": "identify"
+    },
+    {
+      "id": "MAS-13.6.1.b",
+      "statement_text": "The Financial Institution must define a timeframe to remediate issues of different severity.",
+      "framework": "MAS TRM",
+      "action_verb": "define"
+    },
+    {
+      "id": "MAS-14.1.6.a",
+      "statement_text": "The Financial Institution must actively monitor for phishing campaigns targeting the Financial Institution and its customers.",
+      "framework": "MAS TRM",
+      "action_verb": "monitor"
+    },
+    {
+      "id": "MAS-14.3.2",
+      "statement_text": "The Financial Institution must establish a process to investigate suspicious transactions or payments and ensure issues are adequately and promptly addressed.",
+      "framework": "MAS TRM",
+      "action_verb": "establish"
+    },
+    {
+      "id": "MAS-14.3.3.a",
+      "statement_text": "The Financial Institution must notify customers of suspicious activities or funds transfers exceeding a threshold defined by the Financial Institution or the customers.",
+      "framework": "MAS TRM",
+      "action_verb": "notify"
+    },
+    {
+      "id": "MAS-14.4.2",
+      "statement_text": "The Financial Institution must alert customers on a timely basis to new cyber threats so they can take precautionary measures.",
+      "framework": "MAS TRM",
+      "action_verb": "alert"
+    }
+  ]
+}

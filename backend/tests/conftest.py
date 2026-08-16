@@ -17,30 +17,39 @@ for path in [str(REPO_ROOT), str(BACKEND_ROOT)]:
     if path not in sys.path:
         sys.path.insert(0, path)
 
-from backend.app.models import (
+from app.models import (
     Base,
     ObligationNode,
     ControlObjectiveNode,
     ControlActivityNode,
     FrameworkControlObjectiveNode,
     FrameworkControlActivityNode,
+    ControlObjectiveFrameworkMapping,
     RiskNode,
     GraphOutboxLog,
+    GapNode,
+    AuditLog,
 )
+
+
+from sqlalchemy.pool import StaticPool
 
 
 @pytest.fixture(scope="session")
 def in_memory_db_engine():
     """Create in-memory SQLite database engine for testing model fixtures."""
-    engine = create_engine("sqlite:///:memory:")
+    engine = create_engine("sqlite:///:memory:", connect_args={"check_same_thread": False}, poolclass=StaticPool)
     target_tables = [
         ObligationNode.__table__,
         ControlObjectiveNode.__table__,
         ControlActivityNode.__table__,
         FrameworkControlObjectiveNode.__table__,
         FrameworkControlActivityNode.__table__,
+        ControlObjectiveFrameworkMapping.__table__,
         RiskNode.__table__,
         GraphOutboxLog.__table__,
+        GapNode.__table__,
+        AuditLog.__table__,
     ]
     Base.metadata.create_all(engine, tables=target_tables)
     return engine

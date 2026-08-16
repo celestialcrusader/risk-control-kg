@@ -1,0 +1,127 @@
+# RCKG Consolidated AI Model Matrix Compose Overlays
+# Defines NVIDIA NVFP4 Quantized vLLM Extractor/Judge, OCR Vision Parser, and Embedding services.
+
+version: '3.8'
+
+services:
+  # ============================================
+  # Primary Extractor & Dual-Judge (vLLM OpenAI Port 8000)
+  # Model: nvidia/Qwen3.6-35B-A3B-NVFP4 (NVIDIA 4-Bit FP4)
+  # Ultra-Optimized: FP8 KV-cache, FlashInfer attention, Marlin MoE, Speculative Decoding (MTP)
+  # ============================================
+  vllm-extractor:
+    image: vllm/vllm-openai:latest
+    container_name: rckg-vllm-extractor
+    restart: unless-stopped
+    ipc: host
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
+    environment:
+      - HUGGING_FACE_HUB_TOKEN=${HF_TOKEN:-}
+      - CUDA_VISIBLE_DEVICES=0
+    volumes:
+      - ~/.cache/huggingface:/root/.cache/huggingface
+    command: >
+      nvidia/Qwen3.6-35B-A3B-NVFP4
+      --host 0.0.0.0
+      --port 8000
+      --tensor-parallel-size 1
+      --trust-remote-code
+      --kv-cache-dtype fp8
+      --attention-backend flashinfer
+      --moe-backend marlin
+      --gpu-memory-utilization 0.4
+      --max-model-len 262144
+      --max-num-seqs 4
+      --max-num-batched-tokens 8192
+      --enable-chunked-prefill
+      --async-scheduling
+      --enable-prefix-caching
+      --speculative-config '{"method":"mtp","num_speculative_tokens":3,"moe_backend":"triton"}'
+      --load-format fastsafetensors
+      --reasoning-parser qwen3
+      --tool-call-parser qwen3_xml
+      --enable-auto-tool-choice
+    ports:
+      - "8000:8000"
+    networks:
+      - rckg-net
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  # ============================================
+  # Multimodal Vision OCR Parser (vLLM Vision Port 8002)
+  # ============================================
+  vllm-ocr:
+    image: vllm/vllm-openai:latest
+    container_name: rckg-vllm-ocr
+    restart: unless-stopped
+    ipc: host
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
+    environment:
+      - HUGGING_FACE_HUB_TOKEN=${HF_TOKEN:-}
+      - CUDA_VISIBLE_DEVICES=0
+    volumes:
+      - ~/.cache/huggingface:/root/.cache/huggingface
+    command: >
+      PaddlePaddle/PaddleOCR-VL-1.6
+      --port 8002
+      --max-model-len 4096
+      --trust-remote-code
+      --gpu-memory-utilization 0.08
+    ports:
+      - "8002:8002"
+    networks:
+      - rckg-net
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  # ============================================
+  # Dense Embedding & Reranker Service (vLLM Embedding Port 8003)
+  # ============================================
+  vllm-embedding:
+    image: vllm/vllm-openai:latest
+    container_name: rckg-vllm-embedding
+    restart: unless-stopped
+    ipc: host
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
+    environment:
+      - HUGGING_FACE_HUB_TOKEN=${HF_TOKEN:-}
+      - CUDA_VISIBLE_DEVICES=0
+    volumes:
+      - ~/.cache/huggingface:/root/.cache/huggingface
+    command: >
+      Qwen/Qwen3-Embedding-8B
+      --port 8003
+      --gpu-memory-utilization 0.08
+    ports:
+      - "8003:8003"
+    networks:
+      - rckg-net
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+networks:
+  rckg-net:
+    name: rckg_rckg-net
+    external: true

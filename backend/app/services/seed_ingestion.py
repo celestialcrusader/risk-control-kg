@@ -9,7 +9,7 @@ import xml.etree.ElementTree as ET
 from typing import Dict, Any, List
 from sqlalchemy.orm import Session
 
-from backend.app.models.rckg_nodes import (
+from app.models.rckg_nodes import (
     FrameworkControlObjectiveNode,
     FrameworkControlActivityNode,
     ControlObjectiveFrameworkMapping,
@@ -142,24 +142,93 @@ class ComplianceSeedIngester:
             parser = NistOlirXmlParser(file_path)
         elif source_type == "CSA_CCM":
             parser = CcmExcelParser(file_path)
+        elif source_type == "NIST_OSCAL_YAML":
+            from app.services.parsers.oscal_parser import OscalYamlCatalogParser
+            parser = OscalYamlCatalogParser(file_path)
         else:
             raise ValueError(f"Unsupported seed source type: {source_type}")
 
         parsed_data = parser.parse()
 
         node_count = 0
-        for n in parsed_data["nodes"]:
-            db_node = FrameworkControlObjectiveNode(
-                framework_obj_id=n["framework_obj_id"],
-                framework_name=n["framework_name"],
-                framework_version=n["framework_version"],
-                objective_name=n["objective_name"],
-                objective_text=n["objective_text"],
+        # If parser provided pre-separated objectives and activities, use them directly
+        if "objectives" in parsed_data and "activities" in parsed_data:
+            for obj in parsed_data["objectives"]:
+                db_obj = FrameworkControlObjectiveNode(
+                    framework_obj_id=obj["framework_obj_id"],
+                    framework_name=obj["framework_name"],
+                    framework_version=obj["framework_version"],
+                    objective_name=obj["objective_name"],
+                    objective_text=obj["objective_text"],
+                )
+                self.db.merge(db_obj)
+                node_count += 1
+
+            for act in parsed_data["activities"]:
+                db_act = FrameworkControlActivityNode(
+                    framework_act_id=act["framework_act_id"],
+                    framework_name=act["framework_name"],
+                    framework_version=act["framework_version"],
+                    activity_name=act["activity_name"],
+                    activity_text=act["activity_text"],
+                )
+                self.db.merge(db_act)
+                node_count += 1
+        else:
+            for n in parsed_data.get("nodes", []):
+                node_id = n.get("framework_obj_id") or n.get("framework_act_id", "")
+                if ("(" in node_id and ")" in node_id) or n.get("is_activity"):
+                    db_node = FrameworkControlActivityNode(
+                        framework_act_id=node_id,
+                        framework_name=n["framework_name"],
+                        framework_version=n["framework_version"],
+                        activity_name=n.get("activity_name") or n.get("objective_name", ""),
+                        activity_text=n.get("activity_text") or n.get("objective_text", ""),
+                    )
+                else:
+                    db_node = FrameworkControlObjectiveNode(
+                        framework_obj_id=node_id,
+                        framework_name=n["framework_name"],
+                        framework_version=n["framework_version"],
+                        objective_name=n["objective_name"],
+                        objective_text=n["objective_text"],
+                    )
+                self.db.merge(db_node)
+                node_count += 1
+
+
+        edge_count = 0
+        for e in parsed_data.get("edges", []):
+            try:
+                rel = e.get("relation", "EQUIVALENT_TO")
+                rel_enum = SetTheoryRelation[rel] if rel in SetTheoryRelation.__members__ else SetTheoryRelation.EQUIVALENT_TO
+            except Exception:
+                rel_enum = SetTheoryRelation.EQUIVALENT_TO
+
+            import uuid
+            co_raw = e.get("control_objective_id") or e.get("source_id")
+            try:
+                co_uuid = uuid.UUID(str(co_raw))
+            except Exception:
+                co_uuid = uuid.uuid4()
+
+            fo_raw = e.get("framework_objective_id") or e.get("target_id")
+            try:
+                fo_uuid = uuid.UUID(str(fo_raw))
+            except Exception:
+                fo_uuid = uuid.uuid4()
+
+            db_edge = ControlObjectiveFrameworkMapping(
+                control_objective_id=co_uuid,
+                framework_objective_id=fo_uuid,
+                set_theory_relation=rel_enum,
+                status=e.get("status", "HUMAN_ATTESTED"),
+                is_golden_assertion="TRUE" if e.get("is_golden", True) else "FALSE",
             )
-            self.db.merge(db_node)
-            node_count += 1
+            self.db.merge(db_edge)
+            edge_count += 1
 
         self.db.commit()
 
-        logger.info(f"Ingested {node_count} seed framework nodes and {len(parsed_data['edges'])} seed edges.")
-        return {"nodes": node_count, "edges": len(parsed_data["edges"])}
+        logger.info(f"Ingested {node_count} seed framework nodes and {edge_count} seed edges.")
+        return {"nodes": node_count, "edges": edge_count}

@@ -16,6 +16,7 @@ from sqlalchemy import (
     Text,
     DateTime,
     Integer,
+    JSON,
     ForeignKey,
     UniqueConstraint,
     CheckConstraint,
@@ -344,11 +345,15 @@ class AuditLog(Base):
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4)
     event_type = Column(String(100), nullable=False, index=True)
-    event_data = Column(JSONB, nullable=False)
+    event_data = Column(JSON().with_variant(JSONB, "postgresql"), nullable=False)
     actor_id = Column(String(255))
     actor_type = Column(String(50), default="user")
     timestamp = Column(DateTime(timezone=True), server_default=func.now(), index=True)
-    ip_address = Column(INET)
+
+    @property
+    def payload(self) -> dict:
+        return self.event_data or {}
+    ip_address = Column(String(45).with_variant(INET, "postgresql"))
     user_agent = Column(String(512))
     request_id = Column(UUID(as_uuid=True), default=uuid4, index=True)
 
@@ -489,7 +494,7 @@ class SchemaMigration(Base):
 
 
 # Import Pure RCKG Graph Node and Linkage Models
-from backend.app.models.rckg_nodes import (
+from app.models.rckg_nodes import (
     SetTheoryRelation,
     GapSeverity,
     GapState,
@@ -507,6 +512,9 @@ from backend.app.models.rckg_nodes import (
     ControlObjectiveActivityMapping,
     ControlObjectiveFrameworkMapping,
     ControlActivityFrameworkMapping,
+    ObligationFrameworkMapping,
+    RiskFrameworkMapping,
+    FrameworkCrosswalkMapping,
     GraphOutboxLog,
 )
 
@@ -543,7 +551,11 @@ __all__ = [
     "ControlObjectiveActivityMapping",
     "ControlObjectiveFrameworkMapping",
     "ControlActivityFrameworkMapping",
+    "ObligationFrameworkMapping",
+    "RiskFrameworkMapping",
+    "FrameworkCrosswalkMapping",
     "GraphOutboxLog",
 ]
+
 
 

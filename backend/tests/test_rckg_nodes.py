@@ -11,7 +11,7 @@ from datetime import datetime, timedelta
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from backend.app.models import (
+from app.models import (
     Base,
     SetTheoryRelation,
     GapSeverity,

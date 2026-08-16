@@ -6,7 +6,7 @@ import os
 import pytest
 import yaml
 from pathlib import Path
-from backend.app.models.rckg_nodes import (
+from app.models.rckg_nodes import (
     ObligationNode,
     ControlObjectiveNode,
     ControlActivityNode,

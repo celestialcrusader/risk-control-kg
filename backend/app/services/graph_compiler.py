@@ -8,7 +8,7 @@ to produce strictly typed GraphMutationDiff payloads.
 
 import enum
 import logging
-from typing import List, Dict, Any, Optional, Tuple
+from typing import List, Dict, Any, Optional, Tuple, Union
 from pydantic import BaseModel, Field
 
 logger = logging.getLogger(__name__)
@@ -49,39 +49,78 @@ class RuleBasedGraphCompiler:
 
     def compile_mutation(
         self,
-        source_entity: Dict[str, Any],
-        target_entity: Dict[str, Any],
-        cosine_sim: float,
+        source_entity: Union[Dict[str, Any], str] = "UNKNOWN_SOURCE",
+        target_entity: Union[Dict[str, Any], str] = "UNKNOWN_TARGET",
+        cosine_sim: float = 0.85,
+        source_id: Optional[str] = None,
+        target_id: Optional[str] = None,
+        set_theory_relation: Optional[str] = None,
+        cosine_similarity: Optional[float] = None,
     ) -> List[GraphMutationDiff]:
         mutations = []
 
-        s_id = source_entity.get("node_id", "UNKNOWN_SOURCE")
-        t_id = target_entity.get("node_id", "UNKNOWN_TARGET")
+        if isinstance(source_entity, str):
+            s_id = source_entity
+            source_dict = {}
+        else:
+            s_id = source_id or source_entity.get("node_id", "UNKNOWN_SOURCE")
+            source_dict = source_entity
 
-        s_verb = str(source_entity.get("action_verb", "")).strip().lower()
-        s_noun = str(source_entity.get("subject_noun", "")).strip().lower()
-        s_domain = str(source_entity.get("domain_facet", "")).strip().lower()
-        s_modality = str(source_entity.get("modality_facet", "")).strip().upper()
-        s_role = str(source_entity.get("target_role_facet", "")).strip().upper()
-        s_nature = str(source_entity.get("control_nature", "")).strip().upper()
+        if isinstance(target_entity, str):
+            t_id = target_entity
+            target_dict = {}
+        else:
+            t_id = target_id or (target_entity.get("node_id", "UNKNOWN_TARGET") if target_entity else "UNKNOWN_TARGET")
+            target_dict = target_entity or {}
 
-        t_verb = str(target_entity.get("action_verb", "")).strip().lower()
-        t_noun = str(target_entity.get("subject_noun", "")).strip().lower()
-        t_domain = str(target_entity.get("domain_facet", "")).strip().lower()
-        t_modality = str(target_entity.get("modality_facet", "")).strip().upper()
-        t_role = str(target_entity.get("target_role_facet", "")).strip().upper()
-        t_nature = str(target_entity.get("control_nature", "")).strip().upper()
+        if source_id:
+            s_id = source_id
+        if target_id:
+            t_id = target_id
 
-        # Rule 1: Disjoint Entities (cosine < 0.30) -> CREATE_GAP
-        if cosine_sim < 0.30 or (s_domain and t_domain and s_domain != t_domain and cosine_sim < 0.50):
-            gap_type = "MISSING_INTERMEDIATE_POLICY_OBJECTIVE"
-            gap_severity = "HIGH" if cosine_sim < 0.20 else "MEDIUM"
+        sim = cosine_similarity if cosine_similarity is not None else cosine_sim
+
+        # Rule 0: SUBSET_OF relation -> CREATE_GAP (MVP2-203)
+        if set_theory_relation == "SUBSET_OF":
             mutations.append(
                 GraphMutationDiff(
                     primitive=ClosedSetPrimitive.CREATE_GAP,
                     source_node_id=s_id,
                     target_node_id=t_id,
-                    confidence_score=cosine_sim,
+                    confidence_score=sim,
+                    metadata={
+                        "gap_type": "PARTIAL_COVERAGE_SUBSET",
+                        "gap_severity": "MEDIUM",
+                        "set_theory_relation": "SUBSET_OF",
+                    },
+                )
+            )
+            return mutations
+
+        s_verb = str(source_dict.get("action_verb", "")).strip().lower()
+        s_noun = str(source_dict.get("subject_noun", "")).strip().lower()
+        s_domain = str(source_dict.get("domain_facet", "")).strip().lower()
+        s_modality = str(source_dict.get("modality_facet", "")).strip().upper()
+        s_role = str(source_dict.get("target_role_facet", "")).strip().upper()
+        s_nature = str(source_dict.get("control_nature", "")).strip().upper()
+
+        t_verb = str(target_dict.get("action_verb", "")).strip().lower()
+        t_noun = str(target_dict.get("subject_noun", "")).strip().lower()
+        t_domain = str(target_dict.get("domain_facet", "")).strip().lower()
+        t_modality = str(target_dict.get("modality_facet", "")).strip().upper()
+        t_role = str(target_dict.get("target_role_facet", "")).strip().upper()
+        t_nature = str(target_dict.get("control_nature", "")).strip().upper()
+
+        # Rule 1: Disjoint Entities (cosine < 0.30) -> CREATE_GAP
+        if sim < 0.30 or (s_domain and t_domain and s_domain != t_domain and sim < 0.50):
+            gap_type = "MISSING_INTERMEDIATE_POLICY_OBJECTIVE"
+            gap_severity = "HIGH" if sim < 0.20 else "MEDIUM"
+            mutations.append(
+                GraphMutationDiff(
+                    primitive=ClosedSetPrimitive.CREATE_GAP,
+                    source_node_id=s_id,
+                    target_node_id=t_id,
+                    confidence_score=sim,
                     metadata={"gap_type": gap_type, "gap_severity": gap_severity},
                 )
             )
@@ -165,18 +204,8 @@ class RuleBasedGraphCompiler:
             )
             return mutations
 
-        # Fallback: NO_RELATIONSHIP
-        mutations.append(
-            GraphMutationDiff(
-                primitive=ClosedSetPrimitive.ADD_EDGE,
-                source_node_id=s_id,
-                target_node_id=t_id,
-                relationship_type="NO_RELATIONSHIP",
-                set_theory_relation="NO_RELATIONSHIP",
-                confidence_score=cosine_sim,
-            )
-        )
-        return mutations
+        # Fallback: No relationship threshold met -> return empty list (FIX-203)
+        return []
 
     def compile_batch(
         self, pairs: List[Tuple[Dict[str, Any], Dict[str, Any], float]]

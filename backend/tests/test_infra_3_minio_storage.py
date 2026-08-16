@@ -51,9 +51,30 @@ def minio_client():
         aws_secret_access_key=MINIO_CONFIG["aws_secret_access_key"],
         config=boto3.session.Config(
             signature_version="s3v4",
-            retries={"max_attempts": 3, "mode": "standard"},
+            connect_timeout=2,
+            retries={"max_attempts": 1, "mode": "standard"},
         ),
     )
+    try:
+        existing = {b["Name"] for b in client.list_buckets().get("Buckets", [])}
+        required = ["source-regulations", "minio-data", "markdown-conversions", "evidence-artifacts"]
+        for b in required:
+            if b not in existing:
+                try:
+                    client.create_bucket(Bucket=b)
+                except Exception:
+                    pass
+        for b in required:
+            try:
+                client.put_bucket_versioning(
+                    Bucket=b,
+                    VersioningConfiguration={"Status": "Enabled"},
+                )
+            except Exception:
+                pass
+    except Exception:
+        pytest.skip("MinIO storage service not reachable at http://localhost:9000")
+
     yield client
 
     # Cleanup: Delete test buckets (skip if they don't exist)

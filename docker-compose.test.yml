@@ -20,10 +20,12 @@ services:
     image: memgraph/memgraph-platform:latest
     container_name: rckg_memgraph_test
     ports:
+      - "7687:7687"
       - "7688:7687"
-    environment:
-      MEMGRAPH_USER: ""
-      MEMGRAPH_PASSWORD: ""
+      - "3000:3000"
+      - "7444:7444"
+
+
 
   elasticsearch_test:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.11.0
@@ -39,3 +41,15 @@ services:
     container_name: rckg_qdrant_test
     ports:
       - "6334:6333"
+
+  minio_test:
+    image: minio/minio:latest
+    container_name: rckg_minio_test
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: rckg_admin
+      MINIO_ROOT_PASSWORD: rckg_secret_password
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+

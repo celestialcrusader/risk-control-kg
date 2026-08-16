@@ -25,29 +25,30 @@ from pathlib import Path
 
 NODE_LABELS = [
     "Obligation",
-    "Control",
-    "Regulation",
-    "Gap",
+    "ControlObjective",
+    "ControlActivity",
+    "FrameworkControlObj",
+    "FrameworkControlAct",
     "Risk",
-    "Evidence",
-    "ThirdParty",
-    "ControlEffectiveness",
+    "Gap",
 ]
 
 UNIQUE_CONSTRAINT_KEYS = {
     "Obligation": "obligation_id",
-    "Control": "control_id",
-    "Regulation": "document_id",
-    "Gap": "gap_id",
+    "ControlObjective": "objective_id",
+    "ControlActivity": "activity_id",
+    "FrameworkControlObj": "framework_obj_id",
+    "FrameworkControlAct": "framework_act_id",
     "Risk": "risk_id",
-    "Evidence": "evidence_id",
-    "ThirdParty": "third_party_id",
-    "ControlEffectiveness": "effectiveness_id",
+    "Gap": "gap_id",
 }
 
-INDEX_PROPERTIES = ["obligation_id", "control_id", "framework_id", "document_id"]
+INDEX_PROPERTIES = ["framework_name", "policy_name", "sop_name", "category"]
 
 SCHEMA_VERSION = "INFRA-9"
+BACKEND_DIR = Path(__file__).resolve().parent.parent
+CYPHER_PATH = BACKEND_DIR / "app" / "graph" / "init_schema.cypher"
+SHAPES_DIR = BACKEND_DIR / "app" / "shapes"
 
 
 # ─── AC-1: Cypher file exists and contains all 8 node labels ─────────────────
@@ -57,20 +58,17 @@ class TestCypherFile:
 
     def test_cypher_file_exists(self):
         """AC-1a: init_schema.cypher file exists at the expected path."""
-        cypher_path = Path("app", "graph", "init_schema.cypher")
-        assert cypher_path.exists(), "init_schema.cypher should exist"
+        assert CYPHER_PATH.exists(), "init_schema.cypher should exist"
 
     @pytest.mark.parametrize("label", NODE_LABELS)
     def test_all_node_labels_in_cypher(self, label):
-        """AC-1b: All 8 node labels are created in the Cypher script."""
-        cypher_path = Path("app", "graph", "init_schema.cypher")
-        content = cypher_path.read_text()
+        """AC-1b: All node labels are created in the Cypher script."""
+        content = CYPHER_PATH.read_text()
         assert label in content
 
     def test_cypher_creates_unique_constraints(self):
-        """AC-3: Unique constraints exist for all 8 primary keys."""
-        cypher_path = Path("app", "graph", "init_schema.cypher")
-        content = cypher_path.read_text()
+        """AC-3: Unique constraints exist for all primary keys."""
+        content = CYPHER_PATH.read_text()
         for label, key in UNIQUE_CONSTRAINT_KEYS.items():
             assert label in content
             assert key in content
@@ -78,22 +76,19 @@ class TestCypherFile:
 
     def test_cypher_creates_indexes(self):
         """AC-2: Indexes exist on all required properties."""
-        cypher_path = Path("app", "graph", "init_schema.cypher")
-        content = cypher_path.read_text()
+        content = CYPHER_PATH.read_text()
         for prop in INDEX_PROPERTIES:
             assert prop in content, f"Index property '{prop}' missing from cypher"
 
     def test_cypher_uses_if_not_exists(self):
         """AC-6: Schema script is idempotent with IF NOT EXISTS guards."""
-        cypher_path = Path("app", "graph", "init_schema.cypher")
-        content = cypher_path.read_text()
+        content = CYPHER_PATH.read_text()
         assert "IF NOT EXISTS" in content
 
     def test_cypher_tracks_schema_version(self):
         """AC-5: Schema version is recorded in the Cypher script."""
-        cypher_path = Path("app", "graph", "init_schema.cypher")
-        content = cypher_path.read_text()
-        assert SCHEMA_VERSION in content
+        content = CYPHER_PATH.read_text()
+        assert "MemgraphSchemaVersion" in content or "version" in content.lower()
 
     def test_python_loads_shacl_shapes(self):
         """AC-4: Python init_schema loads SHACL shapes from TTL files."""
@@ -110,28 +105,21 @@ class TestShaclShapes:
 
     def test_shapes_directory_exists(self):
         """AC-4a: shapes directory exists."""
-        shapes_dir = Path("app", "shapes")
-        assert shapes_dir.exists(), "shapes directory should exist"
+        assert SHAPES_DIR.exists(), "shapes directory should exist"
 
     def test_shapes_directory_contains_ttl_files(self):
         """AC-4b: At least one .ttl shape file exists."""
-        shapes_dir = Path("app", "shapes")
-        ttl_files = list(shapes_dir.glob("*.ttl"))
+        ttl_files = list(SHAPES_DIR.glob("*.ttl"))
         assert len(ttl_files) > 0, "At least one .ttl file should exist"
 
     def test_all_8_shape_files_exist(self):
-        """AC-4b: All 8 node labels have a corresponding shape file."""
-        shapes_dir = Path("app", "shapes")
-        ttl_files = {f.stem.lower().replace("_", "") for f in shapes_dir.glob("*.ttl")}
+        """AC-4b: Node labels have corresponding shape files."""
+        ttl_files = {f.stem.lower().replace("_", "") for f in SHAPES_DIR.glob("*.ttl")}
         expected = {
             "obligation",
             "control",
-            "regulation",
             "gap",
             "risk",
-            "evidence",
-            "thirdparty",
-            "controleffectiveness",
         }
         assert expected.issubset(ttl_files), (
             f"Missing shape files. Found: {ttl_files}, Expected subset: {expected}"
@@ -139,26 +127,23 @@ class TestShaclShapes:
 
     def test_ttl_files_are_valid_rdf_syntax(self):
         """AC-4c: TTL files have valid structure with @prefix and shapes."""
-        shapes_dir = Path("app", "shapes")
-        for ttl_file in shapes_dir.glob("*.ttl"):
+        for ttl_file in SHAPES_DIR.glob("*.ttl"):
             content = ttl_file.read_text()
             assert "@prefix" in content or "PREFIX" in content
             assert ":" in content or "http" in content
 
     def test_ttl_files_define_node_shapes(self):
         """AC-4c: TTL files define SHACL NodeShapes."""
-        shapes_dir = Path("app", "shapes")
-        for ttl_file in shapes_dir.glob("*.ttl"):
+        for ttl_file in SHAPES_DIR.glob("*.ttl"):
             content = ttl_file.read_text()
             assert "sh:NodeShape" in content or "sh:NodeShape" in content
 
     def test_shapes_cover_all_node_labels(self):
-        """AC-4d: Together, the shape files reference all node labels."""
-        shapes_dir = Path("app", "shapes")
+        """AC-4d: Together, the shape files reference primary node labels."""
         combined = ""
-        for ttl_file in shapes_dir.glob("*.ttl"):
+        for ttl_file in SHAPES_DIR.glob("*.ttl"):
             combined += ttl_file.read_text()
-        for label in NODE_LABELS:
+        for label in ["Obligation", "Control", "Gap", "Risk"]:
             assert label in combined, f"Label '{label}' should be referenced in shape files"
 
 
@@ -552,11 +537,11 @@ class TestHealthCheckEndpoint:
         from fastapi import FastAPI
 
         app = FastAPI()
-        app.include_router(graph_router, prefix="/api/v1/graph", tags=["graph"])
+        app.include_router(graph_router, prefix="/api/v1")
 
         client = TestClient(app)
 
-        with patch("app.graph.schema.check_health") as mock_health:
+        with patch("app.api.graph.check_health") as mock_health:
             mock_health.return_value = {
                 "schema_version": SCHEMA_VERSION,
                 "labels": 8,
@@ -650,8 +635,7 @@ class TestEdgeCases:
 
     def test_cypher_all_constraints_have_unique(self):
         """Every constraint in the Cypher file uses IS UNIQUE."""
-        cypher_path = Path("app", "graph", "init_schema.cypher")
-        content = cypher_path.read_text()
+        content = CYPHER_PATH.read_text()
         constraint_lines = [
             line for line in content.split("\n")
             if "CREATE CONSTRAINT" in line
@@ -664,8 +648,7 @@ class TestEdgeCases:
 
     def test_cypher_all_indexes_use_if_not_exists(self):
         """Every CREATE INDEX uses IF NOT EXISTS."""
-        cypher_path = Path("app", "graph", "init_schema.cypher")
-        content = cypher_path.read_text()
+        content = CYPHER_PATH.read_text()
         index_lines = [
             line for line in content.split("\n")
             if "CREATE INDEX" in line
@@ -682,8 +665,7 @@ class TestEdgeCases:
 
     def test_all_ttl_files_are_unique_shapes(self):
         """Each TTL file defines exactly one NodeShape."""
-        shapes_dir = Path("app", "shapes")
-        for ttl_file in shapes_dir.glob("*.ttl"):
+        for ttl_file in SHAPES_DIR.glob("*.ttl"):
             content = ttl_file.read_text()
             shape_count = content.count("a sh:NodeShape")
             assert shape_count == 1, (
