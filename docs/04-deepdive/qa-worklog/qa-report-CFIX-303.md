@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-02  
-**Story Ticket:** [CFIX-303](file:///home/zackchow/coding/rckg/docs/04-deepdive/claude-remediation-sprint.md#cfix-303-reconcile-process-pdf-hardcoded-boltlocalhost7687-with-centralized-config)  
-**Work Log Reference:** [work-log-CFIX-303.md](file:///home/zackchow/coding/rckg/docs/04-deepdive/swe-worklog/work-log-CFIX-303.md)  
+**Story Ticket:** [CFIX-303](docs/04-deepdive/claude-remediation-sprint.md#cfix-303-reconcile-process-pdf-hardcoded-boltlocalhost7687-with-centralized-config)  
+**Work Log Reference:** [work-log-CFIX-303.md](docs/04-deepdive/swe-worklog/work-log-CFIX-303.md)  
 **Final Status:** **APPROVED**  
 
 ---

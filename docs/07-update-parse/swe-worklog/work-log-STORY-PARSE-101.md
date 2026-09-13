@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-12  
 **Status:** READY_FOR_QA  
-**Target Story:** [STORY-PARSE-101](file:///home/zackchow/coding/rckg/docs/07-update-parse/update-parse-sprint.md#story-parse-101-multi-engine-document-router--docling-integration)  
+**Target Story:** [STORY-PARSE-101](docs/07-update-parse/update-parse-sprint.md#story-parse-101-multi-engine-document-router--docling-integration)  
 
 ---
 
@@ -14,8 +14,8 @@ The evaluator inspects text characters per page using `PyMuPDF` (`fitz`), classi
 ## 2. Files Modified & Created
 | File Path | Change Type | Purpose |
 |---|---|---|
-| [`backend/app/services/pdf_to_markdown.py`](file:///home/zackchow/coding/rckg/backend/app/services/pdf_to_markdown.py) | [MODIFIED] | Added `evaluate_page_text_coverage()` and `DoclingConverter` |
-| [`backend/tests/test_pdf_to_markdown.py`](file:///home/zackchow/coding/rckg/backend/tests/test_pdf_to_markdown.py) | [NEW] | TDD unit test suite for document router & Docling fallback |
+| [`backend/app/services/pdf_to_markdown.py`](backend/app/services/pdf_to_markdown.py) | [MODIFIED] | Added `evaluate_page_text_coverage()` and `DoclingConverter` |
+| [`backend/tests/test_pdf_to_markdown.py`](backend/tests/test_pdf_to_markdown.py) | [NEW] | TDD unit test suite for document router & Docling fallback |
 
 ## 3. TDD Cycle Summary
 ### 🔴 RED Phase

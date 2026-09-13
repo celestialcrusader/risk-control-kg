@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-02  
 **Status:** READY_FOR_QA  
-**Target Story:** [CFIX-104](file:///home/zackchow/coding/rckg/docs/04-deepdive/claude-remediation-sprint.md#cfix-104-eliminate-silent-llm-fallback-in-nli-engine--require-explicit-degradation)  
+**Target Story:** [CFIX-104](docs/04-deepdive/claude-remediation-sprint.md#cfix-104-eliminate-silent-llm-fallback-in-nli-engine--require-explicit-degradation)  
 
 ---
 

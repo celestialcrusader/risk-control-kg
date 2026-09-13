@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-07-29  
-**Story Ticket:** [RCKG-201](file:///home/zackchow/coding/rckg/docs/03-mvp/mvp-sprint.md#rckg-201-upstream-document-format-classifier--router-pipeline)  
-**Work Log Reference:** [work-log-RCKG-201.md](file:///home/zackchow/coding/rckg/docs/03-mvp/swe-worklog/work-log-RCKG-201.md)  
+**Story Ticket:** [RCKG-201](docs/03-mvp/mvp-sprint.md#rckg-201-upstream-document-format-classifier--router-pipeline)  
+**Work Log Reference:** [work-log-RCKG-201.md](docs/03-mvp/swe-worklog/work-log-RCKG-201.md)  
 **Final Status:** **APPROVED**  
 
 ---

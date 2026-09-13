@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-02  
 **Status:** READY_FOR_QA  
-**Target Story:** [CFIX-204](file:///home/zackchow/coding/rckg/docs/04-deepdive/claude-remediation-sprint.md#cfix-204-fix-graphragtranslationservice-to-use-neo4j-driver-interface)  
+**Target Story:** [CFIX-204](docs/04-deepdive/claude-remediation-sprint.md#cfix-204-fix-graphragtranslationservice-to-use-neo4j-driver-interface)  
 
 ---
 

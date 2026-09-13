@@ -75,7 +75,7 @@ def test_configurable_excel_parser_multisheet_traversal(sample_excel_file):
 
 def test_real_aicm_excel_parsing():
     """Verify parsing of real aicm.xlsx in test-docs folder."""
-    real_path = "/home/zackchow/coding/rckg/data/test-docs/aicm.xlsx"
+    real_path = "data/test-docs/aicm.xlsx"
     if not os.path.exists(real_path):
         pytest.skip(f"{real_path} not found")
 
@@ -99,7 +99,7 @@ def test_real_aicm_excel_parsing():
 
 def test_real_audit_toolkit_excel_parsing():
     """Verify parsing of Artificial Intelligence Audit Toolkit_Workbook.xlsx."""
-    real_path = "/home/zackchow/coding/rckg/data/test-docs/Artificial Intelligence Audit Toolkit_Workbook.xlsx"
+    real_path = "data/test-docs/Artificial Intelligence Audit Toolkit_Workbook.xlsx"
     if not os.path.exists(real_path):
         pytest.skip(f"{real_path} not found")
 
@@ -120,7 +120,7 @@ def test_real_audit_toolkit_excel_parsing():
 
 def test_real_aivtf_excel_parsing():
     """Verify parsing of 11-sheet aivtf-excel.xlsx."""
-    real_path = "/home/zackchow/coding/rckg/data/test-docs/aivtf-excel.xlsx"
+    real_path = "data/test-docs/aivtf-excel.xlsx"
     if not os.path.exists(real_path):
         pytest.skip(f"{real_path} not found")
 

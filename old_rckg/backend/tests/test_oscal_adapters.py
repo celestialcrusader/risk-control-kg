@@ -8,7 +8,7 @@ from app.ingest.adapters.csa_ccm import CSACCMAdapter
 from app.core.oscal import Catalog, Group, Control
 
 # Path to sample data
-SAMPLE_CCM_PATH = "/home/zack/coding/rckg/data/raw/oscal/primary-dataset.json"
+SAMPLE_CCM_PATH = "data/raw/oscal/primary-dataset.json"
 
 @pytest.mark.skipif(not os.path.exists(SAMPLE_CCM_PATH), reason="Sample data not found")
 def test_csa_ccm_adapter_parsing():

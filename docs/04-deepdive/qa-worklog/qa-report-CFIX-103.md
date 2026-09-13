@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-02  
-**Story Ticket:** [CFIX-103](file:///home/zackchow/coding/rckg/docs/04-deepdive/claude-remediation-sprint.md#cfix-103-remove-magicmock-and-test-only-code-from-production-modules)  
-**Work Log Reference:** [work-log-CFIX-103.md](file:///home/zackchow/coding/rckg/docs/04-deepdive/swe-worklog/work-log-CFIX-103.md)  
+**Story Ticket:** [CFIX-103](docs/04-deepdive/claude-remediation-sprint.md#cfix-103-remove-magicmock-and-test-only-code-from-production-modules)  
+**Work Log Reference:** [work-log-CFIX-103.md](docs/04-deepdive/swe-worklog/work-log-CFIX-103.md)  
 **Final Status:** **APPROVED**  
 
 ---

@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-07-31  
-**Story Ticket:** [FIX-204](file:///home/zackchow/coding/rckg/docs/04-deepdive/real-mvp.md#fix-204-persist-golden-assertions-to-postgresql)  
-**Work Log Reference:** [work-log-FIX-204.md](file:///home/zackchow/coding/rckg/docs/04-deepdive/swe-worklog/work-log-FIX-204.md)  
+**Story Ticket:** [FIX-204](docs/04-deepdive/real-mvp.md#fix-204-persist-golden-assertions-to-postgresql)  
+**Work Log Reference:** [work-log-FIX-204.md](docs/04-deepdive/swe-worklog/work-log-FIX-204.md)  
 **Final Status:** **APPROVED**  
 
 ---

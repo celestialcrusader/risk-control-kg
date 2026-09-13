@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-15  
-**Story Ticket:** [STORY-FOUNDATION-104](file:///home/zackchow/coding/rckg/docs/07-update-parse/sprint-plan-foundation-setup.md#story-foundation-104-direct-public-baseline-graph-linkages--schema-decoupling)  
-**Work Log Reference:** [work-log-FOUNDATION-104.md](file:///home/zackchow/coding/rckg/docs/07-update-parse/swe-worklog/work-log-FOUNDATION-104.md)  
+**Story Ticket:** [STORY-FOUNDATION-104](docs/07-update-parse/sprint-plan-foundation-setup.md#story-foundation-104-direct-public-baseline-graph-linkages--schema-decoupling)  
+**Work Log Reference:** [work-log-FOUNDATION-104.md](docs/07-update-parse/swe-worklog/work-log-FOUNDATION-104.md)  
 **Final Status:** **APPROVED** ✅  
 
 ---

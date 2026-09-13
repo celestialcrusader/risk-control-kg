@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-07-29  
-**Story Ticket:** [RCKG-100](file:///home/zackchow/coding/rckg/docs/03-mvp/mvp-sprint.md#rckg-100-rckg-test-infrastructure-cicd-pipeline--test-fixture-factories)  
-**Work Log Reference:** [work-log-RCKG-100.md](file:///home/zackchow/coding/rckg/docs/03-mvp/work-log-RCKG-100.md)  
+**Story Ticket:** [RCKG-100](docs/03-mvp/mvp-sprint.md#rckg-100-rckg-test-infrastructure-cicd-pipeline--test-fixture-factories)  
+**Work Log Reference:** [work-log-RCKG-100.md](docs/03-mvp/work-log-RCKG-100.md)  
 **Final Status:** **APPROVED**  
 
 ---

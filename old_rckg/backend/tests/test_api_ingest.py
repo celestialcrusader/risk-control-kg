@@ -27,8 +27,8 @@ def db_conn():
     db.close()
     
     # Clean up uploads
-    if os.path.exists("/home/zack/coding/rckg/data/uploads/test.csv"):
-        os.remove("/home/zack/coding/rckg/data/uploads/test.csv")
+    if os.path.exists("/home/rckg/coding/rckg/data/uploads/test.csv"):
+        os.remove("/home/rckg/coding/rckg/data/uploads/test.csv")
 
 def test_ingest_api(db_conn):
     if not db_conn:

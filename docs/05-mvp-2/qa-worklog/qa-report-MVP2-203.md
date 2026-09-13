@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-09  
-**Story Ticket:** [MVP2-203](file:///home/zackchow/coding/rckg/docs/05-mvp-2/sprints.md#mvp2-203--gap-creation-for-subset-of-classifications)  
-**Work Log Reference:** [work-log-MVP2-203.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/swe-worklog/work-log-MVP2-203.md)  
+**Story Ticket:** [MVP2-203](docs/05-mvp-2/sprints.md#mvp2-203--gap-creation-for-subset-of-classifications)  
+**Work Log Reference:** [work-log-MVP2-203.md](docs/05-mvp-2/swe-worklog/work-log-MVP2-203.md)  
 **Final Status:** **APPROVED**  
 
 ---

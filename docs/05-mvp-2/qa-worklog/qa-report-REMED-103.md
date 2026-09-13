@@ -3,7 +3,7 @@
 **QA Engineer:** Senior QA Engineer  
 **Date:** 2026-08-09  
 **Status:** PASSED (APPROVED FOR MVP)  
-**Target Story:** [REMED-103](file:///home/zackchow/coding/rckg/docs/05-mvp-2/gaps-to-mvp.md#remed-103-wire-live-database-storage-to-gap-query--reasoning-trace-apis)  
+**Target Story:** [REMED-103](docs/05-mvp-2/gaps-to-mvp.md#remed-103-wire-live-database-storage-to-gap-query--reasoning-trace-apis)  
 
 ---
 

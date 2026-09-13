@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-11  
-**Story Ticket:** [STORY-AI-106](file:///home/zackchow/coding/rckg/docs/06-add-ai/sprints.md#story-ai-106-qwen3-reranker-8b-candidate-reranking)  
-**Work Log Reference:** [work-log-STORY-AI-106.md](file:///home/zackchow/coding/rckg/docs/06-add-ai/swe-worklog/work-log-STORY-AI-106.md)  
+**Story Ticket:** [STORY-AI-106](docs/06-add-ai/sprints.md#story-ai-106-qwen3-reranker-8b-candidate-reranking)  
+**Work Log Reference:** [work-log-STORY-AI-106.md](docs/06-add-ai/swe-worklog/work-log-STORY-AI-106.md)  
 **Final Status:** **APPROVED**  
 
 ---

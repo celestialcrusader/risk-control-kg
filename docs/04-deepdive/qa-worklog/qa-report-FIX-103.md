@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-07-31  
-**Story Ticket:** [FIX-103](file:///home/zackchow/coding/rckg/docs/04-deepdive/real-mvp.md#fix-103-wire-multi-prompt-llm-extraction-into-extractionpy-with-document-type-routing)  
-**Work Log Reference:** [work-log-FIX-103.md](file:///home/zackchow/coding/rckg/docs/04-deepdive/swe-worklog/work-log-FIX-103.md)  
+**Story Ticket:** [FIX-103](docs/04-deepdive/real-mvp.md#fix-103-wire-multi-prompt-llm-extraction-into-extractionpy-with-document-type-routing)  
+**Work Log Reference:** [work-log-FIX-103.md](docs/04-deepdive/swe-worklog/work-log-FIX-103.md)  
 **Final Status:** **APPROVED**  
 
 ---

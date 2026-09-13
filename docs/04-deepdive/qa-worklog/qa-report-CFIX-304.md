@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-02  
-**Story Ticket:** [CFIX-304](file:///home/zackchow/coding/rckg/docs/04-deepdive/claude-remediation-sprint.md#cfix-304-add-health-check-endpoint-with-llm-and-memgraph-connectivity-status)  
-**Work Log Reference:** [work-log-CFIX-304.md](file:///home/zackchow/coding/rckg/docs/04-deepdive/swe-worklog/work-log-CFIX-304.md)  
+**Story Ticket:** [CFIX-304](docs/04-deepdive/claude-remediation-sprint.md#cfix-304-add-health-check-endpoint-with-llm-and-memgraph-connectivity-status)  
+**Work Log Reference:** [work-log-CFIX-304.md](docs/04-deepdive/swe-worklog/work-log-CFIX-304.md)  
 **Final Status:** **APPROVED**  
 
 ---

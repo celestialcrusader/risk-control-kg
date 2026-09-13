@@ -274,7 +274,7 @@ docker run -d \
 ### Run Integration Tests
 
 ```bash
-cd /home/zackchow/coding/rckg/backend
+cd ./backend
 pytest tests/test_infra_4_qdrant_vector_db.py -v
 ```
 

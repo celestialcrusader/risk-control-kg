@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-07-30  
 **Status:** READY_FOR_QA  
-**Target Story:** [RCKG-204](file:///home/zackchow/coding/rckg/docs/03-mvp/mvp-sprint.md#rckg-204-phase-1-bulk-cold-start-pipeline-orchestration-service)  
+**Target Story:** [RCKG-204](docs/03-mvp/mvp-sprint.md#rckg-204-phase-1-bulk-cold-start-pipeline-orchestration-service)  
 
 ---
 

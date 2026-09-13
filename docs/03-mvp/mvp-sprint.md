@@ -3,10 +3,10 @@
 **Document Version:** 2.0 — Production Execution & Engineering Delivery Plan (Hardened Revision)  
 **Status:** Approved / Active Production Backlog  
 **Classification:** Internal — Confidential Engineering Specification  
-**Target Repository:** `/home/zackchow/coding/rckg`  
+**Target Repository:** `.`  
 **Output Target:** `docs/03-mvp/mvp-sprint.md`  
-**Governing Master Spec:** [06-delta.md](file:///home/zackchow/coding/rckg/docs/02-pickup/06-delta.md)  
-**Linked Schema Spec:** [nist-olir-schema-mapping.md](file:///home/zackchow/coding/rckg/docs/03-mvp/nist-olir-schema-mapping.md)  
+**Governing Master Spec:** [06-delta.md](docs/02-pickup/06-delta.md)  
+**Linked Schema Spec:** [nist-olir-schema-mapping.md](docs/03-mvp/nist-olir-schema-mapping.md)  
 
 ---
 
@@ -76,8 +76,8 @@ This document defines the master agile execution backlog and detailed sprint pla
 **Priority:** High  
 **Assigned To:** Senior Backend / DevOps Engineer  
 **Status:** COMPLETED ✅  
-**Work Log:** [work-log-RCKG-100.md](file:///home/zackchow/coding/rckg/docs/03-mvp/work-log-RCKG-100.md)  
-**QA Sign-Off:** [qa-report-RCKG-100.md](file:///home/zackchow/coding/rckg/docs/03-mvp/qa-report-RCKG-100.md) (Status: APPROVED)  
+**Work Log:** [work-log-RCKG-100.md](docs/03-mvp/work-log-RCKG-100.md)  
+**QA Sign-Off:** [qa-report-RCKG-100.md](docs/03-mvp/qa-report-RCKG-100.md) (Status: APPROVED)  
 **Labels:** `backend`, `infra`, `testing`, `docker`, `ci-cd`  
 
 #### User Story
@@ -156,15 +156,15 @@ services:
 **Priority:** High  
 **Assigned To:** Data / Graph DB Specialist  
 **Status:** COMPLETED ✅  
-**Work Log:** [work-log-RCKG-101.md](file:///home/zackchow/coding/rckg/docs/03-mvp/swe-worklog/work-log-RCKG-101.md)  
-**QA Sign-Off:** [qa-report-RCKG-101.md](file:///home/zackchow/coding/rckg/docs/03-mvp/qa-worklog/qa-report-RCKG-101.md) (Status: APPROVED)  
+**Work Log:** [work-log-RCKG-101.md](docs/03-mvp/swe-worklog/work-log-RCKG-101.md)  
+**QA Sign-Off:** [qa-report-RCKG-101.md](docs/03-mvp/qa-worklog/qa-report-RCKG-101.md) (Status: APPROVED)  
 **Labels:** `backend`, `graph`, `ingestion`, `seed-data`, `nist-olir`  
 
 #### User Story
 > As a **Compliance Architect**, I want **official NIST OLIR XML exports and CSA CCM v4 standards parsed according to `nist-olir-schema-mapping.md` and loaded into Memgraph and PostgreSQL**, so that **the Knowledge Graph has a pre-validated v1.0.0 seed structure with pinned Golden Assertions prior to running AI extraction**.
 
 #### Context and Background
-Per Section 5.4 of `06-delta.md` and [nist-olir-schema-mapping.md](file:///home/zackchow/coding/rckg/docs/03-mvp/nist-olir-schema-mapping.md), cold-starting an enterprise GRC graph with pure probabilistic AI creates hallucination risks. Parsing real NIST OLIR `<InformativeReference>` XML structures (`FocalDocument` and `ReferencedDocument`) establishes ~1,700 `:FrameworkControlObj` and `:FrameworkControlAct` nodes linked by ~3,100 pre-validated `CROSSWALKS_TO_OBJ` / `CROSSWALKS_TO_ACT` edges tagged with `status: "HUMAN_ATTESTED"` and `is_golden_assertion: true`.
+Per Section 5.4 of `06-delta.md` and [nist-olir-schema-mapping.md](docs/03-mvp/nist-olir-schema-mapping.md), cold-starting an enterprise GRC graph with pure probabilistic AI creates hallucination risks. Parsing real NIST OLIR `<InformativeReference>` XML structures (`FocalDocument` and `ReferencedDocument`) establishes ~1,700 `:FrameworkControlObj` and `:FrameworkControlAct` nodes linked by ~3,100 pre-validated `CROSSWALKS_TO_OBJ` / `CROSSWALKS_TO_ACT` edges tagged with `status: "HUMAN_ATTESTED"` and `is_golden_assertion: true`.
 
 #### Acceptance Criteria
 1. Given official NIST OLIR XML files (`https://csrc.nist.gov/projects/olir`), `NistOlirXmlParser` parses `<InformativeReference>` blocks extracting `<FocalDocument>` and `<ReferencedDocument>` elements as specified in `nist-olir-schema-mapping.md`.
@@ -285,8 +285,8 @@ class NistOlirXmlParser:
 **Priority:** High  
 **Assigned To:** Senior Backend / AI Engineer  
 **Status:** COMPLETED ✅  
-**Work Log:** [work-log-RCKG-102.md](file:///home/zackchow/coding/rckg/docs/03-mvp/swe-worklog/work-log-RCKG-102.md)  
-**QA Sign-Off:** [qa-report-RCKG-102.md](file:///home/zackchow/coding/rckg/docs/03-mvp/qa-worklog/qa-report-RCKG-102.md) (Status: APPROVED)  
+**Work Log:** [work-log-RCKG-102.md](docs/03-mvp/swe-worklog/work-log-RCKG-102.md)  
+**QA Sign-Off:** [qa-report-RCKG-102.md](docs/03-mvp/qa-worklog/qa-report-RCKG-102.md) (Status: APPROVED)  
 **Labels:** `backend`, `eval`, `benchmark`, `embeddings`  
 
 #### User Story
@@ -328,8 +328,8 @@ Per Section 5.1 & 5.2 of `06-delta.md`, stage 1 dense vector retrieval selection
 **Priority:** High  
 **Assigned To:** Senior Backend Engineer  
 **Status:** COMPLETED ✅  
-**Work Log:** [work-log-RCKG-103.md](file:///home/zackchow/coding/rckg/docs/03-mvp/swe-worklog/work-log-RCKG-103.md)  
-**QA Sign-Off:** [qa-report-RCKG-103.md](file:///home/zackchow/coding/rckg/docs/03-mvp/qa-worklog/qa-report-RCKG-103.md) (Status: APPROVED)  
+**Work Log:** [work-log-RCKG-103.md](docs/03-mvp/swe-worklog/work-log-RCKG-103.md)  
+**QA Sign-Off:** [qa-report-RCKG-103.md](docs/03-mvp/qa-worklog/qa-report-RCKG-103.md) (Status: APPROVED)  
 **Labels:** `backend`, `compiler`, `graph`, `rules`, `facets`  
 
 #### User Story
@@ -467,8 +467,8 @@ class RuleBasedGraphCompiler:
 **Priority:** High  
 **Assigned To:** Data / Graph DB Specialist  
 **Status:** COMPLETED ✅  
-**Work Log:** [work-log-RCKG-104.md](file:///home/zackchow/coding/rckg/docs/03-mvp/swe-worklog/work-log-RCKG-104.md)  
-**QA Sign-Off:** [qa-report-RCKG-104.md](file:///home/zackchow/coding/rckg/docs/03-mvp/qa-worklog/qa-report-RCKG-104.md) (Status: APPROVED)  
+**Work Log:** [work-log-RCKG-104.md](docs/03-mvp/swe-worklog/work-log-RCKG-104.md)  
+**QA Sign-Off:** [qa-report-RCKG-104.md](docs/03-mvp/qa-worklog/qa-report-RCKG-104.md) (Status: APPROVED)  
 **Labels:** `backend`, `graph`, `cypher`, `transactional-outbox`, `atomicity`  
 
 #### User Story
@@ -523,8 +523,8 @@ Per Section 1, 3.2 & 7.3 of `06-delta.md`, raw Cypher strings generated by LLMs 
 **Priority:** High  
 **Assigned To:** Senior Backend Engineer  
 **Status:** COMPLETED ✅  
-**Work Log:** [work-log-RCKG-201.md](file:///home/zackchow/coding/rckg/docs/03-mvp/swe-worklog/work-log-RCKG-201.md)  
-**QA Sign-Off:** [qa-report-RCKG-201.md](file:///home/zackchow/coding/rckg/docs/03-mvp/qa-worklog/qa-report-RCKG-201.md) (Status: APPROVED)  
+**Work Log:** [work-log-RCKG-201.md](docs/03-mvp/swe-worklog/work-log-RCKG-201.md)  
+**QA Sign-Off:** [qa-report-RCKG-201.md](docs/03-mvp/qa-worklog/qa-report-RCKG-201.md) (Status: APPROVED)  
 **Labels:** `backend`, `ingestion`, `classifier`, `pipeline`  
 
 #### User Story
@@ -568,8 +568,8 @@ Per Section 2.2 of `06-delta.md`, passing scanned images or complex financial co
 **Priority:** High  
 **Assigned To:** Senior Backend Engineer  
 **Status:** COMPLETED ✅  
-**Work Log:** [work-log-RCKG-202.md](file:///home/zackchow/coding/rckg/docs/03-mvp/swe-worklog/work-log-RCKG-202.md)  
-**QA Sign-Off:** [qa-report-RCKG-202.md](file:///home/zackchow/coding/rckg/docs/03-mvp/qa-worklog/qa-report-RCKG-202.md) (Status: APPROVED)  
+**Work Log:** [work-log-RCKG-202.md](docs/03-mvp/swe-worklog/work-log-RCKG-202.md)  
+**QA Sign-Off:** [qa-report-RCKG-202.md](docs/03-mvp/qa-worklog/qa-report-RCKG-202.md) (Status: APPROVED)  
 **Labels:** `backend`, `parser`, `ocr`, `tables`  
 
 #### User Story
@@ -614,8 +614,8 @@ Per Section 2.2 of `06-delta.md`, a single parsing strategy fails across diverse
 **Priority:** High  
 **Assigned To:** Senior Backend Engineer  
 **Status:** COMPLETED ✅  
-**Work Log:** [work-log-RCKG-203.md](file:///home/zackchow/coding/rckg/docs/03-mvp/swe-worklog/work-log-RCKG-203.md)  
-**QA Sign-Off:** [qa-report-RCKG-203.md](file:///home/zackchow/coding/rckg/docs/03-mvp/qa-worklog/qa-report-RCKG-203.md) (Status: APPROVED)  
+**Work Log:** [work-log-RCKG-203.md](docs/03-mvp/swe-worklog/work-log-RCKG-203.md)  
+**QA Sign-Off:** [qa-report-RCKG-203.md](docs/03-mvp/qa-worklog/qa-report-RCKG-203.md) (Status: APPROVED)  
 **Labels:** `backend`, `chunking`, `legal`, `extraction`  
 
 #### User Story
@@ -652,8 +652,8 @@ Per Section 2.2 of `06-delta.md`, splitting regulatory prose by arbitrary token 
 **Priority:** High  
 **Assigned To:** Senior Backend / AI Engineer  
 **Status:** COMPLETED ✅  
-**Work Log:** [work-log-RCKG-203b.md](file:///home/zackchow/coding/rckg/docs/03-mvp/swe-worklog/work-log-RCKG-203b.md)  
-**QA Sign-Off:** [qa-report-RCKG-203b.md](file:///home/zackchow/coding/rckg/docs/03-mvp/qa-worklog/qa-report-RCKG-203b.md) (Status: APPROVED)  
+**Work Log:** [work-log-RCKG-203b.md](docs/03-mvp/swe-worklog/work-log-RCKG-203b.md)  
+**QA Sign-Off:** [qa-report-RCKG-203b.md](docs/03-mvp/qa-worklog/qa-report-RCKG-203b.md) (Status: APPROVED)  
 **Labels:** `backend`, `facets`, `ner`, `extraction`  
 
 #### User Story
@@ -739,8 +739,8 @@ class DeJureFacetExtractor:
 **Priority:** High  
 **Assigned To:** Lead AI Infrastructure Architect / Scrum Master  
 **Status:** COMPLETED ✅  
-**Work Log:** [work-log-RCKG-204.md](file:///home/zackchow/coding/rckg/docs/03-mvp/swe-worklog/work-log-RCKG-204.md)  
-**QA Sign-Off:** [qa-report-RCKG-204.md](file:///home/zackchow/coding/rckg/docs/03-mvp/qa-worklog/qa-report-RCKG-204.md) (Status: APPROVED)  
+**Work Log:** [work-log-RCKG-204.md](docs/03-mvp/swe-worklog/work-log-RCKG-204.md)  
+**QA Sign-Off:** [qa-report-RCKG-204.md](docs/03-mvp/qa-worklog/qa-report-RCKG-204.md) (Status: APPROVED)  
 **Labels:** `backend`, `pipeline`, `cold-start`, `orchestration`, `integration`  
 
 #### User Story
@@ -864,8 +864,8 @@ class ColdStartPipelineOrchestrator:
 **Priority:** High  
 **Assigned To:** Senior Backend Engineer  
 **Status:** COMPLETED ✅  
-**Work Log:** [work-log-RCKG-301.md](file:///home/zackchow/coding/rckg/docs/03-mvp/swe-worklog/work-log-RCKG-301.md)  
-**QA Sign-Off:** [qa-report-RCKG-301.md](file:///home/zackchow/coding/rckg/docs/03-mvp/qa-worklog/qa-report-RCKG-301.md) (Status: APPROVED)  
+**Work Log:** [work-log-RCKG-301.md](docs/03-mvp/swe-worklog/work-log-RCKG-301.md)  
+**QA Sign-Off:** [qa-report-RCKG-301.md](docs/03-mvp/qa-worklog/qa-report-RCKG-301.md) (Status: APPROVED)  
 **Labels:** `backend`, `retrieval`, `elasticsearch`, `bm25`  
 
 #### User Story
@@ -906,8 +906,8 @@ Per Section 6.1 & 6.3 of `06-delta.md`, Stage 1 relies on Elasticsearch sparse k
 **Priority:** High  
 **Assigned To:** AI Engineering Specialist  
 **Status:** COMPLETED ✅  
-**Work Log:** [work-log-RCKG-302.md](file:///home/zackchow/coding/rckg/docs/03-mvp/swe-worklog/work-log-RCKG-302.md)  
-**QA Sign-Off:** [qa-report-RCKG-302.md](file:///home/zackchow/coding/rckg/docs/03-mvp/qa-worklog/qa-report-RCKG-302.md) (Status: APPROVED)  
+**Work Log:** [work-log-RCKG-302.md](docs/03-mvp/swe-worklog/work-log-RCKG-302.md)  
+**QA Sign-Off:** [qa-report-RCKG-302.md](docs/03-mvp/qa-worklog/qa-report-RCKG-302.md) (Status: APPROVED)  
 **Labels:** `backend`, `colbert`, `vram`, `reranker`  
 
 #### User Story
@@ -949,8 +949,8 @@ Per Section 6.2 of `06-delta.md`, calculating ColBERT token embeddings on the fl
 **Priority:** High  
 **Assigned To:** Senior Backend / AI Engineer  
 **Status:** COMPLETED ✅  
-**Work Log:** [work-log-RCKG-303.md](file:///home/zackchow/coding/rckg/docs/03-mvp/swe-worklog/work-log-RCKG-303.md)  
-**QA Sign-Off:** [qa-report-RCKG-303.md](file:///home/zackchow/coding/rckg/docs/03-mvp/qa-worklog/qa-report-RCKG-303.md) (Status: APPROVED)  
+**Work Log:** [work-log-RCKG-303.md](docs/03-mvp/swe-worklog/work-log-RCKG-303.md)  
+**QA Sign-Off:** [qa-report-RCKG-303.md](docs/03-mvp/qa-worklog/qa-report-RCKG-303.md) (Status: APPROVED)  
 **Labels:** `backend`, `nli`, `cross-encoder`, `set-theory`, `calibration`  
 
 #### User Story
@@ -993,8 +993,8 @@ Per Section 4 & 6.3 of `06-delta.md`, candidate pairs reaching Stage 2.5 and Sta
 **Priority:** Medium  
 **Assigned To:** Senior Backend Engineer  
 **Status:** COMPLETED ✅  
-**Work Log:** [work-log-RCKG-304.md](file:///home/zackchow/coding/rckg/docs/03-mvp/swe-worklog/work-log-RCKG-304.md)  
-**QA Sign-Off:** [qa-report-RCKG-304.md](file:///home/zackchow/coding/rckg/docs/03-mvp/qa-worklog/qa-report-RCKG-304.md) (Status: APPROVED)  
+**Work Log:** [work-log-RCKG-304.md](docs/03-mvp/swe-worklog/work-log-RCKG-304.md)  
+**QA Sign-Off:** [qa-report-RCKG-304.md](docs/03-mvp/qa-worklog/qa-report-RCKG-304.md) (Status: APPROVED)  
 **Labels:** `backend`, `dual-judge`, `vllm`, `preference-learning`  
 
 #### User Story
@@ -1039,8 +1039,8 @@ Per Section 5.3 & 6.3 of `06-delta.md`, running 70B Dual-Judge verification sync
 **Priority:** High  
 **Assigned To:** Lead AI Infrastructure Architect / Scrum Master  
 **Status:** COMPLETED ✅  
-**Work Log:** [work-log-RCKG-401.md](file:///home/zackchow/coding/rckg/docs/03-mvp/swe-worklog/work-log-RCKG-401.md)  
-**QA Sign-Off:** [qa-report-RCKG-401.md](file:///home/zackchow/coding/rckg/docs/03-mvp/qa-worklog/qa-report-RCKG-401.md) (Status: APPROVED)  
+**Work Log:** [work-log-RCKG-401.md](docs/03-mvp/swe-worklog/work-log-RCKG-401.md)  
+**QA Sign-Off:** [qa-report-RCKG-401.md](docs/03-mvp/qa-worklog/qa-report-RCKG-401.md) (Status: APPROVED)  
 **Labels:** `backend`, `graphiti`, `maintenance`, `diff`  
 
 #### User Story
@@ -1074,8 +1074,8 @@ Per Section 7.1 of `06-delta.md`, once populated in Phase 1 Cold-Start, the engi
 **Priority:** High  
 **Assigned To:** Senior Backend Engineer  
 **Status:** COMPLETED ✅  
-**Work Log:** [work-log-RCKG-402.md](file:///home/zackchow/coding/rckg/docs/03-mvp/swe-worklog/work-log-RCKG-402.md)  
-**QA Sign-Off:** [qa-report-RCKG-402.md](file:///home/zackchow/coding/rckg/docs/03-mvp/qa-worklog/qa-report-RCKG-402.md) (Status: APPROVED)  
+**Work Log:** [work-log-RCKG-402.md](docs/03-mvp/swe-worklog/work-log-RCKG-402.md)  
+**QA Sign-Off:** [qa-report-RCKG-402.md](docs/03-mvp/qa-worklog/qa-report-RCKG-402.md) (Status: APPROVED)  
 **Labels:** `backend`, `governance`, `golden-assertions`, `compiler-gate`  
 
 #### User Story
@@ -1109,8 +1109,8 @@ Per Section 7.2 & 7.4 of `06-delta.md`, instance mutations (`ADD_EDGE`, `SUPERSE
 **Priority:** High  
 **Assigned To:** Senior Backend Engineer  
 **Status:** COMPLETED ✅  
-**Work Log:** [work-log-RCKG-403.md](file:///home/zackchow/coding/rckg/docs/03-mvp/swe-worklog/work-log-RCKG-403.md)  
-**QA Sign-Off:** [qa-report-RCKG-403.md](file:///home/zackchow/coding/rckg/docs/03-mvp/qa-worklog/qa-report-RCKG-403.md) (Status: APPROVED)  
+**Work Log:** [work-log-RCKG-403.md](docs/03-mvp/swe-worklog/work-log-RCKG-403.md)  
+**QA Sign-Off:** [qa-report-RCKG-403.md](docs/03-mvp/qa-worklog/qa-report-RCKG-403.md) (Status: APPROVED)  
 **Labels:** `backend`, `revert`, `bitemporal`, `audit`  
 
 #### User Story
@@ -1144,8 +1144,8 @@ Per Section 7.5 of `06-delta.md`, GRC compliance requires complete bitemporal au
 **Priority:** High  
 **Assigned To:** Data / Graph DB Specialist  
 **Status:** COMPLETED ✅  
-**Work Log:** [work-log-RCKG-404.md](file:///home/zackchow/coding/rckg/docs/03-mvp/swe-worklog/work-log-RCKG-404.md)  
-**QA Sign-Off:** [qa-report-RCKG-404.md](file:///home/zackchow/coding/rckg/docs/03-mvp/qa-worklog/qa-report-RCKG-404.md) (Status: APPROVED)  
+**Work Log:** [work-log-RCKG-404.md](docs/03-mvp/swe-worklog/work-log-RCKG-404.md)  
+**QA Sign-Off:** [qa-report-RCKG-404.md](docs/03-mvp/qa-worklog/qa-report-RCKG-404.md) (Status: APPROVED)  
 **Labels:** `backend`, `qdrant`, `embedding-sync`, `outbox`  
 
 #### User Story
@@ -1179,8 +1179,8 @@ Per Section 7.6 of `06-delta.md`, updating nodes in Memgraph without synchronizi
 **Priority:** Medium  
 **Assigned To:** Senior Backend Engineer  
 **Status:** COMPLETED ✅  
-**Work Log:** [work-log-RCKG-405.md](file:///home/zackchow/coding/rckg/docs/03-mvp/swe-worklog/work-log-RCKG-405.md)  
-**QA Sign-Off:** [qa-report-RCKG-405.md](file:///home/zackchow/coding/rckg/docs/03-mvp/qa-worklog/qa-report-RCKG-405.md) (Status: APPROVED)  
+**Work Log:** [work-log-RCKG-405.md](docs/03-mvp/swe-worklog/work-log-RCKG-405.md)  
+**QA Sign-Off:** [qa-report-RCKG-405.md](docs/03-mvp/qa-worklog/qa-report-RCKG-405.md) (Status: APPROVED)  
 **Labels:** `backend`, `graphrag`, `translation`, `api`  
 
 #### User Story
@@ -1255,7 +1255,7 @@ graph TD
 
 ### 6.4 Pre-Execution Checklist (Sprint 0 / Kickoff Tasks)
 
-1. [x] **NIST OLIR Schema Mapping:** Verified XML element mapping (`InformativeReference`, `FocalDocument`, `ReferencedDocument`) in [nist-olir-schema-mapping.md](file:///home/zackchow/coding/rckg/docs/03-mvp/nist-olir-schema-mapping.md).
+1. [x] **NIST OLIR Schema Mapping:** Verified XML element mapping (`InformativeReference`, `FocalDocument`, `ReferencedDocument`) in [nist-olir-schema-mapping.md](docs/03-mvp/nist-olir-schema-mapping.md).
 2. [ ] **Test Container Verification:** Provision test containers via `docker-compose.test.yml` (`RCKG-100`).
 3. [ ] **Facet Data Contract Alignment:** Confirm 6-facet Pydantic dictionary fields shared between `DeJureFacetExtractor` (`RCKG-203b`) and `RuleBasedGraphCompiler` (`RCKG-103`).
 4. [ ] **Dual-Write Outbox Decision:** Finalize PostgreSQL Outbox event listener configuration for Memgraph synchronization (`RCKG-104`).

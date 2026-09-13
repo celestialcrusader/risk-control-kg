@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-02  
-**Story Ticket:** [CFIX-301](file:///home/zackchow/coding/rckg/docs/04-deepdive/claude-remediation-sprint.md#cfix-301-add-structured-degradation-logging-across-all-llm-dependent-services)  
-**Work Log Reference:** [work-log-CFIX-301.md](file:///home/zackchow/coding/rckg/docs/04-deepdive/swe-worklog/work-log-CFIX-301.md)  
+**Story Ticket:** [CFIX-301](docs/04-deepdive/claude-remediation-sprint.md#cfix-301-add-structured-degradation-logging-across-all-llm-dependent-services)  
+**Work Log Reference:** [work-log-CFIX-301.md](docs/04-deepdive/swe-worklog/work-log-CFIX-301.md)  
 **Final Status:** **APPROVED**  
 
 ---

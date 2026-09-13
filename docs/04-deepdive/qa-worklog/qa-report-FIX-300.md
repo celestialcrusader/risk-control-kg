@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-07-31  
-**Story Ticket:** [FIX-300](file:///home/zackchow/coding/rckg/docs/04-deepdive/real-mvp.md#fix-300-replace-cold-start-pipeline-hardcoded-target-with-real-candidate-retrieval)  
-**Work Log Reference:** [work-log-FIX-300.md](file:///home/zackchow/coding/rckg/docs/04-deepdive/swe-worklog/work-log-FIX-300.md)  
+**Story Ticket:** [FIX-300](docs/04-deepdive/real-mvp.md#fix-300-replace-cold-start-pipeline-hardcoded-target-with-real-candidate-retrieval)  
+**Work Log Reference:** [work-log-FIX-300.md](docs/04-deepdive/swe-worklog/work-log-FIX-300.md)  
 **Final Status:** **APPROVED**  
 
 ---

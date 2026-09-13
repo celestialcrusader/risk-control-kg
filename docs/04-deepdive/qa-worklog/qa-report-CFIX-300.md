@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-02  
-**Story Ticket:** [CFIX-300](file:///home/zackchow/coding/rckg/docs/04-deepdive/claude-remediation-sprint.md#cfix-300-wire-governance-engine-into-process-pdf-mutation-pipeline)  
-**Work Log Reference:** [work-log-CFIX-300.md](file:///home/zackchow/coding/rckg/docs/04-deepdive/swe-worklog/work-log-CFIX-300.md)  
+**Story Ticket:** [CFIX-300](docs/04-deepdive/claude-remediation-sprint.md#cfix-300-wire-governance-engine-into-process-pdf-mutation-pipeline)  
+**Work Log Reference:** [work-log-CFIX-300.md](docs/04-deepdive/swe-worklog/work-log-CFIX-300.md)  
 **Final Status:** **APPROVED**  
 
 ---

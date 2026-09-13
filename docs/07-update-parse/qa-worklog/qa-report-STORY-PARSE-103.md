@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-12  
-**Story Ticket:** [STORY-PARSE-103](file:///home/zackchow/coding/rckg/docs/07-update-parse/update-parse-sprint.md#story-parse-103-legal-numbering-regex-state-machine-legalhierarchybuilder)  
-**Work Log Reference:** [work-log-STORY-PARSE-103.md](file:///home/zackchow/coding/rckg/docs/07-update-parse/swe-worklog/work-log-STORY-PARSE-103.md)  
+**Story Ticket:** [STORY-PARSE-103](docs/07-update-parse/update-parse-sprint.md#story-parse-103-legal-numbering-regex-state-machine-legalhierarchybuilder)  
+**Work Log Reference:** [work-log-STORY-PARSE-103.md](docs/07-update-parse/swe-worklog/work-log-STORY-PARSE-103.md)  
 **Final Status:** **APPROVED**  
 
 ---

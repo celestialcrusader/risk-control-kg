@@ -3,9 +3,9 @@
 **Document Version:** 1.0 — Technical Schema Reference  
 **Status:** Approved / Active Specification  
 **Classification:** Internal — Technical Reference  
-**Target Repository:** `/home/zackchow/coding/rckg`  
+**Target Repository:** `.`  
 **Output Target:** `docs/03-mvp/nist-olir-schema-mapping.md`  
-**Related Ticket:** [RCKG-101](file:///home/zackchow/coding/rckg/docs/03-mvp/mvp-sprint.md#rckg-101-open-source-compliance-seed-harvesting--seed-graph-ingestion-pipeline)  
+**Related Ticket:** [RCKG-101](docs/03-mvp/mvp-sprint.md#rckg-101-open-source-compliance-seed-harvesting--seed-graph-ingestion-pipeline)  
 
 ---
 

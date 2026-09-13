@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-16  
-**Story Ticket:** [STORY-MCP-102](file:///home/zackchow/coding/rckg/docs/09-mcp-ui/master-sprint-plan.md#story-mcp-102-governance-gap--realtime-evaluation-endpoints)  
-**Work Log Reference:** [work-log-STORY-MCP-102.md](file:///home/zackchow/coding/rckg/docs/09-mcp-ui/swe-worklog/work-log-STORY-MCP-102.md)  
+**Story Ticket:** [STORY-MCP-102](docs/09-mcp-ui/master-sprint-plan.md#story-mcp-102-governance-gap--realtime-evaluation-endpoints)  
+**Work Log Reference:** [work-log-STORY-MCP-102.md](docs/09-mcp-ui/swe-worklog/work-log-STORY-MCP-102.md)  
 **Final Status:** **APPROVED**  
 
 ---

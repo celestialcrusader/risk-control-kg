@@ -18,7 +18,7 @@ except ImportError:
     DoclingPDFAdapter = None
 from app.ingest.adapters.excel import ExcelAdapter
 
-UPLOAD_DIR = "/home/zack/coding/rckg/data/uploads"
+UPLOAD_DIR = "/home/rckg/coding/rckg/data/uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 class IngestionService:

@@ -42,7 +42,7 @@ def test_risk_catalog_parser_extracts_risk_nodes(sample_risk_file):
 
 def test_real_ai_risk_database_excel_parsing():
     """Verify parsing of actual data/test-docs/AI risk database.xlsx."""
-    real_path = "/home/zackchow/coding/rckg/data/test-docs/AI risk database.xlsx"
+    real_path = "data/test-docs/AI risk database.xlsx"
     if not os.path.exists(real_path):
         pytest.skip(f"{real_path} not found")
 

@@ -6,11 +6,11 @@
 **Reviewer**: QA Engineer (Automated)
 **Date**: 2026-04-20
 **Files Reviewed**:
-- `/home/zackchow/coding/rckg/backend/app/api/documents.py` (API router)
-- `/home/zackchow/coding/rckg/backend/app/services/document_upload.py` (Service layer)
-- `/home/zackchow/coding/rckg/backend/tests/test_infra_10_document_upload.py` (Test suite, 971 lines)
-- `/home/zackchow/coding/rckg/backend/app/storage/__init__.py` (MinIO client interface)
-- `/home/zackchow/coding/rckg/backend/app/models/__init__.py` (AuditLog model)
+- `./backend/app/api/documents.py` (API router)
+- `./backend/app/services/document_upload.py` (Service layer)
+- `./backend/tests/test_infra_10_document_upload.py` (Test suite, 971 lines)
+- `./backend/app/storage/__init__.py` (MinIO client interface)
+- `./backend/app/models/__init__.py` (AuditLog model)
 
 ---
 
@@ -206,8 +206,8 @@ The test file could benefit from fixture-based parametrization to reduce duplica
 
 ## Files Modified During This Review
 
-1. `/home/zackchow/coding/rckg/backend/app/api/documents.py` -- Added content-type propagation after validation
-2. `/home/zackchow/coding/rckg/backend/app/services/document_upload.py` -- Fixed `any` to `Any` type import
+1. `./backend/app/api/documents.py` -- Added content-type propagation after validation
+2. `./backend/app/services/document_upload.py` -- Fixed `any` to `Any` type import
 
 ---
 

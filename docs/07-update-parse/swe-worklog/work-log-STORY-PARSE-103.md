@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-12  
 **Status:** READY_FOR_QA  
-**Target Story:** [STORY-PARSE-103](file:///home/zackchow/coding/rckg/docs/07-update-parse/update-parse-sprint.md#story-parse-103-legal-numbering-regex-state-machine-legalhierarchybuilder)  
+**Target Story:** [STORY-PARSE-103](docs/07-update-parse/update-parse-sprint.md#story-parse-103-legal-numbering-regex-state-machine-legalhierarchybuilder)  
 
 ---
 
@@ -13,8 +13,8 @@ Created `backend/app/services/legal_ast_builder.py` implementing `LegalHierarchy
 ## 2. Files Modified & Created
 | File Path | Change Type | Purpose |
 |---|---|---|
-| [`backend/app/services/legal_ast_builder.py`](file:///home/zackchow/coding/rckg/backend/app/services/legal_ast_builder.py) | [NEW] | LegalHierarchyBuilder regex state machine |
-| [`backend/tests/test_legal_ast_builder.py`](file:///home/zackchow/coding/rckg/backend/tests/test_legal_ast_builder.py) | [NEW] | TDD unit test suite for legal AST nesting |
+| [`backend/app/services/legal_ast_builder.py`](backend/app/services/legal_ast_builder.py) | [NEW] | LegalHierarchyBuilder regex state machine |
+| [`backend/tests/test_legal_ast_builder.py`](backend/tests/test_legal_ast_builder.py) | [NEW] | TDD unit test suite for legal AST nesting |
 
 ## 3. TDD Cycle Summary
 ### 🔴 RED Phase

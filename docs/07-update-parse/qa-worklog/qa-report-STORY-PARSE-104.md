@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-12  
-**Story Ticket:** [STORY-PARSE-104](file:///home/zackchow/coding/rckg/docs/07-update-parse/update-parse-sprint.md#story-parse-104-memgraph-temporal-supersession-schema-upgrade)  
-**Work Log Reference:** [work-log-STORY-PARSE-104.md](file:///home/zackchow/coding/rckg/docs/07-update-parse/swe-worklog/work-log-STORY-PARSE-104.md)  
+**Story Ticket:** [STORY-PARSE-104](docs/07-update-parse/update-parse-sprint.md#story-parse-104-memgraph-temporal-supersession-schema-upgrade)  
+**Work Log Reference:** [work-log-STORY-PARSE-104.md](docs/07-update-parse/swe-worklog/work-log-STORY-PARSE-104.md)  
 **Final Status:** **APPROVED**  
 
 ---

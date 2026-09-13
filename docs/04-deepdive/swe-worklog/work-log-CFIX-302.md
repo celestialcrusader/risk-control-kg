@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-02  
 **Status:** READY_FOR_QA  
-**Target Story:** [CFIX-302](file:///home/zackchow/coding/rckg/docs/04-deepdive/claude-remediation-sprint.md#cfix-302-add-end-to-end-integration-test-pdf-upload--memgraph-nodes)  
+**Target Story:** [CFIX-302](docs/04-deepdive/claude-remediation-sprint.md#cfix-302-add-end-to-end-integration-test-pdf-upload--memgraph-nodes)  
 
 ---
 

@@ -229,7 +229,7 @@ with Session(engine) as session:
 
 ```bash
 # Navigate to backend directory
-cd /home/zackchow/coding/rckg/backend
+cd ./backend
 
 # Create a new migration
 alembic revision --autogenerate -m "Description of changes"
@@ -266,7 +266,7 @@ Running the schema initialization multiple times will not cause errors.
 Run the test suite to verify schema correctness:
 
 ```bash
-cd /home/zackchow/coding/rckg/backend
+cd ./backend
 
 # Run INFRA-2 tests
 pytest tests/test_infra_2_postgres_schema.py -v

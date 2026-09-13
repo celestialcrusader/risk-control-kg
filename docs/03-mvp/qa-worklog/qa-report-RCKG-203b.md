@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-07-29  
-**Story Ticket:** [RCKG-203b](file:///home/zackchow/coding/rckg/docs/03-mvp/mvp-sprint.md#rckg-203b-de-jure-6-facet-extraction-service)  
-**Work Log Reference:** [work-log-RCKG-203b.md](file:///home/zackchow/coding/rckg/docs/03-mvp/swe-worklog/work-log-RCKG-203b.md)  
+**Story Ticket:** [RCKG-203b](docs/03-mvp/mvp-sprint.md#rckg-203b-de-jure-6-facet-extraction-service)  
+**Work Log Reference:** [work-log-RCKG-203b.md](docs/03-mvp/swe-worklog/work-log-RCKG-203b.md)  
 **Final Status:** **APPROVED**  
 
 ---

@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-02  
-**Story Ticket:** [CFIX-106](file:///home/zackchow/coding/rckg/docs/04-deepdive/claude-remediation-sprint.md#cfix-106-eliminate-silent-regex-fallback-in-process-pdf-extraction--require-explicit-degradation)  
-**Work Log Reference:** [work-log-CFIX-106.md](file:///home/zackchow/coding/rckg/docs/04-deepdive/swe-worklog/work-log-CFIX-106.md)  
+**Story Ticket:** [CFIX-106](docs/04-deepdive/claude-remediation-sprint.md#cfix-106-eliminate-silent-regex-fallback-in-process-pdf-extraction--require-explicit-degradation)  
+**Work Log Reference:** [work-log-CFIX-106.md](docs/04-deepdive/swe-worklog/work-log-CFIX-106.md)  
 **Final Status:** **APPROVED**  
 
 ---

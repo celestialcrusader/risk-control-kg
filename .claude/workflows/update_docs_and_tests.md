@@ -8,7 +8,7 @@ Use this workflow to clean up after a feature implementation, ensuring docs are 
 
 ## 1. Review Documentation
 Start by loading the current state of documentation.
-- **List Docs**: `list_dir(DirectoryPath="/home/zack/coding/deepeval_ui/docs")`
+- **List Docs**: `list_dir(DirectoryPath="/home/rckg/coding/deepeval_ui/docs")`
 - **Read Context**: Read `docs/reference.md` and `docs/technical_requirements.md` (or other relevant files) to see what is currently documented.
 
 ## 2. Analyze & Update Docs

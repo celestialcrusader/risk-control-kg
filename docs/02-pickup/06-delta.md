@@ -5,11 +5,11 @@
 **Classification:** Internal — Confidential  
 **Last Updated:** July 28, 2026  
 **Linked Pickup Documentation:**
-- README: [README.md](file:///home/zackchow/coding/rckg/docs/02-pickup/README.md)
-- BRD: [01-business-requirement-doc.md](file:///home/zackchow/coding/rckg/docs/02-pickup/01-business-requirement-doc.md)
-- PRD: [02-product-requirement-doc.md](file:///home/zackchow/coding/rckg/docs/02-pickup/02-product-requirement-doc.md)
-- TRD: [03-technical-requirement-doc.md](file:///home/zackchow/coding/rckg/docs/02-pickup/03-technical-requirement-doc.md)
-- Current Code Audit: [04-current-state-of-code.md](file:///home/zackchow/coding/rckg/docs/04-current-state-of-code.md)
+- README: [README.md](docs/02-pickup/README.md)
+- BRD: [01-business-requirement-doc.md](docs/02-pickup/01-business-requirement-doc.md)
+- PRD: [02-product-requirement-doc.md](docs/02-pickup/02-product-requirement-doc.md)
+- TRD: [03-technical-requirement-doc.md](docs/02-pickup/03-technical-requirement-doc.md)
+- Current Code Audit: [04-current-state-of-code.md](docs/04-current-state-of-code.md)
 
 ---
 

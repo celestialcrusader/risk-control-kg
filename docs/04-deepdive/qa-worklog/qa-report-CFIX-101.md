@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-02  
-**Story Ticket:** [CFIX-101](file:///home/zackchow/coding/rckg/docs/04-deepdive/claude-remediation-sprint.md#cfix-101-wire-memgraph-connection-into-graphrevert-api-endpoint)  
-**Work Log Reference:** [work-log-CFIX-101.md](file:///home/zackchow/coding/rckg/docs/04-deepdive/swe-worklog/work-log-CFIX-101.md)  
+**Story Ticket:** [CFIX-101](docs/04-deepdive/claude-remediation-sprint.md#cfix-101-wire-memgraph-connection-into-graphrevert-api-endpoint)  
+**Work Log Reference:** [work-log-CFIX-101.md](docs/04-deepdive/swe-worklog/work-log-CFIX-101.md)  
 **Final Status:** **APPROVED**  
 
 ---

@@ -49,7 +49,7 @@ $ pytest tests/test_story_mcp_101_query_api.py \
 
 ======================== test session starts =========================
 platform linux -- Python 3.12.3, pytest-9.0.3, pluggy-1.6.0 -- /usr/bin/python3
-rootdir: /home/zackchow/coding/rckg/backend
+rootdir: ./backend
 collected 22 items
 
 tests/test_story_mcp_101_query_api.py::test_get_obligations_paginated PASSED          [  4%]

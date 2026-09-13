@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-11  
 **Status:** READY_FOR_QA  
-**Target Story:** [STORY-AI-104](file:///home/zackchow/coding/rckg/docs/06-add-ai/sprints.md#story-ai-104-modernbert-large-nli-set-theory-engine--heuristic-removal)  
+**Target Story:** [STORY-AI-104](docs/06-add-ai/sprints.md#story-ai-104-modernbert-large-nli-set-theory-engine--heuristic-removal)  
 
 ---
 

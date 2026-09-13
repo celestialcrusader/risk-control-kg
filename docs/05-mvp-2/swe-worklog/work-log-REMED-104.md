@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-09  
 **Status:** READY_FOR_QA  
-**Target Story:** [REMED-104](file:///home/zackchow/coding/rckg/docs/05-mvp-2/gaps-to-mvp.md#remed-104-complete-bitemporal-schema--startup-endpoint-locality-check)  
+**Target Story:** [REMED-104](docs/05-mvp-2/gaps-to-mvp.md#remed-104-complete-bitemporal-schema--startup-endpoint-locality-check)  
 
 ---
 

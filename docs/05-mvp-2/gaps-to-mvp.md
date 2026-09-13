@@ -51,7 +51,7 @@ To eliminate ambiguity across product, engineering, and QA teams, the definition
 
 ## 2. Executive Summary & Audit Assessment
 
-A rigorous independent audit was conducted on the 14 completed stories across 3 sprints documented in [docs/05-mvp-2/sprints.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/sprints.md).
+A rigorous independent audit was conducted on the 14 completed stories across 3 sprints documented in [docs/05-mvp-2/sprints.md](docs/05-mvp-2/sprints.md).
 
 While `pytest backend/tests/test_mvp2_suite.py` returns **16 PASSED in 1.81 seconds**, deep source code inspection reveals that the test suite was passed using **mock assertions, stubbed exceptions, and hardcoded in-memory dictionaries**.
 

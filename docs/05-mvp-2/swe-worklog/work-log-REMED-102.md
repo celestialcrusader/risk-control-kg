@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-09  
 **Status:** READY_FOR_QA  
-**Target Story:** [REMED-102](file:///home/zackchow/coding/rckg/docs/05-mvp-2/gaps-to-mvp.md#remed-102-wire-synchronous-dual-judge-gate--outbox-schema-columns)  
+**Target Story:** [REMED-102](docs/05-mvp-2/gaps-to-mvp.md#remed-102-wire-synchronous-dual-judge-gate--outbox-schema-columns)  
 
 ---
 

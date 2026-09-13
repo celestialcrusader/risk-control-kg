@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-16  
-**Story Ticket:** [STORY-COMP-201](file:///home/zackchow/coding/rckg/docs/08-compare-upgrade/sprint-plan-compiler-upgrade.md#story-comp-201-two-dimensional-ontology--directional-schema-migration)  
-**Work Log Reference:** [work-log-STORY-COMP-201.md](file:///home/zackchow/coding/rckg/docs/08-compare-upgrade/swe-worklog/work-log-STORY-COMP-201.md)  
+**Story Ticket:** [STORY-COMP-201](docs/08-compare-upgrade/sprint-plan-compiler-upgrade.md#story-comp-201-two-dimensional-ontology--directional-schema-migration)  
+**Work Log Reference:** [work-log-STORY-COMP-201.md](docs/08-compare-upgrade/swe-worklog/work-log-STORY-COMP-201.md)  
 **Final Status:** **APPROVED** ✅
 
 ---

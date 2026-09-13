@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-02  
 **Status:** READY_FOR_QA  
-**Target Story:** [CFIX-300](file:///home/zackchow/coding/rckg/docs/04-deepdive/claude-remediation-sprint.md#cfix-300-wire-governance-engine-into-process-pdf-mutation-pipeline)  
+**Target Story:** [CFIX-300](docs/04-deepdive/claude-remediation-sprint.md#cfix-300-wire-governance-engine-into-process-pdf-mutation-pipeline)  
 
 ---
 

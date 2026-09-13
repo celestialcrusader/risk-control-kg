@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-12  
 **Status:** READY_FOR_QA  
-**Target Story:** [STORY-GRAPH-104](file:///home/zackchow/coding/rckg/docs/06-add-ai/upgrade-graph-agent.md#story-graph-104-dynamic-routing-edges--native-hitl-interrupt-breakpoint)  
+**Target Story:** [STORY-GRAPH-104](docs/06-add-ai/upgrade-graph-agent.md#story-graph-104-dynamic-routing-edges--native-hitl-interrupt-breakpoint)  
 
 ---
 

@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-07-31  
 **Status:** READY_FOR_QA  
-**Target Story:** [FIX-100](file:///home/zackchow/coding/rckg/docs/04-deepdive/real-mvp.md#fix-100-fix-runtime-crash-in-clauseboundaryextractor-group6-bug)  
+**Target Story:** [FIX-100](docs/04-deepdive/real-mvp.md#fix-100-fix-runtime-crash-in-clauseboundaryextractor-group6-bug)  
 
 ---
 

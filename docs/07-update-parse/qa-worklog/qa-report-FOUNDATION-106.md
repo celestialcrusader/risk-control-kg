@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-15  
-**Story Ticket:** [STORY-FOUNDATION-106](file:///home/zackchow/coding/rckg/docs/07-update-parse/sprint-plan-foundation-setup.md#story-foundation-106-stub-node-stub_unresolved-generation--late-binding-self-healing-engine)  
-**Work Log Reference:** [work-log-FOUNDATION-106.md](file:///home/zackchow/coding/rckg/docs/07-update-parse/swe-worklog/work-log-FOUNDATION-106.md)  
+**Story Ticket:** [STORY-FOUNDATION-106](docs/07-update-parse/sprint-plan-foundation-setup.md#story-foundation-106-stub-node-stub_unresolved-generation--late-binding-self-healing-engine)  
+**Work Log Reference:** [work-log-FOUNDATION-106.md](docs/07-update-parse/swe-worklog/work-log-FOUNDATION-106.md)  
 **Final Status:** **APPROVED** ✅  
 
 ---

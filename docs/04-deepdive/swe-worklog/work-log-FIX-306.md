@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-07-31  
 **Status:** READY_FOR_QA  
-**Target Story:** [FIX-306](file:///home/zackchow/coding/rckg/docs/04-deepdive/real-mvp.md#fix-306-replace-graphiti-string-equality-with-semantic-similarity)  
+**Target Story:** [FIX-306](docs/04-deepdive/real-mvp.md#fix-306-replace-graphiti-string-equality-with-semantic-similarity)  
 
 ---
 

@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-07-30  
 **Status:** READY_FOR_QA  
-**Target Story:** [RCKG-401](file:///home/zackchow/coding/rckg/docs/03-mvp/mvp-sprint.md#rckg-401-phase-2-graphiti-incremental-semantic-change-detector--mutation-diff-engine)  
+**Target Story:** [RCKG-401](docs/03-mvp/mvp-sprint.md#rckg-401-phase-2-graphiti-incremental-semantic-change-detector--mutation-diff-engine)  
 
 ---
 

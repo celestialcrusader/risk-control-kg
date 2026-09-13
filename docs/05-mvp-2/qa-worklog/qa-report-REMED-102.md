@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-09  
-**Story Ticket:** [REMED-102](file:///home/zackchow/coding/rckg/docs/05-mvp-2/gaps-to-mvp.md#remed-102-wire-synchronous-dual-judge-gate--outbox-schema-columns)  
-**Work Log Reference:** [work-log-REMED-102.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/swe-worklog/work-log-REMED-102.md)  
+**Story Ticket:** [REMED-102](docs/05-mvp-2/gaps-to-mvp.md#remed-102-wire-synchronous-dual-judge-gate--outbox-schema-columns)  
+**Work Log Reference:** [work-log-REMED-102.md](docs/05-mvp-2/swe-worklog/work-log-REMED-102.md)  
 **Final Status:** **APPROVED**  
 
 ---

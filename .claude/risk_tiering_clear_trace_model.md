@@ -1,4 +1,4 @@
-# Refined AI Risk Tiering (The Zack/Wukongtai Model)
+# Refined AI Risk Tiering (The RCKG-Tiering Model)
 
 This model applies "Minimum Viable Governance" by condensing risk assessment into a high-density, scannable engine. 
 

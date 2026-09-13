@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-07-30  
 **Status:** READY_FOR_QA  
-**Target Story:** [RCKG-304](file:///home/zackchow/coding/rckg/docs/03-mvp/mvp-sprint.md#rckg-304-asynchronous-70b-dual-judge-audit-service--ktodpo-preference-worker)  
+**Target Story:** [RCKG-304](docs/03-mvp/mvp-sprint.md#rckg-304-asynchronous-70b-dual-judge-audit-service--ktodpo-preference-worker)  
 
 ---
 

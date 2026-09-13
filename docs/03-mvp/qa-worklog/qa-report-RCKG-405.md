@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-07-30  
-**Story Ticket:** [RCKG-405](file:///home/zackchow/coding/rckg/docs/03-mvp/mvp-sprint.md#rckg-405-downstream-graphrag-translation-layer-interface)  
-**Work Log Reference:** [work-log-RCKG-405.md](file:///home/zackchow/coding/rckg/docs/03-mvp/swe-worklog/work-log-RCKG-405.md)  
+**Story Ticket:** [RCKG-405](docs/03-mvp/mvp-sprint.md#rckg-405-downstream-graphrag-translation-layer-interface)  
+**Work Log Reference:** [work-log-RCKG-405.md](docs/03-mvp/swe-worklog/work-log-RCKG-405.md)  
 **Final Status:** **APPROVED**  
 
 ---

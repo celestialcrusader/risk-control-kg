@@ -7,7 +7,7 @@
 
 ## Executive Summary
 
-This document performs an un-biased, **First-Principles Architectural Review** of the Clear Trace / RCKG codebase, cross-referencing the underlying business requirements in [01-business-requirement-doc.md](file:///home/zackchow/coding/rckg/docs/02-pickup/01-business-requirement-doc.md) against the actual backend implementation in `backend/app/`.
+This document performs an un-biased, **First-Principles Architectural Review** of the Clear Trace / RCKG codebase, cross-referencing the underlying business requirements in [01-business-requirement-doc.md](docs/02-pickup/01-business-requirement-doc.md) against the actual backend implementation in `backend/app/`.
 
 The primary finding is that the current implementation suffers from severe **architectural duplication and defensive over-engineering**. The codebase attempts to run a traditional 3-layer relational ETL pipeline (PostgreSQL Bronze/Silver/Gold) *in parallel* with a Graph Database (Memgraph), linking them via a fragile **Transactional Outbox Pattern** (`GraphOutboxLog`). Furthermore, simple deterministic operations are wrapped in multi-stage LLM judging loops (`dual_judge_async.py`, `nli_engine.py`) that swallow errors with fake arithmetic fallback scores.
 

@@ -74,7 +74,7 @@ PYEOF
 ### Step 2: Run the Golden 50 Test (Mock LLM — 100% Accuracy)
 
 ```bash
-cd /home/zackchow/coding/rckg/backend
+cd ./backend
 python3 -m pytest tests/test_golden50.py::TestGolden50Integration::test_golden_50_passes_with_mocked_llm -v
 ```
 
@@ -83,7 +83,7 @@ python3 -m pytest tests/test_golden50.py::TestGolden50Integration::test_golden_5
 ### Step 3: Run Full Golden 50 Test Suite
 
 ```bash
-cd /home/zackchow/coding/rckg/backend
+cd ./backend
 python3 -m pytest tests/test_golden50.py -v
 ```
 
@@ -130,7 +130,7 @@ PYEOF
 ### Step 5: Verify Failure Path (Below 90% Threshold)
 
 ```bash
-cd /home/zackchow/coding/rckg/backend
+cd ./backend
 python3 -m pytest tests/test_golden50.py::TestGolden50Integration::test_golden_50_fails_when_accuracy_below_threshold -v
 ```
 
@@ -139,7 +139,7 @@ python3 -m pytest tests/test_golden50.py::TestGolden50Integration::test_golden_5
 ### Step 6: Verify Threshold Boundary
 
 ```bash
-cd /home/zackchow/coding/rckg/backend
+cd ./backend
 python3 << 'PYEOF'
 import sys
 sys.path.insert(0, ".")
@@ -163,7 +163,7 @@ PYEOF
 
 ```bash
 echo "=== Golden 50 Documentation ==="
-head -40 /home/zackchow/coding/rckg/docs/01-initial/golden50.md
+head -40 ./docs/01-initial/golden50.md
 
 echo ""
 echo "=== File locations ==="
@@ -207,7 +207,7 @@ ls -la docs/01-initial/golden50.md
 
 | Issue | Check |
 |-------|-------|
-| `golden_50.json` not found | Ensure running from repo root: `cd /home/zackchow/coding/rckg` |
+| `golden_50.json` not found | Ensure running from repo root: `cd .` |
 | Tests import error | Ensure pytest is installed: `pip install pytest` |
 | Wrong framework in data | Check golden_50.json entries — must be DORA, HIPAA, SOX, GDPR, or PCI-DSS |
 | Accuracy < 90% in results | Re-generate results: re-run `test_golden_50_passes_with_mocked_llm` |

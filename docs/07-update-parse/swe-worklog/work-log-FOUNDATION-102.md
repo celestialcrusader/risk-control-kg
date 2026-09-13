@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-15  
 **Status:** READY_FOR_QA  
-**Target Story:** [STORY-FOUNDATION-102](file:///home/zackchow/coding/rckg/docs/07-update-parse/sprint-plan-foundation-setup.md#story-foundation-102-configurable-tabular--multi-sheet-excel-ingestion-adapter)  
+**Target Story:** [STORY-FOUNDATION-102](docs/07-update-parse/sprint-plan-foundation-setup.md#story-foundation-102-configurable-tabular--multi-sheet-excel-ingestion-adapter)  
 
 ---
 

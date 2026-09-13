@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-07-30  
 **Status:** READY_FOR_QA  
-**Target Story:** [RCKG-302](file:///home/zackchow/coding/rckg/docs/03-mvp/mvp-sprint.md#rckg-302-pre-cached-colbertv2-token-embedding-vram-maxsim-reranker)  
+**Target Story:** [RCKG-302](docs/03-mvp/mvp-sprint.md#rckg-302-pre-cached-colbertv2-token-embedding-vram-maxsim-reranker)  
 
 ---
 

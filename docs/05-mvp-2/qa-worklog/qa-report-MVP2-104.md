@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-09  
-**Story Ticket:** [MVP2-104](file:///home/zackchow/coding/rckg/docs/05-mvp-2/sprints.md#mvp2-104--delete-guards-for-compliance-data)  
-**Work Log Reference:** [work-log-MVP2-104.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/swe-worklog/work-log-MVP2-104.md)  
+**Story Ticket:** [MVP2-104](docs/05-mvp-2/sprints.md#mvp2-104--delete-guards-for-compliance-data)  
+**Work Log Reference:** [work-log-MVP2-104.md](docs/05-mvp-2/swe-worklog/work-log-MVP2-104.md)  
 **Final Status:** **APPROVED**  
 
 ---

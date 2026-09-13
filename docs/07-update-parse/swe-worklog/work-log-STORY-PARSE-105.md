@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-12  
 **Status:** READY_FOR_QA  
-**Target Story:** [STORY-PARSE-105](file:///home/zackchow/coding/rckg/docs/07-update-parse/update-parse-sprint.md#story-parse-105-qdrant-parent-child-vector-indexing--hydration)  
+**Target Story:** [STORY-PARSE-105](docs/07-update-parse/update-parse-sprint.md#story-parse-105-qdrant-parent-child-vector-indexing--hydration)  
 
 ---
 
@@ -13,8 +13,8 @@ Created `backend/app/services/qdrant_service.py` implementing `QdrantParentChild
 ## 2. Files Modified & Created
 | File Path | Change Type | Purpose |
 |---|---|---|
-| [`backend/app/services/qdrant_service.py`](file:///home/zackchow/coding/rckg/backend/app/services/qdrant_service.py) | [NEW] | QdrantParentChildService with parent node hydration |
-| [`backend/tests/test_qdrant_parent_child.py`](file:///home/zackchow/coding/rckg/backend/tests/test_qdrant_parent_child.py) | [NEW] | TDD unit test suite for parent context hydration |
+| [`backend/app/services/qdrant_service.py`](backend/app/services/qdrant_service.py) | [NEW] | QdrantParentChildService with parent node hydration |
+| [`backend/tests/test_qdrant_parent_child.py`](backend/tests/test_qdrant_parent_child.py) | [NEW] | TDD unit test suite for parent context hydration |
 
 ## 3. TDD Cycle Summary
 ### 🔴 RED Phase

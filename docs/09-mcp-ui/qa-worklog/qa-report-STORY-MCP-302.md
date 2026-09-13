@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-16  
-**Story Ticket:** [STORY-MCP-302](file:///home/zackchow/coding/rckg/docs/09-mcp-ui/master-sprint-plan.md#story-mcp-302-crosswalk-matrix-reviewer--interactive-auditor-override-modal)  
-**Work Log Reference:** [work-log-STORY-MCP-302.md](file:///home/zackchow/coding/rckg/docs/09-mcp-ui/swe-worklog/work-log-STORY-MCP-302.md)  
+**Story Ticket:** [STORY-MCP-302](docs/09-mcp-ui/master-sprint-plan.md#story-mcp-302-crosswalk-matrix-reviewer--interactive-auditor-override-modal)  
+**Work Log Reference:** [work-log-STORY-MCP-302.md](docs/09-mcp-ui/swe-worklog/work-log-STORY-MCP-302.md)  
 **Final Status:** **APPROVED**  
 
 ---

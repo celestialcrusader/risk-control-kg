@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-07-30  
 **Status:** READY_FOR_QA  
-**Target Story:** [RCKG-303](file:///home/zackchow/coding/rckg/docs/03-mvp/mvp-sprint.md#rckg-303-deberta-v3-nli-cross-encoder--distilled-8b-student-set-theory-engine)  
+**Target Story:** [RCKG-303](docs/03-mvp/mvp-sprint.md#rckg-303-deberta-v3-nli-cross-encoder--distilled-8b-student-set-theory-engine)  
 
 ---
 

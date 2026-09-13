@@ -7,7 +7,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 from app.ingest.adapters.nist_csv import NISTCSVAdapter
 from app.core.oscal import Catalog, Group, Control
 
-SAMPLE_CSV_PATH = "/home/zack/coding/rckg/data/raw/csv/sp800-53r5-control-catalog.csv"
+SAMPLE_CSV_PATH = "data/raw/csv/sp800-53r5-control-catalog.csv"
 
 @pytest.mark.skipif(not os.path.exists(SAMPLE_CSV_PATH), reason="Sample data not found")
 def test_nist_csv_adapter_parsing():

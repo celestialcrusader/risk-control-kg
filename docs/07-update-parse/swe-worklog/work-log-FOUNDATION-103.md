@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-15  
 **Status:** READY_FOR_QA  
-**Target Story:** [STORY-FOUNDATION-103](file:///home/zackchow/coding/rckg/docs/07-update-parse/sprint-plan-foundation-setup.md#story-foundation-103-pure-risk-catalog-ingestion--semantic-mitigation-linkages)  
+**Target Story:** [STORY-FOUNDATION-103](docs/07-update-parse/sprint-plan-foundation-setup.md#story-foundation-103-pure-risk-catalog-ingestion--semantic-mitigation-linkages)  
 
 ---
 

@@ -7,8 +7,8 @@
 **Last Updated:** July 27, 2026  
 **Supersedes:** `docs/01-initial/product-requirement.md` v2.0  
 **Linked Requirements:**
-- BRD: [01-business-requirement-doc.md](file:///home/zackchow/coding/rckg/docs/02-pickup/01-business-requirement-doc.md) v3.0
-- TRD: [03-technical-requirement-doc.md](file:///home/zackchow/coding/rckg/docs/02-pickup/03-technical-requirement-doc.md) v7.0
+- BRD: [01-business-requirement-doc.md](docs/02-pickup/01-business-requirement-doc.md) v3.0
+- TRD: [03-technical-requirement-doc.md](docs/02-pickup/03-technical-requirement-doc.md) v7.0
 
 ---
 
@@ -25,7 +25,7 @@ Clear Trace integrates six functional core modules into a single web application
 ├─────────────────────────────────────────────────────────────────────────────┤
 │  MODULE 1: Tri-Panel Copilot Workspace (Chat, Reasoning CoT, Canvas)       │
 ├─────────────────────────────────────────────────────────────────────────────┤
-│  MODULE 2: Inherent Risk Profiling Engine (Zack/Wukongtai 5-Dim Model)      │
+│  MODULE 2: Inherent Risk Profiling Engine (RCKG-Tiering 5-Dim Model)      │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │  MODULE 3: Principles-to-Grounded-Testing Pipeline (DeepEval + Evidence)   │
 ├─────────────────────────────────────────────────────────────────────────────┤
@@ -72,7 +72,7 @@ The core interface must feature a synchronized 3-panel layout:
 
 ---
 
-### 3.2 Module 2 — Inherent Risk Profiling Engine (Zack/Wukongtai Model)
+### 3.2 Module 2 — Inherent Risk Profiling Engine (RCKG-Tiering Model)
 
 #### FR-2.1 The 5 Core Dimension Scorer
 The engine must compute an AI Solution's Inherent Risk Score based on 5 quantitative dimensions scored 1 (Low), 3 (Medium), or 5 (High):

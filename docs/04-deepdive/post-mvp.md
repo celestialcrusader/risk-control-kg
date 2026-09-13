@@ -4,9 +4,9 @@
 **Status:** Draft / Pending Approval  
 **Classification:** Internal — Confidential Engineering Specification  
 **Date:** July 31, 2026  
-**Prerequisite:** Completion of [real-mvp.md](file:///home/zackchow/coding/rckg/docs/04-deepdive/real-mvp.md) (Sprints 1–3)  
-**Governing Spec:** [06-delta.md](file:///home/zackchow/coding/rckg/docs/02-pickup/06-delta.md)  
-**Target Repository:** `/home/zackchow/coding/rckg`  
+**Prerequisite:** Completion of [real-mvp.md](docs/04-deepdive/real-mvp.md) (Sprints 1–3)  
+**Governing Spec:** [06-delta.md](docs/02-pickup/06-delta.md)  
+**Target Repository:** `.`  
 
 ---
 

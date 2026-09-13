@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-07-31  
 **Status:** READY_FOR_QA  
-**Target Story:** [FIX-301](file:///home/zackchow/coding/rckg/docs/04-deepdive/real-mvp.md#fix-301-replace-nli-engine-keyword-stub-with-llm-proxied-nli-classification)  
+**Target Story:** [FIX-301](docs/04-deepdive/real-mvp.md#fix-301-replace-nli-engine-keyword-stub-with-llm-proxied-nli-classification)  
 
 ---
 

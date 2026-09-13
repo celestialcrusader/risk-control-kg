@@ -14,7 +14,7 @@ This guide provides step-by-step instructions for setting up the RCKG developmen
 ### 1. Clone and Navigate to Project Directory
 
 ```bash
-cd /home/zackchow/coding/rckg
+cd .
 ```
 
 ### 2. Configure Environment Variables

@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-02  
 **Status:** READY_FOR_QA  
-**Target Story:** [CFIX-202](file:///home/zackchow/coding/rckg/docs/04-deepdive/claude-remediation-sprint.md#cfix-202-fix-cold-start-pipeline-candidate-metadata--remove-hardcoded-facets)  
+**Target Story:** [CFIX-202](docs/04-deepdive/claude-remediation-sprint.md#cfix-202-fix-cold-start-pipeline-candidate-metadata--remove-hardcoded-facets)  
 
 ---
 

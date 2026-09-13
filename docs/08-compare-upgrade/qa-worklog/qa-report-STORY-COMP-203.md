@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-16  
-**Story Ticket:** [STORY-COMP-203](file:///home/zackchow/coding/rckg/docs/08-compare-upgrade/sprint-plan-compiler-upgrade.md#story-comp-203-hybrid-candidate-retriever-dense--bm25-top-15-recall-net)  
-**Work Log Reference:** [work-log-STORY-COMP-203.md](file:///home/zackchow/coding/rckg/docs/08-compare-upgrade/swe-worklog/work-log-STORY-COMP-203.md)  
+**Story Ticket:** [STORY-COMP-203](docs/08-compare-upgrade/sprint-plan-compiler-upgrade.md#story-comp-203-hybrid-candidate-retriever-dense--bm25-top-15-recall-net)  
+**Work Log Reference:** [work-log-STORY-COMP-203.md](docs/08-compare-upgrade/swe-worklog/work-log-STORY-COMP-203.md)  
 **Final Status:** **APPROVED** ✅
 
 ---

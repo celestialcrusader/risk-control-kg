@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-07-31  
-**Story Ticket:** [FIX-200](file:///home/zackchow/coding/rckg/docs/04-deepdive/real-mvp.md#fix-200-fix-seed-ingestion-to-persist-crosswalk-edges)  
-**Work Log Reference:** [work-log-FIX-200.md](file:///home/zackchow/coding/rckg/docs/04-deepdive/swe-worklog/work-log-FIX-200.md)  
+**Story Ticket:** [FIX-200](docs/04-deepdive/real-mvp.md#fix-200-fix-seed-ingestion-to-persist-crosswalk-edges)  
+**Work Log Reference:** [work-log-FIX-200.md](docs/04-deepdive/swe-worklog/work-log-FIX-200.md)  
 **Final Status:** **APPROVED**  
 
 ---

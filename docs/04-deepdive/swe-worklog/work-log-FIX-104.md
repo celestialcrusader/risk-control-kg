@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-07-31  
 **Status:** READY_FOR_QA  
-**Target Story:** [FIX-104](file:///home/zackchow/coding/rckg/docs/04-deepdive/real-mvp.md#fix-104-wire-llm-extraction-into-process-pdf-endpoint-replace-regex-fabrication)  
+**Target Story:** [FIX-104](docs/04-deepdive/real-mvp.md#fix-104-wire-llm-extraction-into-process-pdf-endpoint-replace-regex-fabrication)  
 
 ---
 

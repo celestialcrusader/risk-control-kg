@@ -9,8 +9,8 @@ from app.ingest.adapters.csa_ccm import CSACCMAdapter
 from app.ingest.adapters.nist_csv import NISTCSVAdapter
 from app.core.database import Database
 
-SAMPLE_CCM_PATH = "/home/zack/coding/rckg/data/raw/oscal/primary-dataset.json"
-SAMPLE_NIST_PATH = "/home/zack/coding/rckg/data/raw/csv/sp800-53r5-control-catalog.csv"
+SAMPLE_CCM_PATH = "data/raw/oscal/primary-dataset.json"
+SAMPLE_NIST_PATH = "data/raw/csv/sp800-53r5-control-catalog.csv"
 
 @pytest.fixture(scope="module")
 def db():

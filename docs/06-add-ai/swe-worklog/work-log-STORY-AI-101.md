@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-11  
 **Status:** READY_FOR_QA  
-**Target Story:** [STORY-AI-101](file:///home/zackchow/coding/rckg/docs/06-add-ai/sprints.md#story-ai-101-paddleocr-vl-16-pdf-parsing-integration)  
+**Target Story:** [STORY-AI-101](docs/06-add-ai/sprints.md#story-ai-101-paddleocr-vl-16-pdf-parsing-integration)  
 
 ---
 

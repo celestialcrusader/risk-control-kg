@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-16  
 **Status:** READY_FOR_QA  
-**Target Story:** [STORY-MCP-302](file:///home/zackchow/coding/rckg/docs/09-mcp-ui/master-sprint-plan.md#story-mcp-302-crosswalk-matrix-reviewer--interactive-auditor-override-modal)  
+**Target Story:** [STORY-MCP-302](docs/09-mcp-ui/master-sprint-plan.md#story-mcp-302-crosswalk-matrix-reviewer--interactive-auditor-override-modal)  
 
 ---
 

@@ -1,6 +1,6 @@
 # MVP-2 Sprint & Story Breakdown
 
-**Source of Truth:** [requirements.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/requirements.md)  
+**Source of Truth:** [requirements.md](docs/05-mvp-2/requirements.md)  
 **Sprint Length:** 2 weeks  
 **Team:** 2 engineers (1 lead AI/infra, 1 backend)  
 **Assumed Velocity:** ~21 story points per sprint (2-person team, conservative)  
@@ -22,7 +22,7 @@
 **Type:** Feature  
 **Story Points:** 8 (large — external library integration with unknown dependencies)  
 **Traces to:** FR-02, FR-03, C-01, C-02  
-**Status:** **COMPLETED** (Work Log: [work-log-MVP2-101.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/swe-worklog/work-log-MVP2-101.md) | QA Report: [qa-report-MVP2-101.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/qa-worklog/qa-report-MVP2-101.md))
+**Status:** **COMPLETED** (Work Log: [work-log-MVP2-101.md](docs/05-mvp-2/swe-worklog/work-log-MVP2-101.md) | QA Report: [qa-report-MVP2-101.md](docs/05-mvp-2/qa-worklog/qa-report-MVP2-101.md))
 
 **As a** compliance officer,  
 **I want** the system to convert my uploaded PDF to structured Markdown preserving headings and tables,  
@@ -45,7 +45,7 @@
 **Type:** Bug Fix / Safety  
 **Story Points:** 3  
 **Traces to:** FR-07, C-03, U-04
-**Status:** **COMPLETED** (Work Log: [work-log-MVP2-102.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/swe-worklog/work-log-MVP2-102.md) | QA Report: [qa-report-MVP2-102.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/qa-worklog/qa-report-MVP2-102.md))
+**Status:** **COMPLETED** (Work Log: [work-log-MVP2-102.md](docs/05-mvp-2/swe-worklog/work-log-MVP2-102.md) | QA Report: [qa-report-MVP2-102.md](docs/05-mvp-2/qa-worklog/qa-report-MVP2-102.md))
 
 **As a** compliance officer,  
 **I want** the system to clearly tell me when extraction failed rather than silently making up obligations from regex,  
@@ -53,7 +53,7 @@
 
 **Acceptance Criteria:**
 - [x] When `_call_llm()` fails or returns unparseable response, `extract_obligations()` returns empty list with `extraction_method: "FAILED"` metadata
-- [x] The `process-pdf` endpoint ([extract.py:L203-223](file:///home/zackchow/coding/rckg/backend/app/api/extract.py#L203-L223)) does NOT fall back to `facet_extractor.extract_facets()` to fabricate obligations
+- [x] The `process-pdf` endpoint ([extract.py:L203-223](backend/app/api/extract.py#L203-L223)) does NOT fall back to `facet_extractor.extract_facets()` to fabricate obligations
 - [x] API response includes `degraded: true` flag when LLM was unavailable
 - [x] `log_degradation_event()` is called with `service: "Extraction"`, `method_used: "FAILED"`
 - [x] pytest test mocks LLM failure → verifies empty result, not fabricated result
@@ -65,7 +65,7 @@
 **Type:** Feature (integration)  
 **Story Points:** 5  
 **Traces to:** FR-04, FR-05, FR-06, C-03
-**Status:** **COMPLETED** (Work Log: [work-log-MVP2-103.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/swe-worklog/work-log-MVP2-103.md) | QA Report: [qa-report-MVP2-103.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/qa-worklog/qa-report-MVP2-103.md))
+**Status:** **COMPLETED** (Work Log: [work-log-MVP2-103.md](docs/05-mvp-2/swe-worklog/work-log-MVP2-103.md) | QA Report: [qa-report-MVP2-103.md](docs/05-mvp-2/qa-worklog/qa-report-MVP2-103.md))
 
 **As a** compliance officer,  
 **I want** to upload a PDF via `POST /documents` and have the system automatically parse it, chunk it, and extract obligations,  
@@ -85,7 +85,7 @@
 **Type:** Safety  
 **Story Points:** 2  
 **Traces to:** FR-16, C-10
-**Status:** **COMPLETED** (Work Log: [work-log-MVP2-104.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/swe-worklog/work-log-MVP2-104.md) | QA Report: [qa-report-MVP2-104.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/qa-worklog/qa-report-MVP2-104.md))
+**Status:** **COMPLETED** (Work Log: [work-log-MVP2-104.md](docs/05-mvp-2/swe-worklog/work-log-MVP2-104.md) | QA Report: [qa-report-MVP2-104.md](docs/05-mvp-2/qa-worklog/qa-report-MVP2-104.md))
 
 **As a** system administrator,  
 **I want** the system to prevent accidental deletion of compliance data,  
@@ -104,7 +104,7 @@
 **Type:** Safety  
 **Story Points:** 3  
 **Traces to:** FR-17, C-11
-**Status:** **COMPLETED** (Work Log: [work-log-MVP2-105.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/swe-worklog/work-log-MVP2-105.md) | QA Report: [qa-report-MVP2-105.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/qa-worklog/qa-report-MVP2-105.md))
+**Status:** **COMPLETED** (Work Log: [work-log-MVP2-105.md](docs/05-mvp-2/swe-worklog/work-log-MVP2-105.md) | QA Report: [qa-report-MVP2-105.md](docs/05-mvp-2/qa-worklog/qa-report-MVP2-105.md))
 
 **As a** security officer,  
 **I want** the system to warn me if the LLM endpoint points to a public API,  
@@ -133,7 +133,7 @@
 **Type:** Bug Fix / Safety  
 **Story Points:** 5  
 **Traces to:** FR-08, FR-09, C-04, FINDING-007, U-04
-**Status:** **COMPLETED** (Work Log: [work-log-MVP2-201.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/swe-worklog/work-log-MVP2-201.md) | QA Report: [qa-report-MVP2-201.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/qa-worklog/qa-report-MVP2-201.md))
+**Status:** **COMPLETED** (Work Log: [work-log-MVP2-201.md](docs/05-mvp-2/swe-worklog/work-log-MVP2-201.md) | QA Report: [qa-report-MVP2-201.md](docs/05-mvp-2/qa-worklog/qa-report-MVP2-201.md))
 
 **As a** compliance officer,  
 **I want** the NLI classification to either give me a real AI assessment or honestly tell me it couldn't classify,  
@@ -155,7 +155,7 @@
 **Type:** Feature (critical)  
 **Story Points:** 8 (large — wiring async service into sync path + threshold changes + fallback elimination)  
 **Traces to:** FR-12, FR-13, FR-14, C-05, FINDING-003, U-05
-**Status:** **COMPLETED** (Work Log: [work-log-MVP2-202.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/swe-worklog/work-log-MVP2-202.md) | QA Report: [qa-report-MVP2-202.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/qa-worklog/qa-report-MVP2-202.md))
+**Status:** **COMPLETED** (Work Log: [work-log-MVP2-202.md](docs/05-mvp-2/swe-worklog/work-log-MVP2-202.md) | QA Report: [qa-report-MVP2-202.md](docs/05-mvp-2/qa-worklog/qa-report-MVP2-202.md))
 
 **As a** compliance officer,  
 **I want** every AI-generated mapping to be validated by dual-judge BEFORE it enters the production graph,  
@@ -179,7 +179,7 @@
 **Type:** Feature  
 **Story Points:** 3  
 **Traces to:** FR-10, FR-11, C-06, C-07
-**Status:** **COMPLETED** (Work Log: [work-log-MVP2-203.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/swe-worklog/work-log-MVP2-203.md) | QA Report: [qa-report-MVP2-203.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/qa-worklog/qa-report-MVP2-203.md))
+**Status:** **COMPLETED** (Work Log: [work-log-MVP2-203.md](docs/05-mvp-2/swe-worklog/work-log-MVP2-203.md) | QA Report: [qa-report-MVP2-203.md](docs/05-mvp-2/qa-worklog/qa-report-MVP2-203.md))
 
 **As a** compliance officer,  
 **I want** the system to create Gap nodes for both NO_RELATIONSHIP and SUBSET_OF mappings,  
@@ -199,7 +199,7 @@
 **Type:** Improvement  
 **Story Points:** 5  
 **Traces to:** C-12, supports FR-08
-**Status:** **COMPLETED** (Work Log: [work-log-MVP2-204.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/swe-worklog/work-log-MVP2-204.md) | QA Report: [qa-report-MVP2-204.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/qa-worklog/qa-report-MVP2-204.md))
+**Status:** **COMPLETED** (Work Log: [work-log-MVP2-204.md](docs/05-mvp-2/swe-worklog/work-log-MVP2-204.md) | QA Report: [qa-report-MVP2-204.md](docs/05-mvp-2/qa-worklog/qa-report-MVP2-204.md))
 
 **As a** system,  
 **I want** the facet extractor to produce meaningful facets from LLM analysis rather than 10 hardcoded verbs,  
@@ -229,7 +229,7 @@
 **Type:** Feature  
 **Story Points:** 5  
 **Traces to:** FR-18, C-08
-**Status:** **COMPLETED** (Work Log: [work-log-MVP2-301.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/swe-worklog/work-log-MVP2-301.md) | QA Report: [qa-report-MVP2-301.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/qa-worklog/qa-report-MVP2-301.md))
+**Status:** **COMPLETED** (Work Log: [work-log-MVP2-301.md](docs/05-mvp-2/swe-worklog/work-log-MVP2-301.md) | QA Report: [qa-report-MVP2-301.md](docs/05-mvp-2/qa-worklog/qa-report-MVP2-301.md))
 
 **As a** compliance officer,  
 **I want** to query `GET /api/gaps` and see all compliance gaps with enough context to start remediation,  
@@ -251,7 +251,7 @@
 **Type:** Feature  
 **Story Points:** 5  
 **Traces to:** FR-19, C-08
-**Status:** **COMPLETED** (Work Log: [work-log-MVP2-302.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/swe-worklog/work-log-MVP2-302.md) | QA Report: [qa-report-MVP2-302.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/qa-worklog/qa-report-MVP2-302.md))
+**Status:** **COMPLETED** (Work Log: [work-log-MVP2-302.md](docs/05-mvp-2/swe-worklog/work-log-MVP2-302.md) | QA Report: [qa-report-MVP2-302.md](docs/05-mvp-2/qa-worklog/qa-report-MVP2-302.md))
 
 **As a** auditor,  
 **I want** to query `GET /api/gaps/{gap_id}/trace` and see the full chain of reasoning that produced a gap,  
@@ -270,7 +270,7 @@
 **Type:** Feature  
 **Story Points:** 3  
 **Traces to:** FR-20, C-08
-**Status:** **COMPLETED** (Work Log: [work-log-MVP2-303.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/swe-worklog/work-log-MVP2-303.md) | QA Report: [qa-report-MVP2-303.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/qa-worklog/qa-report-MVP2-303.md))
+**Status:** **COMPLETED** (Work Log: [work-log-MVP2-303.md](docs/05-mvp-2/swe-worklog/work-log-MVP2-303.md) | QA Report: [qa-report-MVP2-303.md](docs/05-mvp-2/qa-worklog/qa-report-MVP2-303.md))
 
 **As a** compliance officer,  
 **I want** to query `GET /api/controls/{control_id}/mappings` to see all obligations mapped to a specific control,  
@@ -288,7 +288,7 @@
 **Type:** Test / Validation  
 **Story Points:** 5  
 **Traces to:** All Must-have FRs
-**Status:** **COMPLETED** (Work Log: [work-log-MVP2-304.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/swe-worklog/work-log-MVP2-304.md) | QA Report: [qa-report-MVP2-304.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/qa-worklog/qa-report-MVP2-304.md))
+**Status:** **COMPLETED** (Work Log: [work-log-MVP2-304.md](docs/05-mvp-2/swe-worklog/work-log-MVP2-304.md) | QA Report: [qa-report-MVP2-304.md](docs/05-mvp-2/qa-worklog/qa-report-MVP2-304.md))
 
 **As a** engineering lead,  
 **I want** a single integration test that exercises the complete flow from PDF upload to gap query,  
@@ -314,7 +314,7 @@
 **Type:** Data Model  
 **Story Points:** 3 (if no Should items are cut)  
 **Traces to:** C-14, FR-15 (supports), FINDING-005  
-**Status:** **COMPLETED** (Work Log: [work-log-MVP2-305.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/swe-worklog/work-log-MVP2-305.md) | QA Report: [qa-report-MVP2-305.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/qa-worklog/qa-report-MVP2-305.md))
+**Status:** **COMPLETED** (Work Log: [work-log-MVP2-305.md](docs/05-mvp-2/swe-worklog/work-log-MVP2-305.md) | QA Report: [qa-report-MVP2-305.md](docs/05-mvp-2/qa-worklog/qa-report-MVP2-305.md))
 
 **As a** system,  
 **I want** all graph node types to have `valid_from`, `valid_to`, and `ingested_at` columns,  

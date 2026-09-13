@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-16  
 **Status:** READY_FOR_QA  
-**Target Story:** [STORY-COMP-203](file:///home/zackchow/coding/rckg/docs/08-compare-upgrade/sprint-plan-compiler-upgrade.md#story-comp-203-hybrid-candidate-retriever-dense--bm25-top-15-recall-net)  
+**Target Story:** [STORY-COMP-203](docs/08-compare-upgrade/sprint-plan-compiler-upgrade.md#story-comp-203-hybrid-candidate-retriever-dense--bm25-top-15-recall-net)  
 
 ---
 

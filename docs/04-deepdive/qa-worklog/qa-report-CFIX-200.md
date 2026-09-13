@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-02  
-**Story Ticket:** [CFIX-200](file:///home/zackchow/coding/rckg/docs/04-deepdive/claude-remediation-sprint.md#cfix-200-replace-regex-dejurefacetextractor-with-llm-powered-facet-extraction)  
-**Work Log Reference:** [work-log-CFIX-200.md](file:///home/zackchow/coding/rckg/docs/04-deepdive/swe-worklog/work-log-CFIX-200.md)  
+**Story Ticket:** [CFIX-200](docs/04-deepdive/claude-remediation-sprint.md#cfix-200-replace-regex-dejurefacetextractor-with-llm-powered-facet-extraction)  
+**Work Log Reference:** [work-log-CFIX-200.md](docs/04-deepdive/swe-worklog/work-log-CFIX-200.md)  
 **Final Status:** **APPROVED**  
 
 ---

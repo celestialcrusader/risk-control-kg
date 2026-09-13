@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-15  
 **Status:** READY_FOR_QA  
-**Target Story:** [STORY-MAINT-102](file:///home/zackchow/coding/rckg/docs/07-update-parse/graph-maintenance.md#story-maint-102-transitive-reduction--graph-pruning-engine)  
+**Target Story:** [STORY-MAINT-102](docs/07-update-parse/graph-maintenance.md#story-maint-102-transitive-reduction--graph-pruning-engine)  
 
 ---
 

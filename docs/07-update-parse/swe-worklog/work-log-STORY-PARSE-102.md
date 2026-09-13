@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-12  
 **Status:** READY_FOR_QA  
-**Target Story:** [STORY-PARSE-102](file:///home/zackchow/coding/rckg/docs/07-update-parse/update-parse-sprint.md#story-parse-102-singapore-statutes-online-sso-html-dom-scraper--parser)  
+**Target Story:** [STORY-PARSE-102](docs/07-update-parse/update-parse-sprint.md#story-parse-102-singapore-statutes-online-sso-html-dom-scraper--parser)  
 
 ---
 
@@ -13,8 +13,8 @@ Created `backend/app/services/sso_scraper.py` implementing HTML DOM scraping for
 ## 2. Files Modified & Created
 | File Path | Change Type | Purpose |
 |---|---|---|
-| [`backend/app/services/sso_scraper.py`](file:///home/zackchow/coding/rckg/backend/app/services/sso_scraper.py) | [NEW] | SSO HTML DOM parser & SectionNode models |
-| [`backend/tests/test_sso_scraper.py`](file:///home/zackchow/coding/rckg/backend/tests/test_sso_scraper.py) | [NEW] | Unit test suite for SSO HTML parsing |
+| [`backend/app/services/sso_scraper.py`](backend/app/services/sso_scraper.py) | [NEW] | SSO HTML DOM parser & SectionNode models |
+| [`backend/tests/test_sso_scraper.py`](backend/tests/test_sso_scraper.py) | [NEW] | Unit test suite for SSO HTML parsing |
 
 ## 3. TDD Cycle Summary
 ### 🔴 RED Phase

@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-07-29  
 **Status:** READY_FOR_QA  
-**Target Story:** [RCKG-203](file:///home/zackchow/coding/rckg/docs/03-mvp/mvp-sprint.md#rckg-203-de-jure-clause-boundary-rule-unit-extractor)  
+**Target Story:** [RCKG-203](docs/03-mvp/mvp-sprint.md#rckg-203-de-jure-clause-boundary-rule-unit-extractor)  
 
 ---
 

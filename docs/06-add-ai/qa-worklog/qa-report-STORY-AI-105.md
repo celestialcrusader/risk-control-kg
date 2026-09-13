@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-11  
-**Story Ticket:** [STORY-AI-105](file:///home/zackchow/coding/rckg/docs/06-add-ai/sprints.md#story-ai-105-qwen3-next-80b-a3b-ambiguous-graph-adjudication)  
-**Work Log Reference:** [work-log-STORY-AI-105.md](file:///home/zackchow/coding/rckg/docs/06-add-ai/swe-worklog/work-log-STORY-AI-105.md)  
+**Story Ticket:** [STORY-AI-105](docs/06-add-ai/sprints.md#story-ai-105-qwen3-next-80b-a3b-ambiguous-graph-adjudication)  
+**Work Log Reference:** [work-log-STORY-AI-105.md](docs/06-add-ai/swe-worklog/work-log-STORY-AI-105.md)  
 **Final Status:** **APPROVED**  
 
 ---

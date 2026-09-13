@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-07-31  
-**Story Ticket:** [FIX-100](file:///home/zackchow/coding/rckg/docs/04-deepdive/real-mvp.md#fix-100-fix-runtime-crash-in-clauseboundaryextractor-group6-bug)  
-**Work Log Reference:** [work-log-FIX-100.md](file:///home/zackchow/coding/rckg/docs/04-deepdive/swe-worklog/work-log-FIX-100.md)  
+**Story Ticket:** [FIX-100](docs/04-deepdive/real-mvp.md#fix-100-fix-runtime-crash-in-clauseboundaryextractor-group6-bug)  
+**Work Log Reference:** [work-log-FIX-100.md](docs/04-deepdive/swe-worklog/work-log-FIX-100.md)  
 **Final Status:** **APPROVED**  
 
 ---

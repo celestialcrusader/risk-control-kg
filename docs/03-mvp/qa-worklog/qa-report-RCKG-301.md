@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-07-30  
-**Story Ticket:** [RCKG-301](file:///home/zackchow/coding/rckg/docs/03-mvp/mvp-sprint.md#rckg-301-elasticsearch-bm25-sparse-search-service-with-network-hop-buffer)  
-**Work Log Reference:** [work-log-RCKG-301.md](file:///home/zackchow/coding/rckg/docs/03-mvp/swe-worklog/work-log-RCKG-301.md)  
+**Story Ticket:** [RCKG-301](docs/03-mvp/mvp-sprint.md#rckg-301-elasticsearch-bm25-sparse-search-service-with-network-hop-buffer)  
+**Work Log Reference:** [work-log-RCKG-301.md](docs/03-mvp/swe-worklog/work-log-RCKG-301.md)  
 **Final Status:** **APPROVED**  
 
 ---

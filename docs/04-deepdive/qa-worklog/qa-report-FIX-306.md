@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-07-31  
-**Story Ticket:** [FIX-306](file:///home/zackchow/coding/rckg/docs/04-deepdive/real-mvp.md#fix-306-replace-graphiti-string-equality-with-semantic-similarity)  
-**Work Log Reference:** [work-log-FIX-306.md](file:///home/zackchow/coding/rckg/docs/04-deepdive/swe-worklog/work-log-FIX-306.md)  
+**Story Ticket:** [FIX-306](docs/04-deepdive/real-mvp.md#fix-306-replace-graphiti-string-equality-with-semantic-similarity)  
+**Work Log Reference:** [work-log-FIX-306.md](docs/04-deepdive/swe-worklog/work-log-FIX-306.md)  
 **Final Status:** **APPROVED**  
 
 ---

@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-11  
-**Story Ticket:** [STORY-AI-104](file:///home/zackchow/coding/rckg/docs/06-add-ai/sprints.md#story-ai-104-modernbert-large-nli-set-theory-engine--heuristic-removal)  
-**Work Log Reference:** [work-log-STORY-AI-104.md](file:///home/zackchow/coding/rckg/docs/06-add-ai/swe-worklog/work-log-STORY-AI-104.md)  
+**Story Ticket:** [STORY-AI-104](docs/06-add-ai/sprints.md#story-ai-104-modernbert-large-nli-set-theory-engine--heuristic-removal)  
+**Work Log Reference:** [work-log-STORY-AI-104.md](docs/06-add-ai/swe-worklog/work-log-STORY-AI-104.md)  
 **Final Status:** **APPROVED**  
 
 ---

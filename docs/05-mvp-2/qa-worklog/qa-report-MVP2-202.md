@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-09  
-**Story Ticket:** [MVP2-202](file:///home/zackchow/coding/rckg/docs/05-mvp-2/sprints.md#mvp2-202--synchronous-dual-judge-gate-before-graph-commit)  
-**Work Log Reference:** [work-log-MVP2-202.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/swe-worklog/work-log-MVP2-202.md)  
+**Story Ticket:** [MVP2-202](docs/05-mvp-2/sprints.md#mvp2-202--synchronous-dual-judge-gate-before-graph-commit)  
+**Work Log Reference:** [work-log-MVP2-202.md](docs/05-mvp-2/swe-worklog/work-log-MVP2-202.md)  
 **Final Status:** **APPROVED**  
 
 ---

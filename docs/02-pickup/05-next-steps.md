@@ -6,10 +6,10 @@
 **Classification:** Internal — Confidential  
 **Last Updated:** July 27, 2026  
 **Linked Documents:**
-- BRD: [01-business-requirement-doc.md](file:///home/zackchow/coding/rckg/docs/02-pickup/01-business-requirement-doc.md) v3.0
-- PRD: [02-product-requirement-doc.md](file:///home/zackchow/coding/rckg/docs/02-pickup/02-product-requirement-doc.md) v3.0
-- TRD: [03-technical-requirement-doc.md](file:///home/zackchow/coding/rckg/docs/02-pickup/03-technical-requirement-doc.md) v7.0
-- Code Audit: [04-current-state-of-code.md](file:///home/zackchow/coding/rckg/docs/02-pickup/04-current-state-of-code.md)
+- BRD: [01-business-requirement-doc.md](docs/02-pickup/01-business-requirement-doc.md) v3.0
+- PRD: [02-product-requirement-doc.md](docs/02-pickup/02-product-requirement-doc.md) v3.0
+- TRD: [03-technical-requirement-doc.md](docs/02-pickup/03-technical-requirement-doc.md) v7.0
+- Code Audit: [04-current-state-of-code.md](docs/02-pickup/04-current-state-of-code.md)
 
 ---
 
@@ -74,7 +74,7 @@ To transition the existing RCKG backend into the fully operational **Clear Trace
   - `assess_control(ai_solution_id, control_id, status, evidence_link)`
   - `get_principle_dashboard_score(ai_solution_id)`
 - **Acceptance Criteria:**
-  - Agent can successfully invoke tools to query PostgreSQL DB and execute Zack/Wukongtai 5-dimension risk scoring logic.
+  - Agent can successfully invoke tools to query PostgreSQL DB and execute RCKG-Tiering 5-dimension risk scoring logic.
 
 ---
 

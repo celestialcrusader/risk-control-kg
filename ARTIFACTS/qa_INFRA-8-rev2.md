@@ -118,7 +118,7 @@ Breaking down the path resolution from `backend/app/models/registry.py`:
 - `.parent.parent.parent` = `.../backend/`
 - `.parent.parent.parent / "models" / "manifest.json"` = `.../backend/models/manifest.json`
 
-**This resolves to `backend/models/manifest.json`, NOT `models/manifest.json` at the project root.** However, the actual manifest used is at `/home/zackchow/coding/rckg/models/manifest.json`. The `MANIFEST_PATH` default is therefore pointing to the wrong location.
+**This resolves to `backend/models/manifest.json`, NOT `models/manifest.json` at the project root.** However, the actual manifest used is at `models/manifest.json`. The `MANIFEST_PATH` default is therefore pointing to the wrong location.
 
 The tests avoid this bug by always passing `manifest_file` (a `tmp_path` location) explicitly to the `ModelManifest` constructor, so the default path is never exercised in tests. This is a **latent defect** -- the default path will be wrong if anyone creates a `ModelManifest()` with no arguments in production code.
 

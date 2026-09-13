@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-09  
-**Story Ticket:** [MVP2-204](file:///home/zackchow/coding/rckg/docs/05-mvp-2/sprints.md#mvp2-204--facet-extractor-llm-hardening)  
-**Work Log Reference:** [work-log-MVP2-204.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/swe-worklog/work-log-MVP2-204.md)  
+**Story Ticket:** [MVP2-204](docs/05-mvp-2/sprints.md#mvp2-204--facet-extractor-llm-hardening)  
+**Work Log Reference:** [work-log-MVP2-204.md](docs/05-mvp-2/swe-worklog/work-log-MVP2-204.md)  
 **Final Status:** **APPROVED**  
 
 ---

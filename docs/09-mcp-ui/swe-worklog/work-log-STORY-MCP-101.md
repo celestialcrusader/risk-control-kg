@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-16  
 **Status:** READY_FOR_QA  
-**Target Story:** [STORY-MCP-101](file:///home/zackchow/coding/rckg/docs/09-mcp-ui/master-sprint-plan.md#story-mcp-101-canonical-query-endpoints-apiv1obligations-apiv1controls-apiv1crosswalk)  
+**Target Story:** [STORY-MCP-101](docs/09-mcp-ui/master-sprint-plan.md#story-mcp-101-canonical-query-endpoints-apiv1obligations-apiv1controls-apiv1crosswalk)  
 
 ---
 

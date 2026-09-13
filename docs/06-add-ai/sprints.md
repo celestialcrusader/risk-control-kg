@@ -1,8 +1,8 @@
 # Master Sprint Plan: AI Model Matrix Integration (06-add-ai)
 
 **Target Milestone:** Modernized Primary AI Model Stack Deployment (Zero Fallbacks)  
-**Linked Requirements:** [docs/06-add-ai/requirements.md](file:///home/zackchow/coding/rckg/docs/06-add-ai/requirements.md)  
-**Execution Loop Specification:** [docs/03-mvp/workflow-swe-qa-loop.md](file:///home/zackchow/coding/rckg/docs/03-mvp/workflow-swe-qa-loop.md)  
+**Linked Requirements:** [docs/06-add-ai/requirements.md](docs/06-add-ai/requirements.md)  
+**Execution Loop Specification:** [docs/03-mvp/workflow-swe-qa-loop.md](docs/03-mvp/workflow-swe-qa-loop.md)  
 
 ---
 

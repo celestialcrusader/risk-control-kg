@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-12  
-**Story Ticket:** [STORY-GRAPH-103](file:///home/zackchow/coding/rckg/docs/06-add-ai/upgrade-graph-agent.md#story-graph-103-state-graph-nodes-construction)  
-**Work Log Reference:** [work-log-STORY-GRAPH-103.md](file:///home/zackchow/coding/rckg/docs/03-mvp/swe-worklog/work-log-STORY-GRAPH-103.md)  
+**Story Ticket:** [STORY-GRAPH-103](docs/06-add-ai/upgrade-graph-agent.md#story-graph-103-state-graph-nodes-construction)  
+**Work Log Reference:** [work-log-STORY-GRAPH-103.md](docs/03-mvp/swe-worklog/work-log-STORY-GRAPH-103.md)  
 **Final Status:** **APPROVED**  
 
 ---

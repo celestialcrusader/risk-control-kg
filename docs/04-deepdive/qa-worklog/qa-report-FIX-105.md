@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-07-31  
-**Story Ticket:** [FIX-105](file:///home/zackchow/coding/rckg/docs/04-deepdive/real-mvp.md#fix-105-fix-incorrect-satisfies-edge-direction-in-process-pdf)  
-**Work Log Reference:** [work-log-FIX-105.md](file:///home/zackchow/coding/rckg/docs/04-deepdive/swe-worklog/work-log-FIX-105.md)  
+**Story Ticket:** [FIX-105](docs/04-deepdive/real-mvp.md#fix-105-fix-incorrect-satisfies-edge-direction-in-process-pdf)  
+**Work Log Reference:** [work-log-FIX-105.md](docs/04-deepdive/swe-worklog/work-log-FIX-105.md)  
 **Final Status:** **APPROVED**  
 
 ---

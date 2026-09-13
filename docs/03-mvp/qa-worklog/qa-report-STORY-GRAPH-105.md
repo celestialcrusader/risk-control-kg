@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-12  
-**Story Ticket:** [STORY-GRAPH-105](file:///home/zackchow/coding/rckg/docs/06-add-ai/upgrade-graph-agent.md#story-graph-105-rest-api-wiring--end-to-end-state-graph-verification-test)  
-**Work Log Reference:** [work-log-STORY-GRAPH-105.md](file:///home/zackchow/coding/rckg/docs/03-mvp/swe-worklog/work-log-STORY-GRAPH-105.md)  
+**Story Ticket:** [STORY-GRAPH-105](docs/06-add-ai/upgrade-graph-agent.md#story-graph-105-rest-api-wiring--end-to-end-state-graph-verification-test)  
+**Work Log Reference:** [work-log-STORY-GRAPH-105.md](docs/03-mvp/swe-worklog/work-log-STORY-GRAPH-105.md)  
 **Final Status:** **APPROVED**  
 
 ---

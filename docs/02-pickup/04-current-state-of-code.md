@@ -3,7 +3,7 @@
 
 **Document Date:** July 27, 2026  
 **Auditor:** Senior AI Coding Assistant (Antigravity Agent)  
-**Repository Root:** `/home/zackchow/coding/rckg`  
+**Repository Root:** `.`  
 **Status:** In-Depth Code & Infrastructure Inventory Complete  
 
 ---
@@ -22,11 +22,11 @@ However, the recent strategic evolution into **Clear Trace (CT) — Executive Co
 ## 2. Directory & Component Inventory
 
 ```
-/home/zackchow/coding/rckg
+.
 ├── .claude/                             # Strategic Architecture Notes & Specifications
 │   ├── architecture_decision.md         # Strangler Fig refactor plan (Backend Extend / Frontend Pivot)
 │   ├── dgx_spark_sprint_notes.md        # DGX Spark bare-metal & ARM64 vLLM rollout notes
-│   ├── risk_tiering_clear_trace_model.md# Zack/Wukongtai 5-Dimension AI Risk Tiering model
+│   ├── risk_tiering_clear_trace_model.md# RCKG-Tiering 5-Dimension AI Risk Tiering model
 │   ├── static_rckg_schema.md            # Relational schema for AI Principles -> Controls
 │   ├── vercel_ai_sdk_migration_notes.md # Vercel AI SDK v4 (@ai-sdk/react) breaking changes & setup
 │   └── vision_notes.md                  # Vision & roadmap from GenAI Testkit to GRC Suite

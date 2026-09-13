@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-11  
 **Status:** READY_FOR_QA  
-**Target Story:** [STORY-AI-102](file:///home/zackchow/coding/rckg/docs/06-add-ai/sprints.md#story-ai-102-qwen3-30b-a3b-general-rule-extraction)  
+**Target Story:** [STORY-AI-102](docs/06-add-ai/sprints.md#story-ai-102-qwen3-30b-a3b-general-rule-extraction)  
 
 ---
 

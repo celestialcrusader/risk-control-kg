@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-07-30  
 **Status:** READY_FOR_QA  
-**Target Story:** [RCKG-402](file:///home/zackchow/coding/rckg/docs/03-mvp/mvp-sprint.md#rckg-402-dual-tier-governance-engine--golden-assertions-snapshot-testing-compiler-gate)  
+**Target Story:** [RCKG-402](docs/03-mvp/mvp-sprint.md#rckg-402-dual-tier-governance-engine--golden-assertions-snapshot-testing-compiler-gate)  
 
 ---
 

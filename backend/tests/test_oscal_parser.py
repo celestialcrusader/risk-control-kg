@@ -85,7 +85,7 @@ def test_oscal_parser_extracts_objectives_and_activities(sample_oscal_file):
 
 def test_real_nist_oscal_yaml_catalog_parse():
     """Verify parsing of the actual data/test-docs/NIST_SP-800-53_rev5_catalog.yaml file."""
-    real_path = "/home/zackchow/coding/rckg/data/test-docs/NIST_SP-800-53_rev5_catalog.yaml"
+    real_path = "data/test-docs/NIST_SP-800-53_rev5_catalog.yaml"
     if not os.path.exists(real_path):
         pytest.skip(f"{real_path} not found")
 

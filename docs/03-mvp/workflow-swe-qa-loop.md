@@ -3,15 +3,15 @@
 **Document Version:** 1.0 — Execution Protocol Specification  
 **Status:** Approved / Active Process Standard  
 **Classification:** Internal — Operational Workflow  
-**Target Repository:** `/home/zackchow/coding/rckg`  
+**Target Repository:** `.`  
 **Output Location:** `docs/03-mvp/workflow-swe-qa-loop.md`  
-**Governing Backlog:** [mvp-sprint.md](file:///home/zackchow/coding/rckg/docs/03-mvp/mvp-sprint.md)  
+**Governing Backlog:** [mvp-sprint.md](docs/03-mvp/mvp-sprint.md)  
 
 ---
 
 ## 1. Overview & Operational State Machine
 
-This specification establishes the official **SWE ↔ QA Execution Loop Workflow** for delivering story tickets from the Master Sprint Plan ([mvp-sprint.md](file:///home/zackchow/coding/rckg/docs/03-mvp/mvp-sprint.md)).
+This specification establishes the official **SWE ↔ QA Execution Loop Workflow** for delivering story tickets from the Master Sprint Plan ([mvp-sprint.md](docs/03-mvp/mvp-sprint.md)).
 
 The workflow enforces strict **Test-Driven Development (TDD)** for software engineering implementation and **Test-Driven Quality Assurance (TDQA)** for verification. Every story ticket passes through a closed-loop review cycle before being marked as `COMPLETED`.
 
@@ -51,16 +51,16 @@ stateDiagram-v2
 
 | Role | Agent / Skill Reference | Primary Responsibilities | Output Artifact |
 |---|---|---|---|
-| **Software Engineer (SWE Agent)** | `swe-agent` ([swe-agent.md](file:///home/zackchow/coding/rckg/.agent/agents/swe-agent.md)) / [software-engineer skill](file:///home/zackchow/coding/rckg/.agent/skills/software-engineer/SKILL.md) | Select story ticket, execute TDD (Red-Green-Refactor), pass tests, document implementation details. | `docs/03-mvp/work-log-<STORY-ID>.md` |
-| **QA Engineer (QA Agent)** | `qa-agent` ([qa-agent.md](file:///home/zackchow/coding/rckg/.agent/agents/qa-agent.md)) / [qa-engineer skill](file:///home/zackchow/coding/rckg/.agent/skills/qa-engineer/SKILL.md) | Execute test suite independently, verify acceptance criteria & edge cases, render verdict (`APPROVED` / `REJECTED`). | `docs/03-mvp/qa-report-<STORY-ID>.md` |
-| **Scrum Master (Orchestrator)** | `scrum-master` ([scrum-master.md](file:///home/zackchow/coding/rckg/.agent/agents/scrum-master.md)) / [scrum skill](file:///home/zackchow/coding/rckg/.agent/skills/scrum/SKILL.md) | Maintain backlog state in `mvp-sprint.md`, unblock dependencies, orchestrate SWE ↔ QA transitions. | Updated `mvp-sprint.md` |
+| **Software Engineer (SWE Agent)** | `swe-agent` ([swe-agent.md](.agent/agents/swe-agent.md)) / [software-engineer skill](.agent/skills/software-engineer/SKILL.md) | Select story ticket, execute TDD (Red-Green-Refactor), pass tests, document implementation details. | `docs/03-mvp/work-log-<STORY-ID>.md` |
+| **QA Engineer (QA Agent)** | `qa-agent` ([qa-agent.md](.agent/agents/qa-agent.md)) / [qa-engineer skill](.agent/skills/qa-engineer/SKILL.md) | Execute test suite independently, verify acceptance criteria & edge cases, render verdict (`APPROVED` / `REJECTED`). | `docs/03-mvp/qa-report-<STORY-ID>.md` |
+| **Scrum Master (Orchestrator)** | `scrum-master` ([scrum-master.md](.agent/agents/scrum-master.md)) / [scrum skill](.agent/skills/scrum/SKILL.md) | Maintain backlog state in `mvp-sprint.md`, unblock dependencies, orchestrate SWE ↔ QA transitions. | Updated `mvp-sprint.md` |
 
 ---
 
 ## 3. Step-by-Step Execution Protocol
 
 ### Step 1: Story Selection (SWE Agent)
-1. The **SWE Agent** inspects [mvp-sprint.md](file:///home/zackchow/coding/rckg/docs/03-mvp/mvp-sprint.md) and identifies the highest-priority story ticket in the current sprint whose dependencies are fully met (status `READY_FOR_DEV`).
+1. The **SWE Agent** inspects [mvp-sprint.md](docs/03-mvp/mvp-sprint.md) and identifies the highest-priority story ticket in the current sprint whose dependencies are fully met (status `READY_FOR_DEV`).
 2. The SWE Agent updates the story state in `mvp-sprint.md` to `IN_DEVELOPMENT`.
 
 ---
@@ -85,7 +85,7 @@ Upon completing implementation and passing all local unit tests, the SWE Agent c
 **Developer:** SWE Agent  
 **Date:** <YYYY-MM-DD>  
 **Status:** READY_FOR_QA  
-**Target Story:** [<STORY-ID>](file:///home/zackchow/coding/rckg/docs/03-mvp/mvp-sprint.md#<story-id-lowercase>)  
+**Target Story:** [<STORY-ID>](docs/03-mvp/mvp-sprint.md#<story-id-lowercase>)  
 
 ---
 
@@ -143,8 +143,8 @@ The QA Agent documents the review results in a dedicated Markdown report file at
 
 **QA Reviewer:** QA Agent  
 **Review Date:** <YYYY-MM-DD>  
-**Story Ticket:** [<STORY-ID>](file:///home/zackchow/coding/rckg/docs/03-mvp/mvp-sprint.md#<story-id-lowercase>)  
-**Work Log Reference:** [work-log-<STORY-ID>.md](file:///home/zackchow/coding/rckg/docs/03-mvp/work-log-<STORY-ID>.md)  
+**Story Ticket:** [<STORY-ID>](docs/03-mvp/mvp-sprint.md#<story-id-lowercase>)  
+**Work Log Reference:** [work-log-<STORY-ID>.md](docs/03-mvp/work-log-<STORY-ID>.md)  
 **Final Status:** **[ APPROVED | APPROVED_WITH_CONDITIONS | REJECTED ]**  
 
 ---

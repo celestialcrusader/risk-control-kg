@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-07-31  
 **Status:** READY_FOR_QA  
-**Target Story:** [FIX-302](file:///home/zackchow/coding/rckg/docs/04-deepdive/real-mvp.md#fix-302-replace-bm25-runtimeerror-with-in-process-bm25-library)  
+**Target Story:** [FIX-302](docs/04-deepdive/real-mvp.md#fix-302-replace-bm25-runtimeerror-with-in-process-bm25-library)  
 
 ---
 

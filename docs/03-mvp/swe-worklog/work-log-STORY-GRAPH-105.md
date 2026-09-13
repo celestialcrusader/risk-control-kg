@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-12  
 **Status:** READY_FOR_QA  
-**Target Story:** [STORY-GRAPH-105](file:///home/zackchow/coding/rckg/docs/06-add-ai/upgrade-graph-agent.md#story-graph-105-rest-api-wiring--end-to-end-state-graph-verification-test)  
+**Target Story:** [STORY-GRAPH-105](docs/06-add-ai/upgrade-graph-agent.md#story-graph-105-rest-api-wiring--end-to-end-state-graph-verification-test)  
 
 ---
 

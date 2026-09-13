@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-07-31  
 **Status:** READY_FOR_QA  
-**Target Story:** [FIX-305](file:///home/zackchow/coding/rckg/docs/04-deepdive/real-mvp.md#fix-305-replace-dual-judge-arithmetic-mock-with-llm-proxied-judge)  
+**Target Story:** [FIX-305](docs/04-deepdive/real-mvp.md#fix-305-replace-dual-judge-arithmetic-mock-with-llm-proxied-judge)  
 
 ---
 

@@ -13,11 +13,11 @@ Enable users to review, approve, or reject AI-generated graph elements (Risks, C
 
 ### Backend Components
 
-#### [MODIFY] [ingest/enricher.py](file:///home/zack/coding/rckg/backend/app/ingest/enricher.py)
+#### [MODIFY] [ingest/enricher.py](file:///home/rckg/coding/rckg/backend/app/ingest/enricher.py)
 - Update `create_node_tx`:
     - Set `status='DRAFT'` when creating nodes from LLM extraction.
 
-#### [NEW] [api/routers/approvals.py](file:///home/zack/coding/rckg/backend/app/api/routers/approvals.py)
+#### [NEW] [api/routers/approvals.py](file:///home/rckg/coding/rckg/backend/app/api/routers/approvals.py)
 - `GET /api/approvals`:
     - Query: `MATCH (n) WHERE n.status = 'DRAFT' RETURN n`
     - Returns list of draft/pending items with context (what they are linked to).
@@ -38,12 +38,12 @@ Enable users to review, approve, or reject AI-generated graph elements (Risks, C
 
 ### Audit Program Generator (Story 6.3)
 
-#### [NEW] [api/routers/audit.py](file:///home/zack/coding/rckg/backend/app/api/routers/audit.py)
+#### [NEW] [api/routers/audit.py](file:///home/rckg/coding/rckg/backend/app/api/routers/audit.py)
 - `POST /api/audit/generate`:
     - Input: `{"topic": "str"}`
     - Logic: Search Graph -> RAG Synthesis -> Structured Test Plan.
 
-#### [NEW] [core/generator.py](file:///home/zack/coding/rckg/backend/app/core/generator.py)
+#### [NEW] [core/generator.py](file:///home/rckg/coding/rckg/backend/app/core/generator.py)
 - `AuditGenerator`:
     - `generate_program(topic)`:
         - Query: Find Controls where name/desc contains topic keywords.

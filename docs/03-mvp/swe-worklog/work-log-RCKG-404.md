@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-07-30  
 **Status:** READY_FOR_QA  
-**Target Story:** [RCKG-404](file:///home/zackchow/coding/rckg/docs/03-mvp/mvp-sprint.md#rckg-404-postgresql-outbox-event-driven-embedding-sync-controller)  
+**Target Story:** [RCKG-404](docs/03-mvp/mvp-sprint.md#rckg-404-postgresql-outbox-event-driven-embedding-sync-controller)  
 
 ---
 

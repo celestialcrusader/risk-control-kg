@@ -75,7 +75,7 @@ infra/
 
 ```bash
 # Run all tests
-cd /home/zackchow/coding/rckg
+cd .
 pytest infra/tests/
 
 # Run integration tests only

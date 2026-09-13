@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-02  
-**Story Ticket:** [CFIX-105](file:///home/zackchow/coding/rckg/docs/04-deepdive/claude-remediation-sprint.md#cfix-105-eliminate-silent-llm-fallback-in-dual-judge-service--require-explicit-degradation)  
-**Work Log Reference:** [work-log-CFIX-105.md](file:///home/zackchow/coding/rckg/docs/04-deepdive/swe-worklog/work-log-CFIX-105.md)  
+**Story Ticket:** [CFIX-105](docs/04-deepdive/claude-remediation-sprint.md#cfix-105-eliminate-silent-llm-fallback-in-dual-judge-service--require-explicit-degradation)  
+**Work Log Reference:** [work-log-CFIX-105.md](docs/04-deepdive/swe-worklog/work-log-CFIX-105.md)  
 **Final Status:** **APPROVED**  
 
 ---

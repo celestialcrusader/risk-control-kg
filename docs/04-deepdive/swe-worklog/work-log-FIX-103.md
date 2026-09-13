@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-07-31  
 **Status:** READY_FOR_QA  
-**Target Story:** [FIX-103](file:///home/zackchow/coding/rckg/docs/04-deepdive/real-mvp.md#fix-103-wire-multi-prompt-llm-extraction-into-extractionpy-with-document-type-routing)  
+**Target Story:** [FIX-103](docs/04-deepdive/real-mvp.md#fix-103-wire-multi-prompt-llm-extraction-into-extractionpy-with-document-type-routing)  
 
 ---
 

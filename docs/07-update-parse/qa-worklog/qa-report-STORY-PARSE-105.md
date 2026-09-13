@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-12  
-**Story Ticket:** [STORY-PARSE-105](file:///home/zackchow/coding/rckg/docs/07-update-parse/update-parse-sprint.md#story-parse-105-qdrant-parent-child-vector-indexing--hydration)  
-**Work Log Reference:** [work-log-STORY-PARSE-105.md](file:///home/zackchow/coding/rckg/docs/07-update-parse/swe-worklog/work-log-STORY-PARSE-105.md)  
+**Story Ticket:** [STORY-PARSE-105](docs/07-update-parse/update-parse-sprint.md#story-parse-105-qdrant-parent-child-vector-indexing--hydration)  
+**Work Log Reference:** [work-log-STORY-PARSE-105.md](docs/07-update-parse/swe-worklog/work-log-STORY-PARSE-105.md)  
 **Final Status:** **APPROVED**  
 
 ---

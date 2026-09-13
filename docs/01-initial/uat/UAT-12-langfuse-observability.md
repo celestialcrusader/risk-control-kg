@@ -193,7 +193,7 @@ fi
 ### Step 8: Run Unit Tests
 
 ```bash
-cd /home/zackchow/coding/rckg/backend
+cd ./backend
 python3 -m pytest tests/test_langfuse_tracing.py -v
 ```
 

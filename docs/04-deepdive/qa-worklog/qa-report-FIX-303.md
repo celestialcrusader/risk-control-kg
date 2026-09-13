@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-07-31  
-**Story Ticket:** [FIX-303](file:///home/zackchow/coding/rckg/docs/04-deepdive/real-mvp.md#fix-303-connect-graphrevert-to-live-memgraph-cypher-execution)  
-**Work Log Reference:** [work-log-FIX-303.md](file:///home/zackchow/coding/rckg/docs/04-deepdive/swe-worklog/work-log-FIX-303.md)  
+**Story Ticket:** [FIX-303](docs/04-deepdive/real-mvp.md#fix-303-connect-graphrevert-to-live-memgraph-cypher-execution)  
+**Work Log Reference:** [work-log-FIX-303.md](docs/04-deepdive/swe-worklog/work-log-FIX-303.md)  
 **Final Status:** **APPROVED**  
 
 ---

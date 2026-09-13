@@ -36,7 +36,7 @@ pip install huggingface_hub
 ### Normal Download
 
 ```bash
-cd /home/zackchow/coding/rckg
+cd .
 python -m backend.scripts.download_models
 ```
 

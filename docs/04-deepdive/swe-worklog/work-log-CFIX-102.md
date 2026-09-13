@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-02  
 **Status:** READY_FOR_QA  
-**Target Story:** [CFIX-102](file:///home/zackchow/coding/rckg/docs/04-deepdive/claude-remediation-sprint.md#cfix-102-wire-memgraph-connection-into-graphrag-export-api-endpoint)  
+**Target Story:** [CFIX-102](docs/04-deepdive/claude-remediation-sprint.md#cfix-102-wire-memgraph-connection-into-graphrag-export-api-endpoint)  
 
 ---
 

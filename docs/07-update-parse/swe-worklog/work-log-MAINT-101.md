@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-15  
 **Status:** READY_FOR_QA  
-**Target Story:** [STORY-MAINT-101](file:///home/zackchow/coding/rckg/docs/07-update-parse/graph-maintenance.md#story-maint-101-graph-wavefront-spreading-activation-engine-zombie-infection)  
+**Target Story:** [STORY-MAINT-101](docs/07-update-parse/graph-maintenance.md#story-maint-101-graph-wavefront-spreading-activation-engine-zombie-infection)  
 
 ---
 

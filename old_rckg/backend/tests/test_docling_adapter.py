@@ -12,7 +12,7 @@ try:
 except ImportError:
     DOCLING_AVAILABLE = False
 
-SAMPLE_PDF_PATH = "/home/zack/coding/rckg/data/raw/pdf/NIST.AI.600-1.pdf"
+SAMPLE_PDF_PATH = "data/raw/pdf/NIST.AI.600-1.pdf"
 
 @pytest.mark.skipif(not DOCLING_AVAILABLE, reason="Docling not installed")
 @pytest.mark.skipif(not os.path.exists(SAMPLE_PDF_PATH), reason="Sample PDF not found")

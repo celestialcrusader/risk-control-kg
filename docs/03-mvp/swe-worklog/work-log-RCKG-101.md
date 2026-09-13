@@ -3,13 +3,13 @@
 **Developer:** SWE Agent  
 **Date:** 2026-07-29  
 **Status:** READY_FOR_QA  
-**Target Story:** [RCKG-101](file:///home/zackchow/coding/rckg/docs/03-mvp/mvp-sprint.md#rckg-101-open-source-compliance-seed-harvesting--real-nist-olir-seed-ingestion)  
+**Target Story:** [RCKG-101](docs/03-mvp/mvp-sprint.md#rckg-101-open-source-compliance-seed-harvesting--real-nist-olir-seed-ingestion)  
 
 ---
 
 ## 1. Executive Summary & Work Accomplished
 
-Implemented `NistOlirXmlParser`, `CcmExcelParser`, and `ComplianceSeedIngester` in `backend/app/services/seed_ingestion.py` according to [nist-olir-schema-mapping.md](file:///home/zackchow/coding/rckg/docs/03-mvp/nist-olir-schema-mapping.md). Added REST trigger endpoint `POST /api/v1/documents/ingest-seed` to `backend/app/api/documents.py`. Parsers handle XML namespaces robustly and set seed edge metadata to `status = 'HUMAN_ATTESTED'` and `is_golden_assertion = True`.
+Implemented `NistOlirXmlParser`, `CcmExcelParser`, and `ComplianceSeedIngester` in `backend/app/services/seed_ingestion.py` according to [nist-olir-schema-mapping.md](docs/03-mvp/nist-olir-schema-mapping.md). Added REST trigger endpoint `POST /api/v1/documents/ingest-seed` to `backend/app/api/documents.py`. Parsers handle XML namespaces robustly and set seed edge metadata to `status = 'HUMAN_ATTESTED'` and `is_golden_assertion = True`.
 
 ---
 

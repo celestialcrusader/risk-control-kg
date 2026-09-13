@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-15  
-**Story Ticket:** [STORY-FOUNDATION-101](file:///home/zackchow/coding/rckg/docs/07-update-parse/sprint-plan-foundation-setup.md#story-foundation-101-nist-sp-800-53-rev-5-oscal-yaml-parser--seed-ingestion)  
-**Work Log Reference:** [work-log-FOUNDATION-101.md](file:///home/zackchow/coding/rckg/docs/07-update-parse/swe-worklog/work-log-FOUNDATION-101.md)  
+**Story Ticket:** [STORY-FOUNDATION-101](docs/07-update-parse/sprint-plan-foundation-setup.md#story-foundation-101-nist-sp-800-53-rev-5-oscal-yaml-parser--seed-ingestion)  
+**Work Log Reference:** [work-log-FOUNDATION-101.md](docs/07-update-parse/swe-worklog/work-log-FOUNDATION-101.md)  
 **Final Status:** **APPROVED** ✅  
 
 ---

@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-09  
 **Status:** READY_FOR_QA  
-**Target Story:** [MVP2-302](file:///home/zackchow/coding/rckg/docs/05-mvp-2/sprints.md#mvp2-302--reasoning-trace-api-endpoint)  
+**Target Story:** [MVP2-302](docs/05-mvp-2/sprints.md#mvp2-302--reasoning-trace-api-endpoint)  
 
 ---
 

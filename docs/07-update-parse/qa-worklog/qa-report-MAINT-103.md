@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-15  
-**Story Ticket:** [STORY-MAINT-103](file:///home/zackchow/coding/rckg/docs/07-update-parse/graph-maintenance.md#story-maint-103-mas-trm--nist-sp-800-53-production-nli-evaluation)  
-**Work Log Reference:** [work-log-MAINT-103.md](file:///home/zackchow/coding/rckg/docs/07-update-parse/swe-worklog/work-log-MAINT-103.md)  
+**Story Ticket:** [STORY-MAINT-103](docs/07-update-parse/graph-maintenance.md#story-maint-103-mas-trm--nist-sp-800-53-production-nli-evaluation)  
+**Work Log Reference:** [work-log-MAINT-103.md](docs/07-update-parse/swe-worklog/work-log-MAINT-103.md)  
 **Final Status:** **APPROVED** ✅  
 
 ---

@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-09  
 **Status:** READY_FOR_QA  
-**Target Story:** [MVP2-104](file:///home/zackchow/coding/rckg/docs/05-mvp-2/sprints.md#mvp2-104--delete-guards-for-compliance-data)  
+**Target Story:** [MVP2-104](docs/05-mvp-2/sprints.md#mvp2-104--delete-guards-for-compliance-data)  
 
 ---
 

@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-07-30  
-**Story Ticket:** [RCKG-204](file:///home/zackchow/coding/rckg/docs/03-mvp/mvp-sprint.md#rckg-204-phase-1-bulk-cold-start-pipeline-orchestration-service)  
-**Work Log Reference:** [work-log-RCKG-204.md](file:///home/zackchow/coding/rckg/docs/03-mvp/swe-worklog/work-log-RCKG-204.md)  
+**Story Ticket:** [RCKG-204](docs/03-mvp/mvp-sprint.md#rckg-204-phase-1-bulk-cold-start-pipeline-orchestration-service)  
+**Work Log Reference:** [work-log-RCKG-204.md](docs/03-mvp/swe-worklog/work-log-RCKG-204.md)  
 **Final Status:** **APPROVED**  
 
 ---

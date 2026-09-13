@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-09  
-**Story Ticket:** [MVP2-201](file:///home/zackchow/coding/rckg/docs/05-mvp-2/sprints.md#mvp2-201--eliminate-keyword-nli-fallback-enforce-honest-failure)  
-**Work Log Reference:** [work-log-MVP2-201.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/swe-worklog/work-log-MVP2-201.md)  
+**Story Ticket:** [MVP2-201](docs/05-mvp-2/sprints.md#mvp2-201--eliminate-keyword-nli-fallback-enforce-honest-failure)  
+**Work Log Reference:** [work-log-MVP2-201.md](docs/05-mvp-2/swe-worklog/work-log-MVP2-201.md)  
 **Final Status:** **APPROVED**  
 
 ---

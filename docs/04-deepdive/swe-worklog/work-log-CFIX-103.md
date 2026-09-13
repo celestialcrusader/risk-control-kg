@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-02  
 **Status:** READY_FOR_QA  
-**Target Story:** [CFIX-103](file:///home/zackchow/coding/rckg/docs/04-deepdive/claude-remediation-sprint.md#cfix-103-remove-magicmock-and-test-only-code-from-production-modules)  
+**Target Story:** [CFIX-103](docs/04-deepdive/claude-remediation-sprint.md#cfix-103-remove-magicmock-and-test-only-code-from-production-modules)  
 
 ---
 

@@ -3,7 +3,7 @@
 **Document Version:** 1.0  
 **Date:** August 1, 2026  
 **Reviewer:** Claude (Independent Assessor)  
-**Scope:** Audit of 18 FIX-tickets (Sprints 1–3 in [real-mvp.md](file:///home/zackchow/coding/rckg/docs/04-deepdive/real-mvp.md)) against all 27 findings in [code-review.md](file:///home/zackchow/coding/rckg/docs/04-deepdive/code-review.md)  
+**Scope:** Audit of 18 FIX-tickets (Sprints 1–3 in [real-mvp.md](docs/04-deepdive/real-mvp.md)) against all 27 findings in [code-review.md](docs/04-deepdive/code-review.md)  
 
 ---
 
@@ -18,7 +18,7 @@ Of the 27 original findings, I assess:
 | ✅ **Genuinely Fixed** | 8 | The root cause is eliminated |
 | ⚠️ **Partially Fixed** | 10 | LLM happy-path added but fallback retains original broken logic |
 | ❌ **Not Fixed** | 5 | Finding was deferred to post-MVP or no meaningful change |
-| 🔵 **Deferred (Acknowledged)** | 4 | Explicitly moved to [post-mvp.md](file:///home/zackchow/coding/rckg/docs/04-deepdive/post-mvp.md) |
+| 🔵 **Deferred (Acknowledged)** | 4 | Explicitly moved to [post-mvp.md](docs/04-deepdive/post-mvp.md) |
 
 > [!WARNING]
 > **End-User Testing Readiness: CONDITIONAL**. The system can be end-user tested *only if* a live LLM endpoint (vLLM/Ollama) is available and responding. Without it, 10 of the 18 fixes silently degrade to the original broken behavior and the user will experience the same problems reported in the original review.
@@ -33,9 +33,9 @@ Of the 27 original findings, I assess:
 **Verdict:** ✅ **GENUINELY FIXED**
 
 **Evidence:**
-- [extraction_control_objective.md](file:///home/zackchow/coding/rckg/backend/app/prompts/extraction_control_objective.md) and [extraction_control_activity.md](file:///home/zackchow/coding/rckg/backend/app/prompts/extraction_control_activity.md) now exist with well-structured prompt templates.
-- [extraction.py](file:///home/zackchow/coding/rckg/backend/app/services/extraction.py#L46-L51) has a `PROMPT_TEMPLATE_MAP` that dispatches by `document_type`.
-- [extraction.py](file:///home/zackchow/coding/rckg/backend/app/services/extraction.py#L182-L228) has `_parse_llm_response()` that branches on `ENTERPRISE_POLICY` → `control_objectives` and `PROCEDURE_SOP` → `control_activities`.
+- [extraction_control_objective.md](backend/app/prompts/extraction_control_objective.md) and [extraction_control_activity.md](backend/app/prompts/extraction_control_activity.md) now exist with well-structured prompt templates.
+- [extraction.py](backend/app/services/extraction.py#L46-L51) has a `PROMPT_TEMPLATE_MAP` that dispatches by `document_type`.
+- [extraction.py](backend/app/services/extraction.py#L182-L228) has `_parse_llm_response()` that branches on `ENTERPRISE_POLICY` → `control_objectives` and `PROCEDURE_SOP` → `control_activities`.
 
 **Assessment:** This is a solid fix. The 3-tier taxonomy is now represented in prompts and parsing.
 
@@ -47,7 +47,7 @@ Of the 27 original findings, I assess:
 **Verdict:** ⚠️ **PARTIALLY FIXED**
 
 **Evidence:**
-- [extract.py L203-L223](file:///home/zackchow/coding/rckg/backend/app/api/extract.py#L203-L223): The endpoint now calls `_call_llm()` and `_parse_llm_response()` for each chunk.
+- [extract.py L203-L223](backend/app/api/extract.py#L203-L223): The endpoint now calls `_call_llm()` and `_parse_llm_response()` for each chunk.
 - **BUT**: Lines 212-223 show that if `extracted_items` is empty (LLM fails or returns nothing), the code falls back to the **exact same regex facet extractor** and **string interpolation** from the original finding:
   ```python
   if not extracted_items:
@@ -68,7 +68,7 @@ Of the 27 original findings, I assess:
 **Verdict:** ❌ **NOT FIXED**
 
 **Evidence:**
-- [facet_extractor.py](file:///home/zackchow/coding/rckg/backend/app/services/facet_extractor.py) is **completely unchanged** from the original code review. Still has:
+- [facet_extractor.py](backend/app/services/facet_extractor.py) is **completely unchanged** from the original code review. Still has:
   - 10 hardcoded verbs, fallback to `"manage"`
   - 10 hardcoded nouns, fallback to `"system access"`
   - 3 domain facets only
@@ -85,7 +85,7 @@ Of the 27 original findings, I assess:
 **Verdict:** ⚠️ **PARTIALLY FIXED**
 
 **Evidence:**
-- [cold_start_pipeline.py L72-L105](file:///home/zackchow/coding/rckg/backend/app/services/cold_start_pipeline.py#L72-L105): The code now queries `FrameworkControlObjectiveNode` from DB and computes token overlap similarity.
+- [cold_start_pipeline.py L72-L105](backend/app/services/cold_start_pipeline.py#L72-L105): The code now queries `FrameworkControlObjectiveNode` from DB and computes token overlap similarity.
 - **BUT** the candidate generation (lines 82-89) is still poor:
   - `action_verb` is set to `"limit"` if the word "limit" appears in the text, otherwise copies source facet — still keyword matching.
   - `domain_facet` is always copied from the source entity's facet (line 86), meaning candidates inherit the source's domain.
@@ -103,8 +103,8 @@ Of the 27 original findings, I assess:
 **Verdict:** ⚠️ **PARTIALLY FIXED** (try-LLM-then-fallback pattern)
 
 **Evidence:**
-- [nli_engine.py L57-L76](file:///home/zackchow/coding/rckg/backend/app/services/nli_engine.py#L57-L76): `evaluate_pair()` now has a `try` block that calls `_call_llm()` with a classification prompt.
-- [nli_engine.py L77-L173](file:///home/zackchow/coding/rckg/backend/app/services/nli_engine.py#L77-L173): The **entire original if/elif/else keyword chain is still present** as the `except` fallback.
+- [nli_engine.py L57-L76](backend/app/services/nli_engine.py#L57-L76): `evaluate_pair()` now has a `try` block that calls `_call_llm()` with a classification prompt.
+- [nli_engine.py L77-L173](backend/app/services/nli_engine.py#L77-L173): The **entire original if/elif/else keyword chain is still present** as the `except` fallback.
 - The fallback still defaults to `EQUIVALENT_TO` with confidence `0.88`, still has fake logit dictionaries, and still claims `model: "DeBERTa-v3-CrossEncoder-Llama3.1-8B-Student"` in metadata (line 172) — **even when using the keyword fallback**.
 
 **Residual Risk:** The metadata field still misrepresents the model used. If the LLM is unavailable, the system classifies with keyword matching and labels it as DeBERTa output. This is deceptive to auditors.
@@ -117,7 +117,7 @@ Of the 27 original findings, I assess:
 **Verdict:** ✅ **GENUINELY FIXED**
 
 **Evidence:**
-- [bm25_service.py L78-L120](file:///home/zackchow/coding/rckg/backend/app/services/retrieval/bm25_service.py#L78-L120): The in-memory BM25Okapi implementation with proper IDF calculation (`ln(1 + (N - nq + 0.5) / (nq + 0.5))`) and TF saturation (`k1=1.5, b=0.75`) is mathematically correct.
+- [bm25_service.py L78-L120](backend/app/services/retrieval/bm25_service.py#L78-L120): The in-memory BM25Okapi implementation with proper IDF calculation (`ln(1 + (N - nq + 0.5) / (nq + 0.5))`) and TF saturation (`k1=1.5, b=0.75`) is mathematically correct.
 - The `_execute_es_http_query()` still raises `RuntimeError` (line 49), but the in-memory fallback is now a legitimate BM25 implementation rather than a naive keyword scan.
 
 **Assessment:** For MVP scale (thousands of candidates, not millions), this is a valid fix. The original finding's concern about 50M candidates is a post-MVP scale concern.
@@ -130,7 +130,7 @@ Of the 27 original findings, I assess:
 **Verdict:** ⚠️ **PARTIALLY FIXED** (try-LLM-then-fallback pattern)
 
 **Evidence:**
-- [dual_judge_async.py L60-L75](file:///home/zackchow/coding/rckg/backend/app/services/dual_judge_async.py#L60-L75): The arithmetic fallback (`conf * 1.02`, `conf * 0.98`) is **still the initial computation** (lines 60-63). The LLM call is attempted after, and its results overwrite the arithmetic values only on success.
+- [dual_judge_async.py L60-L75](backend/app/services/dual_judge_async.py#L60-L75): The arithmetic fallback (`conf * 1.02`, `conf * 0.98`) is **still the initial computation** (lines 60-63). The LLM call is attempted after, and its results overwrite the arithmetic values only on success.
 - If `_call_llm` throws an exception, the arithmetic values are used silently.
 
 **Residual Risk:** Same as Finding #5 — silent degradation with no audit signal.
@@ -143,8 +143,8 @@ Of the 27 original findings, I assess:
 **Verdict:** ⚠️ **PARTIALLY FIXED**
 
 **Evidence:**
-- [graph_revert_service.py L50-L90](file:///home/zackchow/coding/rckg/backend/app/services/graph_revert_service.py#L50-L90): Memgraph Cypher execution and DB ORM update now exist.
-- **BUT**: The Cypher uses `self.conn.cursor()` (GQLAlchemy style), while the `process-pdf` endpoint uses `neo4j.GraphDatabase.driver()` — there are two different Memgraph connection interfaces in the codebase. The API endpoint at [extract.py L440](file:///home/zackchow/coding/rckg/backend/app/api/extract.py#L440) creates `GraphRevertService()` **without** passing `db_session` or `memgraph_connection`, meaning both branches (`if self.conn` and `if self.db`) are `None/False`. **The API endpoint still does nothing.**
+- [graph_revert_service.py L50-L90](backend/app/services/graph_revert_service.py#L50-L90): Memgraph Cypher execution and DB ORM update now exist.
+- **BUT**: The Cypher uses `self.conn.cursor()` (GQLAlchemy style), while the `process-pdf` endpoint uses `neo4j.GraphDatabase.driver()` — there are two different Memgraph connection interfaces in the codebase. The API endpoint at [extract.py L440](backend/app/api/extract.py#L440) creates `GraphRevertService()` **without** passing `db_session` or `memgraph_connection`, meaning both branches (`if self.conn` and `if self.db`) are `None/False`. **The API endpoint still does nothing.**
 
 **Critical Gap:** The revert service *has* the code to execute against Memgraph and PostgreSQL, but the API layer never provides the connections. The integration is broken.
 
@@ -156,7 +156,7 @@ Of the 27 original findings, I assess:
 **Verdict:** 🔵 **DEFERRED TO POST-MVP**
 
 **Evidence:**
-- [embedding_sync.py](file:///home/zackchow/coding/rckg/backend/app/services/embedding_sync.py) — `QdrantVectorStoreMock` is still an in-memory dictionary. No changes made.
+- [embedding_sync.py](backend/app/services/embedding_sync.py) — `QdrantVectorStoreMock` is still an in-memory dictionary. No changes made.
 - Acknowledged in `post-mvp.md`.
 
 ---
@@ -167,9 +167,9 @@ Of the 27 original findings, I assess:
 **Verdict:** ⚠️ **PARTIALLY FIXED**
 
 **Evidence:**
-- [graphrag_translator.py L40-L66](file:///home/zackchow/coding/rckg/backend/app/services/graphrag_translator.py#L40-L66): If `self.conn` exists, it now queries Memgraph with `MATCH (n) OPTIONAL MATCH (n)-[r]->(m)`.
+- [graphrag_translator.py L40-L66](backend/app/services/graphrag_translator.py#L40-L66): If `self.conn` exists, it now queries Memgraph with `MATCH (n) OPTIONAL MATCH (n)-[r]->(m)`.
 - **BUT**: The hardcoded mock data **is still present** at lines 68-76 as the fallback when `self.conn` is `None`.
-- The API endpoint at [extract.py L456](file:///home/zackchow/coding/rckg/backend/app/api/extract.py#L456) creates `GraphRAGTranslationService()` **without** passing `memgraph_connection`. So `self.conn` is always `None`, and the endpoint **always returns the two hardcoded fake nodes**.
+- The API endpoint at [extract.py L456](backend/app/api/extract.py#L456) creates `GraphRAGTranslationService()` **without** passing `memgraph_connection`. So `self.conn` is always `None`, and the endpoint **always returns the two hardcoded fake nodes**.
 
 **Critical Gap:** Same integration issue as Finding #8 — the service has live query code but the API never wires the connection.
 
@@ -181,7 +181,7 @@ Of the 27 original findings, I assess:
 **Verdict:** ⚠️ **PARTIALLY FIXED**
 
 **Evidence:**
-- [governance_engine.py L42-L83](file:///home/zackchow/coding/rckg/backend/app/services/governance_engine.py#L42-L83): `register_golden_assertion()` now persists to DB, and `load_golden_assertions()` loads from DB.
+- [governance_engine.py L42-L83](backend/app/services/governance_engine.py#L42-L83): `register_golden_assertion()` now persists to DB, and `load_golden_assertions()` loads from DB.
 - **BUT**: Line 57-61 contains broken error handling:
   ```python
   except Exception:
@@ -202,7 +202,7 @@ Of the 27 original findings, I assess:
 **Verdict:** ✅ **GENUINELY FIXED**
 
 **Evidence:**
-- [graphiti_engine.py L57-L67](file:///home/zackchow/coding/rckg/backend/app/services/graphiti_engine.py#L57-L67): Now normalizes whitespace, lowercases, and computes token overlap. Only emits `SUPERSEDE_NODE` if `overlap < 0.90`.
+- [graphiti_engine.py L57-L67](backend/app/services/graphiti_engine.py#L57-L67): Now normalizes whitespace, lowercases, and computes token overlap. Only emits `SUPERSEDE_NODE` if `overlap < 0.90`.
 
 **Assessment:** This correctly prevents trivial formatting diffs from triggering false-positive mutations. A legitimate token-overlap similarity gate.
 
@@ -214,7 +214,7 @@ Of the 27 original findings, I assess:
 **Verdict:** ✅ **GENUINELY FIXED**
 
 **Evidence:**
-- [seed_ingestion.py L162-L196](file:///home/zackchow/coding/rckg/backend/app/services/seed_ingestion.py#L162-L196): Edge iteration now creates `ControlObjectiveFrameworkMapping` ORM records with proper UUID parsing, `set_theory_relation` enum mapping, and `is_golden_assertion="TRUE"`.
+- [seed_ingestion.py L162-L196](backend/app/services/seed_ingestion.py#L162-L196): Edge iteration now creates `ControlObjectiveFrameworkMapping` ORM records with proper UUID parsing, `set_theory_relation` enum mapping, and `is_golden_assertion="TRUE"`.
 
 ---
 
@@ -224,7 +224,7 @@ Of the 27 original findings, I assess:
 **Verdict:** ⚠️ **PARTIALLY FIXED**
 
 **Evidence:**
-- [extract.py L252-L263](file:///home/zackchow/coding/rckg/backend/app/api/extract.py#L252-L263): The endpoint now creates a `MemgraphService` and calls `enqueue_and_execute()` for outbox logging.
+- [extract.py L252-L263](backend/app/api/extract.py#L252-L263): The endpoint now creates a `MemgraphService` and calls `enqueue_and_execute()` for outbox logging.
 - **BUT**: The endpoint **still constructs inline Cypher** (lines 230-248, 265-274, 307-328) and executes them directly via `session.run()`, bypassing `RCKGCypherBuilder`. The outbox logging only covers `ADD_NODE` primitives, not the `DEFINES` or `SATISFIES` edge creation.
 - The `GovernanceEngine` is still never called.
 
@@ -236,7 +236,7 @@ Of the 27 original findings, I assess:
 **Verdict:** ✅ **GENUINELY FIXED**
 
 **Evidence:**
-- [hybrid_chunking.py L520](file:///home/zackchow/coding/rckg/backend/app/services/hybrid_chunking.py#L520): Now uses `match.group(2)` instead of `match.group(6)`.
+- [hybrid_chunking.py L520](backend/app/services/hybrid_chunking.py#L520): Now uses `match.group(2)` instead of `match.group(6)`.
 
 ---
 
@@ -246,7 +246,7 @@ Of the 27 original findings, I assess:
 **Verdict:** ✅ **GENUINELY FIXED**
 
 **Evidence:**
-- [extract.py L162-L169](file:///home/zackchow/coding/rckg/backend/app/api/extract.py#L162-L169): Fallback now uses `section_reference="General"`, `heading_title=filename`, and `chunk_text=extracted_text` (full text, not truncated to 500 chars).
+- [extract.py L162-L169](backend/app/api/extract.py#L162-L169): Fallback now uses `section_reference="General"`, `heading_title=filename`, and `chunk_text=extracted_text` (full text, not truncated to 500 chars).
 
 ---
 
@@ -256,7 +256,7 @@ Of the 27 original findings, I assess:
 **Verdict:** ✅ **GENUINELY FIXED**
 
 **Evidence:**
-- [memgraph_service.py L90-L125](file:///home/zackchow/coding/rckg/backend/app/services/memgraph_service.py#L90-L125): Now uses `db.flush()` (not `commit()`) before Memgraph execution. Commits only after successful Memgraph write. Rollbacks on failure.
+- [memgraph_service.py L90-L125](backend/app/services/memgraph_service.py#L90-L125): Now uses `db.flush()` (not `commit()`) before Memgraph execution. Commits only after successful Memgraph write. Rollbacks on failure.
 
 **Assessment:** This correctly implements 2PC-style atomicity.
 
@@ -268,7 +268,7 @@ Of the 27 original findings, I assess:
 **Verdict:** ✅ **GENUINELY FIXED**
 
 **Evidence:**
-- [graph_compiler.py L168-L169](file:///home/zackchow/coding/rckg/backend/app/services/graph_compiler.py#L168-L169): Fallback now returns `[]` (empty list) instead of creating a `NO_RELATIONSHIP` edge.
+- [graph_compiler.py L168-L169](backend/app/services/graph_compiler.py#L168-L169): Fallback now returns `[]` (empty list) instead of creating a `NO_RELATIONSHIP` edge.
 
 ---
 
@@ -278,7 +278,7 @@ Of the 27 original findings, I assess:
 **Verdict:** ✅ **GENUINELY FIXED**
 
 **Evidence:**
-- [extraction.py L37](file:///home/zackchow/coding/rckg/backend/app/services/extraction.py#L37): Default port changed from 8000 to 8001.
+- [extraction.py L37](backend/app/services/extraction.py#L37): Default port changed from 8000 to 8001.
 
 ---
 
@@ -299,7 +299,7 @@ Of the 27 original findings, I assess:
 **Verdict:** 🔵 **DEFERRED TO POST-MVP**
 
 **Evidence:**
-- [colbert_service.py](file:///home/zackchow/coding/rckg/backend/app/services/retrieval/colbert_service.py) still generates synthetic embeddings from `ord(c)` hash seeds. No real ColBERT model loaded. Acknowledged in post-mvp.md.
+- [colbert_service.py](backend/app/services/retrieval/colbert_service.py) still generates synthetic embeddings from `ord(c)` hash seeds. No real ColBERT model loaded. Acknowledged in post-mvp.md.
 
 ---
 
@@ -309,7 +309,7 @@ Of the 27 original findings, I assess:
 **Verdict:** 🔵 **DEFERRED TO POST-MVP**
 
 **Evidence:**
-- [dual_judge_async.py L122-L128](file:///home/zackchow/coding/rckg/backend/app/services/dual_judge_async.py#L122-L128): Still just `logger.info()`.
+- [dual_judge_async.py L122-L128](backend/app/services/dual_judge_async.py#L122-L128): Still just `logger.info()`.
 
 ---
 
@@ -319,7 +319,7 @@ Of the 27 original findings, I assess:
 **Verdict:** 🔵 **DEFERRED TO POST-MVP**
 
 **Evidence:**
-- [format_classifier.py](file:///home/zackchow/coding/rckg/backend/app/services/format_classifier.py) now at least inspects raw bytes for `/Font`, `/Image`, `/XObject`, and `/Table` markers. This is an improvement over the original finding that claimed zero inspection. Still heuristic-based rather than using a PDF parser library.
+- [format_classifier.py](backend/app/services/format_classifier.py) now at least inspects raw bytes for `/Font`, `/Image`, `/XObject`, and `/Table` markers. This is an improvement over the original finding that claimed zero inspection. Still heuristic-based rather than using a PDF parser library.
 
 ---
 
@@ -329,7 +329,7 @@ Of the 27 original findings, I assess:
 **Verdict:** ❌ **NOT FIXED**
 
 **Evidence:**
-- [seed_ingestion.py L152-L159](file:///home/zackchow/coding/rckg/backend/app/services/seed_ingestion.py#L152-L159): All nodes are still `FrameworkControlObjectiveNode`. No `FrameworkControlActivityNode` distinction.
+- [seed_ingestion.py L152-L159](backend/app/services/seed_ingestion.py#L152-L159): All nodes are still `FrameworkControlObjectiveNode`. No `FrameworkControlActivityNode` distinction.
 
 ---
 
@@ -339,8 +339,8 @@ Of the 27 original findings, I assess:
 **Verdict:** ✅ **GENUINELY FIXED (for Tier 1)**
 
 **Evidence:**
-- [extract.py L269](file:///home/zackchow/coding/rckg/backend/app/api/extract.py#L269): Tier 1 now uses `DEFINES` relationship (`(d)-[r:DEFINES]->(o)`).
-- **But** Tier 2 at [extract.py L335](file:///home/zackchow/coding/rckg/backend/app/api/extract.py#L335) still uses `SATISFIES` from ControlObjective → Obligation, which is semantically correct per the Delta topology.
+- [extract.py L269](backend/app/api/extract.py#L269): Tier 1 now uses `DEFINES` relationship (`(d)-[r:DEFINES]->(o)`).
+- **But** Tier 2 at [extract.py L335](backend/app/api/extract.py#L335) still uses `SATISFIES` from ControlObjective → Obligation, which is semantically correct per the Delta topology.
 
 ---
 
@@ -350,8 +350,8 @@ Of the 27 original findings, I assess:
 **Verdict:** ⚠️ **INCONSISTENT**
 
 **Evidence:**
-- [extract.py L104](file:///home/zackchow/coding/rckg/backend/app/api/extract.py#L104): Bootstrap endpoint now uses `from app.services.cold_start_pipeline import ...` (relative).
-- **BUT** [cold_start_pipeline.py L12-L16](file:///home/zackchow/coding/rckg/backend/app/services/cold_start_pipeline.py#L12-L16): The module itself still uses `from backend.app.services.format_classifier import ...` (absolute).
+- [extract.py L104](backend/app/api/extract.py#L104): Bootstrap endpoint now uses `from app.services.cold_start_pipeline import ...` (relative).
+- **BUT** [cold_start_pipeline.py L12-L16](backend/app/services/cold_start_pipeline.py#L12-L16): The module itself still uses `from backend.app.services.format_classifier import ...` (absolute).
 - This means the bootstrap endpoint will fail if run as `app.services.cold_start_pipeline` — the internal imports use the `backend.app.` prefix.
 
 ---
@@ -362,7 +362,7 @@ Of the 27 original findings, I assess:
 **Verdict:** ⚠️ **PARTIALLY FIXED**
 
 **Evidence:**
-- [extract.py L333](file:///home/zackchow/coding/rckg/backend/app/api/extract.py#L333): Now matches on **both** `domain_facet` AND `action_verb` (`WHERE o.domain_facet = $domain AND o.action_verb = $verb`). This narrows the match significantly compared to domain-only.
+- [extract.py L333](backend/app/api/extract.py#L333): Now matches on **both** `domain_facet` AND `action_verb` (`WHERE o.domain_facet = $domain AND o.action_verb = $verb`). This narrows the match significantly compared to domain-only.
 - Still not an embedding-based similarity match, but meaningfully better.
 
 ---
@@ -375,9 +375,9 @@ The following services all share the same structure:
 
 | Service | Lines | Pattern |
 |---------|-------|---------|
-| [nli_engine.py](file:///home/zackchow/coding/rckg/backend/app/services/nli_engine.py#L62-L77) | 62-77 | Try `_call_llm()`, catch all exceptions, fall back to keyword chain |
-| [dual_judge_async.py](file:///home/zackchow/coding/rckg/backend/app/services/dual_judge_async.py#L65-L75) | 65-75 | Try `_call_llm()`, catch all exceptions, fall back to `conf * 1.02` |
-| [extract.py (process-pdf)](file:///home/zackchow/coding/rckg/backend/app/api/extract.py#L206-L223) | 206-223 | Try `_call_llm()`, fall back to regex facet extractor |
+| [nli_engine.py](backend/app/services/nli_engine.py#L62-L77) | 62-77 | Try `_call_llm()`, catch all exceptions, fall back to keyword chain |
+| [dual_judge_async.py](backend/app/services/dual_judge_async.py#L65-L75) | 65-75 | Try `_call_llm()`, catch all exceptions, fall back to `conf * 1.02` |
+| [extract.py (process-pdf)](backend/app/api/extract.py#L206-L223) | 206-223 | Try `_call_llm()`, fall back to regex facet extractor |
 
 **Problem:** This pattern catches `Exception` broadly, including:
 - Network timeouts → LLM is temporarily down
@@ -393,26 +393,26 @@ Two API endpoints create services **without providing database or Memgraph conne
 
 | Endpoint | Service | Missing |
 |----------|---------|---------|
-| `POST /graph/revert` ([L440](file:///home/zackchow/coding/rckg/backend/app/api/extract.py#L440)) | `GraphRevertService()` | No `db_session`, no `memgraph_connection` |
-| `GET /graph/graphrag-export` ([L456](file:///home/zackchow/coding/rckg/backend/app/api/extract.py#L456)) | `GraphRAGTranslationService()` | No `memgraph_connection` |
+| `POST /graph/revert` ([L440](backend/app/api/extract.py#L440)) | `GraphRevertService()` | No `db_session`, no `memgraph_connection` |
+| `GET /graph/graphrag-export` ([L456](backend/app/api/extract.py#L456)) | `GraphRAGTranslationService()` | No `memgraph_connection` |
 
 These endpoints will execute but produce only fabricated/empty results.
 
 ### 3. Mixed Import Paths
 
-[cold_start_pipeline.py](file:///home/zackchow/coding/rckg/backend/app/services/cold_start_pipeline.py#L12-L16) uses `from backend.app.services.X import Y` while most other modules use `from app.services.X import Y`. This creates runtime failures depending on how the FastAPI server is launched (`python -m backend.app.main` vs `cd backend && uvicorn app.main:app`).
+[cold_start_pipeline.py](backend/app/services/cold_start_pipeline.py#L12-L16) uses `from backend.app.services.X import Y` while most other modules use `from app.services.X import Y`. This creates runtime failures depending on how the FastAPI server is launched (`python -m backend.app.main` vs `cd backend && uvicorn app.main:app`).
 
 ### 4. MagicMock Reference in Production Code
 
-[governance_engine.py L59](file:///home/zackchow/coding/rckg/backend/app/services/governance_engine.py#L59) references `MagicMock()` without importing it. This will raise `NameError` at runtime if the primary ORM persist fails.
+[governance_engine.py L59](backend/app/services/governance_engine.py#L59) references `MagicMock()` without importing it. This will raise `NameError` at runtime if the primary ORM persist fails.
 
 ### 5. Test Quality Concerns
 
 The test suite (88 passing) uses heavy mocking:
 
-- [test_nli_llm_proxy.py](file:///home/zackchow/coding/rckg/backend/tests/test_nli_llm_proxy.py): Mocks `_call_llm` and verifies the mock was called. Doesn't test actual LLM prompt quality or response parsing edge cases.
-- [test_cold_start_candidate_retrieval.py](file:///home/zackchow/coding/rckg/backend/tests/test_cold_start_candidate_retrieval.py): Uses `MagicMock()` for DB session. Only asserts `res["status"] == "COMPLETED"` and `orchestrator.compiler is not None`. Doesn't verify that the correct candidates were passed to the compiler.
-- [test_dual_judge_llm.py](file:///home/zackchow/coding/rckg/backend/tests/test_dual_judge_llm.py): Same pattern — mock `_call_llm`, verify scores match mock output.
+- [test_nli_llm_proxy.py](backend/tests/test_nli_llm_proxy.py): Mocks `_call_llm` and verifies the mock was called. Doesn't test actual LLM prompt quality or response parsing edge cases.
+- [test_cold_start_candidate_retrieval.py](backend/tests/test_cold_start_candidate_retrieval.py): Uses `MagicMock()` for DB session. Only asserts `res["status"] == "COMPLETED"` and `orchestrator.compiler is not None`. Doesn't verify that the correct candidates were passed to the compiler.
+- [test_dual_judge_llm.py](backend/tests/test_dual_judge_llm.py): Same pattern — mock `_call_llm`, verify scores match mock output.
 
 These tests verify that the LLM integration code *calls* the LLM, but not that the system produces correct graph mutations from real document text. There are no integration tests that trace a PDF upload through to Memgraph edge creation.
 

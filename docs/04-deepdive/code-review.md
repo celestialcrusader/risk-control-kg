@@ -5,11 +5,11 @@
 **Date:** July 31, 2026  
 **Reviewer:** AI Code Review Agent  
 **Scope:** Full `backend/app/` codebase audited against:
-- BRD v3.0 — [01-business-requirement-doc.md](file:///home/zackchow/coding/rckg/docs/02-pickup/01-business-requirement-doc.md)
-- PRD v3.0 — [02-product-requirement-doc.md](file:///home/zackchow/coding/rckg/docs/02-pickup/02-product-requirement-doc.md)
-- TRD v7.0 — [03-technical-requirement-doc.md](file:///home/zackchow/coding/rckg/docs/02-pickup/03-technical-requirement-doc.md)
-- Delta v3.2 — [06-delta.md](file:///home/zackchow/coding/rckg/docs/02-pickup/06-delta.md)
-- MVP Sprint v2.0 — [mvp-sprint.md](file:///home/zackchow/coding/rckg/docs/03-mvp/mvp-sprint.md)
+- BRD v3.0 — [01-business-requirement-doc.md](docs/02-pickup/01-business-requirement-doc.md)
+- PRD v3.0 — [02-product-requirement-doc.md](docs/02-pickup/02-product-requirement-doc.md)
+- TRD v7.0 — [03-technical-requirement-doc.md](docs/02-pickup/03-technical-requirement-doc.md)
+- Delta v3.2 — [06-delta.md](docs/02-pickup/06-delta.md)
+- MVP Sprint v2.0 — [mvp-sprint.md](docs/03-mvp/mvp-sprint.md)
 
 ---
 
@@ -38,7 +38,7 @@ Of the ~26 service modules audited, **zero** contain production-grade logic. The
 ## 1. Extraction Prompt Only Handles Obligations, Not ControlObjectives or ControlActivities
 
 > **Severity:** 🔴 CRITICAL  
-> **Files:** [extraction.md](file:///home/zackchow/coding/rckg/backend/app/prompts/extraction.md), [extraction.py](file:///home/zackchow/coding/rckg/backend/app/services/extraction.py)  
+> **Files:** [extraction.md](backend/app/prompts/extraction.md), [extraction.py](backend/app/services/extraction.py)  
 > **Requirement:** Delta §2.1 Ingestion Taxonomy, PRD §3.5 FR-5.1
 
 ### Problem
@@ -71,12 +71,12 @@ When a user uploads a **corporate policy document** (e.g., "Information Security
 ## 2. `process-pdf` Endpoint Bypasses LLM Entirely — Uses Only Regex Facet Extraction
 
 > **Severity:** 🔴 CRITICAL  
-> **File:** [extract.py](file:///home/zackchow/coding/rckg/backend/app/api/extract.py#L130-L347)  
+> **File:** [extract.py](backend/app/api/extract.py#L130-L347)  
 > **Requirement:** Delta §2.2 Upstream Format Classifier, BRD BO-05
 
 ### Problem
 
-The `POST /api/v1/extract/process-pdf` endpoint (lines 130–347) performs the full end-to-end pipeline (PDF parse → chunk → extract → inject into Memgraph), but it **never calls the LLM**. Instead, it uses the [`DeJureFacetExtractor`](file:///home/zackchow/coding/rckg/backend/app/services/facet_extractor.py) which is a **pure regex pattern matcher** with ~10 hardcoded verb patterns and ~10 noun patterns.
+The `POST /api/v1/extract/process-pdf` endpoint (lines 130–347) performs the full end-to-end pipeline (PDF parse → chunk → extract → inject into Memgraph), but it **never calls the LLM**. Instead, it uses the [`DeJureFacetExtractor`](backend/app/services/facet_extractor.py) which is a **pure regex pattern matcher** with ~10 hardcoded verb patterns and ~10 noun patterns.
 
 The resulting "obligation prose" is a **template string**, not extracted from the actual document text:
 
@@ -105,7 +105,7 @@ Every node injected into Memgraph by this endpoint contains **fabricated prose**
 ## 3. `DeJureFacetExtractor` Is a Trivial Regex Stub, Not a Real 6-Facet Engine
 
 > **Severity:** 🔴 CRITICAL  
-> **File:** [facet_extractor.py](file:///home/zackchow/coding/rckg/backend/app/services/facet_extractor.py)  
+> **File:** [facet_extractor.py](backend/app/services/facet_extractor.py)  
 > **Requirement:** Delta §2, Sprint 2 RCKG-203b, MVP mvp-sprint.md RCKG-203b
 
 ### Problem
@@ -136,7 +136,7 @@ This should be an LLM-assisted extraction (or at minimum a much richer NLP pipel
 ## 4. `ColdStartPipelineOrchestrator` Uses Hardcoded Target Node and Fake Cosine Similarity
 
 > **Severity:** 🔴 CRITICAL  
-> **File:** [cold_start_pipeline.py](file:///home/zackchow/coding/rckg/backend/app/services/cold_start_pipeline.py#L65-L84)  
+> **File:** [cold_start_pipeline.py](backend/app/services/cold_start_pipeline.py#L65-L84)  
 > **Requirement:** Delta §7.1 Phase 1 Cold-Start Bootstrap, Sprint 2 RCKG-204
 
 ### Problem
@@ -183,7 +183,7 @@ The pipeline cannot produce a meaningful knowledge graph. Every document chunk c
 ## 5. `NliSetTheoryEngine` Is a Hardcoded If/Else Chain, Not a Real NLI Model
 
 > **Severity:** 🔴 CRITICAL  
-> **File:** [nli_engine.py](file:///home/zackchow/coding/rckg/backend/app/services/nli_engine.py)  
+> **File:** [nli_engine.py](backend/app/services/nli_engine.py)  
 > **Requirement:** Delta §4 Probabilistic NLI Set-Theory Engine, Sprint 3 RCKG-303
 
 ### Problem
@@ -211,7 +211,7 @@ Load and inference a real DeBERTa-v3-large cross-encoder model (or at minimum, c
 ## 6. `Bm25SparseSearchService` Always Raises RuntimeError — Never Connects to Elasticsearch
 
 > **Severity:** 🔴 CRITICAL  
-> **File:** [bm25_service.py](file:///home/zackchow/coding/rckg/backend/app/services/retrieval/bm25_service.py#L46-L49)  
+> **File:** [bm25_service.py](backend/app/services/retrieval/bm25_service.py#L46-L49)  
 > **Requirement:** Delta §6.1, Sprint 3 RCKG-301
 
 ### Problem
@@ -234,7 +234,7 @@ Stage 1 of the 4-Stage Funnel is non-functional. The in-memory fallback cannot s
 ## 7. `DualJudgeAsyncService` Uses Arithmetic Instead of 70B Teacher LLM
 
 > **Severity:** 🔴 CRITICAL  
-> **File:** [dual_judge_async.py](file:///home/zackchow/coding/rckg/backend/app/services/dual_judge_async.py#L46-L68)  
+> **File:** [dual_judge_async.py](backend/app/services/dual_judge_async.py#L46-L68)  
 > **Requirement:** Delta §5.3, Sprint 3 RCKG-304
 
 ### Problem
@@ -258,7 +258,7 @@ The Dual-Judge audit layer (Stage 4 of the funnel) provides zero quality assuran
 ## 8. `GraphRevertService` Does Not Actually Revert Anything in Memgraph or PostgreSQL
 
 > **Severity:** 🔴 CRITICAL  
-> **File:** [graph_revert_service.py](file:///home/zackchow/coding/rckg/backend/app/services/graph_revert_service.py)  
+> **File:** [graph_revert_service.py](backend/app/services/graph_revert_service.py)  
 > **Requirement:** Delta §7.5, Sprint 4 RCKG-403
 
 ### Problem
@@ -279,7 +279,7 @@ The "First-Class Graph Revert" capability promised in the Delta is non-functiona
 ## 9. `EmbeddingSyncController` Uses Mock Qdrant — No Real Vector DB Integration
 
 > **Severity:** 🔴 CRITICAL  
-> **File:** [embedding_sync.py](file:///home/zackchow/coding/rckg/backend/app/services/embedding_sync.py)  
+> **File:** [embedding_sync.py](backend/app/services/embedding_sync.py)  
 > **Requirement:** Delta §7.6, Sprint 4 RCKG-404
 
 ### Problem
@@ -295,7 +295,7 @@ Vector payload synchronization on `SUPERSEDE_NODE` events does not persist. The 
 ## 10. `GraphRAGTranslationService` Returns Hardcoded Mock Data
 
 > **Severity:** 🔴 CRITICAL  
-> **File:** [graphrag_translator.py](file:///home/zackchow/coding/rckg/backend/app/services/graphrag_translator.py#L34-L39)  
+> **File:** [graphrag_translator.py](backend/app/services/graphrag_translator.py#L34-L39)  
 > **Requirement:** Delta §7.7, Sprint 4 RCKG-405
 
 ### Problem
@@ -323,7 +323,7 @@ The downstream GraphRAG Translation Layer interface is non-functional. Executive
 ## 11. `GovernanceEngine` Has No Persistence — Golden Assertions Reset on Restart
 
 > **Severity:** 🟠 MAJOR  
-> **File:** [governance_engine.py](file:///home/zackchow/coding/rckg/backend/app/services/governance_engine.py)  
+> **File:** [governance_engine.py](backend/app/services/governance_engine.py)  
 > **Requirement:** Delta §7.4, Sprint 4 RCKG-402
 
 ### Problem
@@ -345,7 +345,7 @@ The Golden Assertions Snapshot Testing framework (critical for regression preven
 ## 12. `GraphitiSemanticChangeDetector` Uses Naive String Equality, Not Semantic Comparison
 
 > **Severity:** 🟠 MAJOR  
-> **File:** [graphiti_engine.py](file:///home/zackchow/coding/rckg/backend/app/services/graphiti_engine.py#L57)  
+> **File:** [graphiti_engine.py](backend/app/services/graphiti_engine.py#L57)  
 > **Requirement:** Delta §7.1 Phase 2, Sprint 4 RCKG-401
 
 ### Problem
@@ -367,7 +367,7 @@ The Graphiti engine will produce excessive false-positive diffs, flooding the gr
 ## 13. Seed Ingestion Does Not Write Edges to PostgreSQL or Memgraph
 
 > **Severity:** 🟠 MAJOR  
-> **File:** [seed_ingestion.py](file:///home/zackchow/coding/rckg/backend/app/services/seed_ingestion.py#L148-L165)  
+> **File:** [seed_ingestion.py](backend/app/services/seed_ingestion.py#L148-L165)  
 > **Requirement:** Delta §5.4, Sprint 1 RCKG-101
 
 ### Problem
@@ -386,7 +386,7 @@ The seed graph bootstrap produces nodes-only, with no edges, rendering the cross
 ## 14. `process-pdf` Endpoint Writes Raw Cypher Strings, Not Parameterized Templates via Service Layer
 
 > **Severity:** 🟠 MAJOR  
-> **File:** [extract.py](file:///home/zackchow/coding/rckg/backend/app/api/extract.py#L188-L335)  
+> **File:** [extract.py](backend/app/api/extract.py#L188-L335)  
 > **Requirement:** Delta §7.3, TRD §2
 
 ### Problem
@@ -411,7 +411,7 @@ The endpoint is essentially a standalone script jammed into an API route, duplic
 ## 15. `ClauseBoundaryExtractor` Has a Regex Bug on Group Reference
 
 > **Severity:** 🟠 MAJOR  
-> **File:** [hybrid_chunking.py](file:///home/zackchow/coding/rckg/backend/app/services/hybrid_chunking.py#L520)  
+> **File:** [hybrid_chunking.py](backend/app/services/hybrid_chunking.py#L520)  
 > **Requirement:** Sprint 2 RCKG-203
 
 ### Problem
@@ -434,7 +434,7 @@ The clause boundary extractor will crash on any regulatory document with recogni
 ## 16. `process-pdf` Hardcodes Fallback Chunk Metadata Instead of Using Extracted Content
 
 > **Severity:** 🟠 MAJOR  
-> **File:** [extract.py](file:///home/zackchow/coding/rckg/backend/app/api/extract.py#L172-L181)  
+> **File:** [extract.py](backend/app/api/extract.py#L172-L181)  
 > **Requirement:** Delta §2.2
 
 ### Problem
@@ -461,7 +461,7 @@ Large PDF documents (100+ pages) lose 99%+ of their content. The fabricated sect
 ## 17. `MemgraphService.enqueue_and_execute()` Commits Outbox Before Memgraph — Violates Atomicity
 
 > **Severity:** 🟠 MAJOR  
-> **File:** [memgraph_service.py](file:///home/zackchow/coding/rckg/backend/app/services/memgraph_service.py#L97-L104)  
+> **File:** [memgraph_service.py](backend/app/services/memgraph_service.py#L97-L104)  
 > **Requirement:** Delta §7.3, BRD BO-05
 
 ### Problem
@@ -487,7 +487,7 @@ Dual-write consistency can diverge — PostgreSQL records edges that don't exist
 ## 18. `RuleBasedGraphCompiler` Produces ADD_EDGE for NO_RELATIONSHIP Pairs
 
 > **Severity:** 🟠 MAJOR  
-> **File:** [graph_compiler.py](file:///home/zackchow/coding/rckg/backend/app/services/graph_compiler.py#L168-L179)  
+> **File:** [graph_compiler.py](backend/app/services/graph_compiler.py#L168-L179)  
 > **Requirement:** Delta §7.3
 
 ### Problem
@@ -516,7 +516,7 @@ The graph is polluted with edges that explicitly state "these two things are unr
 ## 19. Extraction Pipeline Port Conflict — `LLM_ENDPOINT` Defaults to Port 8000
 
 > **Severity:** 🟡 MODERATE  
-> **File:** [extraction.py](file:///home/zackchow/coding/rckg/backend/app/services/extraction.py#L37)  
+> **File:** [extraction.py](backend/app/services/extraction.py#L37)  
 > **Requirement:** TRD §1
 
 ### Problem
@@ -536,7 +536,7 @@ LLM extraction calls will either infinite-loop or return HTML (the Swagger docs 
 ## 20. No `document_type` Routing in the Upload → Extract Pipeline
 
 > **Severity:** 🟡 MODERATE  
-> **Files:** [document_upload.py](file:///home/zackchow/coding/rckg/backend/app/services/document_upload.py), [extract.py](file:///home/zackchow/coding/rckg/backend/app/api/extract.py)  
+> **Files:** [document_upload.py](backend/app/services/document_upload.py), [extract.py](backend/app/api/extract.py)  
 > **Requirement:** Delta §2.1 Ingestion Taxonomy
 
 ### Problem
@@ -552,7 +552,7 @@ Users must manually select the document type and manually trigger the right extr
 ## 21. `ColBERTv2Service` Is a Mock With No Model Loading
 
 > **Severity:** 🟡 MODERATE  
-> **File:** [colbert_service.py](file:///home/zackchow/coding/rckg/backend/app/services/retrieval/colbert_service.py)  
+> **File:** [colbert_service.py](backend/app/services/retrieval/colbert_service.py)  
 > **Requirement:** Delta §6.2, Sprint 3 RCKG-302
 
 ### Problem
@@ -568,7 +568,7 @@ Stage 2 reranking is non-functional.
 ## 22. `PreferenceAccumulatorWorker` Kafka Publish Is a Log Statement
 
 > **Severity:** 🟡 MODERATE  
-> **File:** [dual_judge_async.py](file:///home/zackchow/coding/rckg/backend/app/services/dual_judge_async.py#L103-L108)  
+> **File:** [dual_judge_async.py](backend/app/services/dual_judge_async.py#L103-L108)  
 > **Requirement:** Delta §5.3
 
 ### Problem
@@ -587,7 +587,7 @@ No Kafka producer is initialized, no event is published, no retrain workflow is 
 ## 23. `format_classifier.py` Does Not Actually Inspect PDF Internal Structure
 
 > **Severity:** 🟡 MODERATE  
-> **File:** [format_classifier.py](file:///home/zackchow/coding/rckg/backend/app/services/format_classifier.py)  
+> **File:** [format_classifier.py](backend/app/services/format_classifier.py)  
 > **Requirement:** Delta §2.2
 
 ### Problem
@@ -603,7 +603,7 @@ All PDFs are classified as `NATIVE_PDF` by default since the fallback returns NA
 ## 24. Seed Ingestion Writes All Nodes as `FrameworkControlObjectiveNode` — Ignores Activity Distinction
 
 > **Severity:** 🟡 MODERATE  
-> **File:** [seed_ingestion.py](file:///home/zackchow/coding/rckg/backend/app/services/seed_ingestion.py#L152-L159)  
+> **File:** [seed_ingestion.py](backend/app/services/seed_ingestion.py#L152-L159)  
 > **Requirement:** Delta §5.4
 
 ### Problem
@@ -615,7 +615,7 @@ All seed nodes (both NIST SP 800-53 controls and ISO 27001 clauses) are persiste
 ## 25. `process-pdf` Constructs SATISFIES Edge From StatutoryRequirement → Obligation (Wrong Direction)
 
 > **Severity:** 🔵 MINOR  
-> **File:** [extract.py](file:///home/zackchow/coding/rckg/backend/app/api/extract.py#L237-L247)  
+> **File:** [extract.py](backend/app/api/extract.py#L237-L247)  
 > **Requirement:** Delta §3.1 Canonical 5-Linkage Topology
 
 ### Problem
@@ -634,7 +634,7 @@ The correct relationship should be `DEFINES` or `CONTAINS`, not `SATISFIES`.
 ## 26. Bootstrap Endpoint Import Uses Wrong Module Path
 
 > **Severity:** 🔵 MINOR  
-> **File:** [extract.py](file:///home/zackchow/coding/rckg/backend/app/api/extract.py#L116)  
+> **File:** [extract.py](backend/app/api/extract.py#L116)  
 > **Requirement:** N/A (Code bug)
 
 ### Problem
@@ -650,7 +650,7 @@ This uses the absolute `backend.app.` prefix, while other imports in the same fi
 ## 27. `ControlObjective` → `Obligation` Crosswalk Uses Only Domain Facet Match
 
 > **Severity:** 🔵 MINOR  
-> **File:** [extract.py](file:///home/zackchow/coding/rckg/backend/app/api/extract.py#L280-L289)  
+> **File:** [extract.py](backend/app/api/extract.py#L280-L289)  
 > **Requirement:** Delta §3.1
 
 ### Problem

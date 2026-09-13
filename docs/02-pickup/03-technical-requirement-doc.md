@@ -7,8 +7,8 @@
 **Last Updated:** July 27, 2026  
 **Supersedes:** `docs/01-initial/master_tech_req.md` v6.0  
 **Linked Requirements:**
-- BRD: [01-business-requirement-doc.md](file:///home/zackchow/coding/rckg/docs/02-pickup/01-business-requirement-doc.md) v3.0
-- PRD: [02-product-requirement-doc.md](file:///home/zackchow/coding/rckg/docs/02-pickup/02-product-requirement-doc.md) v3.0
+- BRD: [01-business-requirement-doc.md](docs/02-pickup/01-business-requirement-doc.md) v3.0
+- PRD: [02-product-requirement-doc.md](docs/02-pickup/02-product-requirement-doc.md) v3.0
 
 ---
 
@@ -141,7 +141,7 @@ class Control(SQLModel, table=True):
     deepeval_metric: Optional[str] = Field(default=None, index=True)  # e.g., 'bias', 'toxicity'
 
 class SystemRiskProfile(SQLModel, table=True):
-    """Inherent risk calculation output for a given AI solution (Zack/Wukongtai Model)."""
+    """Inherent risk calculation output for a given AI solution (RCKG-Tiering Model)."""
     __tablename__ = "system_risk_profiles"
     
     id: UUID = Field(default_factory=uuid4, primary_key=True)
@@ -287,7 +287,7 @@ def calculate_risk_tier(
     data: int,
     is_black_box: bool
 ) -> dict:
-    """Calculate and save Zack/Wukongtai risk score (5-25) and assign Tier 1/2/3."""
+    """Calculate and save RCKG-Tiering risk score (5-25) and assign Tier 1/2/3."""
     total_score = facing + jurisdiction + agency + impact + data
     tier = "Tier 1 (Critical)" if total_score >= 20 else "Tier 2 (High)" if total_score >= 12 else "Tier 3 (Standard)"
     explainability_mandatory = (tier in ["Tier 1 (Critical)", "Tier 2 (High)"]) and is_black_box

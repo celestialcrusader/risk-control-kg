@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-09  
 **Status:** READY_FOR_QA  
-**Target Story:** [MVP2-304](file:///home/zackchow/coding/rckg/docs/05-mvp-2/sprints.md#mvp2-304--end-to-end-integration-test)  
+**Target Story:** [MVP2-304](docs/05-mvp-2/sprints.md#mvp2-304--end-to-end-integration-test)  
 
 ---
 

@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-02  
 **Status:** READY_FOR_QA  
-**Target Story:** [CFIX-100](file:///home/zackchow/coding/rckg/docs/04-deepdive/claude-remediation-sprint.md#cfix-100-normalize-all-import-paths-to-app-prefix)  
+**Target Story:** [CFIX-100](docs/04-deepdive/claude-remediation-sprint.md#cfix-100-normalize-all-import-paths-to-app-prefix)  
 
 ---
 

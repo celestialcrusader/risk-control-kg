@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-07-31  
-**Story Ticket:** [FIX-101](file:///home/zackchow/coding/rckg/docs/04-deepdive/real-mvp.md#fix-101-fix-llm_endpoint-port-collision--import-path-inconsistency)  
-**Work Log Reference:** [work-log-FIX-101.md](file:///home/zackchow/coding/rckg/docs/04-deepdive/swe-worklog/work-log-FIX-101.md)  
+**Story Ticket:** [FIX-101](docs/04-deepdive/real-mvp.md#fix-101-fix-llm_endpoint-port-collision--import-path-inconsistency)  
+**Work Log Reference:** [work-log-FIX-101.md](docs/04-deepdive/swe-worklog/work-log-FIX-101.md)  
 **Final Status:** **APPROVED**  
 
 ---

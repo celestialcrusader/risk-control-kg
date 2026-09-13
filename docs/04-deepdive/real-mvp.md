@@ -4,9 +4,9 @@
 **Status:** ✅ **APPROVED & 100% DELIVERED** (Sprints 1, 2, and 3 fully implemented via TDD and QA signed-off)  
 **Classification:** Internal — Confidential Engineering Specification  
 **Date:** July 31, 2026  
-**Input:** [code-review.md](file:///home/zackchow/coding/rckg/docs/04-deepdive/code-review.md) — 27 audit findings (12 Critical, 9 Major, 6 Moderate, 3 Minor)  
-**Governing Spec:** [06-delta.md](file:///home/zackchow/coding/rckg/docs/02-pickup/06-delta.md)  
-**Target Repository:** `/home/zackchow/coding/rckg`  
+**Input:** [code-review.md](docs/04-deepdive/code-review.md) — 27 audit findings (12 Critical, 9 Major, 6 Moderate, 3 Minor)  
+**Governing Spec:** [06-delta.md](docs/02-pickup/06-delta.md)  
+**Target Repository:** `.`  
 
 ---
 

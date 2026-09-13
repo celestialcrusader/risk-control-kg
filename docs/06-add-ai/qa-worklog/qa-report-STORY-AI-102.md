@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-11  
-**Story Ticket:** [STORY-AI-102](file:///home/zackchow/coding/rckg/docs/06-add-ai/sprints.md#story-ai-102-qwen3-30b-a3b-general-rule-extraction)  
-**Work Log Reference:** [work-log-STORY-AI-102.md](file:///home/zackchow/coding/rckg/docs/06-add-ai/swe-worklog/work-log-STORY-AI-102.md)  
+**Story Ticket:** [STORY-AI-102](docs/06-add-ai/sprints.md#story-ai-102-qwen3-30b-a3b-general-rule-extraction)  
+**Work Log Reference:** [work-log-STORY-AI-102.md](docs/06-add-ai/swe-worklog/work-log-STORY-AI-102.md)  
 **Final Status:** **APPROVED**  
 
 ---

@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-07-30  
-**Story Ticket:** [RCKG-304](file:///home/zackchow/coding/rckg/docs/03-mvp/mvp-sprint.md#rckg-304-asynchronous-70b-dual-judge-audit-service--ktodpo-preference-worker)  
-**Work Log Reference:** [work-log-RCKG-304.md](file:///home/zackchow/coding/rckg/docs/03-mvp/swe-worklog/work-log-RCKG-304.md)  
+**Story Ticket:** [RCKG-304](docs/03-mvp/mvp-sprint.md#rckg-304-asynchronous-70b-dual-judge-audit-service--ktodpo-preference-worker)  
+**Work Log Reference:** [work-log-RCKG-304.md](docs/03-mvp/swe-worklog/work-log-RCKG-304.md)  
 **Final Status:** **APPROVED**  
 
 ---

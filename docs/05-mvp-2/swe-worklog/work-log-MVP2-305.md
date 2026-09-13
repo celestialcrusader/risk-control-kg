@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-09  
 **Status:** READY_FOR_QA  
-**Target Story:** [MVP2-305](file:///home/zackchow/coding/rckg/docs/05-mvp-2/sprints.md#mvp2-305--bitemporal-columns-on-remaining-node-types)  
+**Target Story:** [MVP2-305](docs/05-mvp-2/sprints.md#mvp2-305--bitemporal-columns-on-remaining-node-types)  
 
 ---
 

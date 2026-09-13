@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-12  
-**Story Ticket:** [STORY-GRAPH-101](file:///home/zackchow/coding/rckg/docs/06-add-ai/upgrade-graph-agent.md#story-graph-101-dependencies-config--consolidated-model-matrix-setup-qwen36-35b-a3b)  
-**Work Log Reference:** [work-log-STORY-GRAPH-101.md](file:///home/zackchow/coding/rckg/docs/03-mvp/swe-worklog/work-log-STORY-GRAPH-101.md)  
+**Story Ticket:** [STORY-GRAPH-101](docs/06-add-ai/upgrade-graph-agent.md#story-graph-101-dependencies-config--consolidated-model-matrix-setup-qwen36-35b-a3b)  
+**Work Log Reference:** [work-log-STORY-GRAPH-101.md](docs/03-mvp/swe-worklog/work-log-STORY-GRAPH-101.md)  
 **Final Status:** **APPROVED**  
 
 ---

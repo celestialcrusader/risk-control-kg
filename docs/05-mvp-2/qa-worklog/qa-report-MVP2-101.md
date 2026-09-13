@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-09  
-**Story Ticket:** [MVP2-101](file:///home/zackchow/coding/rckg/docs/05-mvp-2/sprints.md#mvp2-101--mineru-pdf-to-markdown-integration)  
-**Work Log Reference:** [work-log-MVP2-101.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/swe-worklog/work-log-MVP2-101.md)  
+**Story Ticket:** [MVP2-101](docs/05-mvp-2/sprints.md#mvp2-101--mineru-pdf-to-markdown-integration)  
+**Work Log Reference:** [work-log-MVP2-101.md](docs/05-mvp-2/swe-worklog/work-log-MVP2-101.md)  
 **Final Status:** **APPROVED**  
 
 ---

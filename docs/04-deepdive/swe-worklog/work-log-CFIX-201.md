@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-02  
 **Status:** READY_FOR_QA  
-**Target Story:** [CFIX-201](file:///home/zackchow/coding/rckg/docs/04-deepdive/claude-remediation-sprint.md#cfix-201-route-all-process-pdf-cypher-through-service-layer-and-outbox)  
+**Target Story:** [CFIX-201](docs/04-deepdive/claude-remediation-sprint.md#cfix-201-route-all-process-pdf-cypher-through-service-layer-and-outbox)  
 
 ---
 

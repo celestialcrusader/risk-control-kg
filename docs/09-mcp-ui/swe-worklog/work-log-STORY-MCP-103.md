@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-16  
 **Status:** READY_FOR_QA  
-**Target Story:** [STORY-MCP-103](file:///home/zackchow/coding/rckg/docs/09-mcp-ui/master-sprint-plan.md#story-mcp-103-auditor-override--immutable-audit-log-endpoint)  
+**Target Story:** [STORY-MCP-103](docs/09-mcp-ui/master-sprint-plan.md#story-mcp-103-auditor-override--immutable-audit-log-endpoint)  
 
 ---
 

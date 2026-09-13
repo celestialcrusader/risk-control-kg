@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-09  
-**Story Ticket:** [REMED-101](file:///home/zackchow/coding/rckg/docs/05-mvp-2/gaps-to-mvp.md#remed-101-production-pdf-conversion-fallback--pypdfmarker-integration)  
-**Work Log Reference:** [work-log-REMED-101.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/swe-worklog/work-log-REMED-101.md)  
+**Story Ticket:** [REMED-101](docs/05-mvp-2/gaps-to-mvp.md#remed-101-production-pdf-conversion-fallback--pypdfmarker-integration)  
+**Work Log Reference:** [work-log-REMED-101.md](docs/05-mvp-2/swe-worklog/work-log-REMED-101.md)  
 **Final Status:** **APPROVED**  
 
 ---

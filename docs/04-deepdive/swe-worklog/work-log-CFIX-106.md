@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-02  
 **Status:** READY_FOR_QA  
-**Target Story:** [CFIX-106](file:///home/zackchow/coding/rckg/docs/04-deepdive/claude-remediation-sprint.md#cfix-106-eliminate-silent-regex-fallback-in-process-pdf-extraction--require-explicit-degradation)  
+**Target Story:** [CFIX-106](docs/04-deepdive/claude-remediation-sprint.md#cfix-106-eliminate-silent-regex-fallback-in-process-pdf-extraction--require-explicit-degradation)  
 
 ---
 

@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-15  
-**Story Ticket:** [STORY-FOUNDATION-102](file:///home/zackchow/coding/rckg/docs/07-update-parse/sprint-plan-foundation-setup.md#story-foundation-102-configurable-tabular--multi-sheet-excel-ingestion-adapter)  
-**Work Log Reference:** [work-log-FOUNDATION-102.md](file:///home/zackchow/coding/rckg/docs/07-update-parse/swe-worklog/work-log-FOUNDATION-102.md)  
+**Story Ticket:** [STORY-FOUNDATION-102](docs/07-update-parse/sprint-plan-foundation-setup.md#story-foundation-102-configurable-tabular--multi-sheet-excel-ingestion-adapter)  
+**Work Log Reference:** [work-log-FOUNDATION-102.md](docs/07-update-parse/swe-worklog/work-log-FOUNDATION-102.md)  
 **Final Status:** **APPROVED** ✅  
 
 ---

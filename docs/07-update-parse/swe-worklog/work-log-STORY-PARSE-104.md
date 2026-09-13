@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-12  
 **Status:** READY_FOR_QA  
-**Target Story:** [STORY-PARSE-104](file:///home/zackchow/coding/rckg/docs/07-update-parse/update-parse-sprint.md#story-parse-104-memgraph-temporal-supersession-schema-upgrade)  
+**Target Story:** [STORY-PARSE-104](docs/07-update-parse/update-parse-sprint.md#story-parse-104-memgraph-temporal-supersession-schema-upgrade)  
 
 ---
 
@@ -13,9 +13,9 @@ Created `backend/app/models/de_jure.py` with temporal metadata fields (`legal_st
 ## 2. Files Modified & Created
 | File Path | Change Type | Purpose |
 |---|---|---|
-| [`backend/app/models/de_jure.py`](file:///home/zackchow/coding/rckg/backend/app/models/de_jure.py) | [NEW] | DeJureObligation model schema with temporal attributes |
-| [`backend/app/services/graphrag_translator.py`](file:///home/zackchow/coding/rckg/backend/app/services/graphrag_translator.py) | [MODIFIED] | Added GraphRAGTranslator Cypher mutation generator |
-| [`backend/tests/test_graphrag_translator_temporal.py`](file:///home/zackchow/coding/rckg/backend/tests/test_graphrag_translator_temporal.py) | [NEW] | TDD unit test suite for temporal schema Cypher generation |
+| [`backend/app/models/de_jure.py`](backend/app/models/de_jure.py) | [NEW] | DeJureObligation model schema with temporal attributes |
+| [`backend/app/services/graphrag_translator.py`](backend/app/services/graphrag_translator.py) | [MODIFIED] | Added GraphRAGTranslator Cypher mutation generator |
+| [`backend/tests/test_graphrag_translator_temporal.py`](backend/tests/test_graphrag_translator_temporal.py) | [NEW] | TDD unit test suite for temporal schema Cypher generation |
 
 ## 3. TDD Cycle Summary
 ### 🔴 RED Phase

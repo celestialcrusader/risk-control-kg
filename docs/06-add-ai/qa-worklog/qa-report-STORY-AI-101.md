@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-11  
-**Story Ticket:** [STORY-AI-101](file:///home/zackchow/coding/rckg/docs/06-add-ai/sprints.md#story-ai-101-paddleocr-vl-16-pdf-parsing-integration)  
-**Work Log Reference:** [work-log-STORY-AI-101.md](file:///home/zackchow/coding/rckg/docs/06-add-ai/swe-worklog/work-log-STORY-AI-101.md)  
+**Story Ticket:** [STORY-AI-101](docs/06-add-ai/sprints.md#story-ai-101-paddleocr-vl-16-pdf-parsing-integration)  
+**Work Log Reference:** [work-log-STORY-AI-101.md](docs/06-add-ai/swe-worklog/work-log-STORY-AI-101.md)  
 **Final Status:** **APPROVED**  
 
 ---

@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-02  
 **Status:** READY_FOR_QA  
-**Target Story:** [CFIX-303](file:///home/zackchow/coding/rckg/docs/04-deepdive/claude-remediation-sprint.md#cfix-303-reconcile-process-pdf-hardcoded-boltlocalhost7687-with-centralized-config)  
+**Target Story:** [CFIX-303](docs/04-deepdive/claude-remediation-sprint.md#cfix-303-reconcile-process-pdf-hardcoded-boltlocalhost7687-with-centralized-config)  
 
 ---
 

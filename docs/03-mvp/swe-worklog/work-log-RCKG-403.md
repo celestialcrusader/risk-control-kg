@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-07-30  
 **Status:** READY_FOR_QA  
-**Target Story:** [RCKG-403](file:///home/zackchow/coding/rckg/docs/03-mvp/mvp-sprint.md#rckg-403-bitemporal-graph-revert-endpoint--audit-trail-service)  
+**Target Story:** [RCKG-403](docs/03-mvp/mvp-sprint.md#rckg-403-bitemporal-graph-revert-endpoint--audit-trail-service)  
 
 ---
 

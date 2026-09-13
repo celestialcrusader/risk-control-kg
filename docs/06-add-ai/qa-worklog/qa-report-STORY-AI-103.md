@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-11  
-**Story Ticket:** [STORY-AI-103](file:///home/zackchow/coding/rckg/docs/06-add-ai/sprints.md#story-ai-103-qwen3-embedding-8b-dense-vector-synchronization)  
-**Work Log Reference:** [work-log-STORY-AI-103.md](file:///home/zackchow/coding/rckg/docs/06-add-ai/swe-worklog/work-log-STORY-AI-103.md)  
+**Story Ticket:** [STORY-AI-103](docs/06-add-ai/sprints.md#story-ai-103-qwen3-embedding-8b-dense-vector-synchronization)  
+**Work Log Reference:** [work-log-STORY-AI-103.md](docs/06-add-ai/swe-worklog/work-log-STORY-AI-103.md)  
 **Final Status:** **APPROVED**  
 
 ---

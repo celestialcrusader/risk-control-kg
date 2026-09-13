@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-16  
 **Status:** READY_FOR_QA  
-**Target Story:** [STORY-MCP-303](file:///home/zackchow/coding/rckg/docs/09-mcp-ui/master-sprint-plan.md#story-mcp-303-realtime-nli-playground--immutable-audit-log-viewer)  
+**Target Story:** [STORY-MCP-303](docs/09-mcp-ui/master-sprint-plan.md#story-mcp-303-realtime-nli-playground--immutable-audit-log-viewer)  
 
 ---
 

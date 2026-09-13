@@ -13,7 +13,7 @@ Verify that all 9 infrastructure services start, connect, and report healthy sta
 ### Step 1: Start the Stack
 
 ```bash
-cd /home/zackchow/coding/rckg
+cd .
 docker-compose up -d
 ```
 

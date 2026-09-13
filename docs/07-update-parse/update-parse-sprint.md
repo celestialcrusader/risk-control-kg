@@ -110,8 +110,8 @@ Rasterizing native digital PDFs into images for pixel OCR burns GPU VRAM and int
 
 | File | Purpose of Change |
 |---|---|
-| [`backend/app/services/pdf_to_markdown.py`](file:///home/zackchow/coding/rckg/backend/app/services/pdf_to_markdown.py) | Add page-level coverage evaluator and Docling engine router |
-| [`backend/tests/test_pdf_to_markdown.py`](file:///home/zackchow/coding/rckg/backend/tests/test_pdf_to_markdown.py) | Unit test suite for multi-engine routing |
+| [`backend/app/services/pdf_to_markdown.py`](backend/app/services/pdf_to_markdown.py) | Add page-level coverage evaluator and Docling engine router |
+| [`backend/tests/test_pdf_to_markdown.py`](backend/tests/test_pdf_to_markdown.py) | Unit test suite for multi-engine routing |
 
 ##### Relevant Code Blocks
 
@@ -439,8 +439,8 @@ Regulatory notices evolve over time. When MAS issues a new TRM guideline or canc
 
 | File | Purpose of Change |
 |---|---|
-| [`backend/app/models/de_jure.py`](file:///home/zackchow/coding/rckg/backend/app/models/de_jure.py) | Add `legal_status`, `effective_date`, `expiry_date`, `supersedes_id` |
-| [`backend/app/services/graphrag_translator.py`](file:///home/zackchow/coding/rckg/backend/app/services/graphrag_translator.py) | Update Cypher execution statements with temporal edges |
+| [`backend/app/models/de_jure.py`](backend/app/models/de_jure.py) | Add `legal_status`, `effective_date`, `expiry_date`, `supersedes_id` |
+| [`backend/app/services/graphrag_translator.py`](backend/app/services/graphrag_translator.py) | Update Cypher execution statements with temporal edges |
 
 ##### Relevant Code Blocks
 
@@ -530,7 +530,7 @@ Indexing large 1,000-word clauses in vector databases dilutes semantic embedding
 
 | File | Purpose of Change |
 |---|---|
-| [`backend/app/services/qdrant_service.py`](file:///home/zackchow/coding/rckg/backend/app/services/qdrant_service.py) | Add `parent_clause_id` payload metadata & parent hydration query |
+| [`backend/app/services/qdrant_service.py`](backend/app/services/qdrant_service.py) | Add `parent_clause_id` payload metadata & parent hydration query |
 
 ##### Relevant Code Blocks
 

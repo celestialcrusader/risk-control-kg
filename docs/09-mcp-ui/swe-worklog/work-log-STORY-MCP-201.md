@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-16  
 **Status:** READY_FOR_QA  
-**Target Story:** [STORY-MCP-201](file:///home/zackchow/coding/rckg/docs/09-mcp-ui/master-sprint-plan.md#story-mcp-201-fastmcp-server-architecture--crosswalk-tool-implementation)  
+**Target Story:** [STORY-MCP-201](docs/09-mcp-ui/master-sprint-plan.md#story-mcp-201-fastmcp-server-architecture--crosswalk-tool-implementation)  
 
 ---
 

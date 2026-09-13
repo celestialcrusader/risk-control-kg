@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-09  
 **Status:** READY_FOR_QA  
-**Target Story:** [REMED-101](file:///home/zackchow/coding/rckg/docs/05-mvp-2/gaps-to-mvp.md#remed-101-production-pdf-conversion-fallback--pypdfmarker-integration)  
+**Target Story:** [REMED-101](docs/05-mvp-2/gaps-to-mvp.md#remed-101-production-pdf-conversion-fallback--pypdfmarker-integration)  
 
 ---
 

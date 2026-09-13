@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-07-30  
-**Story Ticket:** [RCKG-302](file:///home/zackchow/coding/rckg/docs/03-mvp/mvp-sprint.md#rckg-302-pre-cached-colbertv2-token-embedding-vram-maxsim-reranker)  
-**Work Log Reference:** [work-log-RCKG-302.md](file:///home/zackchow/coding/rckg/docs/03-mvp/swe-worklog/work-log-RCKG-302.md)  
+**Story Ticket:** [RCKG-302](docs/03-mvp/mvp-sprint.md#rckg-302-pre-cached-colbertv2-token-embedding-vram-maxsim-reranker)  
+**Work Log Reference:** [work-log-RCKG-302.md](docs/03-mvp/swe-worklog/work-log-RCKG-302.md)  
 **Final Status:** **APPROVED**  
 
 ---

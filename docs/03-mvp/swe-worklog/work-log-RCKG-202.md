@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-07-29  
 **Status:** READY_FOR_QA  
-**Target Story:** [RCKG-202](file:///home/zackchow/coding/rckg/docs/03-mvp/mvp-sprint.md#rckg-202-specialized-multi-parser-stack-integration)  
+**Target Story:** [RCKG-202](docs/03-mvp/mvp-sprint.md#rckg-202-specialized-multi-parser-stack-integration)  
 
 ---
 

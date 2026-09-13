@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-02  
-**Story Ticket:** [CFIX-104](file:///home/zackchow/coding/rckg/docs/04-deepdive/claude-remediation-sprint.md#cfix-104-eliminate-silent-llm-fallback-in-nli-engine--require-explicit-degradation)  
-**Work Log Reference:** [work-log-CFIX-104.md](file:///home/zackchow/coding/rckg/docs/04-deepdive/swe-worklog/work-log-CFIX-104.md)  
+**Story Ticket:** [CFIX-104](docs/04-deepdive/claude-remediation-sprint.md#cfix-104-eliminate-silent-llm-fallback-in-nli-engine--require-explicit-degradation)  
+**Work Log Reference:** [work-log-CFIX-104.md](docs/04-deepdive/swe-worklog/work-log-CFIX-104.md)  
 **Final Status:** **APPROVED**  
 
 ---

@@ -3,11 +3,11 @@
 **Document Version:** 1.0  
 **Date:** August 2, 2026  
 **Author:** Claude (Scrum Master / Engineering Lead)  
-**Input:** [claude-mvp-assessment.md](file:///home/zackchow/coding/rckg/docs/04-deepdive/claude-mvp-assessment.md)  
+**Input:** [claude-mvp-assessment.md](docs/04-deepdive/claude-mvp-assessment.md)  
 **Scope:** Remediate all 10 partially-fixed, 5 unfixed, and 4 systemic issues identified in the independent assessment  
 **Sprint Length:** 2-week sprints  
 **Team:** 1 Full-Stack Engineer, 1 QA Engineer  
-**Velocity Assumption:** ~25–30 story points per sprint (based on prior sprint throughput from [real-mvp.md](file:///home/zackchow/coding/rckg/docs/04-deepdive/real-mvp.md))
+**Velocity Assumption:** ~25–30 story points per sprint (based on prior sprint throughput from [real-mvp.md](docs/04-deepdive/real-mvp.md))
 
 ---
 
@@ -59,7 +59,7 @@
 > As a **developer**, I want all Python modules to use consistent `app.` import paths, so that the application starts reliably regardless of the launch method (`uvicorn app.main:app` or `python -m backend.app.main`).
 
 #### Context and Background
-The codebase currently mixes two import styles: `from backend.app.services.X import Y` and `from app.services.X import Y`. This causes `ModuleNotFoundError` at runtime depending on how the server is started. [cold_start_pipeline.py](file:///home/zackchow/coding/rckg/backend/app/services/cold_start_pipeline.py#L12-L16) uses `backend.app.` while [extract.py](file:///home/zackchow/coding/rckg/backend/app/api/extract.py#L104) uses `app.`. The `main.py` adds both `APP_DIR` and `BACKEND_DIR` to `sys.path` as a workaround, which masks the inconsistency but doesn't fix it. Assessment Finding #26.
+The codebase currently mixes two import styles: `from backend.app.services.X import Y` and `from app.services.X import Y`. This causes `ModuleNotFoundError` at runtime depending on how the server is started. [cold_start_pipeline.py](backend/app/services/cold_start_pipeline.py#L12-L16) uses `backend.app.` while [extract.py](backend/app/api/extract.py#L104) uses `app.`. The `main.py` adds both `APP_DIR` and `BACKEND_DIR` to `sys.path` as a workaround, which masks the inconsistency but doesn't fix it. Assessment Finding #26.
 
 #### Acceptance Criteria
 
@@ -79,8 +79,8 @@ The codebase currently mixes two import styles: `from backend.app.services.X imp
 
 | File | Purpose of Change |
 |------|-------------------|
-| [cold_start_pipeline.py](file:///home/zackchow/coding/rckg/backend/app/services/cold_start_pipeline.py) | Change 5 imports from `backend.app.services.X` to `app.services.X` |
-| [main.py](file:///home/zackchow/coding/rckg/backend/app/main.py) | Change `from backend.app.api import ...` to `from app.api import ...` |
+| [cold_start_pipeline.py](backend/app/services/cold_start_pipeline.py) | Change 5 imports from `backend.app.services.X` to `app.services.X` |
+| [main.py](backend/app/main.py) | Change `from backend.app.api import ...` to `from app.api import ...` |
 | Any other file found by `grep -r "from backend\.app\." backend/app/` | Same normalization |
 
 ##### Relevant Code Blocks
@@ -160,7 +160,7 @@ from app.api import (
 > As an **auditor**, I want the `POST /api/v1/extract/graph/revert` endpoint to actually execute the revert against Memgraph and PostgreSQL, so that reverted edges are genuinely marked as `REVERTED` in the graph database and the relational vault.
 
 #### Context and Background
-The `GraphRevertService` already has working code to execute Cypher against Memgraph and update PostgreSQL ORM records (added in FIX-303). However, the API endpoint at [extract.py L440](file:///home/zackchow/coding/rckg/backend/app/api/extract.py#L440) creates `GraphRevertService()` **without** passing `db_session` or `memgraph_connection`. Both constructor parameters default to `None`, so the `if self.conn` and `if self.db` branches are never entered. The endpoint returns a `RevertResult` with `status="REVERTED"` without touching any database. This is a facade. Assessment Finding #8.
+The `GraphRevertService` already has working code to execute Cypher against Memgraph and update PostgreSQL ORM records (added in FIX-303). However, the API endpoint at [extract.py L440](backend/app/api/extract.py#L440) creates `GraphRevertService()` **without** passing `db_session` or `memgraph_connection`. Both constructor parameters default to `None`, so the `if self.conn` and `if self.db` branches are never entered. The endpoint returns a `RevertResult` with `status="REVERTED"` without touching any database. This is a facade. Assessment Finding #8.
 
 #### Acceptance Criteria
 
@@ -170,7 +170,7 @@ The `GraphRevertService` already has working code to execute Cypher against Memg
 4. Given Memgraph is unreachable, when the endpoint is called, then a `503 Service Unavailable` response is returned with a JSON body `{"detail": "Memgraph connection unavailable"}`. The endpoint must NOT silently return `status="REVERTED"` when it didn't actually revert anything.
 
 #### Technical Notes
-- Use FastAPI's `Depends(get_db)` for the DB session — this is already defined in [database.py L79](file:///home/zackchow/coding/rckg/backend/app/core/database.py#L79).
+- Use FastAPI's `Depends(get_db)` for the DB session — this is already defined in [database.py L79](backend/app/core/database.py#L79).
 - Create a `get_memgraph_driver()` dependency function (or module-level factory) that returns a `neo4j.GraphDatabase.driver()` instance. The connection URI should be read from `os.getenv("MEMGRAPH_URI", "bolt://localhost:7687")`.
 - The `GraphRevertService` currently uses `self.conn.cursor()` (GQLAlchemy-style). The Memgraph neo4j driver uses `driver.session()` then `session.run()`. You must reconcile this interface — either update `GraphRevertService` to accept a neo4j driver and use `session.run()`, or provide a wrapper that exposes `.cursor()`.
 
@@ -180,10 +180,10 @@ The `GraphRevertService` already has working code to execute Cypher against Memg
 
 | File | Purpose of Change |
 |------|-------------------|
-| [extract.py](file:///home/zackchow/coding/rckg/backend/app/api/extract.py#L429-L446) | Add `db: Session = Depends(get_db)` and `memgraph_driver` to the `revert_graph_diff` endpoint |
-| [graph_revert_service.py](file:///home/zackchow/coding/rckg/backend/app/services/graph_revert_service.py#L39-L74) | Update `execute_revert` to use `neo4j.Driver` interface (`driver.session() → session.run()`) instead of `.cursor()` |
-| [core/memgraph.py](file:///home/zackchow/coding/rckg/backend/app/core/memgraph.py) | **[NEW]** Create Memgraph connection factory |
-| [tests/test_revert_api_integration.py](file:///home/zackchow/coding/rckg/backend/tests/test_revert_api_integration.py) | **[NEW]** Integration test for the full API → service → DB path |
+| [extract.py](backend/app/api/extract.py#L429-L446) | Add `db: Session = Depends(get_db)` and `memgraph_driver` to the `revert_graph_diff` endpoint |
+| [graph_revert_service.py](backend/app/services/graph_revert_service.py#L39-L74) | Update `execute_revert` to use `neo4j.Driver` interface (`driver.session() → session.run()`) instead of `.cursor()` |
+| [core/memgraph.py](backend/app/core/memgraph.py) | **[NEW]** Create Memgraph connection factory |
+| [tests/test_revert_api_integration.py](backend/tests/test_revert_api_integration.py) | **[NEW]** Integration test for the full API → service → DB path |
 
 ##### Relevant Code Blocks
 
@@ -334,7 +334,7 @@ def close_memgraph_driver():
 > As a **compliance analyst**, I want the `GET /api/v1/extract/graph/graphrag-export` endpoint to return real graph data from Memgraph, so that the GraphRAG Translation Layer produces accurate entity/relationship JSON for downstream Q&A systems.
 
 #### Context and Background
-The `GraphRAGTranslationService` has live Memgraph query code (added in FIX-304), but the API endpoint at [extract.py L456](file:///home/zackchow/coding/rckg/backend/app/api/extract.py#L456) creates `GraphRAGTranslationService()` without passing `memgraph_connection`. So `self.conn` is always `None`, the live query is never executed, and the endpoint always returns **two hardcoded fake nodes** (`REG-01: GDPR Article 32`, `POL-01: SecOps Data Protection Policy`). Assessment Finding #10.
+The `GraphRAGTranslationService` has live Memgraph query code (added in FIX-304), but the API endpoint at [extract.py L456](backend/app/api/extract.py#L456) creates `GraphRAGTranslationService()` without passing `memgraph_connection`. So `self.conn` is always `None`, the live query is never executed, and the endpoint always returns **two hardcoded fake nodes** (`REG-01: GDPR Article 32`, `POL-01: SecOps Data Protection Policy`). Assessment Finding #10.
 
 #### Acceptance Criteria
 
@@ -354,9 +354,9 @@ The `GraphRAGTranslationService` has live Memgraph query code (added in FIX-304)
 
 | File | Purpose of Change |
 |------|-------------------|
-| [extract.py](file:///home/zackchow/coding/rckg/backend/app/api/extract.py#L449-L458) | Add `memgraph_connection` to `GraphRAGTranslationService` constructor |
-| [graphrag_translator.py](file:///home/zackchow/coding/rckg/backend/app/services/graphrag_translator.py#L68-L76) | **Delete** hardcoded mock data fallback; raise error if `self.conn` is None and no explicit nodes/edges provided |
-| [tests/test_graphrag_api_integration.py](file:///home/zackchow/coding/rckg/backend/tests/test_graphrag_api_integration.py) | **[NEW]** Integration test |
+| [extract.py](backend/app/api/extract.py#L449-L458) | Add `memgraph_connection` to `GraphRAGTranslationService` constructor |
+| [graphrag_translator.py](backend/app/services/graphrag_translator.py#L68-L76) | **Delete** hardcoded mock data fallback; raise error if `self.conn` is None and no explicit nodes/edges provided |
+| [tests/test_graphrag_api_integration.py](backend/tests/test_graphrag_api_integration.py) | **[NEW]** Integration test |
 
 ##### Relevant Code Blocks
 
@@ -444,7 +444,7 @@ async def export_graphrag_subgraph(as_of_date: str = None):
 > As a **DevOps engineer**, I want all `unittest.mock` references removed from production code, so that runtime `NameError` exceptions are impossible when error handling paths are triggered in production.
 
 #### Context and Background
-[governance_engine.py L59](file:///home/zackchow/coding/rckg/backend/app/services/governance_engine.py#L59) calls `self.db.merge(MagicMock())` inside an exception handler. `MagicMock` is not imported in this module. If the primary ORM persist fails, the exception handler will raise `NameError: name 'MagicMock' is not defined`, which will crash the server. This is test-fixture code that leaked into production. Assessment Systemic Issue #4.
+[governance_engine.py L59](backend/app/services/governance_engine.py#L59) calls `self.db.merge(MagicMock())` inside an exception handler. `MagicMock` is not imported in this module. If the primary ORM persist fails, the exception handler will raise `NameError: name 'MagicMock' is not defined`, which will crash the server. This is test-fixture code that leaked into production. Assessment Systemic Issue #4.
 
 #### Acceptance Criteria
 
@@ -458,7 +458,7 @@ async def export_graphrag_subgraph(as_of_date: str = None):
 
 | File | Purpose of Change |
 |------|-------------------|
-| [governance_engine.py](file:///home/zackchow/coding/rckg/backend/app/services/governance_engine.py#L56-L62) | Replace MagicMock error handler with proper exception handling |
+| [governance_engine.py](backend/app/services/governance_engine.py#L56-L62) | Replace MagicMock error handler with proper exception handling |
 
 ##### Relevant Code Blocks
 
@@ -544,7 +544,7 @@ _Replace with:_
 > As a **compliance engineer**, I want the NLI engine to clearly indicate whether a classification was produced by the LLM or by the keyword fallback heuristic, so that I can distinguish machine-verified edges from heuristic guesses in the knowledge graph.
 
 #### Context and Background
-[nli_engine.py](file:///home/zackchow/coding/rckg/backend/app/services/nli_engine.py) currently has a `try` block that calls `_call_llm()`, followed by a bare `except Exception` that falls through to the original keyword if/elif/else chain. The fallback metadata claims `model: "DeBERTa-v3-CrossEncoder-Llama3.1-8B-Student"` even when keywords were used. Assessment Finding #5, Systemic Issue #1.
+[nli_engine.py](backend/app/services/nli_engine.py) currently has a `try` block that calls `_call_llm()`, followed by a bare `except Exception` that falls through to the original keyword if/elif/else chain. The fallback metadata claims `model: "DeBERTa-v3-CrossEncoder-Llama3.1-8B-Student"` even when keywords were used. Assessment Finding #5, Systemic Issue #1.
 
 **The production-grade requirement is:** The `NliResult` must contain a truthful `metadata.model` field and a `metadata.method` field indicating `"LLM_CLASSIFICATION"` or `"KEYWORD_HEURISTIC_FALLBACK"`. The caller must be able to make informed decisions based on this field. The keyword fallback should remain as a graceful degradation path, but it must be **honestly labeled**.
 
@@ -562,8 +562,8 @@ _Replace with:_
 
 | File | Purpose of Change |
 |------|-------------------|
-| [nli_engine.py](file:///home/zackchow/coding/rckg/backend/app/services/nli_engine.py#L57-L173) | Add `method` and truthful `model` to all return paths |
-| [tests/test_nli_degradation_signal.py](file:///home/zackchow/coding/rckg/backend/tests/test_nli_degradation_signal.py) | **[NEW]** Test that metadata correctly reflects LLM vs. fallback |
+| [nli_engine.py](backend/app/services/nli_engine.py#L57-L173) | Add `method` and truthful `model` to all return paths |
+| [tests/test_nli_degradation_signal.py](backend/tests/test_nli_degradation_signal.py) | **[NEW]** Test that metadata correctly reflects LLM vs. fallback |
 
 ##### Relevant Code Blocks
 
@@ -642,7 +642,7 @@ _Replace with:_
 > As an **auditor**, I want the Dual-Judge audit results to indicate whether the evaluation was performed by the LLM or by the arithmetic fallback, so that I know which audit verdicts are backed by genuine AI reasoning versus a simple `confidence * 1.02` scaling.
 
 #### Context and Background
-[dual_judge_async.py](file:///home/zackchow/coding/rckg/backend/app/services/dual_judge_async.py#L60-L75) first computes arithmetic scores (`conf * 1.02`, `conf * 0.98`), then attempts an LLM call, then overwrites the scores on success. On failure, the arithmetic scores are silently used. Assessment Finding #7, Systemic Issue #1.
+[dual_judge_async.py](backend/app/services/dual_judge_async.py#L60-L75) first computes arithmetic scores (`conf * 1.02`, `conf * 0.98`), then attempts an LLM call, then overwrites the scores on success. On failure, the arithmetic scores are silently used. Assessment Finding #7, Systemic Issue #1.
 
 **The production-grade requirement is:** The `DualJudgeAuditResult` must contain an `evaluation_method` field: `"LLM_70B_TEACHER"` or `"ARITHMETIC_FALLBACK"`. The arithmetic fallback is fundamentally broken logic (it auto-approves anything with `confidence >= 0.84`) and callers must know when it was used.
 
@@ -659,8 +659,8 @@ _Replace with:_
 
 | File | Purpose of Change |
 |------|-------------------|
-| [dual_judge_async.py](file:///home/zackchow/coding/rckg/backend/app/services/dual_judge_async.py#L49-L87) | Restructure to try LLM first; compute arithmetic only in fallback |
-| [tests/test_dual_judge_degradation.py](file:///home/zackchow/coding/rckg/backend/tests/test_dual_judge_degradation.py) | **[NEW]** Test both paths with metadata verification |
+| [dual_judge_async.py](backend/app/services/dual_judge_async.py#L49-L87) | Restructure to try LLM first; compute arithmetic only in fallback |
+| [tests/test_dual_judge_degradation.py](backend/tests/test_dual_judge_degradation.py) | **[NEW]** Test both paths with metadata verification |
 
 ##### Relevant Code Blocks
 
@@ -761,7 +761,7 @@ _Replace with:_
 > As a **compliance analyst**, I want the `process-pdf` endpoint to clearly indicate in its response and in the graph node metadata whether each extracted obligation/objective/activity came from the LLM or from the regex fallback, so that I can trust the provenance of compliance data in the knowledge graph.
 
 #### Context and Background
-[extract.py L206-L223](file:///home/zackchow/coding/rckg/backend/app/api/extract.py#L206-L223) calls `_call_llm()` for each chunk, but falls back to `facet_extractor.extract_facets()` if the LLM fails. Nodes extracted via the fallback have fabricated prose (string interpolation) but no metadata distinguishing them from LLM-extracted nodes. Assessment Finding #2, Systemic Issue #1.
+[extract.py L206-L223](backend/app/api/extract.py#L206-L223) calls `_call_llm()` for each chunk, but falls back to `facet_extractor.extract_facets()` if the LLM fails. Nodes extracted via the fallback have fabricated prose (string interpolation) but no metadata distinguishing them from LLM-extracted nodes. Assessment Finding #2, Systemic Issue #1.
 
 **The production-grade requirement is:** Every node injected into Memgraph must have an `extraction_method` property: `"LLM"` or `"REGEX_FALLBACK"`. The API response must include a `degraded_chunks` count showing how many chunks fell back to regex. If ALL chunks degraded, the response `status` should be `"DEGRADED"` not `"SUCCESS"`.
 
@@ -780,8 +780,8 @@ _Replace with:_
 
 | File | Purpose of Change |
 |------|-------------------|
-| [extract.py](file:///home/zackchow/coding/rckg/backend/app/api/extract.py#L170-L423) | Add `extraction_method` property to every Memgraph MERGE; track `degraded_chunks`; update response status |
-| [tests/test_process_pdf_degradation.py](file:///home/zackchow/coding/rckg/backend/tests/test_process_pdf_degradation.py) | **[NEW]** Test degradation signaling |
+| [extract.py](backend/app/api/extract.py#L170-L423) | Add `extraction_method` property to every Memgraph MERGE; track `degraded_chunks`; update response status |
+| [tests/test_process_pdf_degradation.py](backend/tests/test_process_pdf_degradation.py) | **[NEW]** Test degradation signaling |
 
 ##### Relevant Code Blocks
 
@@ -864,7 +864,7 @@ _In the response (line 416-424), update:_
 > As a **compliance analyst**, I want the 6-facet extractor to use LLM-powered analysis instead of 10 hardcoded regex verbs, so that documents covering risk assessment, incident reporting, business continuity, vendor management, and other GRC domains produce meaningful facets instead of defaulting to `action_verb="manage"`, `subject_noun="system access"`, `control_nature="PREVENTATIVE"`.
 
 #### Context and Background
-[facet_extractor.py](file:///home/zackchow/coding/rckg/backend/app/services/facet_extractor.py) is **completely unchanged** from the original code review. It matches 10 verbs, 10 nouns, 3 domain facets, and hardcodes `control_nature` to `"PREVENTATIVE"`. Assessment Finding #3, which was rated 🔴 CRITICAL but had **no remediation ticket** in the prior sprint plan.
+[facet_extractor.py](backend/app/services/facet_extractor.py) is **completely unchanged** from the original code review. It matches 10 verbs, 10 nouns, 3 domain facets, and hardcodes `control_nature` to `"PREVENTATIVE"`. Assessment Finding #3, which was rated 🔴 CRITICAL but had **no remediation ticket** in the prior sprint plan.
 
 This is the **foundation** of the Graph Compiler's matching logic. Every facet that defaults to `"manage"` or `"system access"` produces meaningless compiler output.
 
@@ -885,9 +885,9 @@ This is the **foundation** of the Graph Compiler's matching logic. Every facet t
 
 | File | Purpose of Change |
 |------|-------------------|
-| [facet_extractor.py](file:///home/zackchow/coding/rckg/backend/app/services/facet_extractor.py) | Add LLM-based facet extraction with regex fallback |
-| [prompts/facet_extraction.md](file:///home/zackchow/coding/rckg/backend/app/prompts/facet_extraction.md) | **[NEW]** Prompt template for 6-facet extraction |
-| [tests/test_facet_extractor_llm.py](file:///home/zackchow/coding/rckg/backend/tests/test_facet_extractor_llm.py) | **[NEW]** Test LLM path and regex fallback |
+| [facet_extractor.py](backend/app/services/facet_extractor.py) | Add LLM-based facet extraction with regex fallback |
+| [prompts/facet_extraction.md](backend/app/prompts/facet_extraction.md) | **[NEW]** Prompt template for 6-facet extraction |
+| [tests/test_facet_extractor_llm.py](backend/tests/test_facet_extractor_llm.py) | **[NEW]** Test LLM path and regex fallback |
 
 ##### New Files to Create
 
@@ -965,9 +965,9 @@ Currently, `process-pdf` calls `session.run()` directly with inline Cypher strin
 
 | File | Purpose of Change |
 |------|-------------------|
-| [extract.py](file:///home/zackchow/coding/rckg/backend/app/api/extract.py#L170-L412) | Replace all `session.run()` calls with `memgraph_service.enqueue_and_execute()` |
-| [memgraph_service.py](file:///home/zackchow/coding/rckg/backend/app/services/memgraph_service.py) | Ensure `render_cypher_and_params()` handles `ADD_EDGE` with `DEFINES`, `SATISFIES`, `OPERATIONALIZED_BY` relationship types |
-| [tests/test_process_pdf_outbox.py](file:///home/zackchow/coding/rckg/backend/tests/test_process_pdf_outbox.py) | **[NEW]** Verify all mutations flow through outbox |
+| [extract.py](backend/app/api/extract.py#L170-L412) | Replace all `session.run()` calls with `memgraph_service.enqueue_and_execute()` |
+| [memgraph_service.py](backend/app/services/memgraph_service.py) | Ensure `render_cypher_and_params()` handles `ADD_EDGE` with `DEFINES`, `SATISFIES`, `OPERATIONALIZED_BY` relationship types |
+| [tests/test_process_pdf_outbox.py](backend/tests/test_process_pdf_outbox.py) | **[NEW]** Verify all mutations flow through outbox |
 
 ##### Where NOT to Touch
 - Do NOT modify the LLM extraction logic or facet extraction — those are scoped to CFIX-200 and CFIX-106.
@@ -998,7 +998,7 @@ Currently, `process-pdf` calls `session.run()` directly with inline Cypher strin
 > As a **data engineer**, I want the Cold-Start Pipeline to construct candidate metadata from actual database fields instead of hardcoding `modality_facet`, `target_role_facet`, and `control_nature`, so that the Graph Compiler produces meaningful set-theory classifications.
 
 #### Context and Background
-[cold_start_pipeline.py L82-L89](file:///home/zackchow/coding/rckg/backend/app/services/cold_start_pipeline.py#L82-L89) constructs candidate dictionaries with `modality_facet="MANDATORY"`, `target_role_facet="SYSTEM_ADMINISTRATOR"`, `control_nature="PREVENTATIVE"` hardcoded for every candidate. The `action_verb` is set via crude keyword match (`"limit" if "limit" in text else facets["action_verb"]`). Assessment Finding #4.
+[cold_start_pipeline.py L82-L89](backend/app/services/cold_start_pipeline.py#L82-L89) constructs candidate dictionaries with `modality_facet="MANDATORY"`, `target_role_facet="SYSTEM_ADMINISTRATOR"`, `control_nature="PREVENTATIVE"` hardcoded for every candidate. The `action_verb` is set via crude keyword match (`"limit" if "limit" in text else facets["action_verb"]`). Assessment Finding #4.
 
 **The production-grade requirement is:** Candidate metadata must be derived from the `FrameworkControlObjectiveNode` database fields. If the ORM model doesn't have these facet columns yet, add them to the model and populate them during seed ingestion. At minimum, the `action_verb` and `subject_noun` should be extracted from the `objective_text` field using the LLM-powered facet extractor (CFIX-200).
 
@@ -1014,8 +1014,8 @@ Currently, `process-pdf` calls `session.run()` directly with inline Cypher strin
 
 | File | Purpose of Change |
 |------|-------------------|
-| [cold_start_pipeline.py](file:///home/zackchow/coding/rckg/backend/app/services/cold_start_pipeline.py#L72-L105) | Use `DeJureFacetExtractor.extract_facets()` on candidate `objective_text` |
-| [tests/test_cold_start_dynamic_facets.py](file:///home/zackchow/coding/rckg/backend/tests/test_cold_start_dynamic_facets.py) | **[NEW]** Verify candidates have text-derived facets |
+| [cold_start_pipeline.py](backend/app/services/cold_start_pipeline.py#L72-L105) | Use `DeJureFacetExtractor.extract_facets()` on candidate `objective_text` |
+| [tests/test_cold_start_dynamic_facets.py](backend/tests/test_cold_start_dynamic_facets.py) | **[NEW]** Verify candidates have text-derived facets |
 
 ##### Relevant Code Blocks
 
@@ -1084,7 +1084,7 @@ _Replace with:_
 > As a **data architect**, I want seed ingestion to write NIST SP 800-53 control enhancements as `FrameworkControlActivityNode` (not `FrameworkControlObjectiveNode`), so that the graph correctly distinguishes high-level objectives from implementation-level activities per the Delta §5.4 specification.
 
 #### Context and Background
-[seed_ingestion.py L152-L159](file:///home/zackchow/coding/rckg/backend/app/services/seed_ingestion.py#L152-L159) writes ALL seed nodes as `FrameworkControlObjectiveNode`. The Delta specifies that control enhancements (e.g., AC-2(1), AC-2(2)) should be `FrameworkControlActivityNode`. Assessment Finding #24.
+[seed_ingestion.py L152-L159](backend/app/services/seed_ingestion.py#L152-L159) writes ALL seed nodes as `FrameworkControlObjectiveNode`. The Delta specifies that control enhancements (e.g., AC-2(1), AC-2(2)) should be `FrameworkControlActivityNode`. Assessment Finding #24.
 
 #### Acceptance Criteria
 
@@ -1098,9 +1098,9 @@ _Replace with:_
 
 | File | Purpose of Change |
 |------|-------------------|
-| [seed_ingestion.py](file:///home/zackchow/coding/rckg/backend/app/services/seed_ingestion.py#L148-L160) | Add logic to distinguish objectives from activities |
-| [models/__init__.py](file:///home/zackchow/coding/rckg/backend/app/models/__init__.py) | Add `FrameworkControlActivityNode` ORM model |
-| [tests/test_seed_node_types.py](file:///home/zackchow/coding/rckg/backend/tests/test_seed_node_types.py) | **[NEW]** Verify node type distinction |
+| [seed_ingestion.py](backend/app/services/seed_ingestion.py#L148-L160) | Add logic to distinguish objectives from activities |
+| [models/__init__.py](backend/app/models/__init__.py) | Add `FrameworkControlActivityNode` ORM model |
+| [tests/test_seed_node_types.py](backend/tests/test_seed_node_types.py) | **[NEW]** Verify node type distinction |
 
 #### Definition of Done
 - [ ] Enhancements (IDs containing parentheses) stored as `FrameworkControlActivityNode`
@@ -1141,8 +1141,8 @@ The `GraphRAGTranslationService` uses `self.conn.cursor()` / `cursor.execute()` 
 
 | File | Purpose of Change |
 |------|-------------------|
-| [graphrag_translator.py](file:///home/zackchow/coding/rckg/backend/app/services/graphrag_translator.py#L40-L66) | Replace `cursor()`/`fetchall()` with `driver.session()`/`session.run()` |
-| [graph_revert_service.py](file:///home/zackchow/coding/rckg/backend/app/services/graph_revert_service.py#L50-L74) | Same update — replace `cursor()` with `session.run()` |
+| [graphrag_translator.py](backend/app/services/graphrag_translator.py#L40-L66) | Replace `cursor()`/`fetchall()` with `driver.session()`/`session.run()` |
+| [graph_revert_service.py](backend/app/services/graph_revert_service.py#L50-L74) | Same update — replace `cursor()` with `session.run()` |
 
 #### Definition of Done
 - [ ] No `cursor()` or `fetchall()` calls in graphrag_translator.py or graph_revert_service.py
@@ -1224,9 +1224,9 @@ The `DualTierGovernanceEngine` exists and has logic for ontology mutation blocki
 
 | File | Purpose of Change |
 |------|-------------------|
-| [memgraph_service.py](file:///home/zackchow/coding/rckg/backend/app/services/memgraph_service.py#L90-L125) | Add governance validation before Cypher execution |
-| [extract.py](file:///home/zackchow/coding/rckg/backend/app/api/extract.py#L175-L190) | Pass `db_session` to `MemgraphService` constructor and initialize GovernanceEngine |
-| [tests/test_governance_integration.py](file:///home/zackchow/coding/rckg/backend/tests/test_governance_integration.py) | **[NEW]** Test governance gate blocks Golden Assertion violations |
+| [memgraph_service.py](backend/app/services/memgraph_service.py#L90-L125) | Add governance validation before Cypher execution |
+| [extract.py](backend/app/api/extract.py#L175-L190) | Pass `db_session` to `MemgraphService` constructor and initialize GovernanceEngine |
+| [tests/test_governance_integration.py](backend/tests/test_governance_integration.py) | **[NEW]** Test governance gate blocks Golden Assertion violations |
 
 #### Definition of Done
 - [ ] GovernanceEngine validates every mutation before Memgraph execution
@@ -1268,10 +1268,10 @@ After CFIX-104, CFIX-105, and CFIX-106, each service has its own `logger.warning
 
 | File | Purpose of Change |
 |------|-------------------|
-| [core/observability.py](file:///home/zackchow/coding/rckg/backend/app/core/observability.py) | **[NEW]** `log_degradation_event()` utility function |
-| [nli_engine.py](file:///home/zackchow/coding/rckg/backend/app/services/nli_engine.py) | Use `log_degradation_event()` |
-| [dual_judge_async.py](file:///home/zackchow/coding/rckg/backend/app/services/dual_judge_async.py) | Use `log_degradation_event()` |
-| [facet_extractor.py](file:///home/zackchow/coding/rckg/backend/app/services/facet_extractor.py) | Use `log_degradation_event()` |
+| [core/observability.py](backend/app/core/observability.py) | **[NEW]** `log_degradation_event()` utility function |
+| [nli_engine.py](backend/app/services/nli_engine.py) | Use `log_degradation_event()` |
+| [dual_judge_async.py](backend/app/services/dual_judge_async.py) | Use `log_degradation_event()` |
+| [facet_extractor.py](backend/app/services/facet_extractor.py) | Use `log_degradation_event()` |
 
 #### Definition of Done
 - [ ] All degradation events use shared `log_degradation_event()` function
@@ -1322,8 +1322,8 @@ The current test suite (88 tests) uses heavy mocking that tests individual servi
 
 | File | Purpose |
 |------|---------|
-| [tests/fixtures/sample_regulation.pdf](file:///home/zackchow/coding/rckg/backend/tests/fixtures/sample_regulation.pdf) | **[NEW]** Minimal 1-page PDF fixture |
-| [tests/test_e2e_process_pdf.py](file:///home/zackchow/coding/rckg/backend/tests/test_e2e_process_pdf.py) | **[NEW]** End-to-end integration test |
+| [tests/fixtures/sample_regulation.pdf](backend/tests/fixtures/sample_regulation.pdf) | **[NEW]** Minimal 1-page PDF fixture |
+| [tests/test_e2e_process_pdf.py](backend/tests/test_e2e_process_pdf.py) | **[NEW]** End-to-end integration test |
 
 #### Definition of Done
 - [ ] E2E test covers full PDF → graph pipeline
@@ -1350,7 +1350,7 @@ The current test suite (88 tests) uses heavy mocking that tests individual servi
 > As a **DevOps engineer**, I want all Memgraph connection URIs to come from `MEMGRAPH_URI` environment variable via the centralized `get_memgraph_driver()` factory, so that the system works in containerized deployments where Memgraph is not on localhost.
 
 #### Context and Background
-[extract.py L180](file:///home/zackchow/coding/rckg/backend/app/api/extract.py#L180) hardcodes `GraphDatabase.driver("bolt://localhost:7687")`. CFIX-101 creates `get_memgraph_driver()` that reads `MEMGRAPH_URI` from env. The `process-pdf` endpoint should use this factory instead of creating its own driver.
+[extract.py L180](backend/app/api/extract.py#L180) hardcodes `GraphDatabase.driver("bolt://localhost:7687")`. CFIX-101 creates `get_memgraph_driver()` that reads `MEMGRAPH_URI` from env. The `process-pdf` endpoint should use this factory instead of creating its own driver.
 
 #### Acceptance Criteria
 
@@ -1364,7 +1364,7 @@ The current test suite (88 tests) uses heavy mocking that tests individual servi
 
 | File | Purpose of Change |
 |------|-------------------|
-| [extract.py](file:///home/zackchow/coding/rckg/backend/app/api/extract.py#L180) | Replace `GraphDatabase.driver("bolt://localhost:7687")` with `get_memgraph_driver()` |
+| [extract.py](backend/app/api/extract.py#L180) | Replace `GraphDatabase.driver("bolt://localhost:7687")` with `get_memgraph_driver()` |
 
 #### Definition of Done
 - [ ] No hardcoded `bolt://localhost` in production code
@@ -1406,8 +1406,8 @@ Currently the root endpoint `/` always returns `"status": "HEALTHY"` regardless 
 
 | File | Purpose of Change |
 |------|-------------------|
-| [main.py](file:///home/zackchow/coding/rckg/backend/app/main.py) | Add `/api/v1/health` endpoint or create a dedicated health router |
-| [core/health.py](file:///home/zackchow/coding/rckg/backend/app/core/health.py) | **[NEW]** Health check functions for each dependency |
+| [main.py](backend/app/main.py) | Add `/api/v1/health` endpoint or create a dedicated health router |
+| [core/health.py](backend/app/core/health.py) | **[NEW]** Health check functions for each dependency |
 
 #### Definition of Done
 - [ ] `GET /api/v1/health` returns accurate connectivity status for all 3 dependencies

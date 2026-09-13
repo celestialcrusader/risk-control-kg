@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-02  
-**Story Ticket:** [CFIX-203](file:///home/zackchow/coding/rckg/docs/04-deepdive/claude-remediation-sprint.md#cfix-203-fix-seed-ingestion-to-distinguish-controlobjective-vs-controlactivity-nodes)  
-**Work Log Reference:** [work-log-CFIX-203.md](file:///home/zackchow/coding/rckg/docs/04-deepdive/swe-worklog/work-log-CFIX-203.md)  
+**Story Ticket:** [CFIX-203](docs/04-deepdive/claude-remediation-sprint.md#cfix-203-fix-seed-ingestion-to-distinguish-controlobjective-vs-controlactivity-nodes)  
+**Work Log Reference:** [work-log-CFIX-203.md](docs/04-deepdive/swe-worklog/work-log-CFIX-203.md)  
 **Final Status:** **APPROVED**  
 
 ---

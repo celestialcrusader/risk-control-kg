@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-02  
 **Status:** READY_FOR_QA  
-**Target Story:** [CFIX-101](file:///home/zackchow/coding/rckg/docs/04-deepdive/claude-remediation-sprint.md#cfix-101-wire-memgraph-connection-into-graphrevert-api-endpoint)  
+**Target Story:** [CFIX-101](docs/04-deepdive/claude-remediation-sprint.md#cfix-101-wire-memgraph-connection-into-graphrevert-api-endpoint)  
 
 ---
 

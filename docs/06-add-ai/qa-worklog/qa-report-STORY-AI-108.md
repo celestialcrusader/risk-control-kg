@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-11  
-**Story Ticket:** [STORY-AI-108](file:///home/zackchow/coding/rckg/docs/06-add-ai/sprints.md#story-ai-108-real-un-stubbed-end-to-end-ai-model-matrix-integration-test)  
-**Work Log Reference:** [work-log-STORY-AI-108.md](file:///home/zackchow/coding/rckg/docs/06-add-ai/swe-worklog/work-log-STORY-AI-108.md)  
+**Story Ticket:** [STORY-AI-108](docs/06-add-ai/sprints.md#story-ai-108-real-un-stubbed-end-to-end-ai-model-matrix-integration-test)  
+**Work Log Reference:** [work-log-STORY-AI-108.md](docs/06-add-ai/swe-worklog/work-log-STORY-AI-108.md)  
 **Final Status:** **APPROVED**  
 
 ---

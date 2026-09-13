@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-07-31  
-**Story Ticket:** [FIX-304](file:///home/zackchow/coding/rckg/docs/04-deepdive/real-mvp.md#fix-304-connect-graphrag-export-to-live-memgraph-query)  
-**Work Log Reference:** [work-log-FIX-304.md](file:///home/zackchow/coding/rckg/docs/04-deepdive/swe-worklog/work-log-FIX-304.md)  
+**Story Ticket:** [FIX-304](docs/04-deepdive/real-mvp.md#fix-304-connect-graphrag-export-to-live-memgraph-query)  
+**Work Log Reference:** [work-log-FIX-304.md](docs/04-deepdive/swe-worklog/work-log-FIX-304.md)  
 **Final Status:** **APPROVED**  
 
 ---

@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-11  
 **Status:** READY_FOR_QA  
-**Target Story:** [STORY-AI-108](file:///home/zackchow/coding/rckg/docs/06-add-ai/sprints.md#story-ai-108-real-un-stubbed-end-to-end-ai-model-matrix-integration-test)  
+**Target Story:** [STORY-AI-108](docs/06-add-ai/sprints.md#story-ai-108-real-un-stubbed-end-to-end-ai-model-matrix-integration-test)  
 
 ---
 

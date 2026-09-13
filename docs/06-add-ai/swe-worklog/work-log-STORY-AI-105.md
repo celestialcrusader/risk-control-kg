@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-11  
 **Status:** READY_FOR_QA  
-**Target Story:** [STORY-AI-105](file:///home/zackchow/coding/rckg/docs/06-add-ai/sprints.md#story-ai-105-qwen3-next-80b-a3b-ambiguous-graph-adjudication)  
+**Target Story:** [STORY-AI-105](docs/06-add-ai/sprints.md#story-ai-105-qwen3-next-80b-a3b-ambiguous-graph-adjudication)  
 
 ---
 

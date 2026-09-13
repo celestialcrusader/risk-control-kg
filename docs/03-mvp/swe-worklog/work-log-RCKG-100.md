@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-07-29  
 **Status:** READY_FOR_QA  
-**Target Story:** [RCKG-100](file:///home/zackchow/coding/rckg/docs/03-mvp/mvp-sprint.md#rckg-100-rckg-test-infrastructure-cicd-pipeline--test-fixture-factories)  
+**Target Story:** [RCKG-100](docs/03-mvp/mvp-sprint.md#rckg-100-rckg-test-infrastructure-cicd-pipeline--test-fixture-factories)  
 
 ---
 

@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-02  
 **Status:** READY_FOR_QA  
-**Target Story:** [CFIX-203](file:///home/zackchow/coding/rckg/docs/04-deepdive/claude-remediation-sprint.md#cfix-203-fix-seed-ingestion-to-distinguish-controlobjective-vs-controlactivity-nodes)  
+**Target Story:** [CFIX-203](docs/04-deepdive/claude-remediation-sprint.md#cfix-203-fix-seed-ingestion-to-distinguish-controlobjective-vs-controlactivity-nodes)  
 
 ---
 

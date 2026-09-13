@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-15  
 **Status:** READY_FOR_QA  
-**Target Story:** [STORY-FOUNDATION-105](file:///home/zackchow/coding/rckg/docs/07-update-parse/sprint-plan-foundation-setup.md#story-foundation-105-3-tier-multi-framework-hierarchy-classifier)  
+**Target Story:** [STORY-FOUNDATION-105](docs/07-update-parse/sprint-plan-foundation-setup.md#story-foundation-105-3-tier-multi-framework-hierarchy-classifier)  
 
 ---
 

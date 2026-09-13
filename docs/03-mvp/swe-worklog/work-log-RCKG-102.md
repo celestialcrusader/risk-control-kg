@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-07-29  
 **Status:** READY_FOR_QA  
-**Target Story:** [RCKG-102](file:///home/zackchow/coding/rckg/docs/03-mvp/mvp-sprint.md#rckg-102-gold-crosswalk-evaluation-benchmark-harness-assembly--embedding-selection)  
+**Target Story:** [RCKG-102](docs/03-mvp/mvp-sprint.md#rckg-102-gold-crosswalk-evaluation-benchmark-harness-assembly--embedding-selection)  
 
 ---
 

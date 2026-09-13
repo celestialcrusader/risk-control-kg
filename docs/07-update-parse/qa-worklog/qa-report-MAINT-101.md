@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-15  
-**Story Ticket:** [STORY-MAINT-101](file:///home/zackchow/coding/rckg/docs/07-update-parse/graph-maintenance.md#story-maint-101-graph-wavefront-spreading-activation-engine-zombie-infection)  
-**Work Log Reference:** [work-log-MAINT-101.md](file:///home/zackchow/coding/rckg/docs/07-update-parse/swe-worklog/work-log-MAINT-101.md)  
+**Story Ticket:** [STORY-MAINT-101](docs/07-update-parse/graph-maintenance.md#story-maint-101-graph-wavefront-spreading-activation-engine-zombie-infection)  
+**Work Log Reference:** [work-log-MAINT-101.md](docs/07-update-parse/swe-worklog/work-log-MAINT-101.md)  
 **Final Status:** **APPROVED** ✅  
 
 ---

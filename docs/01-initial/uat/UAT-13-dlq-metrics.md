@@ -20,16 +20,16 @@ Verify that DLQ metrics SQL queries and the Python CLI runner produce accurate a
 
 ```bash
 echo "=== DLQ Metrics SQL File ==="
-ls -la /home/zackchow/coding/rckg/backend/scripts/dlq_metrics.sql
+ls -la ./backend/scripts/dlq_metrics.sql
 
 echo ""
 echo "=== Query sections ==="
-grep "^--" /home/zackchow/coding/rckg/backend/scripts/dlq_metrics.sql
+grep "^--" ./backend/scripts/dlq_metrics.sql
 
 echo ""
 echo "=== Query names ==="
-grep "^-- name:" /home/zackchow/coding/rckg/backend/scripts/dlq_metrics.sql || \
-  grep "SELECT" /home/zackchow/coding/rckg/backend/scripts/dlq_metrics.sql
+grep "^-- name:" ./backend/scripts/dlq_metrics.sql || \
+  grep "SELECT" ./backend/scripts/dlq_metrics.sql
 ```
 
 **Expected**: File exists with 3 queries: gold_dlq_ratio, framework_failures, failure_reasons.
@@ -37,7 +37,7 @@ grep "^-- name:" /home/zackchow/coding/rckg/backend/scripts/dlq_metrics.sql || \
 ### Step 2: Verify Python Module Structure
 
 ```bash
-cd /home/zackchow/coding/rckg/backend
+cd ./backend
 python3 << 'PYEOF'
 from scripts import dlq_metrics
 
@@ -72,7 +72,7 @@ PYEOF
 ### Step 3: Run DLQ Metrics CLI
 
 ```bash
-cd /home/zackchow/coding/rckg/backend
+cd ./backend
 python3 -m scripts.run_dlq_metrics --verbose
 
 echo ""
@@ -91,7 +91,7 @@ echo "Exit code: $?"
 ### Step 4: Verify Alert Threshold with Custom Threshold
 
 ```bash
-cd /home/zackchow/coding/rckg/backend
+cd ./backend
 python3 << 'PYEOF'
 from scripts.run_dlq_metrics import run_metrics
 import logging
@@ -113,14 +113,14 @@ PYEOF
 
 ```bash
 echo "=== DLQ Metrics Documentation ==="
-head -30 /home/zackchow/coding/rckg/docs/01-initial/dlq-metrics.md
+head -30 ./docs/01-initial/dlq-metrics.md
 
 echo ""
 echo "=== File locations ==="
-ls -la /home/zackchow/coding/rckg/backend/scripts/dlq_metrics.py
-ls -la /home/zackchow/coding/rckg/backend/scripts/dlq_metrics.sql
-ls -la /home/zackchow/coding/rckg/backend/scripts/run_dlq_metrics.py
-ls -la /home/zackchow/coding/rckg/docs/01-initial/dlq-metrics.md
+ls -la ./backend/scripts/dlq_metrics.py
+ls -la ./backend/scripts/dlq_metrics.sql
+ls -la ./backend/scripts/run_dlq_metrics.py
+ls -la ./docs/01-initial/dlq-metrics.md
 ```
 
 **Expected**: All files exist and documentation describes queries, usage, and alert thresholds.
@@ -128,7 +128,7 @@ ls -la /home/zackchow/coding/rckg/docs/01-initial/dlq-metrics.md
 ### Step 6: Run Unit Tests
 
 ```bash
-cd /home/zackchow/coding/rckg/backend
+cd ./backend
 python3 -m pytest tests/test_dlq_metrics.py -v
 ```
 

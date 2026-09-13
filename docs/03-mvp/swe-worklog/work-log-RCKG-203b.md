@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-07-29  
 **Status:** READY_FOR_QA  
-**Target Story:** [RCKG-203b](file:///home/zackchow/coding/rckg/docs/03-mvp/mvp-sprint.md#rckg-203b-de-jure-6-facet-extraction-service)  
+**Target Story:** [RCKG-203b](docs/03-mvp/mvp-sprint.md#rckg-203b-de-jure-6-facet-extraction-service)  
 
 ---
 

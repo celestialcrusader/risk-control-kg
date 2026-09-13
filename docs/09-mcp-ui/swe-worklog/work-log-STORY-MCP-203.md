@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-16  
 **Status:** READY_FOR_QA  
-**Target Story:** [STORY-MCP-203](file:///home/zackchow/coding/rckg/docs/09-mcp-ui/master-sprint-plan.md#story-mcp-203-mcp-resources-prompts--contextual-audit-templates)  
+**Target Story:** [STORY-MCP-203](docs/09-mcp-ui/master-sprint-plan.md#story-mcp-203-mcp-resources-prompts--contextual-audit-templates)  
 
 ---
 

@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-07-30  
 **Status:** READY_FOR_QA  
-**Target Story:** [RCKG-301](file:///home/zackchow/coding/rckg/docs/03-mvp/mvp-sprint.md#rckg-301-elasticsearch-bm25-sparse-search-service-with-network-hop-buffer)  
+**Target Story:** [RCKG-301](docs/03-mvp/mvp-sprint.md#rckg-301-elasticsearch-bm25-sparse-search-service-with-network-hop-buffer)  
 
 ---
 

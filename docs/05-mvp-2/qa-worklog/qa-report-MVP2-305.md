@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-09  
-**Story Ticket:** [MVP2-305](file:///home/zackchow/coding/rckg/docs/05-mvp-2/sprints.md#mvp2-305--bitemporal-columns-on-remaining-node-types)  
-**Work Log Reference:** [work-log-MVP2-305.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/swe-worklog/work-log-MVP2-305.md)  
+**Story Ticket:** [MVP2-305](docs/05-mvp-2/sprints.md#mvp2-305--bitemporal-columns-on-remaining-node-types)  
+**Work Log Reference:** [work-log-MVP2-305.md](docs/05-mvp-2/swe-worklog/work-log-MVP2-305.md)  
 **Final Status:** **APPROVED**  
 
 ---

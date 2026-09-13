@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-15  
-**Story Ticket:** [STORY-MAINT-102](file:///home/zackchow/coding/rckg/docs/07-update-parse/graph-maintenance.md#story-maint-102-transitive-reduction--graph-pruning-engine)  
-**Work Log Reference:** [work-log-MAINT-102.md](file:///home/zackchow/coding/rckg/docs/07-update-parse/swe-worklog/work-log-MAINT-102.md)  
+**Story Ticket:** [STORY-MAINT-102](docs/07-update-parse/graph-maintenance.md#story-maint-102-transitive-reduction--graph-pruning-engine)  
+**Work Log Reference:** [work-log-MAINT-102.md](docs/07-update-parse/swe-worklog/work-log-MAINT-102.md)  
 **Final Status:** **APPROVED** ✅  
 
 ---

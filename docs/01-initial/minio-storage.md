@@ -177,7 +177,7 @@ minio-init:
 
 ```bash
 # Navigate to infra directory
-cd /home/zackchow/coding/rckg/infra/minio
+cd ./infra/minio
 
 # Run initialization script
 ./init_buckets.sh
@@ -313,7 +313,7 @@ print(f"Available buckets: {buckets}")
 ### Run Integration Tests
 
 ```bash
-cd /home/zackchow/coding/rckg/backend
+cd ./backend
 pytest tests/test_infra_3_minio_storage.py -v
 ```
 

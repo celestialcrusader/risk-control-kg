@@ -7,8 +7,8 @@
 **Last Updated:** July 27, 2026  
 **Supersedes:** `docs/01-initial/business-requirement.md` v2.0  
 **Linked Requirements:**
-- PRD: [02-product-requirement-doc.md](file:///home/zackchow/coding/rckg/docs/02-pickup/02-product-requirement-doc.md) v3.0
-- TRD: [03-technical-requirement-doc.md](file:///home/zackchow/coding/rckg/docs/02-pickup/03-technical-requirement-doc.md) v7.0
+- PRD: [02-product-requirement-doc.md](docs/02-pickup/02-product-requirement-doc.md) v3.0
+- TRD: [03-technical-requirement-doc.md](docs/02-pickup/03-technical-requirement-doc.md) v7.0
 
 ---
 
@@ -75,7 +75,7 @@ Establish an interactive Executive Control Tower that translates complex GRC top
 ### BO-02 — Principles-to-Grounded-Testing Pipeline
 Connect organizational AI Principles (*Fairness, Privacy, Safety, Accountability, Transparency*) down to testable engineering metrics. If a High-Risk AI system claims compliance with *Fairness*, the system must automatically execute and verify underlying DeepEval technical metrics (e.g., Demographic Parity, Bias Score < 0.05) and surface human process evidence.
 
-### BO-03 — Zack/Wukongtai Minimum Viable Risk Tiering
+### BO-03 — RCKG-Tiering Minimum Viable Risk Tiering
 Implement a standardized 5-dimension risk profiling engine (Facing, Jurisdiction, Agency, Business Impact, Data Sensitivity) coupled with a Black-Box Complexity Toggle. The engine must classify AI solutions into Tier 1 (Critical), Tier 2 (High), or Tier 3 (Standard), automatically triggering mandatory control sets without imposing unnecessary bureaucratic overhead on low-risk internal tools.
 
 ### BO-04 — High-Throughput DGX Spark Bare-Metal Infrastructure

@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-02  
-**Story Ticket:** [CFIX-201](file:///home/zackchow/coding/rckg/docs/04-deepdive/claude-remediation-sprint.md#cfix-201-route-all-process-pdf-cypher-through-service-layer-and-outbox)  
-**Work Log Reference:** [work-log-CFIX-201.md](file:///home/zackchow/coding/rckg/docs/04-deepdive/swe-worklog/work-log-CFIX-201.md)  
+**Story Ticket:** [CFIX-201](docs/04-deepdive/claude-remediation-sprint.md#cfix-201-route-all-process-pdf-cypher-through-service-layer-and-outbox)  
+**Work Log Reference:** [work-log-CFIX-201.md](docs/04-deepdive/swe-worklog/work-log-CFIX-201.md)  
 **Final Status:** **APPROVED**  
 
 ---

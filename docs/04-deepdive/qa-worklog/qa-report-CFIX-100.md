@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-02  
-**Story Ticket:** [CFIX-100](file:///home/zackchow/coding/rckg/docs/04-deepdive/claude-remediation-sprint.md#cfix-100-normalize-all-import-paths-to-app-prefix)  
-**Work Log Reference:** [work-log-CFIX-100.md](file:///home/zackchow/coding/rckg/docs/04-deepdive/swe-worklog/work-log-CFIX-100.md)  
+**Story Ticket:** [CFIX-100](docs/04-deepdive/claude-remediation-sprint.md#cfix-100-normalize-all-import-paths-to-app-prefix)  
+**Work Log Reference:** [work-log-CFIX-100.md](docs/04-deepdive/swe-worklog/work-log-CFIX-100.md)  
 **Final Status:** **APPROVED**  
 
 ---

@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-16  
 **Status:** READY_FOR_QA  
-**Target Story:** [STORY-COMP-201](file:///home/zackchow/coding/rckg/docs/08-compare-upgrade/sprint-plan-compiler-upgrade.md#story-comp-201-two-dimensional-ontology--directional-schema-migration)  
+**Target Story:** [STORY-COMP-201](docs/08-compare-upgrade/sprint-plan-compiler-upgrade.md#story-comp-201-two-dimensional-ontology--directional-schema-migration)  
 
 ---
 

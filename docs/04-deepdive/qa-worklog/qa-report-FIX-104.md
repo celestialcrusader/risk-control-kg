@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-07-31  
-**Story Ticket:** [FIX-104](file:///home/zackchow/coding/rckg/docs/04-deepdive/real-mvp.md#fix-104-wire-llm-extraction-into-process-pdf-endpoint-replace-regex-fabrication)  
-**Work Log Reference:** [work-log-FIX-104.md](file:///home/zackchow/coding/rckg/docs/04-deepdive/swe-worklog/work-log-FIX-104.md)  
+**Story Ticket:** [FIX-104](docs/04-deepdive/real-mvp.md#fix-104-wire-llm-extraction-into-process-pdf-endpoint-replace-regex-fabrication)  
+**Work Log Reference:** [work-log-FIX-104.md](docs/04-deepdive/swe-worklog/work-log-FIX-104.md)  
 **Final Status:** **APPROVED**  
 
 ---

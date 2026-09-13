@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-07-29  
-**Story Ticket:** [RCKG-104](file:///home/zackchow/coding/rckg/docs/03-mvp/mvp-sprint.md#rckg-104-closed-set-parameterized-cypher-builders--dual-write-atomicity)  
-**Work Log Reference:** [work-log-RCKG-104.md](file:///home/zackchow/coding/rckg/docs/03-mvp/swe-worklog/work-log-RCKG-104.md)  
+**Story Ticket:** [RCKG-104](docs/03-mvp/mvp-sprint.md#rckg-104-closed-set-parameterized-cypher-builders--dual-write-atomicity)  
+**Work Log Reference:** [work-log-RCKG-104.md](docs/03-mvp/swe-worklog/work-log-RCKG-104.md)  
 **Final Status:** **APPROVED**  
 
 ---

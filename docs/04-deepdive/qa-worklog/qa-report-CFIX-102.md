@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-02  
-**Story Ticket:** [CFIX-102](file:///home/zackchow/coding/rckg/docs/04-deepdive/claude-remediation-sprint.md#cfix-102-wire-memgraph-connection-into-graphrag-export-api-endpoint)  
-**Work Log Reference:** [work-log-CFIX-102.md](file:///home/zackchow/coding/rckg/docs/04-deepdive/swe-worklog/work-log-CFIX-102.md)  
+**Story Ticket:** [CFIX-102](docs/04-deepdive/claude-remediation-sprint.md#cfix-102-wire-memgraph-connection-into-graphrag-export-api-endpoint)  
+**Work Log Reference:** [work-log-CFIX-102.md](docs/04-deepdive/swe-worklog/work-log-CFIX-102.md)  
 **Final Status:** **APPROVED**  
 
 ---

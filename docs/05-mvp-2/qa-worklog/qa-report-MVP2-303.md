@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-09  
-**Story Ticket:** [MVP2-303](file:///home/zackchow/coding/rckg/docs/05-mvp-2/sprints.md#mvp2-303--control-mappings-query-api)  
-**Work Log Reference:** [work-log-MVP2-303.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/swe-worklog/work-log-MVP2-303.md)  
+**Story Ticket:** [MVP2-303](docs/05-mvp-2/sprints.md#mvp2-303--control-mappings-query-api)  
+**Work Log Reference:** [work-log-MVP2-303.md](docs/05-mvp-2/swe-worklog/work-log-MVP2-303.md)  
 **Final Status:** **APPROVED**  
 
 ---

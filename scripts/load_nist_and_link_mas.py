@@ -323,7 +323,7 @@ def main():
     logger.info("  STARTING NIST SP 800-53 INGESTION & MAS TRM CROSSWALK PIPELINE ")
     logger.info("================================================================")
 
-    yaml_path = "/home/zackchow/coding/rckg/data/test-docs/NIST_SP-800-53_rev5_catalog.yaml"
+    yaml_path = "data/test-docs/NIST_SP-800-53_rev5_catalog.yaml"
     if not os.path.exists(yaml_path):
         logger.error("OSCAL YAML not found at %s", yaml_path)
         return

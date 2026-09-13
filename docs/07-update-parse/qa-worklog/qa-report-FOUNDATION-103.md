@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-15  
-**Story Ticket:** [STORY-FOUNDATION-103](file:///home/zackchow/coding/rckg/docs/07-update-parse/sprint-plan-foundation-setup.md#story-foundation-103-pure-risk-catalog-ingestion--semantic-mitigation-linkages)  
-**Work Log Reference:** [work-log-FOUNDATION-103.md](file:///home/zackchow/coding/rckg/docs/07-update-parse/swe-worklog/work-log-FOUNDATION-103.md)  
+**Story Ticket:** [STORY-FOUNDATION-103](docs/07-update-parse/sprint-plan-foundation-setup.md#story-foundation-103-pure-risk-catalog-ingestion--semantic-mitigation-linkages)  
+**Work Log Reference:** [work-log-FOUNDATION-103.md](docs/07-update-parse/swe-worklog/work-log-FOUNDATION-103.md)  
 **Final Status:** **APPROVED** ✅  
 
 ---

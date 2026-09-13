@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-07-29  
-**Story Ticket:** [RCKG-103](file:///home/zackchow/coding/rckg/docs/03-mvp/mvp-sprint.md#rckg-103-deterministic-v01-facet-aware-graph-compiler-mvp)  
-**Work Log Reference:** [work-log-RCKG-103.md](file:///home/zackchow/coding/rckg/docs/03-mvp/swe-worklog/work-log-RCKG-103.md)  
+**Story Ticket:** [RCKG-103](docs/03-mvp/mvp-sprint.md#rckg-103-deterministic-v01-facet-aware-graph-compiler-mvp)  
+**Work Log Reference:** [work-log-RCKG-103.md](docs/03-mvp/swe-worklog/work-log-RCKG-103.md)  
 **Final Status:** **APPROVED**  
 
 ---

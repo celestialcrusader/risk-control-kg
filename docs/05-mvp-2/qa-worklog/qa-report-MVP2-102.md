@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-09  
-**Story Ticket:** [MVP2-102](file:///home/zackchow/coding/rckg/docs/05-mvp-2/sprints.md#mvp2-102--eliminate-fabricated-extraction-fallback)  
-**Work Log Reference:** [work-log-MVP2-102.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/swe-worklog/work-log-MVP2-102.md)  
+**Story Ticket:** [MVP2-102](docs/05-mvp-2/sprints.md#mvp2-102--eliminate-fabricated-extraction-fallback)  
+**Work Log Reference:** [work-log-MVP2-102.md](docs/05-mvp-2/swe-worklog/work-log-MVP2-102.md)  
 **Final Status:** **APPROVED**  
 
 ---

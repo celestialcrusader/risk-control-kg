@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-07-31  
-**Story Ticket:** [FIX-302](file:///home/zackchow/coding/rckg/docs/04-deepdive/real-mvp.md#fix-302-replace-bm25-runtimeerror-with-in-process-bm25-library)  
-**Work Log Reference:** [work-log-FIX-302.md](file:///home/zackchow/coding/rckg/docs/04-deepdive/swe-worklog/work-log-FIX-302.md)  
+**Story Ticket:** [FIX-302](docs/04-deepdive/real-mvp.md#fix-302-replace-bm25-runtimeerror-with-in-process-bm25-library)  
+**Work Log Reference:** [work-log-FIX-302.md](docs/04-deepdive/swe-worklog/work-log-FIX-302.md)  
 **Final Status:** **APPROVED**  
 
 ---

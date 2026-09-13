@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-11  
 **Status:** READY_FOR_QA  
-**Target Story:** [STORY-AI-103](file:///home/zackchow/coding/rckg/docs/06-add-ai/sprints.md#story-ai-103-qwen3-embedding-8b-dense-vector-synchronization)  
+**Target Story:** [STORY-AI-103](docs/06-add-ai/sprints.md#story-ai-103-qwen3-embedding-8b-dense-vector-synchronization)  
 
 ---
 

@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-07-29  
 **Status:** READY_FOR_QA  
-**Target Story:** [RCKG-103](file:///home/zackchow/coding/rckg/docs/03-mvp/mvp-sprint.md#rckg-103-deterministic-v01-facet-aware-graph-compiler-mvp)  
+**Target Story:** [RCKG-103](docs/03-mvp/mvp-sprint.md#rckg-103-deterministic-v01-facet-aware-graph-compiler-mvp)  
 
 ---
 

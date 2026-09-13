@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-16  
-**Story Ticket:** [STORY-MCP-303](file:///home/zackchow/coding/rckg/docs/09-mcp-ui/master-sprint-plan.md#story-mcp-303-realtime-nli-playground--immutable-audit-log-viewer)  
-**Work Log Reference:** [work-log-STORY-MCP-303.md](file:///home/zackchow/coding/rckg/docs/09-mcp-ui/swe-worklog/work-log-STORY-MCP-303.md)  
+**Story Ticket:** [STORY-MCP-303](docs/09-mcp-ui/master-sprint-plan.md#story-mcp-303-realtime-nli-playground--immutable-audit-log-viewer)  
+**Work Log Reference:** [work-log-STORY-MCP-303.md](docs/09-mcp-ui/swe-worklog/work-log-STORY-MCP-303.md)  
 **Final Status:** **APPROVED**  
 
 ---

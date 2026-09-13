@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-15  
-**Story Ticket:** [STORY-FOUNDATION-105](file:///home/zackchow/coding/rckg/docs/07-update-parse/sprint-plan-foundation-setup.md#story-foundation-105-3-tier-multi-framework-hierarchy-classifier)  
-**Work Log Reference:** [work-log-FOUNDATION-105.md](file:///home/zackchow/coding/rckg/docs/07-update-parse/swe-worklog/work-log-FOUNDATION-105.md)  
+**Story Ticket:** [STORY-FOUNDATION-105](docs/07-update-parse/sprint-plan-foundation-setup.md#story-foundation-105-3-tier-multi-framework-hierarchy-classifier)  
+**Work Log Reference:** [work-log-FOUNDATION-105.md](docs/07-update-parse/swe-worklog/work-log-FOUNDATION-105.md)  
 **Final Status:** **APPROVED** ✅  
 
 ---

@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-09  
-**Story Ticket:** [MVP2-301](file:///home/zackchow/coding/rckg/docs/05-mvp-2/sprints.md#mvp2-301--gap-query-api-endpoint)  
-**Work Log Reference:** [work-log-MVP2-301.md](file:///home/zackchow/coding/rckg/docs/05-mvp-2/swe-worklog/work-log-MVP2-301.md)  
+**Story Ticket:** [MVP2-301](docs/05-mvp-2/sprints.md#mvp2-301--gap-query-api-endpoint)  
+**Work Log Reference:** [work-log-MVP2-301.md](docs/05-mvp-2/swe-worklog/work-log-MVP2-301.md)  
 **Final Status:** **APPROVED**  
 
 ---

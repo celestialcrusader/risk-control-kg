@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-07-29  
-**Story Ticket:** [RCKG-202](file:///home/zackchow/coding/rckg/docs/03-mvp/mvp-sprint.md#rckg-202-specialized-multi-parser-stack-integration)  
-**Work Log Reference:** [work-log-RCKG-202.md](file:///home/zackchow/coding/rckg/docs/03-mvp/swe-worklog/work-log-RCKG-202.md)  
+**Story Ticket:** [RCKG-202](docs/03-mvp/mvp-sprint.md#rckg-202-specialized-multi-parser-stack-integration)  
+**Work Log Reference:** [work-log-RCKG-202.md](docs/03-mvp/swe-worklog/work-log-RCKG-202.md)  
 **Final Status:** **APPROVED**  
 
 ---

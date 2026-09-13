@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-16  
-**Story Ticket:** [STORY-COMP-202](file:///home/zackchow/coding/rckg/docs/08-compare-upgrade/sprint-plan-compiler-upgrade.md#story-comp-202-catalog-sanitizer--inactivewithdrawn-control-filter)  
-**Work Log Reference:** [work-log-STORY-COMP-202.md](file:///home/zackchow/coding/rckg/docs/08-compare-upgrade/swe-worklog/work-log-STORY-COMP-202.md)  
+**Story Ticket:** [STORY-COMP-202](docs/08-compare-upgrade/sprint-plan-compiler-upgrade.md#story-comp-202-catalog-sanitizer--inactivewithdrawn-control-filter)  
+**Work Log Reference:** [work-log-STORY-COMP-202.md](docs/08-compare-upgrade/swe-worklog/work-log-STORY-COMP-202.md)  
 **Final Status:** **APPROVED** ✅
 
 ---

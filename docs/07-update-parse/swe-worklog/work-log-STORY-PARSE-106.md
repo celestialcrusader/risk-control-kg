@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-12  
 **Status:** READY_FOR_QA  
-**Target Story:** [STORY-PARSE-106](file:///home/zackchow/coding/rckg/docs/07-update-parse/update-parse-sprint.md#story-parse-106-compliance-extraction-ground-truth-evaluation-suite)  
+**Target Story:** [STORY-PARSE-106](docs/07-update-parse/update-parse-sprint.md#story-parse-106-compliance-extraction-ground-truth-evaluation-suite)  
 
 ---
 
@@ -13,8 +13,8 @@ Created `backend/tests/test_compliance_eval.py` and `data/eval/gold_compliance_5
 ## 2. Files Modified & Created
 | File Path | Change Type | Purpose |
 |---|---|---|
-| [`data/eval/gold_compliance_50.json`](file:///home/zackchow/coding/rckg/data/eval/gold_compliance_50.json) | [NEW] | Ground-truth dataset for regulatory clause extraction |
-| [`backend/tests/test_compliance_eval.py`](file:///home/zackchow/coding/rckg/backend/tests/test_compliance_eval.py) | [NEW] | Compliance evaluation test suite |
+| [`data/eval/gold_compliance_50.json`](data/eval/gold_compliance_50.json) | [NEW] | Ground-truth dataset for regulatory clause extraction |
+| [`backend/tests/test_compliance_eval.py`](backend/tests/test_compliance_eval.py) | [NEW] | Compliance evaluation test suite |
 
 ## 3. TDD Cycle Summary
 ### 🔴 RED Phase

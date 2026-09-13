@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-02  
 **Status:** READY_FOR_QA  
-**Target Story:** [CFIX-205](file:///home/zackchow/coding/rckg/docs/04-deepdive/claude-remediation-sprint.md#cfix-205-remove-misleading-deberta-v3-model-metadata-from-nli-fallback-path)  
+**Target Story:** [CFIX-205](docs/04-deepdive/claude-remediation-sprint.md#cfix-205-remove-misleading-deberta-v3-model-metadata-from-nli-fallback-path)  
 
 ---
 

@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-07-29  
-**Story Ticket:** [RCKG-101](file:///home/zackchow/coding/rckg/docs/03-mvp/mvp-sprint.md#rckg-101-open-source-compliance-seed-harvesting--real-nist-olir-seed-ingestion)  
-**Work Log Reference:** [work-log-RCKG-101.md](file:///home/zackchow/coding/rckg/docs/03-mvp/swe-worklog/work-log-RCKG-101.md)  
+**Story Ticket:** [RCKG-101](docs/03-mvp/mvp-sprint.md#rckg-101-open-source-compliance-seed-harvesting--real-nist-olir-seed-ingestion)  
+**Work Log Reference:** [work-log-RCKG-101.md](docs/03-mvp/swe-worklog/work-log-RCKG-101.md)  
 **Final Status:** **APPROVED**  
 
 ---

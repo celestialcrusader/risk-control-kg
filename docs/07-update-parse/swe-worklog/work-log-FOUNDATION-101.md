@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-15  
 **Status:** READY_FOR_QA  
-**Target Story:** [STORY-FOUNDATION-101](file:///home/zackchow/coding/rckg/docs/07-update-parse/sprint-plan-foundation-setup.md#story-foundation-101-nist-sp-800-53-rev-5-oscal-yaml-parser--seed-ingestion)  
+**Target Story:** [STORY-FOUNDATION-101](docs/07-update-parse/sprint-plan-foundation-setup.md#story-foundation-101-nist-sp-800-53-rev-5-oscal-yaml-parser--seed-ingestion)  
 
 ---
 

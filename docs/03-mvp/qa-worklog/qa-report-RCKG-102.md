@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-07-29  
-**Story Ticket:** [RCKG-102](file:///home/zackchow/coding/rckg/docs/03-mvp/mvp-sprint.md#rckg-102-gold-crosswalk-evaluation-benchmark-harness-assembly--embedding-selection)  
-**Work Log Reference:** [work-log-RCKG-102.md](file:///home/zackchow/coding/rckg/docs/03-mvp/swe-worklog/work-log-RCKG-102.md)  
+**Story Ticket:** [RCKG-102](docs/03-mvp/mvp-sprint.md#rckg-102-gold-crosswalk-evaluation-benchmark-harness-assembly--embedding-selection)  
+**Work Log Reference:** [work-log-RCKG-102.md](docs/03-mvp/swe-worklog/work-log-RCKG-102.md)  
 **Final Status:** **APPROVED**  
 
 ---

@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-02  
-**Story Ticket:** [CFIX-204](file:///home/zackchow/coding/rckg/docs/04-deepdive/claude-remediation-sprint.md#cfix-204-fix-graphragtranslationservice-to-use-neo4j-driver-interface)  
-**Work Log Reference:** [work-log-CFIX-204.md](file:///home/zackchow/coding/rckg/docs/04-deepdive/swe-worklog/work-log-CFIX-204.md)  
+**Story Ticket:** [CFIX-204](docs/04-deepdive/claude-remediation-sprint.md#cfix-204-fix-graphragtranslationservice-to-use-neo4j-driver-interface)  
+**Work Log Reference:** [work-log-CFIX-204.md](docs/04-deepdive/swe-worklog/work-log-CFIX-204.md)  
 **Final Status:** **APPROVED**  
 
 ---

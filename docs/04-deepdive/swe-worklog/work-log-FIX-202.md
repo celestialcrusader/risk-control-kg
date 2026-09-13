@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-07-31  
 **Status:** READY_FOR_QA  
-**Target Story:** [FIX-202](file:///home/zackchow/coding/rckg/docs/04-deepdive/real-mvp.md#fix-202-route-process-pdf-through-service-layer)  
+**Target Story:** [FIX-202](docs/04-deepdive/real-mvp.md#fix-202-route-process-pdf-through-service-layer)  
 
 ---
 

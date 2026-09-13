@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-02  
 **Status:** READY_FOR_QA  
-**Target Story:** [CFIX-301](file:///home/zackchow/coding/rckg/docs/04-deepdive/claude-remediation-sprint.md#cfix-301-add-structured-degradation-logging-across-all-llm-dependent-services)  
+**Target Story:** [CFIX-301](docs/04-deepdive/claude-remediation-sprint.md#cfix-301-add-structured-degradation-logging-across-all-llm-dependent-services)  
 
 ---
 

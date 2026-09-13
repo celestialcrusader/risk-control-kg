@@ -9,7 +9,7 @@
 
 ## 1. BRD Alignment & Architectural Scope
 
-This Product Requirements Document (PRD) translates the Master Business Requirements Document ([`01-business-requirement-doc.md`](file:///home/zackchow/coding/rckg/docs/00-master/01-business-requirement-doc.md)) into concrete product features, user personas, end-to-end operational workflows, and testable acceptance criteria.
+This Product Requirements Document (PRD) translates the Master Business Requirements Document ([`01-business-requirement-doc.md`](docs/00-master/01-business-requirement-doc.md)) into concrete product features, user personas, end-to-end operational workflows, and testable acceptance criteria.
 
 ### Scope & Architectural Delivery Model (Headless-First)
 

@@ -44,7 +44,7 @@ Before ingesting large-scale public catalogs, this blueprint outlines the **7 co
 ---
 
 ### Gap 2: Configurable Tabular & Multi-Sheet Excel Adapters
-* **Current State**: [`CcmExcelParser`](file:///home/zackchow/coding/rckg/backend/app/services/seed_ingestion.py#L104) assumes a rigid 3-column layout (`row[0]=ctrl_id`, `row[1]=ctrl_title`, `row[2]=ctrl_text`) on `wb.active` starting from row 2.
+* **Current State**: [`CcmExcelParser`](backend/app/services/seed_ingestion.py#L104) assumes a rigid 3-column layout (`row[0]=ctrl_id`, `row[1]=ctrl_title`, `row[2]=ctrl_text`) on `wb.active` starting from row 2.
 * **Impact**:
   - `aicm.xlsx` has JSON banner metadata and 2 header rows before data.
   - `Artificial Intelligence Audit Toolkit_Workbook.xlsx` has 8 columns where `row[0]` is a numeric primary key (`1, 2, 3`), misidentifying it as the control ID.
@@ -64,16 +64,16 @@ Before ingesting large-scale public catalogs, this blueprint outlines the **7 co
 ---
 
 ### Gap 3: Pure Risk & Threat Database Recognition
-* **Current State**: The extraction prompt (`extraction.md`) and 6-facet extractor ([`facet_extractor.py`](file:///home/zackchow/coding/rckg/backend/app/services/facet_extractor.py)) are strictly tuned for compliance mandates (*who must do what*).
+* **Current State**: The extraction prompt (`extraction.md`) and 6-facet extractor ([`facet_extractor.py`](backend/app/services/facet_extractor.py)) are strictly tuned for compliance mandates (*who must do what*).
 * **Impact**: Feeding `AI risk database.xlsx` (MIT TASRA / AI Risks) causes the LLM to hallucinate synthetic control mandates out of hazard events (e.g. converting a *"Model Inversion Attack"* hazard description into a pseudo-obligation).
 * **Required Improvement**:
-  - Implement a dedicated **`RiskCatalogAdapter`** that maps rows directly into [`RiskNode`](file:///home/zackchow/coding/rckg/backend/app/models/rckg_nodes.py#L265) (`risks` PostgreSQL table and `:Risk` Memgraph label).
+  - Implement a dedicated **`RiskCatalogAdapter`** that maps rows directly into [`RiskNode`](backend/app/models/rckg_nodes.py#L265) (`risks` PostgreSQL table and `:Risk` Memgraph label).
   - Add semantic edge builder for `(:Risk)-[:MITIGATED_BY]->(:FrameworkControlObj)`.
 
 ---
 
 ### Gap 4: Decoupling Public Knowledge Graph from Client Policy (`CO`)
-* **Current State**: The 5 ORM linkage tables ([`rckg_nodes.py`](file:///home/zackchow/coding/rckg/backend/app/models/rckg_nodes.py#L367-L530)) require `ControlObjectiveNode (CO)` as the mandatory central hub (`RISK -> CO`, `OBL -> CO`, `CO -> FCO`).
+* **Current State**: The 5 ORM linkage tables ([`rckg_nodes.py`](backend/app/models/rckg_nodes.py#L367-L530)) require `ControlObjectiveNode (CO)` as the mandatory central hub (`RISK -> CO`, `OBL -> CO`, `CO -> FCO`).
 * **Impact**: When bootstrapping from public data without a client's internal policy, the graph forms 3 disconnected islands (`OBL`, `RISK`, `FCO`).
 * **Required Improvement**:
   - Establish **Direct Public Baseline Linkages**:
@@ -108,7 +108,7 @@ Before ingesting large-scale public catalogs, this blueprint outlines the **7 co
 * **Current State**: `cold_start_pipeline.py` compares chunks using lexical word overlap and DB table scans.
 * **Impact**: Comparing 1,000+ NIST controls against 1,000+ MAS/CCoP/ISO obligations would require $>1,000,000$ LLM/NLI pairwise evaluations, causing timeouts.
 * **Required Improvement**:
-  - Connect [`qdrant_service.py`](file:///home/zackchow/coding/rckg/backend/app/services/qdrant_service.py) dense vector embeddings as the primary coarse filter.
+  - Connect [`qdrant_service.py`](backend/app/services/qdrant_service.py) dense vector embeddings as the primary coarse filter.
   - Retrieve **Top-K ($K \le 5$)** candidates per clause before invoking NLI set-theory classification and Dual-Judge scoring.
 
 ---

@@ -338,7 +338,7 @@ To completely rebuild and run the RCKG platform from scratch:
 ### 1. Environment Setup & Container Services
 ```bash
 # Clone repository and enter directory
-cd /home/zackchow/coding/rckg
+cd .
 
 # Spin up PostgreSQL (port 5432), Memgraph (port 7687), and MinIO (port 9000)
 docker-compose up -d postgres memgraph minio

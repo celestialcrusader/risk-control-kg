@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-02  
-**Story Ticket:** [CFIX-205](file:///home/zackchow/coding/rckg/docs/04-deepdive/claude-remediation-sprint.md#cfix-205-remove-misleading-deberta-v3-model-metadata-from-nli-fallback-path)  
-**Work Log Reference:** [work-log-CFIX-205.md](file:///home/zackchow/coding/rckg/docs/04-deepdive/swe-worklog/work-log-CFIX-205.md)  
+**Story Ticket:** [CFIX-205](docs/04-deepdive/claude-remediation-sprint.md#cfix-205-remove-misleading-deberta-v3-model-metadata-from-nli-fallback-path)  
+**Work Log Reference:** [work-log-CFIX-205.md](docs/04-deepdive/swe-worklog/work-log-CFIX-205.md)  
 **Final Status:** **APPROVED**  
 
 ---

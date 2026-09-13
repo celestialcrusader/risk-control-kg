@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-09  
 **Status:** READY_FOR_QA  
-**Target Story:** [MVP2-105](file:///home/zackchow/coding/rckg/docs/05-mvp-2/sprints.md#mvp2-105--llm-endpoint-locality-validation)  
+**Target Story:** [MVP2-105](docs/05-mvp-2/sprints.md#mvp2-105--llm-endpoint-locality-validation)  
 
 ---
 

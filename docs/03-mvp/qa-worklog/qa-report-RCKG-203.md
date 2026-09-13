@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-07-29  
-**Story Ticket:** [RCKG-203](file:///home/zackchow/coding/rckg/docs/03-mvp/mvp-sprint.md#rckg-203-de-jure-clause-boundary-rule-unit-extractor)  
-**Work Log Reference:** [work-log-RCKG-203.md](file:///home/zackchow/coding/rckg/docs/03-mvp/swe-worklog/work-log-RCKG-203.md)  
+**Story Ticket:** [RCKG-203](docs/03-mvp/mvp-sprint.md#rckg-203-de-jure-clause-boundary-rule-unit-extractor)  
+**Work Log Reference:** [work-log-RCKG-203.md](docs/03-mvp/swe-worklog/work-log-RCKG-203.md)  
 **Final Status:** **APPROVED**  
 
 ---

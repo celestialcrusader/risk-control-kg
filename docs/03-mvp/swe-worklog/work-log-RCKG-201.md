@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-07-29  
 **Status:** READY_FOR_QA  
-**Target Story:** [RCKG-201](file:///home/zackchow/coding/rckg/docs/03-mvp/mvp-sprint.md#rckg-201-upstream-document-format-classifier--router-pipeline)  
+**Target Story:** [RCKG-201](docs/03-mvp/mvp-sprint.md#rckg-201-upstream-document-format-classifier--router-pipeline)  
 
 ---
 

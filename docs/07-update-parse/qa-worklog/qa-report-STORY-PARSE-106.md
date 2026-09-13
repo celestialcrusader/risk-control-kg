@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-08-12  
-**Story Ticket:** [STORY-PARSE-106](file:///home/zackchow/coding/rckg/docs/07-update-parse/update-parse-sprint.md#story-parse-106-compliance-extraction-ground-truth-evaluation-suite)  
-**Work Log Reference:** [work-log-STORY-PARSE-106.md](file:///home/zackchow/coding/rckg/docs/07-update-parse/swe-worklog/work-log-STORY-PARSE-106.md)  
+**Story Ticket:** [STORY-PARSE-106](docs/07-update-parse/update-parse-sprint.md#story-parse-106-compliance-extraction-ground-truth-evaluation-suite)  
+**Work Log Reference:** [work-log-STORY-PARSE-106.md](docs/07-update-parse/swe-worklog/work-log-STORY-PARSE-106.md)  
 **Final Status:** **APPROVED**  
 
 ---

@@ -3,7 +3,7 @@
 **Developer:** SWE Agent  
 **Date:** 2026-08-02  
 **Status:** READY_FOR_QA  
-**Target Story:** [CFIX-200](file:///home/zackchow/coding/rckg/docs/04-deepdive/claude-remediation-sprint.md#cfix-200-replace-regex-dejurefacetextractor-with-llm-powered-facet-extraction)  
+**Target Story:** [CFIX-200](docs/04-deepdive/claude-remediation-sprint.md#cfix-200-replace-regex-dejurefacetextractor-with-llm-powered-facet-extraction)  
 
 ---
 

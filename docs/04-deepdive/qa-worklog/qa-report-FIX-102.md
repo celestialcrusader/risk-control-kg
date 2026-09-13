@@ -2,8 +2,8 @@
 
 **QA Reviewer:** QA Agent  
 **Review Date:** 2026-07-31  
-**Story Ticket:** [FIX-102](file:///home/zackchow/coding/rckg/docs/04-deepdive/real-mvp.md#fix-102-create-3-tier-document-type-prompt-templates-controlobjective--controlactivity)  
-**Work Log Reference:** [work-log-FIX-102.md](file:///home/zackchow/coding/rckg/docs/04-deepdive/swe-worklog/work-log-FIX-102.md)  
+**Story Ticket:** [FIX-102](docs/04-deepdive/real-mvp.md#fix-102-create-3-tier-document-type-prompt-templates-controlobjective--controlactivity)  
+**Work Log Reference:** [work-log-FIX-102.md](docs/04-deepdive/swe-worklog/work-log-FIX-102.md)  
 **Final Status:** **APPROVED**  
 
 ---
