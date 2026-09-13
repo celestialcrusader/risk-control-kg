@@ -1,25 +1,39 @@
 # Master Technical Requirements Document (TRD): Risk Control Knowledge Graph (RCKG)
 
-**Document Version**: 1.0  
+**Document Version**: 2.0  
 **Status**: Production Architecture Blueprint & System Rebuild Specification  
+**Target Release**: RCKG Enterprise Platform v1.0 Production  
 **Target Audience**: Senior AI Systems Architects, Senior Software Engineers, DevOps Engineers, Security Engineers  
 
 ---
 
-## 1. Executive Summary & PRD Technical Review
+## 1. Executive Summary & Architectural Blueprint
 
-This Technical Requirements Document (TRD) provides an exhaustive, production-grade technical blueprint for the **Risk Control Knowledge Graph (RCKG)** platform. A senior software engineer or AI systems architect can completely rebuild, deploy, and maintain the system using this specification.
+This Technical Requirements Document (TRD) provides an exhaustive, production-grade technical blueprint for the **Risk Control Knowledge Graph (RCKG)** platform. A senior software engineer or AI systems architect can completely rebuild, deploy, maintain, and extend the system using this specification.
 
-### Key Architectural Choices & AI Pattern Fit
-- **Medallion Data Lakehouse Pattern**: Multi-tiered data lifecycle in PostgreSQL:
-  - **Bronze Layer**: Raw document text & metadata (`raw_documents`, `audit_log`).
-  - **Silver Layer**: Extracted atomic GRC obligations & active 3-tier prose normalization (`semantic_controls`).
-  - **Gold Layer**: Verified framework crosswalk alignments & gap assessments (`gaps`, `control_objective_framework_mappings`).
-- **Graph Outbox Dual-Write Pattern**: All graph mutations are transactionalized in PostgreSQL `graph_outbox_log` before being executed asynchronously or synchronously into Memgraph using Cypher `MERGE` statements.
-- **Dual-Tier Compiler Governance Gate**:
-  - *Tier 1 (Ontology Protection)*: Quarantines unapproved schema mutations (`ADD_NODE_TYPE`, `REDEFINE_FACET`).
-  - *Tier 2 (Golden Assertion Check)*: Prevents AI regressions on human-attested golden assertions (`GraphRegressionError`).
-- **Dual-Judge QA Engine**: Evaluates proposed graph mutations across two independent axes (Logical Judge score $\ge 0.95$, Technical Judge score $\ge 1.00$).
+### Headless-First Architecture Design
+
+```
+                          ┌──────────────────────┐
+                          │   RCKG Engine & API   │
+                          │   (Core Product 50%) │
+                          └──────────┬───────────┘
+                                     │
+                 ┌───────────────────┼───────────────────┐
+                 │                   │                   │
+                 ▼                   ▼                   ▼
+           REST / JSON API          MCP Server        Thin Governance UI
+            (Core Engine)        (Agent Copilots)     (Auditor Sign-off)
+                 │                   │                   │
+                 ▼                   ▼                   ▼
+          Enterprise GRC        Autonomous AI        Human Compliance
+          (CI/CD, Jira)        (Claude, Cursor)       (Override & Audit)
+```
+
+The system implements a **Headless-First Delivery Architecture**:
+1. **Core Product Layer (50%)**: Canonical FastAPI backend serving typed REST APIs, Medallion storage pipelines (Bronze, Silver, Gold), dual-tier governance gates, and 2D set-theoretic crosswalk compilers.
+2. **Autonomous Agent Layer (30%)**: Enterprise FastMCP Server exposing tools, dynamic resources, and structured reasoning prompts to autonomous AI coding agents (Claude Code, Gemini CLI, Cursor, Windsurf, OpenDevin).
+3. **Human Governance Layer (20%)**: Thin Web Reviewer UI (Vanilla JS/CSS, HTML5) providing high-density executive dashboards, chapter coverage heatmaps, interactive crosswalk matrices, real-time NLI playgrounds, and immutable audit logs.
 
 ---
 
@@ -27,15 +41,17 @@ This Technical Requirements Document (TRD) provides an exhaustive, production-gr
 
 | Layer | Technology | Version | Purpose & Justification |
 | :--- | :--- | :--- | :--- |
-| **API Framework** | **FastAPI** | `0.115+` | High-performance, async Python web framework with OpenAPI / Pydantic validation. |
-| **Relational Database** | **PostgreSQL** | `16.0` | Primary store for Medallion data architecture, outbox logs, audit logs, and gap tables. |
-| **ORM / Database Driver** | **SQLAlchemy** | `2.0+` | Type-safe ORM with connection pooling (`pool_pre_ping=True`, `pool_size=10`). |
+| **API Framework** | **FastAPI** | `0.115+` | Async Python web framework with OpenAPI / Pydantic v2 validation. |
+| **Relational Database** | **PostgreSQL** | `16.0` | Primary store for Medallion data architecture, outbox logs, audit logs, and crosswalk tables. |
+| **ORM / Driver** | **SQLAlchemy** | `2.0+` | Type-safe ORM with connection pooling (`pool_pre_ping=True`, `pool_size=10`, `max_overflow=20`). |
 | **Graph Database** | **Memgraph** | `2.18+` | In-memory, high-performance graph database supporting openCypher query language. |
-| **Graph Connection Driver** | **Neo4j Python Driver** | `5.20+` | Neo4j Bolt driver (`bolt://localhost:7687`) for executing parameterized Cypher queries. |
+| **Graph Connection Driver** | **Neo4j Python Driver** | `5.20+` | Neo4j Bolt driver (`bolt://localhost:7687`) for executing parameterized openCypher queries. |
 | **Object Storage (Asset Vault)** | **MinIO** | `RELEASE.2024+` | S3-compatible object vault storing raw PDF files in bucket `source-regulations`. |
 | **PDF Extraction Engine** | **PyMuPDF (`fitz`)** | `1.24+` | Fast, high-fidelity PDF text parsing with stream decoding fallbacks. |
-| **LLM Inference Engine** | **vLLM / Qwen Server** | `vLLM 0.6+` | High-throughput local LLM server serving `Qwen/Qwen3.6-35B-A3B` / OpenAI-compatible API (`http://localhost:8000/v1`). |
-| **Vector Search (Semantic Engine)** | **Qdrant / Sentence-Transformers** | `1.9+` | Dense vector similarity search for NLI crosswalk matching and embeddings. |
+| **Dense Vector Database** | **Qdrant** | `1.9+` | Vector similarity engine for semantic embeddings (`text-embedding-3-small` / BAAI BGE). |
+| **Late-Interaction Neural Search** | **ColBERT / FastEmbed** | `0.3+` | Token-level late-interaction multi-vector scoring for high-precision GRC clause retrieval. |
+| **NLI Cross-Encoder Engine** | **HuggingFace / PyTorch** | `2.4+` | Natural Language Inference models (`cross-encoder/nli-deberta-v3-large`) for semantic entailment. |
+| **Agent Interface (MCP)** | **FastMCP** | `0.1+` | Official Python Model Context Protocol implementation for AI agent tool calling and reasoning prompts. |
 | **AI Observability & Tracing** | **LangFuse** | `2.0+` | Distributed tracing logging LLM prompts, token usage, latency, and degradation events. |
 | **Testing & QA Harness** | **Pytest** | `8.0+` | Unit, integration, degradation, and end-to-end test suite execution. |
 
@@ -45,47 +61,51 @@ This Technical Requirements Document (TRD) provides an exhaustive, production-gr
 
 ```mermaid
 graph TD
-    subgraph Client Layer
-        CLIENT["REST Client / Frontend UI"]
+    subgraph Client_And_Agent_Layer ["1. Client & AI Agent Layer"]
+        CLIENT["Web Browser / REST Client"]
+        AGENT["Autonomous AI Agent<br/>(Claude Code, Cursor, Gemini CLI)"]
     end
 
-    subgraph API Gateway Layer (FastAPI)
-        EP1["POST /api/v1/extract/process-pdf"]
-        EP2["GET /api/v1/extract/graph/nodes"]
-        EP3["GET /api/v1/gaps"]
+    subgraph Interface_Layer ["2. Headless Interface Layer"]
+        UI["Thin Governance Web UI<br/>(http://localhost:8000/ui)"]
+        MCP["FastMCP Server<br/>(Pure-RCKG-Engine)"]
+        REST["FastAPI Router<br/>(/api/v1/extract, /api/v1/crosswalk, etc.)"]
     end
 
-    subgraph Core Processing Pipeline
-        UPLOAD["Document Upload Service<br/>(MinIO Vault & Audit Log)"]
-        PARSE["PyMuPDF Engine & Coverage Check<br/>(Sliding Window 60 lines)"]
-        PROMPTER["Active Prose Normalizer<br/>(_clean_dict & 'must' Modal)"]
-        LLM["vLLM / Qwen LLM Endpoint<br/>(http://localhost:8000/v1)"]
+    subgraph AI_Processing_Pipeline ["3. AI Ingestion & Hybrid Retrieval Pipeline"]
+        PDF["PyMuPDF Parser"]
+        DECOMP["Clause Decompounder"]
+        HYBRID["Hybrid Retriever<br/>(Qdrant Dense + ColBERT + BM25 via RRF)"]
+        NLI["NLI Cross-Encoder Evaluator<br/>(SemanticRelation + AssuranceCoverage)"]
+        TRANS["Transitive Reduction Engine"]
     end
 
-    subgraph Data & Governance Layer
-        PG_BRONZE["PostgreSQL: audit_log & raw_documents"]
-        PG_SILVER["PostgreSQL: semantic_controls"]
+    subgraph Governance_And_Storage_Layer ["4. Governance & Storage Layer"]
         GOV["Dual-Tier Governance Gate<br/>(DualTierGovernanceEngine)"]
-        JUDGE["Dual-Judge QA Engine<br/>(AsynchronousDualJudgeService)"]
+        JUDGE["Dual-Judge QA Engine<br/>(Logic >= 0.95, Tech >= 1.00)"]
         OUTBOX["PostgreSQL: graph_outbox_log"]
+        PG[("PostgreSQL 16 Database<br/>(Medallion Lakehouse)")]
         MEMGRAPH[("Memgraph Database<br/>bolt://localhost:7687")]
+        MINIO[("MinIO S3 Vault<br/>source-regulations")]
     end
 
-    CLIENT -->|Upload PDF| EP1
-    EP1 --> UPLOAD
-    UPLOAD -->|Store File & SHA-256| PG_BRONZE
-    UPLOAD --> PARSE
-    PARSE --> PROMPTER
-    PROMPTER --> LLM
-    LLM -- Obligations JSON --> PG_SILVER
-    PG_SILVER --> GOV
+    CLIENT --> UI
+    UI --> REST
+    AGENT --> MCP
+    MCP --> REST
+    REST --> PDF
+    PDF --> MINIO
+    PDF --> DECOMP
+    DECOMP --> PG
+    DECOMP --> HYBRID
+    HYBRID --> NLI
+    NLI --> TRANS
+    TRANS --> GOV
     GOV --> JUDGE
     JUDGE --> OUTBOX
-    OUTBOX -->|Cypher MERGE| MEMGRAPH
-    CLIENT -->|Query Graph| EP2
-    EP2 --> MEMGRAPH
-    CLIENT -->|Query Gaps| EP3
-    EP3 --> PG_SILVER
+    OUTBOX -->|openCypher MERGE| MEMGRAPH
+    REST --> PG
+    REST --> MEMGRAPH
 ```
 
 ---
@@ -94,26 +114,79 @@ graph TD
 
 ### 4.1 PostgreSQL Database Schema (`rckg_db`)
 
-#### Table: `semantic_controls` (Silver Layer - Extracted Obligations)
+```mermaid
+erDiagram
+    AUDIT_LOG ||--o{ DOCUMENTS : logs
+    DOCUMENTS ||--o{ OBLIGATION_NODES : extracts
+    OBLIGATION_NODES ||--o{ OBLIGATION_FRAMEWORK_MAPPINGS : maps_to
+    FRAMEWORK_CONTROL_OBJECTIVE_NODES ||--o{ OBLIGATION_FRAMEWORK_MAPPINGS : target_of
+    GRAPH_OUTBOX_LOG ||--o{ AUDIT_LOG : tracks
+```
+
+#### Table: `obligation_nodes` (Silver Layer - Standardized Obligations)
 ```sql
-CREATE TABLE semantic_controls (
-    id VARCHAR(255) PRIMARY KEY,
-    uuid UUID NOT NULL DEFAULT gen_random_uuid(),
-    source_document_id VARCHAR(255) NOT NULL,
+CREATE TABLE obligation_nodes (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    obligation_id VARCHAR(100) UNIQUE NOT NULL, -- e.g. MAS-7.6.1
     statement_text TEXT NOT NULL,
     action_verb VARCHAR(100) NOT NULL,
     subject_noun VARCHAR(255) NOT NULL DEFAULT 'Financial Institution',
-    section_reference VARCHAR(100),
-    control_id VARCHAR(100),
-    control_name VARCHAR(255),
-    objective_text TEXT,
-    framework_name VARCHAR(100) DEFAULT 'REGULATORY_GUIDELINE',
-    framework_version VARCHAR(50) DEFAULT '2021',
-    extraction_confidence FLOAT DEFAULT 1.0,
-    status VARCHAR(50) DEFAULT 'ACTIVE',
+    framework_name VARCHAR(100) NOT NULL DEFAULT 'MAS-TRM',
+    framework_version VARCHAR(50) DEFAULT '2024',
+    section_identifier VARCHAR(100),
+    chapter VARCHAR(100),
+    is_active BOOLEAN DEFAULT TRUE,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
+CREATE INDEX idx_obl_framework ON obligation_nodes(framework_name);
+CREATE INDEX idx_obl_id ON obligation_nodes(obligation_id);
+```
+
+#### Table: `framework_control_objective_nodes` (Industry Benchmark Controls)
+```sql
+CREATE TABLE framework_control_objective_nodes (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    framework_obj_id VARCHAR(100) UNIQUE NOT NULL, -- e.g. NIST-AC-2
+    objective_name VARCHAR(255) NOT NULL,
+    objective_text TEXT NOT NULL,
+    framework_name VARCHAR(100) NOT NULL DEFAULT 'NIST-SP-800-53',
+    framework_version VARCHAR(50) DEFAULT 'Rev 5',
+    family VARCHAR(100),
+    is_active BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+CREATE INDEX idx_fco_framework ON framework_control_objective_nodes(framework_name);
+CREATE INDEX idx_fco_id ON framework_control_objective_nodes(framework_obj_id);
+```
+
+#### Table: `obligation_framework_mappings` (Gold Layer - 2D Crosswalks)
+```sql
+CREATE TYPE semantic_relation_enum AS ENUM (
+    'EQUIVALENT', 'SUBSET_OF', 'SUPERSET_OF', 'OVERLAPS', 'SUPPORTS', 'NONE'
+);
+
+CREATE TYPE assurance_coverage_enum AS ENUM (
+    'FULL_COVERAGE', 'PARTIAL_COVERAGE', 'NO_COVERAGE'
+);
+
+CREATE TABLE obligation_framework_mappings (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    obligation_id UUID NOT NULL REFERENCES obligation_nodes(id) ON DELETE CASCADE,
+    framework_control_obj_id UUID NOT NULL REFERENCES framework_control_objective_nodes(id) ON DELETE CASCADE,
+    semantic_relation semantic_relation_enum NOT NULL,
+    assurance_coverage assurance_coverage_enum NOT NULL,
+    confidence_score FLOAT NOT NULL DEFAULT 0.0,
+    rationale TEXT NOT NULL,
+    human_approved BOOLEAN DEFAULT FALSE,
+    override_reason TEXT,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT uq_obl_framework_mapping UNIQUE(obligation_id, framework_control_obj_id)
+);
+CREATE INDEX idx_mapping_relation ON obligation_framework_mappings(semantic_relation);
+CREATE INDEX idx_mapping_coverage ON obligation_framework_mappings(assurance_coverage);
 ```
 
 #### Table: `graph_outbox_log` (Dual-Write Outbox Queue)
@@ -129,32 +202,21 @@ CREATE TABLE graph_outbox_log (
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     processed_at TIMESTAMP WITH TIME ZONE
 );
+CREATE INDEX idx_outbox_status ON graph_outbox_log(status);
 ```
 
 #### Table: `audit_log` (Immutable Audit Trail)
 ```sql
 CREATE TABLE audit_log (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    event_type VARCHAR(100) NOT NULL, -- document.uploaded, extraction.completed, graph.mutated
+    event_type VARCHAR(100) NOT NULL, -- document.uploaded, extraction.completed, graph.mutated, auditor.override
     document_id VARCHAR(255),
     filename VARCHAR(255),
     file_hash VARCHAR(64), -- SHA-256 digest
     details JSONB,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
-```
-
-#### Table: `gaps` (Compliance Gap Assessments)
-```sql
-CREATE TABLE gaps (
-    id VARCHAR(255) PRIMARY KEY,
-    source_clause_id VARCHAR(255) NOT NULL,
-    target_framework VARCHAR(100) NOT NULL,
-    gap_severity VARCHAR(50) NOT NULL, -- CRITICAL, HIGH, MEDIUM, LOW
-    compliance_status VARCHAR(50) NOT NULL, -- UNMAPPED, PARTIAL, NON_COMPLIANT
-    remediation_advice TEXT,
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
-);
+CREATE INDEX idx_audit_event_type ON audit_log(event_type);
 ```
 
 ---
@@ -163,71 +225,92 @@ CREATE TABLE gaps (
 
 ```mermaid
 graph LR
-    SR[":StatutoryRequirement<br/>{id, name, document_type}"] -->|:DEFINES| C[":Clause<br/>{id, text, active_syntax}"]
-    CO[":ControlObjective<br/>{id, text, intent}"] -->|:OPERATIONALIZED_BY| CA[":ControlActivity<br/>{id, text, sop_step}"]
-    CA -->|:SATISFIES| C
-    C -->|:SUPERSEDES| C
+    OBL[":Obligation<br/>{id, text, active_syntax}"] -->|:SATISFIES| CO[":ControlObjective<br/>{id, intent}"]
+    CO -->|:OPERATIONALIZED_BY| CA[":ControlActivity<br/>{id, sop_step}"]
+    CO -->|:CROSSWALKS_TO_OBJ| FCO[":FrameworkControlObj<br/>{id, name}"]
+    CA -->|:CROSSWALKS_TO_ACT| FCA[":FrameworkControlAct<br/>{id, spec}"]
+    FCO -->|:REFINES| FCA
+    RISK[":Risk<br/>{id, title}"] -->|:MITIGATES| CO
 ```
 
-#### Node Labels & Properties
-- **`:StatutoryRequirement`**: `{id: String, name: String, document_type: String}`
-- **`:Clause`**: `{id: String, text: String, action_verb: String, subject_noun: String, section_ref: String}`
-- **`:ControlObjective`**: `{id: String, text: String, policy_intent: String}`
-- **`:ControlActivity`**: `{id: String, text: String, SOP_method: String}`
-- **`:GapNode`**: `{id: String, severity: String, status: String}`
-
-#### Relationship Types & Set-Theory Semantics
-- **`[:DEFINES]`**: Connects `:StatutoryRequirement` to its extracted `:Clause` nodes (`SUPERSET_OF`).
-- **`[:OPERATIONALIZED_BY]`**: Connects `:ControlObjective` to its operational `:ControlActivity` nodes.
-- **`[:SATISFIES]`**: Connects `:ControlActivity` or `:ControlObjective` to regulatory `:Clause` nodes (`EQUIVALENT_TO` / `SUBSET_OF`).
-- **`[:SUPERSEDES]`**: Connects updated regulatory clauses to deprecated clauses.
+#### Relationship Types & openCypher Properties
+- **`[:SATISFIES]`**: `{semantic_relation: String, assurance_coverage: String, confidence: Float, rationale: String}`
+- **`[:OPERATIONALIZED_BY]`**: `{method: String, trigger: String}`
+- **`[:CROSSWALKS_TO_OBJ]`**: `{semantic_relation: String, assurance_coverage: String, confidence: Float}`
+- **`[:CROSSWALKS_TO_ACT]`**: `{parity_score: Float, method: String}`
+- **`[:MITIGATES]`**: `{residual_risk: String, coverage: String}`
 
 ---
 
 ## 5. API Endpoint Specifications
 
-All endpoints are hosted under router prefix `/api/v1/extract` in [`backend/app/api/extract.py`](file:///home/zackchow/coding/rckg/backend/app/api/extract.py).
+All endpoints are hosted under router prefixes `/api/v1` and `/api/v1/extract`.
 
-### 5.1 `POST /api/v1/extract/process-pdf`
-- **Description**: Production End-to-End PDF Ingestion & Extraction Endpoint.
-- **Request**: Multipart Form Data (`file: UploadFile`, `document_type: str = "REGULATORY_GUIDELINE"`).
-- **Response Model (`ProcessPdfResponse`)**:
+### 5.1 `GET /api/v1/obligations`
+- **Description**: Query regulatory obligations with keyword search, chapter filtering, and pagination.
+- **Parameters**: `framework: str = "MAS-TRM"`, `search: Optional[str]`, `limit: int = 50`, `offset: int = 0`.
+- **Response Model**: `ObligationListResponse`
 ```json
 {
-  "status": "SUCCESS",
-  "document_id": "3c795594-c8b5-4927-973d-1e01f8ae3ef7",
-  "obligation_count": 85,
-  "nodes_injected": 171,
-  "edges_injected": 85,
-  "degraded_chunks": 0,
-  "filename": "TRM Guidelines 18 January 2021.pdf",
-  "message": "Extraction completed successfully."
+  "total": 85,
+  "limit": 50,
+  "offset": 0,
+  "items": [
+    {
+      "id": "c7a8...",
+      "obligation_id": "MAS-7.6.1",
+      "statement_text": "The Financial Institution must implement multi-factor authentication for administrative access.",
+      "framework_name": "MAS-TRM",
+      "chapter": "Chapter 7",
+      "section": "7.6.1"
+    }
+  ]
 }
 ```
-- **Error Behavior**: If LLM fails for all chunks, returns HTTP 200 with `status: "DEGRADED"`, `degraded_chunks > 0`, and `message: "Extraction completed (used regex fallback)"`.
 
-### 5.2 `GET /api/v1/extract/graph/nodes`
-- **Description**: Retrieves all nodes and labels from Memgraph.
-- **Response**: `[{"id": "OBL-3.1.1", "label": "Clause", "text": "The Financial Institution must..."}]`
+### 5.2 `GET /api/v1/controls`
+- **Description**: Query active security controls, excluding purged/withdrawn controls.
+- **Parameters**: `framework: str = "NIST-SP-800-53"`, `active_only: bool = true`, `search: Optional[str]`, `limit: int = 50`, `offset: int = 0`.
+- **Response Model**: `ControlListResponse`
 
-### 5.3 `GET /api/v1/gaps`
-- **Description**: Retrieves compliance gap assessments.
-- **Response**: `[{"id": "GAP-001", "source_clause_id": "OBL-9.1.5", "gap_severity": "HIGH", "remediation_advice": "Implement MFA..."}]`
+### 5.3 `GET /api/v1/crosswalk`
+- **Description**: Query 2D set-theoretic crosswalk mappings.
+- **Parameters**: `source_id: Optional[str]`, `target_id: Optional[str]`, `min_confidence: float = 0.0`, `assurance_coverage: Optional[str]`, `limit: int = 50`.
+- **Response Model**: `CrosswalkListResponse`
+
+### 5.4 `GET /api/v1/gaps`
+- **Description**: Retrieve categorized compliance gaps (Category A Unmatched, Category B Retail Mandates).
+- **Response Model**: `CategorizedGapsResponse`
+
+### 5.5 `GET /api/v1/coverage/summary`
+- **Description**: Retrieve chapter coverage heatmaps and breakdown rates.
+- **Response Model**: `CoverageSummaryResponse`
+
+### 5.6 `POST /api/v1/evaluation/realtime`
+- **Description**: Live NLI crosswalk evaluation between arbitrary obligation and control text.
+- **Request Model**: `RealtimeEvaluationRequest`
+- **Response Model**: `RealtimeEvaluationResponse`
+
+### 5.7 `POST /api/v1/mappings/{id}/override`
+- **Description**: Record an auditor manual override of an AI crosswalk mapping with mandatory audit reasoning.
+- **Request Model**: `AuditorOverrideRequest`
+- **Response Model**: `AuditorOverrideResponse`
 
 ---
 
-## 6. AI Ingestion & Processing Pipeline Architecture
+## 6. Enterprise FastMCP Server Reference
 
-### 6.1 Sliding Window Text Chunking
-Long documents (e.g. 57-page PDFs) are parsed into line arrays via PyMuPDF. Chunks are computed using a sliding window algorithm:
-- **Chunk Size**: 60 lines (~600–800 tokens).
-- **Overlap**: 10 lines (~100 tokens).
-- **Formula**: `start_idx += (chunk_size - overlap)`
+The FastMCP Server (`backend/app/mcp_server/server.py`) provides 7 official tools for AI agents:
 
-### 6.2 Active Prose Normalization (`_clean_dict`)
-Extracted JSON from the LLM is passed through `_clean_dict()` in [`backend/app/services/extraction.py`](file:///home/zackchow/coding/rckg/backend/app/services/extraction.py#L228-L251):
-1. **Primary Actor Normalization**: Maps vague subject nouns (`FI`, `the FI`, `financial institutions`) to canonical `"Financial Institution"`.
-2. **Active Phrasing Enforcement**: Prepends `"The [Actor] must "` if the extracted prose does not begin with an active subject, guaranteeing standard modal phrasing across all database records.
+| Tool Name | Parameters | Purpose |
+| :--- | :--- | :--- |
+| `query_obligations` | `framework, search, limit, offset` | Retrieve structured regulatory obligations. |
+| `query_controls` | `framework, active_only, search, limit, offset` | Retrieve active framework security controls. |
+| `query_crosswalk` | `source_id, target_id, min_confidence, assurance_coverage` | Search 2D crosswalk linkages with rationales. |
+| `get_defensible_gaps` | `framework` | Discover Category A & Category B true gaps. |
+| `evaluate_crosswalk_realtime`| `obligation_text, control_text` | Run real-time NLI cross-encoder evaluation. |
+| `record_auditor_override` | `mapping_id, new_relation, new_coverage, override_reason` | Record auditor sign-off or correction. |
+| `explain_crosswalk` | `source_id, target_id` | Generate detailed audit explanation for a mapping. |
 
 ---
 
@@ -248,7 +331,7 @@ graph TD
 
 ---
 
-## 8. Development Standards & Rebuild Guide
+## 8. Complete System Rebuild & Runbook Guide
 
 To completely rebuild and run the RCKG platform from scratch:
 
@@ -268,28 +351,25 @@ source venv/bin/activate
 pip install -r backend/requirements.txt
 ```
 
-### 3. Run Automated Database Migrations & Seed Schema
+### 3. Run Automated Database Migrations & Seed Baseline Data
 ```bash
-python3 scripts/seed_database.py
+# Initialize PostgreSQL tables, seed MAS TRM obligations & NIST controls
+python3 backend/app/services/seed_ingestion.py
 ```
 
 ### 4. Execute Full Test Suite
 ```bash
-pytest backend/tests/test_cfix_302_e2e_process_pdf.py \
-       backend/tests/test_process_pdf_service_routing.py \
-       backend/tests/test_cfix_106_process_pdf_degradation.py \
-       backend/tests/test_cfix_201_outbox_edges.py -v
+pytest backend/tests -v
 ```
 
-### 5. Start Production API Server
+### 5. Start Production API Server & Thin Governance UI
 ```bash
 uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload --app-dir backend
 ```
+- Open Web UI: `http://localhost:8000/ui`
+- Open Swagger Docs: `http://localhost:8000/docs`
 
----
-
-## Handoff Note to Engineering Lead
-
-- **Primary Entrypoint**: Ingestion logic is entry-pointed at [`backend/app/api/extract.py`](file:///home/zackchow/coding/rckg/backend/app/api/extract.py).
-- **Outbox Integrity**: Always route graph edits through [`MemgraphService.enqueue_and_execute()`](file:///home/zackchow/coding/rckg/backend/app/services/memgraph_service.py) to preserve PostgreSQL outbox logs and Dual-Judge governance verification.
-- **Active Syntax Rule**: Never bypass `_clean_dict()` prose normalizer in `extraction.py`.
+### 6. Start FastMCP Server for Autonomous AI Agents
+```bash
+python3 backend/app/mcp_server/server.py
+```
