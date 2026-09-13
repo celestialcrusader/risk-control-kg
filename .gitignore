@@ -69,3 +69,4 @@ backend/.pytest_cache/
 .agent/worktrees/
 .claude/settings.local.json
 .deepeval/
+.agent/settings.local.json
