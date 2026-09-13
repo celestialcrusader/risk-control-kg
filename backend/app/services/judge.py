@@ -142,20 +142,43 @@ def _call_ollama(prompt: str) -> str:
     return content
 
 
+def _call_vllm_judge(prompt: str) -> str:
+    """Call OpenAI-compatible endpoint (vLLM or OpenAI API) for judge evaluation."""
+    from openai import OpenAI
+
+    api_key = os.getenv("OPENAI_API_KEY") or os.getenv("LLM_API_KEY") or "not-required"
+    client = OpenAI(
+        base_url=JUDGE_ENDPOINT,
+        api_key=api_key,
+    )
+    response = client.chat.completions.create(
+        model=JUDGE_MODEL,
+        messages=[
+            {"role": "system", "content": "You are a dual-judge compliance evaluation agent. Return strict JSON."},
+            {"role": "user", "content": prompt},
+        ],
+        temperature=0.1,
+        max_tokens=2048,
+    )
+    message = response.choices[0].message
+    content = message.content
+    if not content and hasattr(message, "reasoning_content") and message.reasoning_content:
+        content = message.reasoning_content
+    return content or ""
+
+
 def _call_llm(prompt: str) -> str:
     """
-    Call the LLM for judge evaluation (uses Ollama).
-
-    Args:
-        prompt: Formatted prompt with obligation and original text.
-
-    Returns:
-        Raw JSON string response from the LLM.
-
-    Raises:
-        Exception: If the LLM API is unreachable or returns an error.
+    Call the LLM for judge evaluation (supports OpenAI/vLLM endpoints with Ollama fallback).
     """
-    return _call_ollama(prompt)
+    provider = os.getenv("LLM_PROVIDER", "").lower()
+    if provider == "ollama":
+        return _call_ollama(prompt)
+    try:
+        return _call_vllm_judge(prompt)
+    except Exception as e:
+        logger.warning(f"OpenAI/vLLM judge endpoint failed ({e}), attempting Ollama fallback...")
+        return _call_ollama(prompt)
 
 
 def _parse_judgment(raw_response: str) -> JudgmentResponse:

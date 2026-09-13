@@ -23,6 +23,20 @@ Instead of relying on ungrounded AI hallucinations to evaluate compliance, RCKG 
 
 ---
 
+## Flexible Inference Architecture: Cloud API vs. Air-Gapped GPU
+
+RCKG is designed to be **inference-agnostic**, supporting two distinct operational deployment profiles:
+
+| Profile | Target Environment | Hardware Requirements | Setup Command |
+| :--- | :--- | :--- | :--- |
+| ⚡ **Mode A: Cloud API (Developer Mode)** | Any laptop (Mac/Windows/Linux), CI/CD | 4GB RAM, **0 GB VRAM** | `docker compose up -d` + `OPENAI_API_KEY` |
+| 🛡️ **Mode B: On-Prem Air-Gapped (Enterprise Mode)** | Regulated banks, defense, DGX servers | NVIDIA GPU (16GB–80GB VRAM) | `docker compose -f docker-compose.yml -f docker-compose.ai.yml up -d` |
+
+* In **Mode A**, document extraction and dual-judge evaluation route via your OpenAI-compatible API key (OpenAI `gpt-4o-mini`, Groq, Together, DeepSeek).
+* In **Mode B**, local vLLM containers serve quantized open models (`Qwen3.6-35B-A3B-NVFP4`, `PaddleOCR-VL-1.6`) with zero data leaving your security boundary.
+
+---
+
 ## Architecture Overview
 
 ```
@@ -70,47 +84,66 @@ Instead of relying on ungrounded AI hallucinations to evaluate compliance, RCKG 
 
 ### 1. Prerequisites
 - Docker & Docker Compose (v2.20+)
-- Python 3.12+ (if running services locally)
+- Python 3.12+ (if running backend services locally)
 
-### 2. Infrastructure Setup
-Clone the repository and copy the environment configuration:
+### 2. Configure Environment
+Clone the repository and copy the environment template:
 ```bash
 git clone https://github.com/celestialcrusader/risk-control-kg.git
 cd risk-control-kg
 cp .env.example .env
 ```
 
-Launch supporting data stores (Memgraph, PostgreSQL, Qdrant, Redis):
+#### Choose Your Inference Profile in `.env`:
+* **For Cloud API (Zero VRAM)**:
+  ```bash
+  OPENAI_API_KEY="sk-proj-your-key"
+  MODEL_EXTRACTION_ENDPOINT="https://api.openai.com/v1"
+  MODEL_EXTRACTION_NAME="gpt-4o-mini"
+  MODEL_JUDGE_ENDPOINT="https://api.openai.com/v1"
+  MODEL_JUDGE_NAME="gpt-4o-mini"
+  LLM_PROVIDER="openai"
+  ```
+* **For Air-Gapped GPU (vLLM on-prem)**: Keep the defaults pointing to `http://localhost:8000/v1` and use the AI compose overlay in step 3.
+
+### 3. Launch Supporting Infrastructure
+
+**Option A (Standard / Cloud API):**
 ```bash
 docker compose up -d memgraph postgres qdrant redis
 ```
 
-### 3. Local Environment Setup
+**Option B (Full Air-Gapped Stack with NVIDIA vLLM Containers):**
+```bash
+docker compose -f docker-compose.yml -f docker-compose.ai.yml up -d
+```
+
+### 4. Local Python Environment Setup
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r backend/requirements.txt
 ```
 
-### 4. Database Initialization & Seed Ingestion
+### 5. Database Initialization & Seed Ingestion
 Seed baseline regulatory standards (e.g. MAS TRM obligations and NIST SP 800-53 controls):
 ```bash
 python3 backend/app/services/seed_ingestion.py
 ```
 
-### 5. Run Verification Test Suite
+### 6. Run Verification Test Suite
 ```bash
 pytest backend/tests -v
 ```
 
-### 6. Start the API Server & Thin Governance UI
+### 7. Start the API Server & Thin Governance UI
 ```bash
 uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload --app-dir backend
 ```
-- **Interactive UI**: [http://localhost:8000/ui](http://localhost:8000/ui)
+- **Interactive Matrix UI**: [http://localhost:8000/ui](http://localhost:8000/ui)
 - **OpenAPI Swagger Docs**: [http://localhost:8000/docs](http://localhost:8000/docs)
 
-### 7. Run FastMCP Server for AI Agents
+### 8. Run FastMCP Server for AI Agents
 ```bash
 python3 backend/app/mcp_server/server.py
 ```

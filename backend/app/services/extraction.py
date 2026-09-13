@@ -115,9 +115,10 @@ def _call_vllm(prompt: str) -> str:
     """
     from openai import OpenAI, BadRequestError
 
+    api_key = os.getenv("OPENAI_API_KEY") or os.getenv("LLM_API_KEY") or "not-required"
     client = OpenAI(
         base_url=LLM_ENDPOINT,
-        api_key=os.getenv("LLM_API_KEY", "not-required"),
+        api_key=api_key,
     )
 
     system_instruction = (
