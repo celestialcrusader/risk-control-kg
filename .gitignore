@@ -65,8 +65,14 @@ backend/.pytest_cache/
 *~
 .DS_Store
 
-# Agent local worktrees & local configs
-.agent/worktrees/
-.claude/settings.local.json
+# Internal working documents, sprint tracking, and review logs
+/docs/
+/ARTIFACTS/
+/old_rckg/
+
+# Internal AI assistant, agent personas, and prompt workflows
+/.agent/
+/.agents/
+/.claude/
+claude.md
 .deepeval/
-.agent/settings.local.json
